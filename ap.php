@@ -1,5 +1,6 @@
 <?php 
     include_once "./route.php";
+    include_once "./model/sqldb.php";
     define("_DIR_ROOT",__DIR__);
     if(!empty($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == "on"){
         $web_root = "https://".$_SERVER["HTTP_HOST"];

@@ -8,7 +8,19 @@
         return $data->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // function insertData(){
-
-    // }
+    function inserData($tableName,$data){
+        global $conn;
+        if(!empty($data)){
+            $field = "";
+            $valueField = "";
+            foreach($data as $key => $value){
+                $field .= $key.",";
+                $valueField .= $value.",";
+            }
+            $field = rtrim($field,",");
+            $valueField = rtrim($valueField,",");
+            $sql = "INSERT INTO $tableName($field) VALUES ($valueField)";
+            $conn->exec($sql);
+        };
+    }
 ?>
