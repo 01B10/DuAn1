@@ -17,7 +17,7 @@
         $controller = trim($controller,"/");
         $boolean = false;
         foreach($route as $key => $value){
-            if(preg_match("~".$key."~is",$controller)){
+            if(strtolower($controller) == strtolower($key)){
                 $controller = $value;
                 $boolean = true;
             }
