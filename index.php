@@ -1,18 +1,14 @@
 <?php 
     include_once "./ap.php";
+    include_once "./model/sqldb.php";
+    include_once "./controller/controller.php";
     if(isset($controller)){
         switch ($controller) {
             case $controller:
-                if (file_exists(_DIR_ROOT."\\views\\".$controller.".php")) {
-                    require_once _DIR_ROOT."\\views\\".$controller.".php";
-                    if(!empty($_GET)){
-                        echo "<pre>";
-                        print_r($_GET);
-                        echo "</pre>";
-                    }
-                }
+                $data = [];
+                $data["listservice"] = getAllData("*","list_service");
+                render($controller,$data);
                 break;
-            
             default:
                 # code...
                 break;
