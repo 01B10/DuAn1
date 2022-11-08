@@ -7,9 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
-    <link rel="stylesheet" href="../css/adminPage.css">
-    <link rel="stylesheet"
-        href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="<?php echo _WEB_ROOT_."/views/admin/assets/css/adminPage.css"?>">
+    <script src="https://kit.fontawesome.com/5dd6f63e97.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
 </head>
 
 <body>
@@ -21,35 +21,40 @@
         <div class="sidebar-menu">
             <ul>
                 <li>
-                    <a href="" class="active"><span class="las la-igloo"></span>
+                    <a href="#"><span class="las la-igloo"></span>
                         <span>Dashboard</span></a>
                 </li>
                 <li>
-                    <a href=""><span class="las la-user"></span>
+                    <a href="#" class="drop"><span class="las la-user"></span>
                         <span>Customers</span></a>
+                    <div class="dropdown">
+                        <a href="#1">1</a>
+                        <a href="#2">2</a>
+                        <a href="#3">3</a>
+                    </div>
                 </li>
                 <li>
-                    <a href=""><span class="las la-clipboard-list"></span>
+                    <a href="#5"><span class="las la-clipboard-list"></span>
                         <span>Projects</span></a>
                 </li>
                 <li>
-                    <a href=""><span class="las la-shopping-bag"></span>
+                    <a href="#6"><span class="las la-shopping-bag"></span>
                         <span>Oder</span></a>
                 </li>
                 <li>
-                    <a href=""><span class="las la-receipt"></span>
+                    <a href="#"><span class="las la-receipt"></span>
                         <span>Inventory</span></a>
                 </li>
                 <li>
-                    <a href=""><span class="las la-user-circle"></span>
+                    <a href="#"><span class="las la-user-circle"></span>
                         <span>Account</span></a>
                 </li>
                 <li>
-                    <a href=""><span class="las la-user-circle"></span>
+                    <a href="#"><span class="las la-user-circle"></span>
                         <span>Comment</span></a>
                 </li>
                 <li>
-                    <a href=""><span class="las la-clipboard-list"></span>
+                    <a href="#"><span class="las la-clipboard-list"></span>
                         <span>task</span></a>
                 </li>
             </ul>
@@ -357,5 +362,29 @@
         </main>
     </div>
 </body>
-
+<script>
+    var slider = document.querySelectorAll(".sidebar-menu li > a");
+    var drop = document.querySelector(".drop");
+    var dropdown = document.querySelector(".dropdown");
+    dropdown.style.height = "0px";
+    drop.addEventListener("click",()=>{
+        if(dropdown.style.height == "0px"){
+            dropdown.style.height = "130px";
+        }else{
+            dropdown.style.height = "0px";
+        }
+    });
+    for(let i = 0; i < slider.length; i++){
+        slider[i].addEventListener("click",(e)=>{
+            e.preventDefault();
+            for(let k = 0; k < i; k++){
+                slider[k].classList.remove("active");
+            }
+            for(let k = i+1; k < slider.length; k++){
+                slider[k].classList.remove("active");
+            }
+            slider[i].classList.add("active");
+        });
+    }
+</script>
 </html>
