@@ -267,26 +267,26 @@ main {
   border: 1px solid var(--main-color);
 }
 
-table {
+.table-responsive table {
   border-collapse: collapse;
 }
 
-thead tr {
+.table-responsive table thead tr {
   border-top: 1px solid #f0f0f0;
   border-bottom: 1px solid #f0f0f0;
 }
 
-thead td {
+.table-responsive table thead td {
   font-weight: 700;
 }
 
-td {
+.table-responsive table td {
   color: #222;
   padding: 0.5rem 1rem;
   font-size: 0.9rem;
 }
 
-td .status {
+.table-responsive table td .status {
   display: inline-block;
   height: 20px;
   width: 20px;
@@ -294,7 +294,7 @@ td .status {
   margin-right: 1rem;
 }
 
-tr td:last-child {
+.table-responsive table tr td:last-child {
   display: flex;
   align-items: center;
 }
@@ -349,6 +349,60 @@ tr td:last-child {
   display: inline-block;
   margin-left: 0.5rem;
   color: var(--main-color);
+}
+
+.listuser {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.listuser thead tr {
+  background-color: gray;
+}
+
+.listuser thead tr th {
+  padding: 10px 5px;
+  color: white;
+}
+
+.listuser tbody tr td {
+  text-align: center;
+}
+
+.avatar img {
+  width: 2rem;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.action i {
+  cursor: pointer;
+}
+
+.action div {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  background-color: gray;
+}
+
+.action div a {
+  color: black;
+  padding: 5px 10px;
+}
+
+.action div a:hover {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+.hidden {
+  visibility: hidden;
 }
 
 @media only screen and (max-width: 1200px) {
@@ -408,9 +462,6 @@ tr td:last-child {
   }
   header h2 label {
     display: inline-block;
-    /* text-align: center; */
-    /* justify-content: center;
-        align-items: center; */
     background: var(--main-color);
     padding-right: 0rem;
     margin-right: 1rem;

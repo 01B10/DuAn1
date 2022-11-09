@@ -2,6 +2,11 @@
     include_once "./route.php";
     include_once "./model/sqldb.php";
     define("_DIR_ROOT",__DIR__);
+    if($_SERVER["PATH_INFO"] == "/admin"){
+        $_SERVER["PATH_INFO"] = $_SERVER["PATH_INFO"]."/";
+        // $_SERVER["PATH_INFO"] = "TEST";
+        echo $_SERVER["PATH_INFO"];
+    }
     if(!empty($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == "on"){
         $web_root = "https://".$_SERVER["HTTP_HOST"];
     }else{
@@ -23,7 +28,7 @@
             }
         }
 
-        if(!$boolean){
+        if($boolean == false){
             require_once _DIR_ROOT."\\erorr\\404.php";
         }
     }else{

@@ -3,6 +3,6 @@
     $route["forgotpassword"] = "client\\form\\ForgotPass";
     $route["Login"] = "client\\form\\Login";
     $route["Register"] = "client\\form\\Register";
-    $route["admin"] = "admin\\layout\\adminPage";
-    $route["post"] = "admin\\quanly\\post";
+    $route["admin/dashboard"] = "admin\\quanly\\dashboard";
+    $route["admin/listuser"] = "admin\\quanly\\listuser";
 ?>

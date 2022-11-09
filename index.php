@@ -5,9 +5,13 @@
     if(isset($controller)){
         switch ($controller) {
             case $controller:
-                $data = [];
-                $data["listservice"] = getAllData("*","list_service");
-                render($controller,$data);
+                $data["sub"] = $controller;
+                $conditon = $_SERVER["PATH_INFO"];
+                if(preg_match("~admin~is",$conditon)){
+                    render("layout/layout_admin",$data);
+                }else{
+                    render("layout/layout_client",$data);
+                }
                 break;
             default:
                 # code...
