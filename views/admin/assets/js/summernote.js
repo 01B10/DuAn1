@@ -3811,7 +3811,7 @@
         var i =
             '<div class="form-group note-group-select-from-files"><label>' +
             f.image.selectFromFiles +
-            '</label><input class="note-image-input form-control" type="file" name="files" accept="image/*" multiple="multiple" />' +
+            '</label><input class="note-image-input form-control" type="file" name="files" accept="image/*" multiple/>' +
             b +
             '</div><div class="form-group note-group-image-url" style="overflow:auto;"><label>' +
             f.image.url +
