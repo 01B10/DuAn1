@@ -28,16 +28,15 @@
                 </ul>
             </div>
             <div class="icon-1">
-                <i class="fa-solid fa-user">USER</i>
+                <a href=""><i class="fa-solid fa-user"></i>USER</a>
+
                 <!-- <i class="fa-solid fa-comment"></i> -->
                 <!-- <p>tài khoản</p> -->
 
             </div>
-            <div class="banner">
-                <img src="./views/img/bn1.jpg" alt="">  
-            </div>
-        
-
+        </div>
+        <div class="banner">
+            <img src="./views/img/bn1.jpg" alt="" id="img">
         </div>
     </header>
     <article>
@@ -58,44 +57,59 @@
                 <h3>Checkout date*</h3>
                 <input type="date">
             </div>
-            <button>Inquire now</button>
+            <a href="https://translate.google.com/?hl=vi"><button>Inquire now</button></a>
         </div>
         <h2>Điểm đến phổ biến ở Việt Nam</h2>
         <hr>
         <div class="destination">
             <div class="full-destination">
-                <p>HA NOI</p>
                 <img src="./views/img/hn1.jpg" alt="">
+                <div class="location">
+                    <p>HA NOI</p>
+                </div>
             </div>
             <div class="full-destination">
-                <p>HO CHI MINH</p>
                 <img src="./views/img/hcm1.jpg" alt="">
+                <div class="location">
+                    <p>HO CHI MINH</p>
+                </div>
             </div>
             <div class="full-destination">
-                <p>DA NANG</p>
                 <img src="./views/img/DN1.jpg" alt="">
+                <div class="location">
+                    <p>DA NANG</p>
+                </div>
             </div>
             <div class="full-destination">
-                <p>NGHE AN</p>
                 <img src="./views/img/NA1.jpg" alt="">
+                <div class="location">
+                    <p>NGHE AN</p>
+                </div>
             </div>
             <div class="full-destination">
-                <p>NHA TRANG</p>
                 <img src="./views/img/NT1.jpg" alt="">
+                <div class="location">
+                    <p>NHA TRANG</p>
+                </div>
             </div>
             <div class="full-destination">
-                <p>HUE</p>
                 <img src="./views/img/HU1.jpg" alt="">
+                <div class="location">
+                    <p>HUE</p>
+                </div>
             </div>
             <div class="full-destination">
-                <p>QUANG NINH</p>
                 <img src="./views/img/QN1.jpg" alt="">
+                <div class="location">
+                    <p>QUANG NINH</p>
+                </div>
             </div>
             <div class="full-destination">
-                <p>LAO CAI</p>
                 <img src="./views/img/LC1.jpg" alt="">
+                <div class="location">
+                    <p>LAO CAI</p>
+                </div>
             </div>
-
         </div>
         <h2>Bài viết mới nhất</h2>
         <hr>
@@ -127,6 +141,18 @@
 
         </div>
     </article>
+    <script>
+        let indext = 1;
+        run = function () {
+            let imgs = ["./views/img/bn1.jpg", "./views/img/bn2.jpg", "./views/img/bn3.jpg"];
+            document.getElementById('img').src = imgs[indext];
+            indext++;
+            if (indext == 3) {
+                indext = 0;
+            }
+        }
+        setInterval(run, 2800);
+    </script>
 </body>
 
 </html>
