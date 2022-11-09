@@ -20,6 +20,7 @@
         slider[i].addEventListener("click",(e)=>{
             e.preventDefault();
             sessionStorage.setItem("index",i);
+            if(i == 0) window.location.href = "dashboard";
             for(let k = 0; k < i; k++){
                 slider[k].classList.remove("active");
             }

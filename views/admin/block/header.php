@@ -20,7 +20,7 @@
         </div>
         <div class="sidebar-menu">
             <ul>
-                <li>
+                <li class="list">
                     <a href="dashboard"><span class="las la-igloo"></span>
                         <span>Dashboard</span></a>
                 </li>
@@ -30,7 +30,6 @@
                     <div class="dropdown">
                         <a href="listuser">List</a>
                         <a href="#2">Add</a>
-                        <!-- <a href="#3">3</a> -->
                     </div>
                 </li>
                 <li class="list">

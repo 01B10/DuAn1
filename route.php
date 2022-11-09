@@ -6,4 +6,5 @@
     $route["admin/dashboard"] = "admin\\quanly\\dashboard";
     $route["admin/listuser"] = "admin\\quanly\\listuser";
     $route["client"] = "client\\layout\\bookTour";
+    $route["client1"] = "client\\layout\\saleTour";
 ?>
