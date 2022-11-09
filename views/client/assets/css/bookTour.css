@@ -1,0 +1,345 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+boby {
+  font-size: 14px;
+}
+.container {
+  max-width: 940px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 30px;
+}
+.gr-1 .tour-img {
+  width: 100%;
+}
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.5s ease;
+}
+
+.active,
+.dot:hover {
+  background-color: #0066d9;
+}
+
+/* Fading animation */
+
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.title-tour {
+  font-size: 25px;
+  color: #e50131;
+  font-family: "r_conde_regular";
+  border-bottom: 0px;
+  margin-bottom: 13px;
+  min-height: 65px;
+  font-weight: bold;
+}
+.tlb-info-tour {
+  margin-top: 10px;
+  margin-bottom: 50px;
+  width: 100%;
+}
+.tlb-info-tour td {
+  margin-top: 20px;
+}
+.tlb-info-tour tr td {
+  font-size: 16px;
+  padding: 7px 0px;
+}
+.tlb-info-tour tr td i {
+  margin-right: 5px;
+}
+.code-tour {
+  color: #0066d9;
+  font-size: 16px;
+  font-family: "r_conde_regular";
+  text-transform: uppercase;
+}
+.box-service-tour h2 {
+  font-size: 20px;
+  color: #0066d9;
+  margin: 10px 0px;
+}
+.list-extra-services li {
+  list-style: none;
+  margin-top: 15px;
+}
+.list-extra-services {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.single-box-excerpt p {
+  font-size: 18px;
+  margin: 30px 0px;
+}
+.single-box-excerpt u {
+  color: #e50131;
+  font-size: 20px;
+}
+.single-box-excerpt ul li {
+  margin: 5px 0px;
+  font-size: 16px;
+  list-style: none;
+}
+.box-form-price-tour {
+  width: 100%;
+  background: #011e41;
+  margin-bottom: 20px;
+  margin-top: 30px;
+  color: #fff;
+}
+.box-form-price-tour form {
+  padding-top: 30px;
+  padding-bottom: 60px;
+  padding-left: 10px;
+}
+.box-form-price-tour .price-tour .title-price-old {
+  font-size: 16px;
+  color: #fec32d;
+}
+.title-price-new {
+  font-size: 25px;
+  color: #fec32d;
+  font-weight: bold;
+  margin-right: 10px;
+}
+.title-price-new-slot {
+  font-size: 14px;
+  color: #fec32d;
+}
+.form-control {
+  padding: 10px 0px;
+  display: block;
+  width: 80%;
+}
+.fa-calendar-day {
+  margin-left: -20px;
+}
+.slc-tour-people {
+  width: calc(100% + 30px);
+  margin-left: -20px;
+}
+.slc-tour-people-title {
+  margin-left: -20px;
+}
+.btn-submit-set-tour {
+  margin-left: 50px;
+  padding: 10px 30px;
+  margin-top: 19px;
+  background-color: #fec32d;
+}
+/* .khoihanh {
+
+} */
+.form-booking {
+  padding: 0px 20px;
+}
+.box-form-price-tour-2 {
+  width: 100%;
+  background: #011e41;
+  margin-bottom: 20px;
+
+  color: #fff;
+}
+.box-form-price-tour-2 form {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 20px;
+  margin-top: 78px;
+  padding-right: 20px;
+}
+.title-price-old-2 {
+  font-size: 16px;
+  color: #fec32d;
+}
+.title-price-new-2 {
+  font-size: 35px;
+  color: #fec32d;
+  font-weight: bold;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.form-control-2 {
+  padding: 10px 0px;
+  display: block;
+  right: 0px;
+}
+.khoihanh {
+  margin-right: 20px;
+}
+.slc-tour-people-2 {
+  width: calc(100% + 0.3px);
+}
+.row-khoihanh {
+  margin-bottom: 230px;
+}
+.btn-submit-set-tour-2 {
+  margin-left: 2px;
+  padding: 15px 30px;
+  margin-top: 30px;
+  background-color: #fec32d;
+  width: 100%;
+}
+.panel-tour-product-title {
+  display: flex;
+  justify-content: space-between;
+  background-color: #0066d9;
+  margin: 10px 0px;
+  padding: 10px 0px;
+  color: white;
+  border-radius: 5px;
+}
+.panel-tour-product-title h4 {
+  margin-left: 10px;
+}
+.panel-tour-product-title i {
+  margin-right: 10px;
+  cursor: pointer;
+}
+.panel-tour-product-service table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  line-height: 25px;
+}
+.panel-tour-product-service table thead {
+  display: table-header-group;
+  vertical-align: middle;
+  border-color: inherit;
+  background-color: #0066d9;
+}
+.banggia tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+.panel-tour-product-service table thead tr {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+.panel-tour-product {
+  height: 48px;
+  overflow: hidden;
+}
+.panel-tour-product-title {
+  height: 48px;
+}
+.banggia th:first-child {
+  border-top-left-radius: 5px;
+}
+.banggia th {
+  border-top: none;
+  border-bottom: none;
+  color: white;
+  text-align: center;
+  font-size: 16px;
+  font-weight: normal;
+  vertical-align: middle;
+  padding: 6px 0px;
+  background: #0066d9;
+}
+b,
+strong {
+  font-weight: 700;
+}
+.banggia th:last-child {
+  border-top-right-radius: 5px;
+}
+p {
+  margin: 0 0 10px;
+}
+tbody {
+  display: table-row-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+.banggia tbody tr {
+  text-align: center;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+.banggia tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+.banggia tr td {
+  border: 1px solid #b5b5b5;
+}

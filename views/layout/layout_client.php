@@ -1,4 +1,3 @@
 <?php 
-    echo $sub;
+    render($sub);
 ?>
-<h2>Hello</h2>

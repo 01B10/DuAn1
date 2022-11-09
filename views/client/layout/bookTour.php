@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="bookTour.css">
+    <link rel="stylesheet" href="<?php echo _WEB_ROOT_."/views/client/assets/css/bookTour.css"?>">
     <script src="https://kit.fontawesome.com/5dd6f63e97.js" crossorigin="anonymous"></script>
     <title>Document</title>
 </head>
@@ -111,20 +111,6 @@
                         <h4>CHƯƠNG TRÌNH TOUR</h4>
                         <i class="pull-right fa fa-chevron-down"></i>
                     </div>
-                    <!-- <script> 
-                        var tourTitle = document.querySelector('.panel-tour-product-title');
-                        var tour = document.querySelector('.panel-tour-product');
-                        var tourHeight = tour.clientHeight;
-                        tourTitle.onclick = function(){
-                            console.log (tourTitle.clientHeight)
-                            var isClosed = tourTitle.clientHeight === tourHeight;
-                            if(isClosed){
-                                tour.style.height = 'auto';
-                            } else {
-                                tour.style.height = null;
-                            }
-                        }
-                    </script> -->
                     <div class="panel-tour-product-content">
                         <h3 style="text-align: justify;">
                             <span style="color:#B22222; font-size:16px;"><strong><u>NGÀY 0</u></strong><strong><u>1 |</u></strong>&nbsp;<strong><u>HÀ NỘI – QUẢN BẠ - YÊN MINH</u></strong><strong><u>&nbsp;</u></strong><strong><u>(ĂN </u></strong></span><strong><span style="color:#B22222;"><u>TRƯA, TỐI)</u></span></strong>
@@ -360,7 +346,8 @@
     <tr>
         <td colspan="2"><button data-role="none" class="btn-submit-set-tour-2" type="submit">Đặt Tour</button></td>
     </tr>
-</tbody></table>
+    </tbody>
+</table>
 </form>
 </div>
 
@@ -368,26 +355,38 @@
                 </div>
         </div>
     </div>
-        <script>
-            let slideIndex = 0;
-showSlides();
-
-function showSlides() {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("dot");
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";  
-  }
-  slideIndex++;
-  if (slideIndex > slides.length) {slideIndex = 1}    
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
-  setTimeout(showSlides, 3000); // Change image every 2 seconds
-}
-            </script>
+<script>
+    let slideIndex = 0;
+    var tourTitle = document.querySelectorAll('.panel-tour-product-title');
+    var tour = document.querySelectorAll('.panel-tour-product');
+    for(let i = 0; i < tourTitle.length; i++){
+        tourTitle[i].onclick = function(){
+        var tourHeight = tour[i].clientHeight;
+        var isClosed = tourTitle[i].clientHeight === tourHeight;
+        if(isClosed){
+            tour[i].style.height = 'auto';
+        } else {
+            tour[i].style.height = null;
+        }
+    }
+    }
+    showSlides();
+    function showSlides() {
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      let dots = document.getElementsByClassName("dot");
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
+      }
+      slideIndex++;
+      if (slideIndex > slides.length) {slideIndex = 1}    
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+      slides[slideIndex-1].style.display = "block";  
+      dots[slideIndex-1].className += " active";
+      setTimeout(showSlides, 3000); // Change image every 2 seconds
+    }
+</script>
 </body>
 </html>
