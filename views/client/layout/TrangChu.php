@@ -1,6 +1,6 @@
-<iframe width="100%" height="285" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=vùng đất cố đô&amp;hl=es;z=14&amp;output=embed" allowfullscreen=""></iframe>
+<!-- <iframe width="100%" height="285" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=vùng đất cố đô&amp;hl=es;z=14&amp;output=embed" allowfullscreen=""></iframe> -->
     <article>
-        <div class="search">
+        <form class="search">
             <div class="full-search">
                 <h3>Search destination*</h3>
                 <input type="text" placeholder="Enter destination">
@@ -17,17 +17,21 @@
                 <h3>Checkout date*</h3>
                 <input type="date">
             </div>
-            <a href="https://translate.google.com/?hl=vi"><button>Inquire now</button></a>
-        </div>
+            <div class="full-search">
+                <button>Inquire now</button>
+            </div>
+        </form>
         <h2>Điểm đến phổ biến ở Việt Nam</h2>
         <hr>
         <div class="destination">
-            <div class="full-destination">
-                <img src="./views/img/hn1.jpg" alt="">
-                <div class="location">
-                    <p>HA NOI</p>
+            <a href="tour">
+                <div class="full-destination">
+                    <img src="./views/img/hn1.jpg" alt="">
+                    <div class="location">
+                        <p>HA NOI</p>
+                    </div>
                 </div>
-            </div>
+            </a>
             <div class="full-destination">
                 <img src="./views/img/hcm1.jpg" alt="">
                 <div class="location">
@@ -106,11 +110,11 @@
         <div class="full-footer">
             <div class="footer1">
                 <h4>CÔNG TY CỔ PHẦN TRUYỀN THÔNG DU LỊCH VIỆT</h4>
-                <p>Trụ sở chính: 239A Hoàng Văn Thụ, Phường 8, Quận Phú Nhuận, TP. Hồ Chí Minh.</p>
+                <!-- <p>Trụ sở chính: 239A Hoàng Văn Thụ, Phường 8, Quận Phú Nhuận, TP. Hồ Chí Minh.</p>
                 <p>Chi nhánh Hà Nội: 44 Tràng Tiền, Quận Hoàn Kiếm, Hà Nội</p>
                 <p>Điện thoại: 028 73056789 | Hotline: 1900 1177</p>
                 <p>Website: dulichviet.com.vn</p>
-                <p>Email: info@dulichviet.com.vn</p>
+                <p>Email: info@dulichviet.com.vn</p> -->
             </div>
             <div class="footer1">
                 <h4>Góc khách hàng</h4>

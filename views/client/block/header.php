@@ -14,7 +14,7 @@
 
 <body>
     <header>
-        <div class="full_header">
+        <div class="full_header">   
             <div class="logo">
                 <img src="./views/img/logo.jpg" alt="">
             </div>
@@ -29,11 +29,11 @@
                 </ul>
             </div>
             <div class="icon-1">
-                <a href=""><i class="fa-solid fa-user"></i>USER</a>
-
-                <!-- <i class="fa-solid fa-comment"></i> -->
-                <!-- <p>tài khoản</p> -->
-
+                <i class="fa-solid fa-user"></i>
+                <div class="drop">
+                    <a href="login">Login</a>
+                    <a href="register">register</a>
+                </div>
             </div>
         </div>
         <div class="banner">

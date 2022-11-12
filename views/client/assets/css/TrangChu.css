@@ -1,202 +1,205 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {
-    max-width: 1440px;
-    margin: 0 auto;
-    font-family: 'Roboto Condensed', sans-serif;
+  max-width: 1440px;
+  margin: auto;
+  font-family: "Roboto Condensed", sans-serif;
 }
 
 .full_header {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    grid-gap: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 10px;
 }
 
 .logo img {
-    width: 120px;
-    margin-top: 10px;
-    margin-left: 50px;
-}
-
-.menu {
-    margin-top: 43px;
+  width: 120px;
 }
 
 .menu ul li {
-    display: inline-block;
-
+  display: inline-block;
+  margin-left: 15px;
 }
 
 .menu ul li a {
-    text-decoration: none;
-    padding: 20px;
-    font-size: 20px;
-    color: rgb(54, 52, 52);
+  text-decoration: none;
+  font-size: 20px;
+  color: rgb(54, 52, 52);
 }
 
 .menu ul li a:hover {
-    color: rgb(73, 138, 236);
-    text-decoration: underline;
-
-
+  color: rgb(73, 138, 236);
+  text-decoration: underline;
 }
 
 .icon-1 {
-    margin: auto 100px auto 0;
-    text-align: right;
+  display: inline-block;
+  position: relative;
+  text-align: right;
 }
 
-.icon-1 a i {
-    margin-right: 10px;
+.icon-1 i {
+  font-size: 20px;
+  cursor: pointer;
 }
 
-.icon-1:hover {
-    color: rgb(73, 138, 236);
+.drop {
+  position: absolute;
+  text-align: center;
+  background-color: lightblue;
+  right: 0;
+  visibility: hidden;
+}
+
+.drop a {
+  display: inline-block;
+  width: 100%;
+  padding: 10px 30px;
+  font-weight: bold;
+}
+
+.drop a:hover {
+  background-color: #1da1f2;
+  color: #ffffff;
+}
+
+.icon-1:hover > .drop {
+  visibility: visible;
 }
 
 .banner img {
-    margin-bottom: 20px;
-    /* max-width: 1400px; */
-    /* max-width: 100%; */
-    width: 100%;
-    height: 100%;
-    max-height: 450px;
+  margin-bottom: 20px;
+  width: 100%;
+  height: 100%;
+  max-height: 450px;
 }
 
 .search {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-gap: 35px;
-    background: rgb(103, 200, 242);
-    /* height: 93px; */
-    padding: 20px 0;
-
+  display: flex;
+  max-width: 1280px;
+  margin: auto;
+  background: rgb(103, 200, 242);
+  padding: 20px 0;
+  align-items: flex-end;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .full-search h3 {
-    margin-left: 54px;
-    color: white;
+  margin-left: 54px;
+  color: white;
 }
 
 .full-search input {
-    font-size: 20px;
-    border-radius: 23px;
-    border: 1px solid rgb(103, 200, 242);
-    padding: 5px 15px;
-    color: rgba(42, 39, 39, 0.575);
-    width: 100%;
+  font-size: 20px;
+  border-radius: 23px;
+  border: 1px solid rgb(103, 200, 242);
+  padding: 5px 15px;
+  color: rgba(42, 39, 39, 0.575);
+  width: 100%;
 }
 
 .search .full-search input:focus {
-    border: 2px solid #1DA1F2;
-    box-shadow: 0 0 10px #1DA1F2;
+  border: 2px solid #1da1f2;
+  box-shadow: 0 0 10px #1da1f2;
 }
 
 .full-search {
-    /* display: flex; */
-    margin-left: 20px;
-    justify-content: center;
-    align-items: center;
-    display: inline-block;
+  /* display: flex; */
+  margin-left: 20px;
+  justify-content: center;
+  align-items: center;
+  display: inline-block;
 }
 
 .search button {
-    border-radius: 23px;
-    border: 3px solid white;
-    width: 150px;
-    height: 40px;
-    color: white;
-    background: rgba(255, 255, 255, 0);
-    font-size: 20px;
-    margin-top: 15px;
+  border-radius: 23px;
+  border: 3px solid white;
+  width: 150px;
+  height: 40px;
+  color: white;
+  background: rgba(255, 255, 255, 0);
+  font-size: 20px;
+  margin-top: 15px;
 }
 
 h2 {
-    margin-left: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+  margin-left: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 hr {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .destination img {
-    /* width: 300px;
-    height: 200px; */
-    width: 100%;
-    border-radius: 6px;
-    height: 100%;
-    display: inline-block;
-    vertical-align: middle;
+  width: 100%;
+  border-radius: 6px;
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .destination {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 20px;
-    /* margin-left: 40px; */
-    /* justify-content: stretch; */
-   
-
+  max-width: 1280px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 20px;
 }
-.full-destination{
-    overflow: hidden;
-    /* position: relative; */
-     height: 200px;
+.full-destination {
+  overflow: hidden;
+  height: 200px;
 }
 
 .full-destination .location p {
-    color: white;
-    text-align: center;
-    background: rgba(57, 141, 238, 0.634);
-    /* position: absolute; */
-    /* left: 0;
-    right: 0; */
-    height: 40px;
-    /* bottom: 0; */
-    line-height: 40px;
-    border-radius: 5px;
+  color: white;
+  text-align: center;
+  background: rgba(57, 141, 238, 0.634);
+  height: 40px;
+  line-height: 40px;
+  border-radius: 5px;
 }
 
-.full-destination:hover .location{
-    transform: translateY(-40px);
-    transition-duration: 0.5s;
+.full-destination:hover .location {
+  transform: translateY(-40px);
+  transition-duration: 0.5s;
 }
 
 .newPosts {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 20px;
-    /* margin-left: 40px; */
+  max-width: 1280px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 20px;
 }
 
 .newPosts img {
-    /* width: 300px;
-    height: 200px; */
-    width: 100%;
-    height: 100%;
-    border-radius: 6px;
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
 }
 
-footer hr{
-    height: 4px;
-    margin-top: 20px;
-    background-color: #1DA1F2;
+footer hr {
+  height: 4px;
+  margin-top: 20px;
+  background-color: #1da1f2;
 }
 
-.full-footer{
-    margin-top: 20px;
-    display: grid;
-    grid-template-columns: 680px 350px 1fr;
+.full-footer {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 680px 350px 1fr;
 }
-.footer1 p{
-    padding: 5px;
+.footer1 p {
+  padding: 5px;
 }
-.footer1 h4{
-    color: #1DA1F2;
+.footer1 h4 {
+  color: #1da1f2;
 }

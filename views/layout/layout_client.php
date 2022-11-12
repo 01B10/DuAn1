@@ -1,5 +1,9 @@
 <?php 
-    render("client/block/header");
-    render($sub);
-    render("client/block/footer");
+    if(!in_array($exception,$arrexc)){
+        render("client/block/header");
+        render($sub);
+        render("client/block/footer");
+    }else{
+        render($sub);
+    }
 ?>

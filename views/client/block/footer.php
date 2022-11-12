@@ -15,7 +15,8 @@
         }
         setInterval(run, 2800);
 
-        sendbtn.addEventListener("click",()=>{
+        if(sendbtn != null){
+            sendbtn.addEventListener("click",()=>{
             let xhr = new XMLHttpRequest();
             xhr.open("POST","views/client/assets/chat/insertchat.php",true);
             xhr.onload = ()=>{
@@ -25,7 +26,8 @@
             }
             let formData = new FormData(form);
             xhr.send(formData);
-        });
+            });
+        }
 
         
         setInterval(() => {
@@ -33,13 +35,13 @@
         	xhr.open("POST", "views/client/assets/chat/getchat.php", true);
         	xhr.onload = () => {
         		if((xhr.readyState === XMLHttpRequest.DONE) && (xhr.status === 200)){
-        			chatBox.innerHTML = xhr.response;
-        			// if(!chatBox.classList.contains('active')){
-        			// }
+                        if(chatBox != null){
+                            chatBox.innerHTML = xhr.response;
+                        }
         		}
         	}
         	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        	xhr.send('incoming_id='+1);
+        	xhr.send('id='+1);
         }, 500)
     </script>
 

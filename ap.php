@@ -27,6 +27,6 @@
             require_once _DIR_ROOT."\\erorr\\404.php";
         }
     }else{
-        require_once _DIR_ROOT."\\views\\client\\test.php";
+        header("location: Trang-Chu");
     }
 ?>

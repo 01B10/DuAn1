@@ -8,6 +8,8 @@
         switch ($controller) {
             case $controller:
                 $data["sub"] = $controller;
+                $data["exception"] = strtolower(trim($_SERVER["PATH_INFO"],"/"));
+                $data["arrexc"] = ["login","register","forgotpassword"];
                 $conditon = $_SERVER["PATH_INFO"];
                 if(preg_match("~admin~is",$conditon)){
                     render("layout/layout_admin",$data);
