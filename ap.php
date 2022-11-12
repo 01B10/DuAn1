@@ -1,6 +1,4 @@
 <?php 
-    include_once "./route.php";
-    include_once "./model/sqldb.php";
     define("_DIR_ROOT",__DIR__);
     if(!empty($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == "on"){
         $web_root = "https://".$_SERVER["HTTP_HOST"];
@@ -12,6 +10,8 @@
     $folder = str_replace($dcm,"",$dirRoot);
     $web_root = $web_root.$folder;
     define("_WEB_ROOT_",$web_root);
+    include_once $path."\\route.php";
+    include_once $path."\model\sqldb.php";
     if(!empty($_SERVER["PATH_INFO"])){
         $controller = $_SERVER["PATH_INFO"];
         $controller = trim($controller,"/");

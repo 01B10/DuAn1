@@ -1,7 +1,9 @@
-<?php 
-    include_once "./ap.php";
-    include_once "./model/sqldb.php";
-    include_once "./controller/controller.php";
+<?php
+    $arrPath = explode("\\",__DIR__);
+    $arrPath = array_slice($arrPath,0,4);
+    $path = implode("\\",$arrPath);
+    include_once $path."\ap.php";
+    include_once $path."\controller\controller.php";
     if(isset($controller)){
         switch ($controller) {
             case $controller:

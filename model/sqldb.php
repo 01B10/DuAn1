@@ -1,5 +1,5 @@
 <?php 
-    include_once "./database/connection.php";
+    include_once $path."\database\connection.php";
     class QueryBuilder{
         public $tableName, $field,$where,$operator,$join,
         $orderBy,$groupBy;
