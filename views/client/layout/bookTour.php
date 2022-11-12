@@ -7,6 +7,67 @@
     <link rel="stylesheet" href="<?php echo _WEB_ROOT_."/views/client/assets/css/bookTour.css"?>">
     <script src="https://kit.fontawesome.com/5dd6f63e97.js" crossorigin="anonymous"></script>
     <title>Document</title>
+    <style>
+        .binhluan {
+    background: white;
+	border-radius: 10px;
+	width: 100%;
+	height: 300px;
+	justify-content: center;
+	align-items: center;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+.binhluan .form textarea {
+	background: #222222;
+	color: white;
+	font-size: 15px;
+	width: 100%;
+	border-radius: 20px;
+	padding: 10px;
+	border: none;
+	outline: none;
+	resize: none;
+}
+
+.binhluan .form .btn-comment{
+	background: #222222;
+	color: white;
+	font-size: 15px;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	padding: 10px;
+	width: 200px;
+	border-radius: 20px;
+	margin: 0 auto;
+	display: block;
+	margin-top: 5px;
+	margin-bottom: 20px;
+	opacity: 0.8;
+	transition: 0.3s all ease;
+}
+
+.binhluan .form .btn-comment:hover {
+	opacity: 1;
+}
+
+.content {
+	text-align: center;
+	background: royalblue;
+	color: white;
+	padding: 10px;
+	width: 500px;
+	border-radius: 10px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+
+.content p {
+	margin-bottom: 15px;
+	width: 450px;
+}
+    </style>
 </head>
 <body>
     <div class="container">
@@ -297,6 +358,15 @@
                 </tbody></table>
             </form>
             </div>
+
+            <div class="binhluan">
+		<form action="" method="post" class="form">
+			
+			<textarea name="message" cols="30" rows="10" class="message" placeholder="Viết bình luận..."></textarea>
+			<br>
+			<button type="submit" class="btn-comment" name="post_comment">Gửi bình luận</button>
+		</form>
+	</div>
            
            
            
@@ -354,6 +424,7 @@
 
                 </div>
         </div>
+    </div>
     </div>
 <script>
     let slideIndex = 0;

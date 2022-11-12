@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "../../../../../DemoTour"
+		},
+		{
+			"path": "D:/Download_DATA(D)/tour and travel website"
+		},
+		{
+			"path": "../../.."
+		},
+		{
+			"path": "D:/POLY/WEB2022-KT-trình bày nd"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "DemoTour"
+	}
+}
