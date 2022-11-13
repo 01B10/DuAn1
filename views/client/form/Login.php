@@ -7,13 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="<?php echo _WEB_ROOT_."/views/client/assets/css/login.css"?>">
-    <!-- <script src="https://kit.fontawesome.com/e123c1a84c.js" crossorigin="anonymous"></script> -->
+    <script src="https://kit.fontawesome.com/d620f19a29.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 </head>
 
 <body>
+    <a href="Trang-Chu">
+        <i class="fa-solid fa-arrow-left"></i>
+    </a>
     <div class="container">
-
         <form action="">
             <h2>Login form</h2>
             <div class="input-field">
@@ -34,7 +36,7 @@
                 </button>
             </div>
             <div class="register">
-                <p>Not a member? <a href="./Register.php">Register</a></p>
+                <p>Not a member? <a href="Register">Register</a></p>
             </div>
         </form>
     </div>

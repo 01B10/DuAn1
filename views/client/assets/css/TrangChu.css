@@ -21,9 +21,12 @@ body {
   width: 120px;
 }
 
+.menu ul li:not(li:first-child) {
+  margin-left: 15px;
+}
+
 .menu ul li {
   display: inline-block;
-  margin-left: 15px;
 }
 
 .menu ul li a {
