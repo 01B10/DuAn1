@@ -1,5 +1,6 @@
 <?php 
     include_once "./route.php";
+    include_once "./model/sqldb.php";
     define("_DIR_ROOT",__DIR__);
     if(!empty($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == "on"){
         $web_root = "https://".$_SERVER["HTTP_HOST"];
@@ -16,13 +17,13 @@
         $controller = trim($controller,"/");
         $boolean = false;
         foreach($route as $key => $value){
-            if(preg_match("~".$key."~is",$controller)){
+            if(strtolower($controller) == strtolower($key)){
                 $controller = $value;
                 $boolean = true;
             }
         }
 
-        if(!$boolean){
+        if($boolean == false){
             require_once _DIR_ROOT."\\erorr\\404.php";
         }
     }else{

@@ -1,20 +1,19 @@
 <?php 
     include_once "./ap.php";
+    include_once "./model/sqldb.php";
+    include_once "./controller/controller.php";
     if(isset($controller)){
         switch ($controller) {
             case $controller:
-                if (file_exists(_DIR_ROOT."\\views\\".$controller.".php")) {
-                    require_once _DIR_ROOT."\\views\\".$controller.".php";
-                    if(!empty($_GET)){
-                        echo "<pre>";
-                        print_r($_GET);
-                        echo "</pre>";
-                    }
+                $data["sub"] = $controller;
+                $conditon = $_SERVER["PATH_INFO"];
+                if(preg_match("~admin~is",$conditon)){
+                    render("layout/layout_admin",$data);
+                }else{
+                    render("layout/layout_client",$data);
                 }
                 break;
-            
             default:
-                # code...
                 break;
         }
     }
