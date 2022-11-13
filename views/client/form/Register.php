@@ -9,24 +9,31 @@
     <link rel="stylesheet" href="<?php echo _WEB_ROOT_."/views/client/assets/css/register.css"?>">
     <!-- <script src="https://kit.fontawesome.com/e123c1a84c.js" crossorigin="anonymous"></script> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <style>
+        
+    </style>
 </head>
+
 
 <body>
     <div class="container">
 
-        <form action="">
+        <form action="" method="POST" class="form" id="form-1">
             <h2>Register</h2>
             <div class="input-field">
-                <input type="text" required>
+                <input id="fullname" name="fullname" type="text" required>
                 <label for="">Enter your name</label>
+                <span class="form-message"></span>
             </div>
             <div class="input-field">
-                <input type="email" required>
+                <input id="email" name="email" type="email" required>
                 <label for="">Enter your email</label>
+                <span class="form-message"></span>
             </div>
             <div class="input-field">
                 <input type="text" required>
                 <label for="">Phone number</label>
+                <span class="form-message"></span>
             </div>
             <div class="gender">
                 <label class="pick" for="">Gender</label>
@@ -36,13 +43,14 @@
             </div>
             <div class="input-field">
                 <input type="password" required>
-                <label for="">Password</label>
+                <label id="password" name="password" for="">Password</label>
                 <span class="show-btn"><i class="fas fa-eye"></i></span>
             </div>
             <div class="input-field">
-                <input type="password" required>
+                <input id="password_confirmation" name="password_confirmation" type="password" required>
                 <label for="">Confirm password</label>
                 <span class="show-btn"><i class="fas fa-eye"></i></span>
+                <span class="form-message"></span>
             </div>
             <div class="capcha">
                 <label for="capcha-input">Enter capcha</label>
@@ -51,6 +59,7 @@
                     <input type="text"  id="capcha-form" placeholder="Enter capcha">
                     <button class="capcha-refresh"><i class="fas fa-sync"></i></button>
                 </div>
+                <span class="form-message"></span>
             </div>
             <!-- <div class="forgot">
                 <a href="./ForgotPass.html">Forgot password?</a>
@@ -113,3 +122,28 @@
         initCapcha();
     })();
 </script>
+<script src="/js/validator.js"></script>
+<script>
+        // ong mốn cả chúng ta khi sử dụng thư viện 
+        Validator({
+            form: '#form-1',
+            formGroupSelector: '.form-group',
+            errorSelector: '.form-message',
+            rules: [
+                Validator.isRequired('#fullname','Vui lòng nhập Họ và Tên!'),
+                Validator.isRequired('#email'),
+                Validator.isEmail('#email','Vui lòng nhập chính xác Email!'),
+                Validator.minLength('#password' ,6,'Vui lòng nhập ít nhất 6 ký tự'),
+                Validator.isRequired('#password_confirmation'),
+                Validator.isRequired('#province'),
+                Validator.isRequired('input[name="gender"]'),
+                Validator.isConfirmed('#password_confirmation', function () {
+                     return document.querySelector('#form-1 #password').value;
+                },'Mật Khẩu nhập lại không chính xác')
+
+            ],
+          onsubmit: function (data) {
+            console.log(data);
+          }
+        })
+      </script>
