@@ -20,7 +20,7 @@
         </div>
         <div class="sidebar-menu">
             <ul>
-                <li>
+                <li class="list">
                     <a href="dashboard"><span class="las la-igloo"></span>
                         <span>Dashboard</span></a>
                 </li>
@@ -30,12 +30,11 @@
                     <div class="dropdown">
                         <a href="listuser">List</a>
                         <a href="#2">Add</a>
-                        <!-- <a href="#3">3</a> -->
                     </div>
                 </li>
                 <li class="list">
                     <a href="#5"><span class="las la-clipboard-list"></span>
-                        <span>Projects</span></a>
+                        <span>Service</span></a>
                 </li>
                 <li class="list">
                     <a href="#6"><span class="las la-shopping-bag"></span>
@@ -43,7 +42,7 @@
                 </li>
                 <li class="list">
                     <a href="#"><span class="las la-receipt"></span>
-                        <span>Inventory</span></a>
+                        <span>Tours</span></a>
                 </li>
                 <li class="list">
                     <a href="#"><span class="las la-user-circle"></span>
@@ -54,8 +53,8 @@
                         <span>Comment</span></a>
                 </li>
                 <li class="list">
-                    <a href="#"><span class="las la-clipboard-list"></span>
-                        <span>task</span></a>
+                    <a href="#"><span class="fa-brands fa-blogger"></span>
+                        <span>Blog</span></a>
                 </li>
             </ul>
         </div>
