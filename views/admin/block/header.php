@@ -1,60 +1,92 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width-device-width,initial-scale-1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
+    <link rel="stylesheet" href="<?php echo _WEB_ROOT_."/views/admin/assets/css/dashboard.css"?>">
+    <link href="<?php echo _WEB_ROOT_."/views/admin/assets/css/summernote.css"?>" rel="stylesheet" />
+    <link href="<?php echo _WEB_ROOT_."/views/admin/assets/css/bootstrap.min.css"?>" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="<?php echo _WEB_ROOT_."/views/admin/assets/css/adminPage.css"?>">
+    <link href="<?php echo _WEB_ROOT_."/views/admin/assets/css/select2.min.css"?>" rel="stylesheet" type="text/css" />
+    <link href="<?php echo _WEB_ROOT_."/views/admin/assets/css/core.css"?>" rel="stylesheet" type="text/css" />
+    <link href="<?php echo _WEB_ROOT_."/views/admin/assets/css/components.css"?>" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="<?php echo _WEB_ROOT_."/views/admin/assets/css/addCustomer.css"?>">
+    <link rel="stylesheet" href="<?php echo _WEB_ROOT_."/views/admin/assets/css/addTour.css"?>">
     <script src="https://kit.fontawesome.com/5dd6f63e97.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
 </head>
 
 <body>
     <input type="checkbox" name="" id="nav-toggle">
     <div class="sidebar">
         <div class="sidebar-brand">
-            <h2><span class="lab la-accusoft"></span>Multiverse Travel</h2>
+            <h2>Admin</h2>
         </div>
         <div class="sidebar-menu">
             <ul>
                 <li class="list">
                     <a href="dashboard"><span class="las la-igloo"></span>
-                        <span>Dashboard</span></a>
+                    <span>Dashboard</span></a>
                 </li>
                 <li class="list">
                     <a href="#" class="drop"><span class="las la-user"></span>
                         <span>Customers</span></a>
                     <div class="dropdown">
                         <a href="listuser">List</a>
-                        <a href="#2">Add</a>
+                        <a href="addCustomer">Add</a>
                     </div>
                 </li>
                 <li class="list">
-                    <a href="#5"><span class="las la-clipboard-list"></span>
+                    <a href="#5" class="drop"><span class="las la-clipboard-list"></span>
                         <span>Service</span></a>
+                    <div class="dropdown">
+                        <a href="listservice">List</a>
+                        <a href="addService">Add</a>
+                    </div>
                 </li>
                 <li class="list">
-                    <a href="#6"><span class="las la-shopping-bag"></span>
+                    <a href="#6" class="drop"><span class="las la-shopping-bag"></span>
                         <span>Oder</span></a>
+                    <div class="dropdown">
+                        <a href="listOrder">List</a>
+                    </div>
                 </li>
                 <li class="list">
-                    <a href="#"><span class="las la-receipt"></span>
+                    <a href="#" class="drop"><span class="las la-receipt"></span>
                         <span>Tours</span></a>
+                    <div class="dropdown">
+                        <a href="listTour">List</a>
+                        <a href="addTour">Add</a>
+                    </div>
                 </li>
                 <li class="list">
-                    <a href="#"><span class="las la-user-circle"></span>
+                    <a href="#" class="drop"><span class="las la-user-circle"></span>
                         <span>Account</span></a>
+                    <div class="dropdown">
+                        <a href="listuser">List</a>
+                        <a href="addCustomer">Add</a>
+                    </div>
                 </li>
                 <li class="list">
-                    <a href="#"><span class="las la-user-circle"></span>
+                    <a href="#" class="drop"><span class="las la-user-circle"></span>
                         <span>Comment</span></a>
+                    <div class="dropdown">
+                        <a href="listuser">List</a>
+                    </div>
                 </li>
                 <li class="list">
-                    <a href="#"><span class="fa-brands fa-blogger"></span>
+                    <a href="#" class="drop"><span class="fa-brands fa-blogger"></span>
                         <span>Blog</span></a>
+                    <div class="dropdown">
+                        <a href="listBlog">List</a>
+                        <a href="listuser">Add</a>
+                    </div>
                 </li>
             </ul>
         </div>
@@ -65,7 +97,7 @@
                 <label for="nav-toggle">
                     <span class="las la-bars"></span>
                 </label>
-                Dashboard
+                <!-- Dashboard -->
             </h2>
             <div class="search-wrapper">
                 <span class="las la-search"></span>

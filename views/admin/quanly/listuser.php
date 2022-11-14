@@ -3,13 +3,13 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
-                    <th>Gender</th>
+                    <th>Tên</th>
+                    <th>Giới tính</th>
                     <th>Email</th>
                     <th>SDT</th>
-                    <th>Role</th>
-                    <th>Password</th>
-                    <th>Province</th>
+                    <th>Vai trò</th>
+                    <th>Mật khẩu</th>
+                    <th>Tỉnh/Thành</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -50,7 +50,7 @@
                         <i class="fa-solid fa-ellipsis-vertical"></i>
                         <div class="hidden">
                             <a href="">Delete</a>
-                            <a href="">Update</a>
+                            <a href="updateUser">Update</a>
                         </div>
                     </td>
                 </tr>

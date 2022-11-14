@@ -1,0 +1,37 @@
+.addtour {
+  background: #fff;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 10px 40px;
+  box-shadow: 0 0 10px silver;
+}
+
+.Tour {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ImgTour img {
+  width: 100px;
+}
+
+.infortour {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.infortour label:not(.listservice) input,
+.infortour label select {
+  width: 100%;
+  border: 1px solid black;
+  padding: 5px;
+}
+
+.listservice div {
+  /* display: grid; */
+  /* grid-template-columns: repeat(2, 1fr); */
+  border: 1px solid black;
+}

@@ -11,6 +11,8 @@
                 $data["exception"] = strtolower(trim($_SERVER["PATH_INFO"],"/"));
                 $data["arrexc"] = ["login","register","forgotpassword"];
                 $conditon = $_SERVER["PATH_INFO"];
+                $str = substr($conditon,strrpos($conditon,"/"),strlen($conditon));
+                $data["sub1"]["pathcss"] = $str;
                 if(preg_match("~admin~is",$conditon)){
                     render("layout/layout_admin",$data);
                 }else{

@@ -24,7 +24,7 @@
             }
         }
 
-        inserData("service",$data);
+        // inserData("service",$data);
     }
 ?>
 
@@ -46,7 +46,6 @@
 
 
 <body class="fixed-left">
-    <!-- <input type="file" multiple> -->
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="p-6">
@@ -112,12 +111,9 @@
                     maxHeight: null,             // set maximum height of editor
                     focus: false                 // set focus to editable area after initializing summernote
                 });
-                // Select2
-               
             });
         </script>
 
-        <!--Summernote js-->
         <script src="<?php echo _WEB_ROOT_."/views/admin/assets/js/summernote.js"?>"></script>
     </body>
 </html>

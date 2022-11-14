@@ -12,10 +12,10 @@
     define("_WEB_ROOT_",$web_root);
     include_once $path."\\route.php";
     include_once $path."\model\sqldb.php";
+    $boolean = false;
     if(!empty($_SERVER["PATH_INFO"])){
         $controller = $_SERVER["PATH_INFO"];
         $controller = trim($controller,"/");
-        $boolean = false;
         foreach($route as $key => $value){
             if(strtolower($controller) == strtolower($key)){
                 $controller = $value;
@@ -23,9 +23,9 @@
             }
         }
 
-        if($boolean == false){
-            require_once _DIR_ROOT."\\erorr\\404.php";
-        }
+        // if($boolean == false){
+        //     require_once _DIR_ROOT."\\erorr\\404.php";
+        // }
     }else{
         header("location: Trang-Chu");
     }

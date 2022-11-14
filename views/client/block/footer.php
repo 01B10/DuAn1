@@ -43,6 +43,8 @@
         	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         	xhr.send('id='+1);
         }, 500)
+
+        sessionStorage.removeItem("index");
     </script>
 
 </html>

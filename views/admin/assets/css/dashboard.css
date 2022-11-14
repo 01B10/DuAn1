@@ -1,0 +1,149 @@
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 2rem;
+  margin-top: 1rem;
+}
+
+.card-single {
+  display: flex;
+  justify-content: space-between;
+  background: lightseagreen;
+  padding: 2rem;
+  border-radius: 2px;
+}
+
+.card-single div:last-child span {
+  color: var(--main-color);
+  font-size: 3rem;
+}
+
+.card-single div:first-child span {
+  color: #fff;
+}
+
+.card-single:last-child {
+  background: var(--main-color);
+}
+
+.card-single:last-child h1,
+.card-single:last-child div:last-child span,
+.card-single:last-child div:first-child span {
+  color: #fff;
+}
+
+.recent-grid {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: 65% auto;
+  grid-gap: 2rem;
+}
+
+.card {
+  background: #fff;
+}
+
+.card-header,
+.card-body {
+  padding: 1rem;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.card-header button {
+  background: var(--main-color);
+  border-radius: 10px;
+  color: #fff;
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--main-color);
+}
+
+.table-responsive table {
+  border-collapse: collapse;
+}
+
+.table-responsive table thead tr {
+  border-top: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.table-responsive table thead td {
+  font-weight: 700;
+}
+
+.table-responsive table td {
+  color: #222;
+  padding: 0.5rem 1rem;
+  font-size: 1.5rem;
+}
+
+.table-responsive table td .status {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  margin-right: 1rem;
+}
+
+.table-responsive table tr td:last-child {
+  display: flex;
+  align-items: center;
+}
+
+.status.purple {
+  background: rebeccapurple;
+}
+
+.status.pink {
+  background: deeppink;
+}
+
+.status.orange {
+  background: orangered;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.customer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 0.7rem;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+}
+
+.info img {
+  border-radius: 50%;
+  margin-right: 1rem;
+}
+
+.info h4 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.info small {
+  font-weight: 600;
+  color: var(--text-grey);
+}
+
+.contact span {
+  font-size: 2rem;
+  display: inline-block;
+  margin-left: 0.5rem;
+  color: var(--main-color);
+}
