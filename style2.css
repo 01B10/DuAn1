@@ -1,0 +1,116 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+.full_header {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-gap: 20px;
+}
+
+.logo img {
+    width: 120px;
+    margin-top: 10px;
+    margin-left: 50px;
+}
+
+.menu {
+    margin-top: 43px;
+}
+
+.menu ul li {
+    display: inline-block;
+
+}
+
+.menu ul li a {
+    text-decoration: none;
+    padding: 20px;
+    font-size: 20px;
+    color: rgb(54, 52, 52);
+}
+
+.menu ul li a:hover {
+    color: rgb(73, 138, 236);
+    text-decoration: underline;
+
+
+}
+
+.icon-1 {
+    margin: auto 100px auto 0;
+    text-align: right;
+}
+
+.icon-1 a i {
+    margin-right: 10px;
+}
+
+.icon-1:hover {
+    color: rgb(73, 138, 236);
+}
+
+.Title p{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+hr{
+    margin-bottom: 10px;
+}
+
+.blog{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr  ;
+    grid-gap: 20px;
+}
+.full-block img{
+    width: 436px;
+    height: 200px;
+    /* width: 100%; */
+    border-radius: 6px;
+    /* height: 100%; */
+    /* display: inline-block; */
+    vertical-align: middle;
+    
+}
+
+.full-block .location a{
+    text-decoration: none;
+}
+.full-block .location a h2:hover{
+    color: rgb(67, 182, 231);
+}
+
+.full-block .location h2{
+    color: rgb(10, 10, 10);
+}
+
+.full-block .location p{
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+footer hr{
+    height: 4px;
+    margin-top: 20px;
+    background-color: #1DA1F2;
+}
+
+.full-footer{
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 680px 350px 1fr;
+}
+.footer1 p{
+    padding: 5px;
+}
+.footer1 h4{
+    color: #1DA1F2;
+}
