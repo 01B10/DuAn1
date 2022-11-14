@@ -2,11 +2,11 @@
     include_once "./route.php";
     include_once "./model/sqldb.php";
     define("_DIR_ROOT",__DIR__);
-    if($_SERVER["PATH_INFO"] == "/admin"){
-        $_SERVER["PATH_INFO"] = $_SERVER["PATH_INFO"]."/";
-        // $_SERVER["PATH_INFO"] = "TEST";
-        echo $_SERVER["PATH_INFO"];
-    }
+    // if($_SERVER["PATH_INFO"] == "/admin"){
+    //     $_SERVER["PATH_INFO"] = $_SERVER["PATH_INFO"]."/";
+    //     // $_SERVER["PATH_INFO"] = "TEST";
+    //     echo $_SERVER["PATH_INFO"];
+    // }
     if(!empty($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] == "on"){
         $web_root = "https://".$_SERVER["HTTP_HOST"];
     }else{
