@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?php echo _WEB_ROOT_."/views/client/assets/css/saleTour.css"?>">
-    <title>Document</title>
-</head>
-<body>
+
     <div class="container">
         <div class="tour">
             <h1>Tour khuyến mãi</h1>
@@ -380,5 +371,3 @@ Giá 1 khách:  <span>3,970,000 <sup>đ</sup></span><del>6,998,000 <sup>đ</sup>
 </div>
         </div>
     
-</body>
-</html>

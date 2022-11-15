@@ -5,5 +5,7 @@
     $route["Register"] = "client\\form\\Register";
     $route["admin/dashboard"] = "admin\\quanly\\dashboard";
     $route["admin/listuser"] = "admin\\quanly\\listuser";
-    $route["client"] = "client\\layout\\bookTour";
+    $route["Trang-Chu"] = "client\\layout\\TrangChu";
+    $route["tour"] = "client\\layout\\saleTour";
+    $route["tour-details"] = "client\\layout\\bookTour";
 ?>
