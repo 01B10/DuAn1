@@ -8,6 +8,7 @@ function Validator(options){
             }
             element = element.parentElement
         }
+        
     }
 
     var selectorRules = {};
@@ -140,6 +141,16 @@ Validator.isEmail = function(selector,mesage){
         }
     }
 }
+Validator.isPhone = function(selector,mesage){
+    return {
+        selector: selector,
+        test: function (value) { 
+            var regex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+             return  regex.test(value) ? undefined : mesage ||'Số điện thoại chưa chính xác';
+        }
+    }
+}
+
 Validator.minLength = function(selector, min,mesage){
     return {
         selector: selector,

@@ -14,11 +14,12 @@
 <body>
     <div class="container">
 
-        <form action="">
+        <form action="" method="POST" class="" id="form-1">
             <h2>Forgot Password</h2>
-            <div class="input-field">
-                <input type="text" required>
-                <label for="">Email or Phone Number</label>
+            <div class="input-field form-group">
+            <input id="email" name="email" type="text"  class="form-control">
+            <label for="">Email</label>
+            <p class="form-message"></p>
             </div>
             <!-- <div class="input-field">
                 <input id="pass" type="password" required>
@@ -38,6 +39,22 @@
             </div>
         </form>
     </div>
+    <script src="http://localhost/DuAn1/DuAn1/views/client/assets/js/validator.js"></script>
+<script>
+        // ong mốn cả chúng ta khi sử dụng thư viện 
+        Validator({
+            form: '#form-1',
+            formGroupSelector: '.form-group',
+            errorSelector: '.form-message',
+            rules: [
+                Validator.isRequired('#email'),
+                Validator.isEmail('#email','Vui lòng nhập chính xác Email!'),
+            ],
+          onsubmit: function (data) {
+            console.log(data);
+          }
+        })
+      </script>
 </body>
 
 </html>

@@ -20,52 +20,59 @@
 
         <form action="" method="POST" class="form" id="form-1">
             <h2>Register</h2>
-            <div class="input-field">
-                <input id="fullname" name="fullname" type="text" required>
+            <div class="input-field form-group">
+                <input id="fullname" name="fullname" type="text"  class="form-control">
                 <label for="">Enter your name</label>
-                <span class="form-message"></span>
+                <p class="form-message"></p>
             </div>
-            <div class="input-field">
-                <input id="email" name="email" type="email" required>
+            <div class="input-field form-group" >
+                <input id="email" name="email" type="input"  class="form-control">
                 <label for="">Enter your email</label>
-                <span class="form-message"></span>
+                <p class="form-message"></p>
             </div>
-            <div class="input-field">
-                <input type="text" required>
+            <div class="input-field form-group">
+                <input type="input"  class="form-control" id="phone" name="phone">
                 <label for="">Phone number</label>
-                <span class="form-message"></span>
+                <p class="form-message"></p>
             </div>
-            <div class="gender">
-                <label class="pick" for="">Gender</label>
-                <input type="radio" name="radio"><label for="male">Male</label>
-                <input type="radio" name="radio"><label for="female">Female</label>
-                <input type="radio" name="radio"><label for="other">Other</label>
-            </div>
-            <div class="input-field">
-                <input type="password" required>
+            <div class="gender form-group horizontal">
+                <label class="pick form-label" for="password_confirmation" >Gender</label>
+                <label for="male">Nam</label>
+                <input name="gender" type="radio" class="form-control-gender" value="Nam" checked>
+                <label for="" class="female">Nữ</label>
+                <input name="gender" type="radio" class="form-control-gender" value="Nữ">
+                <label for="" class="orther">Khác</label>
+                <input name="gender" type="radio" class="form-control-gender" value="Khác">
+                <p class="form-message"></p>
+                </div>
+                
+            
+            <div class="input-field form-group">
+            <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control">
                 <label id="password" name="password" for="">Password</label>
                 <span class="show-btn"><i class="fas fa-eye"></i></span>
+                <p class="form-message"></p>
             </div>
-            <div class="input-field">
-                <input id="password_confirmation" name="password_confirmation" type="password" required>
+            <div class="input-field form-group">
+                <input id="password_confirmation" name="password_confirmation" type="password"  class="form-control">
                 <label for="">Confirm password</label>
                 <span class="show-btn"><i class="fas fa-eye"></i></span>
-                <span class="form-message"></span>
+                <p class="form-message"></p>
             </div>
-            <div class="capcha">
+            <!-- <div class="capcha form-group">
                 <label for="capcha-input">Enter capcha</label>
                 <div class="preview"></div>
                 <div class="capcha-form">
                     <input type="text"  id="capcha-form" placeholder="Enter capcha">
                     <button class="capcha-refresh"><i class="fas fa-sync"></i></button>
                 </div>
-                <span class="form-message"></span>
-            </div>
+                <p class="form-message"></p>
+            </div> -->
             <!-- <div class="forgot">
                 <a href="./ForgotPass.html">Forgot password?</a>
             </div> -->
             <div class="button">
-                <button style="--clr:#1e9bff">
+                <button style="--clr:#1e9bff" class="form-submit">
                     <a href=""><span>Register Now</span></a>
                 </button>
             </div>
@@ -79,7 +86,7 @@
 </html>
 <!-- <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script> -->
-<script>
+<!-- <script>
     const passField = document.querySelector("input");
     const showBtn = document.querySelector("span i");
     showBtn.onclick = (() => {
@@ -121,8 +128,8 @@
         }
         initCapcha();
     })();
-</script>
-<script src="/js/validator.js"></script>
+</script> -->
+<script src="http://localhost/DuAn1/DuAn1/views/client/assets/js/validator.js"></script>
 <script>
         // ong mốn cả chúng ta khi sử dụng thư viện 
         Validator({
@@ -133,10 +140,13 @@
                 Validator.isRequired('#fullname','Vui lòng nhập Họ và Tên!'),
                 Validator.isRequired('#email'),
                 Validator.isEmail('#email','Vui lòng nhập chính xác Email!'),
+                Validator.isRequired('input[name="gender"]'),
+                Validator.isRequired('#phone','Vui lòng nhập số điện thoại!'),
+                Validator.isPhone('#phone','Vui lòng nhập chính xác số điện thoại!'),
+                Validator.minLength('#phone' ,9,'Số điện thoại phải có ít nhất 9 chữ số'),
                 Validator.minLength('#password' ,6,'Vui lòng nhập ít nhất 6 ký tự'),
                 Validator.isRequired('#password_confirmation'),
                 Validator.isRequired('#province'),
-                Validator.isRequired('input[name="gender"]'),
                 Validator.isConfirmed('#password_confirmation', function () {
                      return document.querySelector('#form-1 #password').value;
                 },'Mật Khẩu nhập lại không chính xác')
