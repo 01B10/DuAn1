@@ -35,12 +35,12 @@
                 <input type="radio" name="radio"><label for="other">Other</label>
             </div>
             <div class="input-field">
-                <input type="password" required>
+                <input type="password" class="eye" required>
                 <label for="">Password</label>
                 <span class="show-btn"><i class="fas fa-eye"></i></span>
             </div>
             <div class="input-field">
-                <input type="password" required>
+                <input type="password" class="eye" required>
                 <label for="">Confirm password</label>
                 <span class="show-btn"><i class="fas fa-eye"></i></span>
             </div>
@@ -70,8 +70,9 @@
 </html>
 <!-- <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script> -->
+<script src=""></script>
 <script>
-    const passField = document.querySelector("input");
+    const passField = document.querySelector(".eye");
     const showBtn = document.querySelector("span i");
     showBtn.onclick = (() => {
         if (passField.type == "password") {
