@@ -114,3 +114,51 @@ function checkConfirm(confirmValue){
     }
     return "";
 }
+
+
+// hide eye 
+
+const passField = document.querySelector(".pass");
+    const passConfirm=document.querySelector(".confirm-pass");
+    const showBtn = document.querySelector("span i");
+    showBtn.onclick = (() => {
+        if (passField.type == "password") {
+            passField.type = "text";
+            passConfirm.type = "text";
+            showBtn.classList.add("hide-btn");
+        } else {
+            passField.type = "password";
+            passConfirm.type ="password";
+            showBtn.classList.remove("hide-btn");
+        }
+    });
+
+    (function(){
+        const form=["cursive","sans-serif","serif","mốnpace"];
+        let capchaValue="";
+        function generateCapcha(){
+            let value=btoa(Math.random()*1000000000);
+            value=value.substr(0,5+Math.random()*5);
+            capchaValue=value;
+        }
+        function setCapcha(){
+            capchaValue.split(""),Map((char)=>
+            {
+                const rotate=-20 + Math.trunc(Math.random()*30);
+                const font =Math.trunc(Math.random()*font.length);
+                return `<span style="transform:rotate(${rotate}deg);
+                font-family:${fonts[font]}">
+                ${char}</span>`;
+            }).join("");
+            document.querySelector(".preview").innerHTML=html;
+        }
+        function initCapcha(){
+            document.querySelector(".capcha-refresh").addEventListener("click",function(){
+                generateCapcha();
+                setCapcha();
+            });
+            generateCapcha();
+            setCapcha();
+        }
+        initCapcha();
+    })();

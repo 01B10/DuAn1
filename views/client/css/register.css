@@ -51,15 +51,6 @@ form .button {
     border-radius: 5px;
 }
 
-.input-field label a{
-    text-decoration: none;
-    color: red;
-}
-
-.input-field .name_err{
-    font-size: 15px;
-}
-
 .input-field label {
     position: absolute;
     top: 50%;
@@ -84,11 +75,20 @@ input:valid~label {
     /* display: block; */
 }
 
+
+.input-field label a{
+    text-decoration: none;
+    color: red;
+}
+
 .input-field p{
     text-align: left;
     margin-left: 10px;
 }
 
+.input-field .name_err{
+    font-size: 15px;
+}
 .forgot {
     margin-top: -20px;
     text-align: left;
