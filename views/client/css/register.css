@@ -11,7 +11,7 @@ body {
     /* height: 100vh; */
     justify-content: center;
     align-items: center;
-    background: -webkit-linear-gradient(left, #00dbde, #fc00ff);
+    background: silver;
     text-align: center;
     background-size: cover;
     background-position: center;
@@ -22,7 +22,7 @@ body {
     max-width: 450px;
     background: #fff;
     padding: 60px 40px;
-    margin: 32px;
+    margin: 50px 0;
 }
 
 h2 {
@@ -51,6 +51,15 @@ form .button {
     border-radius: 5px;
 }
 
+.input-field label a{
+    text-decoration: none;
+    color: red;
+}
+
+.input-field .name_err{
+    font-size: 15px;
+}
+
 .input-field label {
     position: absolute;
     top: 50%;
@@ -73,6 +82,11 @@ input:valid~label {
     font-size: 16px;
     transition: 0.3s;
     /* display: block; */
+}
+
+.input-field p{
+    text-align: left;
+    margin-left: 10px;
 }
 
 .forgot {
@@ -132,7 +146,7 @@ input:valid~label {
     top: 50%;
     transform: translateY(-50%);
     font-size: 20px;
-    color: #8e44ad;
+    color: silver;
     cursor: pointer;
     display: none;
 }
