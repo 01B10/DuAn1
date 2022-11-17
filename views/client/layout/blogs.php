@@ -1,41 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BLOG</title>
-    <link rel="stylesheet" href="style2.css">
-    <script src="https://kit.fontawesome.com/d620f19a29.js" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-</head>
-
-<body>
-    <header>
-        <div class="full_header">
-            <div class="logo">
-                <img src="./DuAn1_Minh/views/img/logo.jpg" alt="">
-            </div>
-            <div class="menu">
-                <ul>
-                    <li><a href="">Trang chủ</a></li>
-                    <li><a href="">Giới thiệu</a></li>
-                    <li><a href="">Tour</a></li>
-                    <li><a href="">Tin tức</a></li>
-                    <li><a href="">Liên hệ</a></li>
-
-                </ul>
-            </div>
-            <div class="icon-1">
-                <a href=""><i class="fa-solid fa-user"></i>USER</a>
-            </div>
-        </div>
-        
-    </header>
     <article>
         <div class="Title">
-            <!-- <h1>Tin tức</h1> -->
+            <h1>Tin tức</h1>
             <p>Tin tức Du lịch 2022 cung cấp các thông tin
                 Du lịch Việt Nam, Thông tin Du lịch Thế Giới, các Sự kiện
                 Du lịch diễn ra trong ngày. Thông qua các bài
@@ -44,7 +9,19 @@
         </div>
         <div class="blog">
             <div class="full-block">
-                <img src="./DuAn1_Minh/views/img/hn1.jpg" alt="">
+                <img src="../img/hcm1.jpg" alt="">
+                <div class="location">
+                    <a href="https://www.google.com/search?q=gg+d%E1%BB%8Bch&oq=&aqs=chrome.0.69i59i450l8.248638j0j7&sourceid=chrome&ie=UTF-8"> <h2>Du lịch Hà Nội đa dạng hóa sản phẩm thu hút du khách</h2></a>
+                <p>Du lịch Hà Nội - Kinh đô Thăng Long một thời, là
+                    vùng đất được nhiều Triều đại phong kiến chọn làm kinh đô, lập ấp đắp
+                    đê trị vì đất nước. Hà Nội ngày nay nổi tiếng với 36 phố phường cùng nhiều
+                    danh lam thắng cảnh và nhiều di tích lịch sử lâu đời trở thành điểm đến
+                    của nhiều tour du lịch trong nước được du khách lựa chọn.</p>
+                </div>
+                <i class="fa-regular fa-clock"></i>
+            </div>
+            <div class="full-block">
+                <img src="/views/client/img/hcm1.jpg" alt="">
                 <div class="location">
                     <a href="https://www.google.com/search?q=gg+d%E1%BB%8Bch&oq=&aqs=chrome.0.69i59i450l8.248638j0j7&sourceid=chrome&ie=UTF-8"> <h2>Du lịch Hà Nội đa dạng hóa sản phẩm thu hút du khách</h2></a>
                 <p>Du lịch Hà Nội - Kinh đô Thăng Long một thời, là
@@ -80,19 +57,7 @@
                
             </div>
             <div class="full-block">
-                <img src="./DuAn1_Minh/views/img/hn1.jpg" alt="">
-                <div class="location">
-                    <a href="https://www.google.com/search?q=gg+d%E1%BB%8Bch&oq=&aqs=chrome.0.69i59i450l8.248638j0j7&sourceid=chrome&ie=UTF-8"> <h2>Du lịch Hà Nội đa dạng hóa sản phẩm thu hút du khách</h2></a>
-                <p>Du lịch Hà Nội - Kinh đô Thăng Long một thời, là
-                    vùng đất được nhiều Triều đại phong kiến chọn làm kinh đô, lập ấp đắp
-                    đê trị vì đất nước. Hà Nội ngày nay nổi tiếng với 36 phố phường cùng nhiều
-                    danh lam thắng cảnh và nhiều di tích lịch sử lâu đời trở thành điểm đến
-                    của nhiều tour du lịch trong nước được du khách lựa chọn.</p>
-                </div>
-               
-            </div>
-            <div class="full-block">
-                <img src="./DuAn1_Minh/views/img/hn1.jpg" alt="">
+                <img src="/" alt="">
                 <div class="location">
                     <a href="https://www.google.com/search?q=gg+d%E1%BB%8Bch&oq=&aqs=chrome.0.69i59i450l8.248638j0j7&sourceid=chrome&ie=UTF-8"> <h2>Du lịch Hà Nội đa dạng hóa sản phẩm thu hút du khách</h2></a>
                 <p>Du lịch Hà Nội - Kinh đô Thăng Long một thời, là
@@ -145,6 +110,3 @@
             </div>
         </div>
     </footer>
-</body>
-
-</html>

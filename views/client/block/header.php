@@ -8,6 +8,7 @@
     <title>HOME</title>
     <link rel="stylesheet" href="<?php echo _WEB_ROOT_."/views/client/assets/css/TrangChu.css"?>">
     <link rel="stylesheet" href="<?php echo _WEB_ROOT_."/views/client/assets/css/saleTour.css"?>">
+    <link rel="stylesheet" href="<?php echo _WEB_ROOT_."/views/client/assets/css/blogs.css"?>">
     <script src="https://kit.fontawesome.com/d620f19a29.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 </head>
@@ -24,7 +25,7 @@
                     <li><a href="">Giới thiệu</a></li>
                     <li><a href="tour">Tour</a></li>
                     <li><a href="">Liên hệ</a></li>
-                    <li><a href="">Blog</a></li>
+                    <li><a href="blogs">Blog</a></li>
 
                 </ul>
             </div>

@@ -38,7 +38,7 @@
                     <a href="#" class="drop"><span class="las la-user"></span>
                         <span>Customers</span></a>
                     <div class="dropdown">
-                        <a href="listuser">List</a>
+                        <a href="listUser">List</a>
                         <a href="addCustomer">Add</a>
                     </div>
                 </li>
@@ -46,7 +46,7 @@
                     <a href="#5" class="drop"><span class="las la-clipboard-list"></span>
                         <span>Service</span></a>
                     <div class="dropdown">
-                        <a href="listservice">List</a>
+                        <a href="listService">List</a>
                         <a href="addService">Add</a>
                     </div>
                 </li>
@@ -58,7 +58,7 @@
                     </div>
                 </li>
                 <li class="list">
-                    <a href="#" class="drop"><span class="las la-receipt"></span>
+                    <a href="#" class="drop"><span class="fa-solid fa-mountain-sun"></span>
                         <span>Tours</span></a>
                     <div class="dropdown">
                         <a href="listTour">List</a>
@@ -66,18 +66,10 @@
                     </div>
                 </li>
                 <li class="list">
-                    <a href="#" class="drop"><span class="las la-user-circle"></span>
-                        <span>Account</span></a>
-                    <div class="dropdown">
-                        <a href="listuser">List</a>
-                        <a href="addCustomer">Add</a>
-                    </div>
-                </li>
-                <li class="list">
-                    <a href="#" class="drop"><span class="las la-user-circle"></span>
+                    <a href="#" class="drop"><span class="fa-regular fa-comment"></span></span>
                         <span>Comment</span></a>
                     <div class="dropdown">
-                        <a href="listuser">List</a>
+                        <a href="listcomment">List</a>
                     </div>
                 </li>
                 <li class="list">

@@ -4,6 +4,7 @@
     $path = implode("\\",$arrPath);
     include_once $path."\ap.php";
     include_once $path."\controller\controller.php";
+    include_once $path."\\validate\\validate.php";
     if(isset($controller)){
         switch ($controller) {
             case $controller:

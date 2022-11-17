@@ -8,14 +8,7 @@
                     <th>Dữ liệu tour</th>
                     <th>Thanh toán</th>
                     <th>Trạng thái</th>
-                    <!-- <th>Tỉnh thành</th> -->
-                    <!-- <th>Start time</th> -->
-                    <!-- <th>End time</th> -->
-                    <!-- <th>Slot</th> -->
-                    <!-- <th>Pay</th> -->
-                    <!-- <th>Status</th> -->
-                    <!-- <th>Total</th> -->
-                    <!-- <th>Action</th> -->
+                    <th>Hành động</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,6 +25,7 @@
                         <p>jkdakjhdk</p>
                         <p>jkdakjhdk</p>
                     </td>
+                    <td>TTTT</td>
                     <td>TTTT</td>
                     <td class="action">
                         <i class="fa-solid fa-ellipsis-vertical"></i>

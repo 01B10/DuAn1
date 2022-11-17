@@ -15,11 +15,15 @@
     $boolean = false;
     if(!empty($_SERVER["PATH_INFO"])){
         $controller = $_SERVER["PATH_INFO"];
-        $controller = trim($controller,"/");
-        foreach($route as $key => $value){
-            if(strtolower($controller) == strtolower($key)){
-                $controller = $value;
-                $boolean = true;
+        if(in_array(strtolower($controller),["/admin/"])){
+            header("location: dashboard");
+        }else{
+            $controller = trim($controller,"/");
+            foreach($route as $key => $value){
+                if(strtolower($controller) == strtolower($key)){
+                    $controller = $value;
+                    $boolean = true;
+                }
             }
         }
 

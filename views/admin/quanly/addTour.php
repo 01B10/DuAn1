@@ -52,10 +52,22 @@
                                     </label>
                                     <label for="" class="listservice">
                                         <span>Dịch vụ:</span>
-                                        <div>
-                                            <input type="checkbox"><span>oto</span>
-                                            <input type="checkbox"><span>oto</span>
-                                            <input type="checkbox"><span>oto</span>
+                                        <div class="option">
+                                            <!-- <input type="checkbox"><span>oto</span> -->
+                                            <!-- <input type="checkbox"><span>oto</span> -->
+                                            <!-- <input type="checkbox"><span>oto</span> -->
+                                            <label for="1">
+                                                <input type="checkbox" name="options[]" id="1" class="toggle" value="1"><span>dkadh</span>
+                                            </label>
+                                            <label for="2">
+                                                <input type="checkbox" name="options[]" id="2" class="toggle" value="2"><span>dkadh</span>
+                                            </label>
+                                            <label for="3">
+                                                <input type="checkbox" name="options[]" id="3" class="toggle" value="3"><span>dkadh</span>
+                                            </label>
+                                            <label for="4">
+                                                <input type="checkbox" name="options[]" id="4" class="toggle" value="4"><span>dkadh</span>
+                                            </label>
                                         </div>
                                     </label>
                                     <label for="">
@@ -75,10 +87,15 @@
                         </div>
                         <div class="col-sm-12">
                             <div class="card-box">
+                                <h4 class="m-b-30 m-t-0 header-title"><b>Nội dung</b></h4>
+                                <textarea class="summernote" name="service" required></textarea>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="card-box">
                                 <h4 class="m-b-30 m-t-0 header-title"><b>Lịch trình</b></h4>
                                 <textarea class="summernote" name="content" required></textarea>
                             </div>
-                        </div>
                         </div>
 
                         <div class="row">

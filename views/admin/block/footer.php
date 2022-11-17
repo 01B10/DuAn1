@@ -7,6 +7,24 @@
     var option = document.querySelectorAll(".action i");
     var chose = document.querySelectorAll(".action div");
     var action = document.querySelectorAll(".action");
+    var toggle = document.querySelector(".la-bars");
+    var input = document.querySelector("#nav-toggle");
+    var choosen = document.querySelectorAll(".toggle + span");
+    let index = 0;
+    toggle.addEventListener("click",()=>{
+        ++index;
+        sessionStorage.setItem("toggle",index);
+        if(Number(sessionStorage.getItem("toggle",index)) > 1){
+            index = 0;
+            input.classList.remove("nav-toggle");
+        }else{
+            input.classList.add("nav-toggle");
+        }
+    });
+
+    if(Number(sessionStorage.getItem("toggle")) == 1){
+        input.classList.add("nav-toggle");
+    }
 
     for(let i = 0; i < drop.length; i++){
         dropdown[i].style.height = "0px";
@@ -49,5 +67,11 @@
             chose[i].classList.add("hidden");
         });
     }
+
+    choosen.forEach((item)=>{
+        item.addEventListener("click",()=>{
+            item.classList.toggle("choosen");
+        })
+    });
 </script>
 </html>
