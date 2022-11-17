@@ -17,7 +17,7 @@
     <header>
         <div class="full_header">   
             <div class="logo">
-                <img src="./views/img/logo.jpg" alt="">
+                <img src="<?php echo _WEB_ROOT_."/views/client/img/logo.jpg"?>" alt="">
             </div>
             <div class="menu">
                 <ul>
@@ -38,6 +38,6 @@
             </div>
         </div>
         <div class="banner">
-            <img src="./views/img/bn1.jpg" alt="" id="img">
+            <img src="<?php echo _WEB_ROOT_."/views/client/img/bn1.jpg"?>" alt="" id="img">
         </div>
     </header>

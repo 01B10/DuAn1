@@ -1,3 +1,20 @@
+<?php 
+    $rule = [
+        "email" => "required|email|min:13",
+    ];
+
+    $message = [
+        "email.required" => "Không được để trống",
+        "email.min" => "email phải có ít nhất 4 kí tự",
+        "email.email" => "email không hợp lệ",
+    ];
+    $errors = [];
+    if(isset($_POST["sendpass"])){
+        $validate =  validate($rule,$message,$errors);
+        $errors = errors("",$errors);
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,28 +33,20 @@
         <i class="fa-solid fa-arrow-left"></i>
     </a>
     <div class="container">
-
-        <form action="">
+        <form action="" method="POST">
             <h2>Forgot Password</h2>
             <div class="input-field">
-                <input type="text" required>
+                <input type="email" name="email">
                 <label for="">Email or Phone Number</label>
+                <p class="err"><?php echo (!empty($errors) && array_key_exists("email",$errors))?$errors["email"]:false?></p>
             </div>
-            <!-- <div class="input-field">
-                <input id="pass" type="password" required>
-                <label for="">Password</label>
-                <span class="show-btn"><i class="fas fa-eye"></i></span>
-            </div> -->
-            <!-- <div class="forgot">
-                <a href="">Login</a>
-            </div> -->
             <div class="button">
-                <button style="--clr:#1e9bff">
-                    <a href=""><span class="sendPass">Send Password</span></a>
+                <button name="sendpass" style="--clr:#1e9bff">
+                    <span class="sendPass">Send Password</span>
                 </button>
             </div>
             <div class="register">
-                <p>Not a member? <a href="./register.php">Register</a></p>
+                <p>Not a member? <a href="register">Register</a></p>
             </div>
         </form>
     </div>

@@ -41,10 +41,27 @@ h2 {
 
 .input-field,
 form .button {
-  margin: 25px 0;
   position: relative;
   height: 50px;
   width: 100%;
+}
+
+form .button {
+  margin: 25px 0;
+}
+
+.input-field {
+  margin: 50px 0;
+}
+
+.err {
+  font-weight: bold;
+  color: red;
+  text-align: center;
+}
+
+.difference {
+  margin-top: 10px;
 }
 
 .input-field input {
@@ -103,11 +120,15 @@ input:valid ~ label {
   position: relative;
   background: -webkit-linear-gradient(right, #00dbde, #fc00ff);
   color: #000;
-  /* text-transform: uppercase; */
   width: 100%;
   height: 90%;
   border-radius: 5px;
-  transition: 0.5s;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #fff;
+  transition: 1s;
 }
 
 .button a {

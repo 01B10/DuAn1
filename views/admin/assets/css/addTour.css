@@ -1,5 +1,5 @@
 .addtour {
-  background: #fff;
+  /* background: #fff; */
   justify-content: center;
   align-items: center;
   position: relative;
@@ -14,6 +14,10 @@
 
 .ImgTour img {
   width: 100px;
+}
+
+.ImgTour h4 {
+  text-align: center;
 }
 
 .infortour {

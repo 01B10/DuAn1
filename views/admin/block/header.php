@@ -77,7 +77,7 @@
                         <span>Blog</span></a>
                     <div class="dropdown">
                         <a href="listBlog">List</a>
-                        <a href="listuser">Add</a>
+                        <a href="addBlog">Add</a>
                     </div>
                 </li>
             </ul>

@@ -32,6 +32,10 @@
         if(!empty($rules)){
             $dataFields = getFields();
             foreach($rules as $fieldName => $ruleItem){
+                if(!isset($dataFields[$fieldName])){
+                    setErrors($error,$message,$fieldName,"required");
+                    $checkValidate = false;
+                }
                 $ruleItemArr = explode("|",$ruleItem);
                 foreach($ruleItemArr as $rule){
                     $ruleName = null;
@@ -65,6 +69,13 @@
 
                         if($ruleName == "email"){
                             if(!filter_var($dataFields[$fieldName],FILTER_VALIDATE_EMAIL)){
+                                setErrors($error,$message,$fieldName,$ruleName);
+                                $checkValidate = false;
+                            }
+                        }
+
+                        if($ruleName == "match"){
+                            if(trim($dataFields[$fieldName]) != trim($dataFields[$ruleValue])){
                                 setErrors($error,$message,$fieldName,$ruleName);
                                 $checkValidate = false;
                             }

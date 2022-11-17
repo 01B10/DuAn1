@@ -17,6 +17,7 @@
     $route["admin/updateUser"] = "admin\\quanly\\updateUser";
     $route["admin/addService"] = "admin\\quanly\\addService";
     $route["admin/addTour"] = "admin\\quanly\\addTour";
+    $route["admin/addBlog"] = "admin\\quanly\\addBlog";
     $route["chat"] = "client\\layout\\chat";
     $route["post"] = "admin\\quanly\\post";
 ?>

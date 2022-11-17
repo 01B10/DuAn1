@@ -6,7 +6,9 @@
         var inputfield = document.querySelector(".inputfield");
         var chatBox = document.querySelector(".chat-box");
         run = function () {
-            let imgs = ["./views/img/bn1.jpg", "./views/img/bn2.jpg", "./views/img/bn3.jpg"];
+            let imgs = ["<?php echo _WEB_ROOT_."/views/client/img/bn1.jpg"?>", 
+            "<?php echo _WEB_ROOT_."/views/client/img/bn2.jpg"?>", 
+            "<?php echo _WEB_ROOT_."/views/client/img/bn3.jpg"?>"];
             document.getElementById('img').src = imgs[indext];
             indext++;
             if (indext == 3) {

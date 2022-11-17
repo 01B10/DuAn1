@@ -26,50 +26,50 @@
         <div class="destination">
             <a href="tour">
                 <div class="full-destination">
-                    <img src="./views/img/hn1.jpg" alt="">
+                    <img src="<?php echo _WEB_ROOT_."/views/client/img/hn1.jpg"?>" alt="">
                     <div class="location">
                         <p>HA NOI</p>
                     </div>
                 </div>
             </a>
             <div class="full-destination">
-                <img src="./views/img/hcm1.jpg" alt="">
+                <img src="<?php echo _WEB_ROOT_."/views/client/img/hcm1.jpg"?>" alt="">
                 <div class="location">
                     <p>HO CHI MINH</p>
                 </div>
             </div>
             <div class="full-destination">
-                <img src="./views/img/DN1.jpg" alt="">
+                <img src="<?php echo _WEB_ROOT_."/views/client/img/DN1.jpg"?>" alt="">
                 <div class="location">
                     <p>DA NANG</p>
                 </div>
             </div>
             <div class="full-destination">
-                <img src="./views/img/NA1.jpg" alt="">
+                <img src="<?php echo _WEB_ROOT_."/views/client/img/NA1.jpg"?>" alt="">
                 <div class="location">
                     <p>NGHE AN</p>
                 </div>
             </div>
             <div class="full-destination">
-                <img src="./views/img/NT1.jpg" alt="">
+                <img src="<?php echo _WEB_ROOT_."/views/client/img/NT1.jpg"?>" alt="">
                 <div class="location">
                     <p>NHA TRANG</p>
                 </div>
             </div>
             <div class="full-destination">
-                <img src="./views/img/HU1.jpg" alt="">
+                <img src="<?php echo _WEB_ROOT_."/views/client/img/HU1.jpg"?>" alt="">
                 <div class="location">
                     <p>HUE</p>
                 </div>
             </div>
             <div class="full-destination">
-                <img src="./views/img/QN1.jpg" alt="">
+                <img src="<?php echo _WEB_ROOT_."/views/client/img/QN1.jpg"?>" alt="">
                 <div class="location">
                     <p>QUANG NINH</p>
                 </div>
             </div>
             <div class="full-destination">
-                <img src="./views/img/LC1.jpg" alt="">
+                <img src="<?php echo _WEB_ROOT_."/views/client/img/LC1.jpg"?>" alt="">
                 <div class="location">
                     <p>LAO CAI</p>
                 </div>
@@ -79,28 +79,28 @@
         <hr>
         <div class="newPosts">
             <div class="full-newPosts">
-                <img src="./views/img/hn1.jpg" alt="">
+                <img src="<?php echo _WEB_ROOT_."/views/client/img/hn1.jpg"?>" alt="">
             </div>
             <div class="full-newPosts">
-                <img src="./views/img/hcm1.jpg" alt="">
+                <img src="<?php echo _WEB_ROOT_."/views/client/img/hcm1.jpg"?>" alt="">
             </div>
             <div class="full-newPosts">
-                <img src="./views/img/DN1.jpg" alt="">
+                <img src="<?php echo _WEB_ROOT_."/views/client/img/DN1.jpg"?>" alt="">
             </div>
             <div class="full-newPosts">
-                <img src="./views/img/NA1.jpg" alt="">
+                <img src="<?php echo _WEB_ROOT_."/views/client/img/NA1.jpg"?>" alt="">
             </div>
             <div class="full-newPosts">
-                <img src="./views/img/NT1.jpg" alt="">
+                <img src="<?php echo _WEB_ROOT_."/views/client/img/NT1.jpg"?>" alt="">
             </div>
             <div class="full-newPosts">
-                <img src="./views/img/HU1.jpg" alt="">
+                <img src="<?php echo _WEB_ROOT_."/views/client/img/HU1.jpg"?>" alt="">
             </div>
             <div class="full-newPosts">
-                <img src="./views/img/QN1.jpg" alt="">
+                <img src="<?php echo _WEB_ROOT_."/views/client/img/QN1.jpg"?>" alt="">
             </div>
             <div class="full-newPosts">
-                <img src="./views/img/LC1.jpg" alt="">
+                <img src="<?php echo _WEB_ROOT_."/views/client/img/LC1.jpg"?>" alt="">
             </div>
 
         </div>

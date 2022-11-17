@@ -1,8 +1,4 @@
 
-<?php 
-    print_r($_POST);
-?>
-
 <main>
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
@@ -53,9 +49,6 @@
                                     <label for="" class="listservice">
                                         <span>Dịch vụ:</span>
                                         <div class="option">
-                                            <!-- <input type="checkbox"><span>oto</span> -->
-                                            <!-- <input type="checkbox"><span>oto</span> -->
-                                            <!-- <input type="checkbox"><span>oto</span> -->
                                             <label for="1">
                                                 <input type="checkbox" name="options[]" id="1" class="toggle" value="1"><span>dkadh</span>
                                             </label>
@@ -70,9 +63,23 @@
                                             </label>
                                         </div>
                                     </label>
-                                    <label for="">
+                                    <label for="" class="listservice">
                                         <span>Phương tiện:</span>
-                                        <input type="text" name="" id="">
+                                        <!-- <input type="text" name="" id=""> -->
+                                        <div class="option">
+                                            <label for="1">
+                                                <input type="checkbox" name="options[]" id="1" class="toggle" value="1"><span>dkadh</span>
+                                            </label>
+                                            <label for="2">
+                                                <input type="checkbox" name="options[]" id="2" class="toggle" value="2"><span>dkadh</span>
+                                            </label>
+                                            <label for="3">
+                                                <input type="checkbox" name="options[]" id="3" class="toggle" value="3"><span>dkadh</span>
+                                            </label>
+                                            <label for="4">
+                                                <input type="checkbox" name="options[]" id="4" class="toggle" value="4"><span>dkadh</span>
+                                            </label>
+                                        </div>
                                     </label>
                                     <label for="">
                                         <span>Chỗ:</span>
