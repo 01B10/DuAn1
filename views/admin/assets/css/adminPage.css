@@ -222,7 +222,6 @@ main {
 
 .listuser tbody tr td {
   text-align: center;
-  background-color: #8390a2;
   padding: 5px;
   border: 1px solid black;
 }
@@ -257,11 +256,20 @@ main {
 }
 
 .action div a {
-  color: black;
-  padding: 5px 10px;
+  color: white;
+  padding: 5px 20px;
+}
+
+.action div a:first-child {
+  background-color: #cc2626;
+}
+
+.action div a:last-child {
+  background-color: lightseagreen;
 }
 
 .action div a:hover {
+  color: black;
   background-color: #f0f0f0;
   font-weight: bold;
 }

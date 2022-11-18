@@ -80,6 +80,21 @@
                                 $checkValidate = false;
                             }
                         }
+
+                        if($ruleName == "img"){
+                            $checkfile = ["png","jpg","jpeg"];
+                            if(!in_array(pathinfo($dataFields[$fieldName],PATHINFO_EXTENSION),$checkfile)){
+                                setErrors($error,$message,$fieldName,$ruleName);
+                                $checkValidate = false;
+                            }
+                        }
+
+                        if($ruleName == "phone"){
+                            if((int) $dataFields[$fieldName] == 0){
+                                setErrors($error,$message,$fieldName,$ruleName);
+                                $checkValidate = false;
+                            }
+                        }
                     }
                 }
             }

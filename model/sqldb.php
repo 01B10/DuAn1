@@ -18,6 +18,7 @@
             try {
                 global $conn;
                 $conn->exec($sql);
+                // echo $sql;
            } catch (Exception $th) {
                 echo $th->getMessage();
            }
@@ -53,7 +54,7 @@
                 $valueField = "";
                 foreach($data as $key => $value){
                     $field .= $key.",";
-                    $valueField .= $value.",";
+                    $valueField .= "'".$value."',";
                 }
                 $field = rtrim($field,",");
                 $valueField = rtrim($valueField,",");

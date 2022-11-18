@@ -1,6 +1,9 @@
 <?php 
+    $queryBuilder = new QueryBuilder();
+    $listservice = $queryBuilder->query($queryBuilder->table("list_service")->select("*")->get());
     if(isset($_POST["submit"])){
-        $data["listservice"] = isset($_POST["service"])?implode("",$_POST["service"]):"";
+        $data["listservice_id"] = isset($_POST["service"])?implode("",$_POST["service"]):"";
+        $data["tour_detail_id"] = 1;
         $data["content"] = htmlentities($_POST["content"]);
         $file = $_FILES["files"];
         echo "<pre>";
@@ -23,7 +26,8 @@
                 $data["content"] = $content;
             }
         }
-
+        print_r($data);
+        // $queryBuilder->excute($queryBuilder->inserData("service",$data));
         // inserData("service",$data);
     }
 ?>

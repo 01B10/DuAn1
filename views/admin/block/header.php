@@ -31,11 +31,11 @@
         <div class="sidebar-menu">
             <ul>
                 <li class="list">
-                    <a href="dashboard"><span class="las la-igloo"></span>
+                    <a href="dashboard" title="Dashboard"><span class="las la-igloo"></span>
                     <span>Dashboard</span></a>
                 </li>
                 <li class="list">
-                    <a href="#" class="drop"><span class="las la-user"></span>
+                    <a href="#" class="drop" title="Customers"><span class="las la-user"></span>
                         <span>Customers</span></a>
                     <div class="dropdown">
                         <a href="listUser">List</a>
@@ -43,7 +43,7 @@
                     </div>
                 </li>
                 <li class="list">
-                    <a href="#5" class="drop"><span class="las la-clipboard-list"></span>
+                    <a href="#" class="drop" title="Service"><span class="las la-clipboard-list"></span>
                         <span>Service</span></a>
                     <div class="dropdown">
                         <a href="listService">List</a>
@@ -51,14 +51,22 @@
                     </div>
                 </li>
                 <li class="list">
-                    <a href="#6" class="drop"><span class="las la-shopping-bag"></span>
+                    <a href="#" class="drop" title="Order"><span class="las la-shopping-bag"></span>
                         <span>Oder</span></a>
                     <div class="dropdown">
                         <a href="listOrder">List</a>
                     </div>
                 </li>
                 <li class="list">
-                    <a href="#" class="drop"><span class="fa-solid fa-mountain-sun"></span>
+                    <a href="#" class="drop" title="Province"><span class="fa-solid fa-mountain-city"></span>
+                        <span>Province</span></a>
+                    <div class="dropdown">
+                        <a href="listProvince">List</a>
+                        <a href="addProvince">Add</a>
+                    </div>
+                </li>
+                <li class="list">
+                    <a href="#" class="drop" title="Tours"><span class="fa-solid fa-mountain-sun"></span>
                         <span>Tours</span></a>
                     <div class="dropdown">
                         <a href="listTour">List</a>
@@ -66,14 +74,22 @@
                     </div>
                 </li>
                 <li class="list">
-                    <a href="#" class="drop"><span class="fa-regular fa-comment"></span></span>
+                    <a href="#" class="drop" title="Tours"><span class="fa-solid fa-truck-plane"></span>
+                        <span>Transport</span></a>
+                    <div class="dropdown">
+                        <a href="listTransport">List</a>
+                        <a href="addTransport">Add</a>
+                    </div>
+                </li>
+                <li class="list">
+                    <a href="#" class="drop" title="Comment"><span class="fa-regular fa-comment"></span></span>
                         <span>Comment</span></a>
                     <div class="dropdown">
                         <a href="listcomment">List</a>
                     </div>
                 </li>
                 <li class="list">
-                    <a href="#" class="drop"><span class="fa-brands fa-blogger"></span>
+                    <a href="#" class="drop" title="Blog"><span class="fa-brands fa-blogger"></span>
                         <span>Blog</span></a>
                     <div class="dropdown">
                         <a href="listBlog">List</a>

@@ -7,6 +7,7 @@
                     <th>Hình ảnh</th>
                     <th>Ngày đăng</th>
                     <th>Trạng thái</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,6 +24,9 @@
                         <p>jkdakjhdk</p>
                         <p>jkdakjhdk</p>
                         <p>asdakdh</p>
+                    </td>
+                    <td>
+                        <p>123</p>
                     </td>
                     <td class="action">
                         <i class="fa-solid fa-ellipsis-vertical"></i>

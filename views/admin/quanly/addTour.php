@@ -17,7 +17,7 @@
                             <h2>Add Tour</h2>
                             <div class="Tour">
                                 <div class="ImgTour">
-                                    <img src="<?php echo _WEB_ROOT_."/views/client/img/Default_pfp.svg.png"?>" alt="">
+                                    <img src="<?php echo _WEB_ROOT_."/views/client/img/default-image.jpg"?>" alt="">
                                     <h4>Ảnh</h4>
                                 </div>
                                 <div class="infortour">

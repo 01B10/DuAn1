@@ -14,6 +14,15 @@
   gap: 20px;
 }
 
+.box {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.box div div {
+  margin-bottom: 30px;
+}
+
 .name,
 .gender,
 .province,
@@ -94,7 +103,7 @@ input:valid ~ label {
   color: gray;
   display: flex;
 }
-.gender label {
+.gender > label {
   transform: translateY(-25px);
   background: #fff;
 }
@@ -120,6 +129,12 @@ input:valid ~ label {
   display: none;
 }
 
+.err {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+}
+
 .button button {
   width: 100%;
   height: 100%;
@@ -140,4 +155,11 @@ input:valid ~ label {
 }
 .password span i.hide-btn::before {
   content: "\f070";
+}
+
+.file::-webkit-file-upload-button {
+  /* position: absolute; */
+  background-color: #1da1f2;
+  cursor: pointer;
+  transform: translateY(50%);
 }
