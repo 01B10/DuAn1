@@ -1,4 +1,4 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -7,110 +7,57 @@
 body {
     max-width: 1440px;
     margin: 0 auto;
-}
-.full_header {
-    display: grid;
-    grid-template-columns: 1fr 2fr 1fr;
-    grid-gap: 20px;
+    font-family: 'Roboto Condensed', sans-serif;
+    background-color: rgba(135, 208, 239, 0.455);
 }
 
-.logo img {
-    width: 120px;
-    margin-top: 10px;
-    margin-left: 50px;
-}
-
-.menu {
-    margin-top: 43px;
-}
-
-.menu ul li {
-    display: inline-block;
+table thead tr th {
+    padding: 10px 0;
+    width: 240px;
 
 }
 
-.menu ul li a {
-    text-decoration: none;
-    padding: 20px;
-    font-size: 20px;
-    color: rgb(54, 52, 52);
-}
 
-.menu ul li a:hover {
-    color: rgb(73, 138, 236);
-    text-decoration: underline;
-
-
-}
-
-.icon-1 {
-    margin: auto 100px auto 0;
-    text-align: right;
-}
-
-.icon-1 a i {
-    margin-right: 10px;
-}
-
-.icon-1:hover {
-    color: rgb(73, 138, 236);
-}
-
-.Title p{
-    margin-top: 10px;
-    margin-bottom: 10px;
-    font-size: 20px;
-}
-hr{
+table h1 {
+    margin-top: 20px;
     margin-bottom: 10px;
 }
 
-.blog{
+h1{
+    margin-top: 55px;
+    text-align: center;
+    margin-bottom: 10px;
+    background: rgb(120, 160, 235);
+}
+
+.Form1{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr  ;
+    grid-template-columns: 655px 1fr;
     grid-gap: 20px;
 }
-.full-block img{
-    width: 436px;
-    height: 200px;
-    /* width: 100%; */
-    border-radius: 6px;
-    /* height: 100%; */
-    /* display: inline-block; */
-    vertical-align: middle;
-    
+
+.Form1_full{
+    margin-left: 103px;
 }
 
-.full-block .location a{
-    text-decoration: none;
-}
-.full-block .location a h2:hover{
-    color: rgb(67, 182, 231);
+.Form1_full input{
+    width: 577px;
+    height: 35px;
 }
 
-.full-block .location h2{
-    color: rgb(10, 10, 10);
-}
-
-.full-block .location p{
-    margin-top: 10px;
-    font-size: 18px;
-}
-
-footer hr{
-    height: 4px;
-    margin-top: 20px;
-    background-color: #1DA1F2;
-}
-
-.full-footer{
+.Form2{
     margin-top: 20px;
     display: grid;
-    grid-template-columns: 680px 350px 1fr;
+    grid-template-columns: 210px 210px 210px 210px 1fr;
+    grid-gap: 20px;
 }
-.footer1 p{
-    padding: 5px;
+
+.Form2_full{
+    margin-left: 103px;
 }
-.footer1 h4{
-    color: #1DA1F2;
+
+.Form2_full input{
+    width: 180px;
+    height: 35px;
 }
+
