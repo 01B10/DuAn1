@@ -1,6 +1,9 @@
 <?php 
+    $queryBuilder = new QueryBuilder();
+    $listservice = $queryBuilder->query($queryBuilder->table("list_service")->select("*")->get());
     if(isset($_POST["submit"])){
-        $data["listservice"] = isset($_POST["service"])?implode("",$_POST["service"]):"";
+        $data["listservice_id"] = isset($_POST["service"])?implode("",$_POST["service"]):"";
+        $data["tour_detail_id"] = 1;
         $data["content"] = htmlentities($_POST["content"]);
         $file = $_FILES["files"];
         echo "<pre>";
@@ -23,8 +26,9 @@
                 $data["content"] = $content;
             }
         }
-
-        inserData("service",$data);
+        print_r($data);
+        // $queryBuilder->excute($queryBuilder->inserData("service",$data));
+        // inserData("service",$data);
     }
 ?>
 
@@ -46,7 +50,6 @@
 
 
 <body class="fixed-left">
-    <!-- <input type="file" multiple> -->
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <div class="p-6">
@@ -112,12 +115,9 @@
                     maxHeight: null,             // set maximum height of editor
                     focus: false                 // set focus to editable area after initializing summernote
                 });
-                // Select2
-               
             });
         </script>
 
-        <!--Summernote js-->
         <script src="<?php echo _WEB_ROOT_."/views/admin/assets/js/summernote.js"?>"></script>
     </body>
 </html>

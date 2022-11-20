@@ -1,0 +1,73 @@
+.addtour {
+  /* background: #fff; */
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 10px 40px;
+  box-shadow: 0 0 10px silver;
+}
+
+.Tour {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.ImgTour img {
+  width: 20rem;
+  cursor: pointer;
+}
+
+.ImgTour h4 {
+  text-align: center;
+}
+
+.ImgTour input[type="file"] {
+  display: none;
+}
+
+.infortour {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.infortour label:not(.listservice) input,
+.infortour label select {
+  width: 100%;
+  border: 1px solid black;
+  padding: 5px;
+}
+
+.listservice .option {
+  border: 1px solid black;
+  padding: 5px;
+}
+
+.option label:not(.option label:last-child) {
+  display: inline-flex;
+  margin-right: 10px;
+}
+
+.option label span {
+  display: inline-block;
+  padding: 5px 10px;
+  cursor: pointer;
+  background-color: lightseagreen;
+  color: #fff;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.option label span:hover {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.toggle {
+  display: none;
+}
+
+.choosen {
+  background-color: palevioletred !important;
+}

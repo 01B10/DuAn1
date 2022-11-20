@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?php echo _WEB_ROOT_."/views/client/assets/css/bookTour.css"?>">
-    <script src="https://kit.fontawesome.com/5dd6f63e97.js" crossorigin="anonymous"></script>
-    <title>Document</title>
-</head>
-<body>
+
     <div class="container">
         <div class="gr-1">
             <h1 class="title-tour">Tour du lịch thiên đường Maldives 5 ngày 4 đêm</h1>
@@ -84,27 +74,6 @@
                 </ul>
             </div>
 
-            <div class="single-box-excerpt">
-                <p>
-                    Đặt mua <strong>Tour Đà Lạt 3 ngày 3 đêm</strong> trọn gói giá rẻ của Vietnam Booking, quý khách sẽ được khám phá Đà Lạt nổi tiếng với những công trình nhân tạo đặc sắc, mang đậm hơi thở của núi rừng. Du khách sẽ được trải nghiệm nhiều hoạt động thú vị và ý nghĩa trong suốt chuyến hành trình tại xứ sở ngàn hoa.
-                </p>
-                <u><strong>TOUR CÓ GÌ HẤP DẪN?</strong></u>
-                <ul>
-                    <li style="text-align: justify;">
-                        <span style="color:#006400;"><b id="docs-internal-guid-a7c67c98-7fff-a0e4-b0e4-5302539e2b53">Check in tại Thung Lũng Đèn với "nấc thang lên thiên đường".</b></span>
-                    </li>
-                    <li style="text-align: justify;">
-                        <span style="color:#006400;"><b id="docs-internal-guid-a7c67c98-7fff-a0e4-b0e4-5302539e2b53">Khám phá những công trình đặc sắc như Chùa Linh Phước,...</b></span>
-                    </li>
-                    <li style="text-align: justify;">
-                        <span style="color:#006400;"><b id="docs-internal-guid-a7c67c98-7fff-a0e4-b0e4-5302539e2b53">Vui đùa bên những chú cún vô cùng dễ thương tại Puppy Farm.</b></span>
-                    </li>
-                    <li style="text-align: justify;">
-                        <font color="#006400"><b>Hóa thân thú vị với muôn kiểu tạo dáng tại Bảo tàng tranh 3D.</b></font>
-                    </li>
-                </ul>
-                
-            </div>
             <div class="panel-group" id="tour-product">
                 <div class="panel-tour-product">
                     <div class="panel-tour-product-title">
@@ -306,49 +275,6 @@
             <div class="grid_4 omega">
                 <div class="sidebar-box-tour" style="z-index: auto; position: static; top: auto;">
         <div class="box-form-price-tour-2 vertical" style="margin-top: 50px; display: block;">    
-<form action="" method="get" class="form-booking">
-<table class="tlb-box-price-tour">
-    <tbody><tr>
-        <td colspan="2">
-            <span class="price-tour">
-                <div class="title-price-old-2 horizontal"><del>3,464,000 VND</del></div>
-                <div class="title-price-new-2">
-                    2,390,000 <span class="title-price-new-slot">VND/người</span> 
-                </div>
-                                           
-            </span>                             </span>
-        </td>
-    </tr>
-    <tr class="row-khoihanh">
-        <td><label class="khoihanh">Khởi hành</label></td>
-        <td>
-            <input required="required" name="id" value="374368" type="hidden">
-            <input type="date" data-role="none" value="08/11/2022" name="date_start" class="form-control-2 txt-date-start hasDatepicker" required="required" id="dp1667855375351">
-        </td>
-    </tr>
-    <tr>
-        <td><label class="sokhach">Số khách</label></td>
-        <td>
-            <select data-role="none" data-price="2390000" name="number_people" class="form-control slc-tour-people-2">
-                <option value="1">01 Khách</option>
-                <option value="2">02 Khách</option>
-                <option value="3">03 Khách</option>
-                <option value="4">04 Khách</option>
-                <option value="5">05 Khách</option>
-                <option value="6">06 Khách</option>
-                <option value="7">07 Khách</option>
-                <option value="8">08 Khách</option>
-                <option value="9">09 Khách</option>
-                <option value="10">10 Khách</option>
-            </select>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2"><button data-role="none" class="btn-submit-set-tour-2" type="submit">Đặt Tour</button></td>
-    </tr>
-    </tbody>
-</table>
-</form>
 </div>
 
 

@@ -1,5 +1,5 @@
 <?php 
-    include_once "./database/connection.php";
+    include_once $path."\database\connection.php";
     class QueryBuilder{
         public $tableName, $field,$where,$operator,$join,
         $orderBy,$groupBy;
@@ -8,7 +8,17 @@
            try {
                 global $conn;
                 $data = $conn->query($sql);
-                return $data->fetchAll();
+                return $data->fetchAll(PDO::FETCH_ASSOC);
+           } catch (Exception $th) {
+                echo $th->getMessage();
+           }
+        }
+
+        function first($sql){
+           try {
+                global $conn;
+                $data = $conn->query($sql);
+                return $data->fetch(PDO::FETCH_ASSOC);
            } catch (Exception $th) {
                 echo $th->getMessage();
            }
@@ -18,6 +28,7 @@
             try {
                 global $conn;
                 $conn->exec($sql);
+                // echo $sql;
            } catch (Exception $th) {
                 echo $th->getMessage();
            }
@@ -53,7 +64,7 @@
                 $valueField = "";
                 foreach($data as $key => $value){
                     $field .= $key.",";
-                    $valueField .= $value.",";
+                    $valueField .= "'".$value."',";
                 }
                 $field = rtrim($field,",");
                 $valueField = rtrim($valueField,",");

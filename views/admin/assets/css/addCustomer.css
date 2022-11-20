@@ -1,0 +1,165 @@
+.addcustomer {
+  background: #fff;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 10px 40px;
+  margin-top: 100px;
+  box-shadow: 0 0 10px silver;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.box {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.box div div {
+  margin-bottom: 30px;
+}
+
+.name,
+.gender,
+.province,
+.phone,
+.Email,
+.password,
+.role,
+form .button {
+  margin: 15px 0;
+  position: relative;
+  height: 50px;
+  width: 100%;
+}
+
+.name input,
+.province input,
+.phone input,
+.Email input,
+.role select,
+.password input,
+.province select {
+  height: 100%;
+  width: 100%;
+  border: 1px solid silver;
+  padding-left: 15px;
+  outline: none;
+  font-size: 19px;
+  border-radius: 5px;
+}
+
+.name input:focus,
+.province input:focus,
+.phone input:focus,
+.Email input:focus,
+.role select:focus,
+.password input:focus,
+.province select:focus {
+  border: 1px solid #1da1f2;
+  box-shadow: 0 0 9px #1da1f2;
+}
+
+.name label,
+.province label,
+.phone label,
+.Email label,
+.role label,
+.password label {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: gray;
+}
+
+input:focus ~ label,
+input:valid ~ label {
+  transform: translateY(-33px);
+  background: #fff;
+  font-size: 16px;
+}
+.province label {
+  transform: translateY(-35px);
+  background: #fff;
+}
+.province select {
+  width: 100%;
+  height: 100%;
+}
+
+.gender {
+  text-align: left;
+  border: 1px solid silver;
+  width: 100%;
+  height: 50px;
+  padding: 15px;
+  border-radius: 5px;
+  color: gray;
+  display: flex;
+}
+.gender > label {
+  transform: translateY(-25px);
+  background: #fff;
+}
+.gender-choose {
+  display: inline-block;
+  margin: 0 auto;
+}
+.gender input {
+  margin-right: 5px;
+}
+.gender-choose label {
+  margin-right: 40px;
+}
+
+.password span {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: silver;
+  cursor: pointer;
+  display: none;
+}
+
+.err {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+}
+
+.button button {
+  width: 100%;
+  height: 100%;
+  font-size: 20px;
+  background: #fff;
+  border-radius: 5px;
+  border: 1px solid #000;
+  cursor: pointer;
+}
+.button button:hover {
+  background: #1df28b;
+  color: #fff;
+  border: 1px solid #f21d1d;
+}
+
+.password input:valid ~ span {
+  display: block;
+}
+.password span i.hide-btn::before {
+  content: "\f070";
+}
+
+.file::-webkit-file-upload-button {
+  /* position: absolute; */
+  background-color: #1da1f2;
+  cursor: pointer;
+  transform: translateY(50%);
+}
