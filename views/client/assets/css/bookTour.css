@@ -7,10 +7,7 @@ boby {
   font-size: 14px;
 }
 .container {
-  max-width: 940px;
   margin: auto;
-  display: grid;
-  grid-template-columns: 2fr 1fr;
   gap: 30px;
 }
 .gr-1 .tour-img {
@@ -28,6 +25,9 @@ boby {
   display: none;
 }
 
+.mySlides img {
+  height: 360px;
+}
 /* Next & previous buttons */
 .prev,
 .next {
@@ -147,19 +147,7 @@ boby {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
-.single-box-excerpt p {
-  font-size: 18px;
-  margin: 30px 0px;
-}
-.single-box-excerpt u {
-  color: #e50131;
-  font-size: 20px;
-}
-.single-box-excerpt ul li {
-  margin: 5px 0px;
-  font-size: 16px;
-  list-style: none;
-}
+
 .box-form-price-tour {
   width: 100%;
   background: #011e41;

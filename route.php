@@ -1,10 +1,10 @@
-<?php 
+<?php
     $route["Trang-Chu"] = "client\\layout\\TrangChu";
     $route["forgotpassword"] = "client\\form\\ForgotPass";
     $route["Login"] = "client\\form\\Login";
     $route["Register"] = "client\\form\\Register";
-    $route["tour"] = "client\\layout\\saleTour";
-    $route["tour-details"] = "client\\layout\\bookTour";
+    $route["tour"] = "client\\layout\\listTour";
+    $route["tourDetail"] = "client\\layout\\tourDetail";
     $route["blogs"] = "client\\layout\\blogs";
 
     $route["admin/dashboard"] = "admin\\quanly\\dashboard";
