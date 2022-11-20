@@ -226,6 +226,10 @@ main {
   border: 1px solid black;
 }
 
+.listuser .imgTour {
+  width: 100px;
+}
+
 .avatar img {
   width: 3rem;
 }

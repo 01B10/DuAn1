@@ -199,13 +199,13 @@
                         <div class="col-sm-12">
                             <div class="card-box">
                                 <h4 class="m-b-30 m-t-0 header-title"><b>Nội dung dịch vụ</b></h4>
-                                <textarea class="summernote" name="content_service"></textarea>
+                                <textarea class="summernote content_service" name="content_service"></textarea>
                             </div>
                         </div>
                         <div class="col-sm-12">
                             <div class="card-box">
                                 <h4 class="m-b-30 m-t-0 header-title"><b>Lịch trình</b></h4>
-                                <textarea class="summernote" name="content_schedule"></textarea>
+                                <textarea class="summernote content_schedule" name="content_schedule"></textarea>
                             </div>
                         </div>
 
@@ -230,9 +230,7 @@
         <script src="<?php echo _WEB_ROOT_."/views/admin/assets/js/jquery.min.js"?>"></script>
         <script src="<?php echo _WEB_ROOT_."/views/admin/assets/js/bootstrap.min.js"?>"></script>
         <script>
-
             jQuery(document).ready(function(){
-
                 $('.summernote').summernote({
                     height: 300,                 // set editor height
                     minHeight: null,             // set minimum height of editor

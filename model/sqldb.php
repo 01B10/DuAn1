@@ -82,8 +82,13 @@
             return $this;
         }
 
+        function join($type,$tableName,$relationship){
+            $this->join .= $type.' JOIN '.$tableName.' ON '.$relationship.' ';
+            return $this;
+        }
+
         function get(){
-            $sql = "SELECT $this->field FROM $this->tableName $this->where $this->groupBy $this->orderBy";
+            $sql = "SELECT $this->field FROM $this->tableName $this->join $this->where $this->groupBy $this->orderBy";
             $this->resetQuery();
             return $sql;
         }

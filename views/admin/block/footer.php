@@ -20,6 +20,7 @@
     var choosen = document.querySelectorAll(".toggle + span");
     var img = document.querySelector(".ImgTour img");
     var file = document.querySelector(".ImgTour input")
+
     let index = 0;
     toggle.addEventListener("click",()=>{
         ++index;
@@ -87,7 +88,8 @@
     if(img != null){
         img.addEventListener("click",()=>{
         file.click();
-    });
+        });
     }
 </script>
+
 </html>
