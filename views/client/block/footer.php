@@ -1,4 +1,13 @@
 </body>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        flatpickr("#myID", {});
+
+        flatpickr("#myID",{
+            enableTime: true,
+            dateFormat: "d-m-Y"
+        });
+    </script>
     <script>
         let indext = 1;
         var form = document.querySelector(".typearea");

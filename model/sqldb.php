@@ -8,7 +8,17 @@
            try {
                 global $conn;
                 $data = $conn->query($sql);
-                return $data->fetchAll();
+                return $data->fetchAll(PDO::FETCH_ASSOC);
+           } catch (Exception $th) {
+                echo $th->getMessage();
+           }
+        }
+
+        function first($sql){
+           try {
+                global $conn;
+                $data = $conn->query($sql);
+                return $data->fetch(PDO::FETCH_ASSOC);
            } catch (Exception $th) {
                 echo $th->getMessage();
            }

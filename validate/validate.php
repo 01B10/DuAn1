@@ -32,7 +32,7 @@
         if(!empty($rules)){
             $dataFields = getFields();
             foreach($rules as $fieldName => $ruleItem){
-                if(!isset($dataFields[$fieldName])){
+                if(!isset($dataFields[$fieldName]) && $fieldName != "img"){
                     setErrors($error,$message,$fieldName,"required");
                     $checkValidate = false;
                 }
@@ -47,7 +47,7 @@
                     }
                     if(isset($dataFields[$fieldName])){
                         if($ruleName == "required"){
-                            if(empty(trim($dataFields[$fieldName]))){
+                            if(empty($dataFields[$fieldName])){
                                 setErrors($error,$message,$fieldName,$ruleName);
                                 $checkValidate = false;
                             }
@@ -81,18 +81,20 @@
                             }
                         }
 
-                        if($ruleName == "img"){
-                            $checkfile = ["png","jpg","jpeg"];
-                            if(!in_array(pathinfo($dataFields[$fieldName],PATHINFO_EXTENSION),$checkfile)){
+                        if($ruleName == "phone" || $ruleName == "price" || $ruleName == "slot" || $ruleName == "discount"){
+                            if((int) $dataFields[$fieldName] == 0){
                                 setErrors($error,$message,$fieldName,$ruleName);
                                 $checkValidate = false;
                             }
                         }
-
-                        if($ruleName == "phone"){
-                            if((int) $dataFields[$fieldName] == 0){
-                                setErrors($error,$message,$fieldName,$ruleName);
-                                $checkValidate = false;
+                    }else{
+                        if($ruleName == "img"){
+                            if(!empty($_FILES[$fieldName])){
+                                $checkfile = ["png","jpg","jpeg"];
+                                if(!in_array(pathinfo($_FILES[$fieldName]["name"],PATHINFO_EXTENSION),$checkfile)){
+                                    setErrors($error,$message,"img",$ruleName);
+                                    $checkValidate = false;
+                                }
                             }
                         }
                     }

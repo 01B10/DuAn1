@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="<?php echo _WEB_ROOT_."/views/client/assets/css/TrangChu.css"?>">
     <link rel="stylesheet" href="<?php echo _WEB_ROOT_."/views/client/assets/css/saleTour.css"?>">
     <link rel="stylesheet" href="<?php echo _WEB_ROOT_."/views/client/assets/css/blogs.css"?>">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
     <script src="https://kit.fontawesome.com/d620f19a29.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 </head>

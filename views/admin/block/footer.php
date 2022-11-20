@@ -1,5 +1,13 @@
 
 </body>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+    flatpickr("#myID", {});
+    flatpickr("#myID",{
+        enableTime: true,
+        dateFormat: "d-m-Y"
+    });
+</script>
 <script>
     var slider = document.querySelectorAll(".list > a");
     var drop = document.querySelectorAll(".drop");
@@ -10,6 +18,8 @@
     var toggle = document.querySelector(".la-bars");
     var input = document.querySelector("#nav-toggle");
     var choosen = document.querySelectorAll(".toggle + span");
+    var img = document.querySelector(".ImgTour img");
+    var file = document.querySelector(".ImgTour input")
     let index = 0;
     toggle.addEventListener("click",()=>{
         ++index;
@@ -73,5 +83,11 @@
             item.classList.toggle("choosen");
         })
     });
+
+    if(img != null){
+        img.addEventListener("click",()=>{
+        file.click();
+    });
+    }
 </script>
 </html>

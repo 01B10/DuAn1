@@ -78,9 +78,9 @@
             <div class="gender">
                 <label for="">Giới tính</label>
                 <div class="gender-choose">
-                    <label for="nam"><input id="nam" type="radio" name="gender" value="0"> Nam</label>
-                    <label for="nu"><input id="nu" type="radio" name="gender" value="1"> Nữ</label>
-                    <label for="other"><input id="other" type="radio" name="gender" value="2"> Khác</label>
+                    <label for="nam"><input id="nam" type="radio" name="gender" value="1"> Nam</label>
+                    <label for="nu"><input id="nu" type="radio" name="gender" value="2"> Nữ</label>
+                    <label for="other"><input id="other" type="radio" name="gender" value="3"> Khác</label>
                 </div>
             </div>
             <p class="err"><?php echo (!empty($errors) && array_key_exists("gender",$errors))?$errors["gender"]:false?></p>

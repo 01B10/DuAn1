@@ -6,16 +6,18 @@
                 <input type="text" placeholder="Enter destination">
             </div>
             <div class="full-search">
-                <h3>Pax number*</h3>
-                <input type="text" placeholder="no of people">
-            </div>
-            <div class="full-search">
                 <h3>Checkin date**</h3>
-                <input type="date">
+                <div class="search-item">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <input id="myID" placeholder="dd/mm/yyyy">
+                </div>
             </div>
             <div class="full-search">
                 <h3>Checkout date*</h3>
-                <input type="date">
+                <div class="search-item">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <input id="myID" placeholder="dd/mm/yyyy">
+                </div>
             </div>
             <div class="full-search">
                 <button>Inquire now</button>

@@ -10,14 +10,20 @@
 .Tour {
   display: flex;
   justify-content: space-between;
+  gap: 20px;
 }
 
 .ImgTour img {
-  width: 100px;
+  width: 20rem;
+  cursor: pointer;
 }
 
 .ImgTour h4 {
   text-align: center;
+}
+
+.ImgTour input[type="file"] {
+  display: none;
 }
 
 .infortour {
@@ -49,7 +55,7 @@
   padding: 5px 10px;
   cursor: pointer;
   background-color: lightseagreen;
-  color: orangered;
+  color: #fff;
   border-radius: 5px;
   font-weight: bold;
 }

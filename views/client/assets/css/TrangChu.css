@@ -98,19 +98,35 @@ body {
   color: white;
 }
 
-.full-search input {
+.full-search > input {
   font-size: 20px;
   border-radius: 23px;
   border: 1px solid rgb(103, 200, 242);
   padding: 5px 15px;
   color: rgba(42, 39, 39, 0.575);
   width: 100%;
+  background-color: #ffffff;
 }
 
-.search .full-search input:focus {
+.full-search .search-item {
+  font-size: 20px;
+  border-radius: 23px;
+  border: 1px solid rgb(103, 200, 242);
+  padding: 5px 15px;
+  color: rgba(42, 39, 39, 0.575);
+  width: 100%;
+  background-color: #ffffff;
+}
+
+.full-search input {
+  border: 0px;
+  outline: none;
+}
+
+/* .search .full-search input:focus {
   border: 2px solid #1da1f2;
   box-shadow: 0 0 10px #1da1f2;
-}
+} */
 
 .full-search {
   /* display: flex; */

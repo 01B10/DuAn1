@@ -28,6 +28,7 @@
                     <label for="">Tỉnh/Thành</label>
                     <p class="err"><?php echo (!empty($errors) && array_key_exists("name",$errors))?$errors["name"]:false?></p>
                 </div>
+            </div>
             <div class="button">
                 <button class="submit" name="addProvince">Thêm mới</button>
             </div>
