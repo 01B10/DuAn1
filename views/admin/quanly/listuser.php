@@ -8,6 +8,7 @@
             <thead>
                 <tr>
                     <th>STT</th>
+                    <th>ID</th>
                     <th>Tên</th>
                     <th>Giới tính</th>
                     <th>Email</th>
@@ -26,6 +27,7 @@
                 ?>
                             <tr>
                                 <td><?php echo $i?></td>
+                                <td><?php echo $item["Id"]?></td>
                                 <td class="avatar">
                                     <img src="<?php echo _WEB_ROOT_."/views/client/img/".$item["img"]?>" alt="">
                                     <span><?php echo $item["name"]?></span>

@@ -9,7 +9,7 @@
         </div>
         <div class="blog">
             <div class="full-block">
-                <img src="../img/hcm1.jpg" alt="">
+                <img src="<?php echo _WEB_ROOT_."/views/client/img/hcm1.jpg"?>" alt="">
                 <div class="location">
                     <a href="https://www.google.com/search?q=gg+d%E1%BB%8Bch&oq=&aqs=chrome.0.69i59i450l8.248638j0j7&sourceid=chrome&ie=UTF-8"> <h2>Du lịch Hà Nội đa dạng hóa sản phẩm thu hút du khách</h2></a>
                 <p>Du lịch Hà Nội - Kinh đô Thăng Long một thời, là
@@ -21,7 +21,7 @@
                 <i class="fa-regular fa-clock"></i>
             </div>
             <div class="full-block">
-                <img src="/views/client/img/hcm1.jpg" alt="">
+                <img src="<?php echo _WEB_ROOT_."/views/client/img/hcm1.jpg"?>" alt="">
                 <div class="location">
                     <a href="https://www.google.com/search?q=gg+d%E1%BB%8Bch&oq=&aqs=chrome.0.69i59i450l8.248638j0j7&sourceid=chrome&ie=UTF-8"> <h2>Du lịch Hà Nội đa dạng hóa sản phẩm thu hút du khách</h2></a>
                 <p>Du lịch Hà Nội - Kinh đô Thăng Long một thời, là
@@ -33,7 +33,7 @@
                
             </div>
             <div class="full-block">
-                <img src="./DuAn1_Minh/views/img/hn1.jpg" alt="">
+                <img src="<?php echo _WEB_ROOT_."/views/client/img/hn1.jpg"?>" alt="">
                 <div class="location">
                     <a href="https://www.google.com/search?q=gg+d%E1%BB%8Bch&oq=&aqs=chrome.0.69i59i450l8.248638j0j7&sourceid=chrome&ie=UTF-8"> <h2>Du lịch Hà Nội đa dạng hóa sản phẩm thu hút du khách</h2></a>
                 <p>Du lịch Hà Nội - Kinh đô Thăng Long một thời, là
@@ -45,7 +45,7 @@
                
             </div>
             <div class="full-block">
-                <img src="./DuAn1_Minh/views/img/hn1.jpg" alt="">
+                <img src="<?php echo _WEB_ROOT_."/views/client/img/hn1.jpg"?>" alt="">
                 <div class="location">
                     <a href="https://www.google.com/search?q=gg+d%E1%BB%8Bch&oq=&aqs=chrome.0.69i59i450l8.248638j0j7&sourceid=chrome&ie=UTF-8"> <h2>Du lịch Hà Nội đa dạng hóa sản phẩm thu hút du khách</h2></a>
                 <p>Du lịch Hà Nội - Kinh đô Thăng Long một thời, là
@@ -57,7 +57,7 @@
                
             </div>
             <div class="full-block">
-                <img src="/" alt="">
+                <img src="<?php echo _WEB_ROOT_."/views/client/img/hn1.jpg"?>" alt="">
                 <div class="location">
                     <a href="https://www.google.com/search?q=gg+d%E1%BB%8Bch&oq=&aqs=chrome.0.69i59i450l8.248638j0j7&sourceid=chrome&ie=UTF-8"> <h2>Du lịch Hà Nội đa dạng hóa sản phẩm thu hút du khách</h2></a>
                 <p>Du lịch Hà Nội - Kinh đô Thăng Long một thời, là
@@ -69,7 +69,7 @@
                
             </div>
             <div class="full-block">
-                <img src="./DuAn1_Minh/views/img/hn1.jpg" alt="">
+                <img src="<?php echo _WEB_ROOT_."/views/client/img/hn1.jpg"?>" alt="">
                 <div class="location">
                     <a href="https://www.google.com/search?q=gg+d%E1%BB%8Bch&oq=&aqs=chrome.0.69i59i450l8.248638j0j7&sourceid=chrome&ie=UTF-8"> <h2>Du lịch Hà Nội đa dạng hóa sản phẩm thu hút du khách</h2></a>
                 <p>Du lịch Hà Nội - Kinh đô Thăng Long một thời, là
