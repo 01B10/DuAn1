@@ -8,6 +8,7 @@
     if(isset($controller)){
         switch ($controller) {
             case $controller:
+                session_start();
                 $data["sub"] = $controller;
                 $data["exception"] = strtolower(trim($_SERVER["PATH_INFO"],"/"));
                 $data["arrexc"] = ["login","register","forgotpassword"];

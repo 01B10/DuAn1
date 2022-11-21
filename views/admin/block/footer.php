@@ -19,7 +19,9 @@
     var input = document.querySelector("#nav-toggle");
     var choosen = document.querySelectorAll(".toggle + span");
     var img = document.querySelector(".ImgTour img");
-    var file = document.querySelector(".ImgTour input")
+    var file = document.querySelector(".ImgTour input");
+    const searchParam = new URLSearchParams(window.location.search);
+    var deleteTour = document.querySelector(".deleteTour");
 
     let index = 0;
     toggle.addEventListener("click",()=>{
@@ -88,6 +90,12 @@
     if(img != null){
         img.addEventListener("click",()=>{
         file.click();
+        });
+    }
+
+    if(searchParam.get("act") == "delete"){
+        window.addEventListener("load",()=>{
+            window.location = "listTour";
         });
     }
 </script>

@@ -1,21 +1,40 @@
 <?php 
+    $queryBuilder = new QueryBuilder();
     $rule = [
-        "email" => "required|email|min:13",
-        "password" => "required|min:5|max:10",
+        "email" => "required",
+        "password" => "required",
     ];
 
     $message = [
         "email.required" => "Không được để trống",
-        "email.min" => "email phải có ít nhất 4 kí tự",
-        "email.email" => "email không hợp lệ",
         "password.required" => "Không được để trống",
-        "password.min" => "password phải có ít nhất 4 kí tự",
-        "password.max" => "password không vượt quá 10 kí tự",
     ];
     $errors = [];
     if(isset($_POST["login"])){
         $validate =  validate($rule,$message,$errors);
         $errors = errors("",$errors);
+        if($validate){
+            $customer = $queryBuilder->query($queryBuilder->table("customer")->select("*")
+            ->where("customer.email","=",$_POST["email"])
+            ->where("customer.password","=",$_POST["password"])
+            ->orWhere("customer.phone","=",$_POST["email"])
+            ->where("customer.password","=",$_POST["password"])
+            ->get());
+            $customer = $customer[0];
+            if(!empty($customer)){
+                if($customer["role"] == 1){
+                    $_SESSION["Login"]["admin"] = $customer;
+                    if(isset($_SESSION["Login"]["admin"])){
+                        header("Location: admin/");
+                    }
+                }elseif($customer["role"] == 2){
+                    $_SESSION["Login"]["customer"] = $customer;
+                    if(isset($_SESSION["Login"]["admin"])){
+                        header("Location: Trang-Chu");
+                    }
+                }
+            }
+        }
     }
 ?>
 
@@ -39,8 +58,9 @@
     <div class="container">
         <form action="" method="POST">
             <h2>Login form</h2>
+            <p class="err"><?php echo (isset($customer) && empty($customer))?"Tài khoản hoặc Mật khẩu không đúng":false?></p>
             <div class="input-field">
-                <input type="text" name="email">
+                <input type="text" name="email" value="<?php if(!empty($_POST["email"])){echo $_POST["email"];}?>">
                 <label for="">Email or Phone Number</label>
                 <p class="err"><?php echo (!empty($errors) && array_key_exists("email",$errors))?$errors["email"]:false?></p>
             </div>

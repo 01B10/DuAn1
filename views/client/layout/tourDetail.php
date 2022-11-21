@@ -52,7 +52,7 @@
                 <tr>
                    <td><i class="fa-solid fa-location-dot"></i>Địa ĐIểm</td>
                    <td><i class="fa-regular fa-clock"></i>Time</td>
-                   <td><i class="fa-solid fa-car"></i>Phương Tiện</td>
+                   <td>Phương Tiện: <i class="fa-solid fa-car"></i></td>
                    <td class="code-tour">Mã Tour:</td>
                 </tr>
                 <tr>

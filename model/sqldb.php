@@ -1,8 +1,8 @@
 <?php 
     include_once $path."\database\connection.php";
     class QueryBuilder{
-        public $tableName, $field,$where,$operator,$join,
-        $orderBy,$groupBy;
+        public $tableName = "", $field="",$where="",$operator="",$join="",
+        $orderBy="",$groupBy="";
 
         function query($sql){
            try {
@@ -44,13 +44,23 @@
             return $this;
         }
 
+        public function orWhere($field,$compare,$value){
+            if(empty($this->where)){
+                $this->operator = ' WHERE';
+            }else{
+                $this->operator = ' OR';
+            }
+            $this->where .= "$this->operator $field $compare '$value'";
+            return $this;
+        }
+
         function where($field,$compare,$value){
             if(empty($this->where)){
                 $this->operator = " WHERE";
             }else{
                 $this->operator = " AND";
             }
-            $this->where .= "$this->operator $field $compare $value";
+            $this->where .= "$this->operator $field $compare '$value'";
             return $this;
         }
 

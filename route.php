@@ -26,4 +26,6 @@
     $route["admin/addTransport"] = "admin\\quanly\\addTransport";
     $route["chat"] = "client\\layout\\chat";
     $route["post"] = "admin\\quanly\\post";
+
+    $route["admin/logout"] = "admin\\quanly\\logout";
 ?>

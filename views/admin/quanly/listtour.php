@@ -5,7 +5,18 @@
     ->join("inner","tour_detail","tour.Id = tour_detail.tour_id")
     ->join("inner","schedule","schedule.tour_detail_id = tour_detail.Id")
     ->get());
+    // echo "<pre>";
     // print_r($listTour);
+    // echo "</pre>";
+    if(isset($_GET["act"]) && $_GET["act"] == "delete"){
+        $idTour = $queryBuilder->query($queryBuilder->table("tour_detail")->select("tour_id")
+        ->where("Id","=",$_GET["Id"])->get())[0];
+        $queryBuilder->excute($queryBuilder->delete("schedule","schedule.tour_detail_id = ".$_GET['Id']));
+        $queryBuilder->excute($queryBuilder->delete("service","service.tour_detail_id = ".$_GET['Id']));
+        $queryBuilder->excute($queryBuilder->delete("transport","transport.tour_detail_id = ".$_GET['Id']));
+        $queryBuilder->excute($queryBuilder->delete("tour_detail","tour_detail.Id = ".$_GET['Id']));
+        $queryBuilder->excute($queryBuilder->delete("tour","tour.Id = ".$idTour["tour_id"]));
+    }
 ?>
 
 <main>
@@ -53,9 +64,10 @@
                                         foreach($listService as $service){
                                     ?>
                                             <p><?php echo $service["name"]?></p>
-                                    <?php
+                                            <?php
                                         }
-                                    ?>
+                                        ?>
+                                        <p>Nội dung: <?php echo $item["content_service"]?></p>
                                 </td>
                                 <td>
                                     <?php 
@@ -73,7 +85,7 @@
                                 <td class="action">
                                     <i class="fa-solid fa-ellipsis-vertical"></i>
                                     <div class="hidden">
-                                        <a href="">Delete</a>
+                                        <a class="deleteTour" href="listTour?act=delete&Id=<?php echo $item["tour_detail_id"]?>">Delete</a>
                                         <a href="">Update</a>
                                     </div>
                                 </td>

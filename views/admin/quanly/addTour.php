@@ -3,6 +3,7 @@
     $rule = [
         "img" => "img",
         "name" => "required|min:10|max:30",
+        "departure" => "required",
         "province" => "required",
         "price" => "required|price",
         "start_time" => "required",
@@ -19,6 +20,7 @@
         "name.min" => "name phải có ít nhất 10 kí tự",
         "name.max" => "name không vượt quá 30 kí tự",
         "img.img" => "file không hợp lệ",
+        "departure.required" => "Không được để trống",
         "province.required" => "Không được để trống",
         "price.required" => "không được để trống",
         "price.price" => "price không hợp lệ",
@@ -43,11 +45,11 @@
             $service = $_POST["listservice_id"];
             $trasport = $_POST["list_transport_id"];
             $contentSchedule = $_POST["content_schedule"];
-            $contentService = $_POST["content_service"];
+
             unset($_POST["listservice_id"]);
             unset($_POST["list_transport_id"]);
             unset($_POST["content_schedule"]);
-            unset($_POST["content_service"]);
+
             $_POST["start_time"] = date("Y-m-d",strtotime($_POST["start_time"]));
             $_POST["end_time"] = date("Y-m-d",strtotime($_POST["end_time"]));
             $data = array_filter($_POST);
@@ -62,7 +64,6 @@
 
             $data = [];
             $data["tour_detail_id"] = $idTourDetail["Id"];
-            $data["content_service"] = $contentService;
             foreach($service as $item){
                 $data["listservice_id"] = $item;
                 $queryBuilder->excute($queryBuilder->inserData("service",$data));
@@ -182,6 +183,11 @@
                                             ?>
                                         </div>
                                         <p class="err"><?php echo (!empty($errors) && array_key_exists("list_transport_id",$errors))?$errors["list_transport_id"]:false?></p>
+                                    </label>
+                                    <label for="">
+                                        <span>Điểm khởi hành:</span>
+                                        <input type="text" name="departure" value="<?php if(!empty($_POST["departure"])){echo $_POST["slot"];}?>">
+                                        <p class="err"><?php echo (!empty($errors) && array_key_exists("departure",$errors))?$errors["departure"]:false?></p>
                                     </label>
                                     <label for="">
                                         <span>Chỗ:</span>

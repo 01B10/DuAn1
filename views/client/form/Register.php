@@ -1,8 +1,9 @@
 <?php 
+    $queryBuilder = new QueryBuilder();
     $rule = [
         "name" => "required|min:10|max:30",
-        "email" => "required|email|min:13",
-        "phone" => "required|min:10|max:11",
+        "email" => "required|email|min:13|unique:customer:email",
+        "phone" => "required|min:10|max:11|phone|unique:customer:phone",
         "gender" => "required",
         "password" => "required|min:5|max:20",
         "repassword" => "required|match:password"
@@ -15,10 +16,12 @@
         "phone.required" => "Không được để trống",
         "phone.min" => "phone không hợp lệ",
         "phone.max" => "phone không hợp lệ",
+        "phone.unique" => "phone đã tồn tại",
         "gender.required" => "không được để trống",
         "email.required" => "Không được để trống",
         "email.min" => "email phải có ít nhất 4 kí tự",
         "email.email" => "email không hợp lệ",
+        "email.unique" => "email đã tồn tại",
         "password.required" => "Không được để trống",
         "password.min" => "password phải có ít nhất 4 kí tự",
         "password.max" => "password không vượt quá 10 kí tự",
@@ -29,6 +32,12 @@
     if(isset($_POST["register"])){
         $validate =  validate($rule,$message,$errors);
         $errors = errors("",$errors);
+        $data = array_filter($_POST);
+        unset($data["repassword"]);
+        $data["img"] = "Default_pfp.svg.png";
+        if($validate){
+            $queryBuilder->excute($queryBuilder->inserData("customer",$data));
+        }
     }
 ?>
 

@@ -1,3 +1,11 @@
+<?php 
+    if(isset($_GET["act"]) && $_GET["act"] == "logout"){
+        session_unset();
+        session_destroy();
+        header("Location: Trang-Chu");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,18 +34,30 @@
                 <ul>
                     <li><a href="Trang-Chu">Trang chủ</a></li>
                     <li><a href="">Giới thiệu</a></li>
-                    <li><a href="tour">Tour</a></li>
                     <li><a href="">Liên hệ</a></li>
                     <li><a href="blogs">Blog</a></li>
-
                 </ul>
             </div>
             <div class="icon-1">
                 <i class="fa-solid fa-user"></i>
-                <div class="drop">
-                    <a href="login">Login</a>
-                    <a href="register">register</a>
-                </div>
+                <?php 
+                    if(isset($_SESSION["Login"]["customer"])){
+                ?>
+                    <div class="drop">
+                        <a href="login">Tài khoản</a>
+                        <a href="register">Hóa đơn</a>
+                        <a href="?act=logout">Thoát</a>
+                    </div>
+                <?php
+                    }else{
+                ?>
+                    <div class="drop">
+                        <a href="login">Login</a>
+                        <a href="register">register</a>
+                    </div>
+                <?php
+                    }
+                ?>
             </div>
         </div>
         <div class="banner">
