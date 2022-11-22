@@ -74,12 +74,44 @@
                 $valueField = "";
                 foreach($data as $key => $value){
                     $field .= $key.",";
-                    $valueField .= "'".$value."',";
+                    if($key != "content_schedule" && $key != "content_service"){
+                        $valueField .= "'".$value."',";
+                    }else{
+                        $valueField .= $value.",";
+                    }
                 }
                 $field = rtrim($field,",");
                 $valueField = rtrim($valueField,",");
                 return "INSERT INTO $tableName($field) VALUES ($valueField)";
             };
+        }
+
+        // public function update($data){
+        //     $whereUpdate = str_replace("WHERE","",$this->where);
+        //     $whereUpdate = trim($whereUpdate);
+        //     $tableName = $this->tableName;
+        //     $statusUpdate = $this->updateData($tableName,$data,$whereUpdate);
+        //     return $statusUpdate;
+        // }
+
+        function updateData($table,$data,$condition=''){
+            if(!empty($data)){
+                $updateStr = "";
+                foreach($data as $key=>$value){
+                    $updateStr.="$key='$value',";
+                }
+                $updateStr = rtrim($updateStr,',');
+                if(!empty($condition)){
+                    $sql = "UPDATE $table SET $updateStr WHERE $condition";
+                }else{
+                    $sql = "UPDATE $table SET $updateStr";
+                }
+                // $status = $this->query($sql);
+                // if(empty($status)){
+                //     return true;
+                // }
+                return $sql;
+            }
         }
 
         function orderBy($field,$type="ASC"){

@@ -83,7 +83,7 @@
                             }
                         }
 
-                        if($ruleName == "phone" || $ruleName == "price" || $ruleName == "slot" || $ruleName == "discount"){
+                        if($ruleName == "phone" || $ruleName == "discount" || $ruleName == "number"){
                             if((int) $dataFields[$fieldName] == 0){
                                 setErrors($error,$message,$fieldName,$ruleName);
                                 $checkValidate = false;

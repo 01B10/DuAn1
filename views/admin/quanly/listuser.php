@@ -14,7 +14,6 @@
                     <th>Email</th>
                     <th>SDT</th>
                     <th>Vai trò</th>
-                    <th>Mật khẩu</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -54,7 +53,6 @@
                                             }
                                     ?>
                                 </td>
-                                <td><?php echo $item["password"]?></td>
                                 <td class="action">
                                     <i class="fa-solid fa-ellipsis-vertical"></i>
                                     <div class="hidden">

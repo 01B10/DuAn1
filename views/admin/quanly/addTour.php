@@ -5,13 +5,13 @@
         "name" => "required|min:10|max:30",
         "departure" => "required",
         "province" => "required",
-        "price" => "required|price",
+        "price" => "required|number",
         "start_time" => "required",
         "end_time" => "required",
         "journeys" => "required",
         "listservice_id" => "required",
         "list_transport_id" => "required",
-        "slot" => "required|slot",
+        "slot" => "required|number",
         "discount" => "required|discount",
     ];
 
@@ -23,20 +23,24 @@
         "departure.required" => "Không được để trống",
         "province.required" => "Không được để trống",
         "price.required" => "không được để trống",
-        "price.price" => "price không hợp lệ",
+        "price.number" => "price không hợp lệ",
         "start_time.required" => "Không được để trống",
         "end_time.required" => "Không được để trống",
         "journeys.required" => "Không được để trống",
         "listservice_id.required" => "Không được để trống",
         "list_transport_id.required" => "Không được để trống",
         "slot.required" => "Không được để trống",
-        "slot.slot" => "slot không hợp lệ",
+        "slot.number" => "slot không hợp lệ",
         "discount.required" => "Không được để trống",
         "discount.discount" => "discount không hợp lệ",
     ];
     $listTransport = $queryBuilder->query($queryBuilder->table("list_transport")->select("*")->get());
     $listService = $queryBuilder->query($queryBuilder->table("list_service")->select("*")->get());
     $listProvince = $queryBuilder->query($queryBuilder->table("province")->select("*")->get());
+    // $tour12 = $queryBuilder->query($queryBuilder->table("tour")->select("*")->get());
+    // echo "<pre>";
+    // print_r($tour12);
+    // echo "</pre>";
     $errors = [];
     if(isset($_POST["addTour"])){
         $validate =  validate($rule,$message,$errors);
@@ -44,11 +48,13 @@
         if($validate){
             $service = $_POST["listservice_id"];
             $trasport = $_POST["list_transport_id"];
-            $contentSchedule = $_POST["content_schedule"];
-
+            $_POST["content_service"] = "\"".htmlentities($_POST["content_service"])."\"";
+            $_POST["content_schedule"] = "\"".htmlentities($_POST["content_schedule"])."\"";
+            // echo "<pre>";
+            // print_r($_POST["content_schedule"]);
+            // echo "</pre>";
             unset($_POST["listservice_id"]);
             unset($_POST["list_transport_id"]);
-            unset($_POST["content_schedule"]);
 
             $_POST["start_time"] = date("Y-m-d",strtotime($_POST["start_time"]));
             $_POST["end_time"] = date("Y-m-d",strtotime($_POST["end_time"]));
@@ -60,8 +66,10 @@
             $idTour = $queryBuilder->first($queryBuilder->table("tour")->select("Id")->orderBy("Id","DESC")->get());
             $queryBuilder->excute($queryBuilder->inserData("tour_detail",["tour_id"=>$idTour["Id"]]));
             $idTourDetail = $queryBuilder->first($queryBuilder->table("tour_detail")->select("Id")->orderBy("Id","DESC")->get());
-            $queryBuilder->excute($queryBuilder->inserData("schedule",["tour_detail_id"=>$idTourDetail["Id"],"content_schedule"=>$contentSchedule]));
-
+            // $queryBuilder->excute($queryBuilder->inserData("schedule",["tour_detail_id"=>$idTourDetail["Id"],"content_schedule"=>$contentSchedule]));
+            // echo "<pre>";
+            // print_r( $_POST["content_service"]);
+            // echo "</pre>";
             $data = [];
             $data["tour_detail_id"] = $idTourDetail["Id"];
             foreach($service as $item){
@@ -77,12 +85,6 @@
             }
             $_POST = "";
         }
-        // echo "<pre>";
-        // print_r($_POST["content_schedule"]);
-        // echo "</pre>";
-        // echo "<pre>";
-        // print_r($_POST);
-        // echo "</pre>";
     }
 ?>    
 

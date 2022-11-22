@@ -325,7 +325,19 @@ table {
   padding: 0px;
   font-size: 24px;
   color: #0066d9;
-  font-family: "r_conde_regular";
   padding-bottom: 10px;
   border-bottom: 1px solid #e1e1e1;
+  text-align: center;
+}
+
+.icon {
+  width: 20px;
+}
+
+.list-extra-services li img {
+  vertical-align: middle;
+}
+
+.iconService {
+  width: 40px;
 }

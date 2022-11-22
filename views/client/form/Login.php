@@ -20,16 +20,15 @@
             ->orWhere("customer.phone","=",$_POST["email"])
             ->where("customer.password","=",$_POST["password"])
             ->get());
-            $customer = $customer[0];
             if(!empty($customer)){
-                if($customer["role"] == 1){
-                    $_SESSION["Login"]["admin"] = $customer;
+                if($customer[0]["role"] == 1){
+                    $_SESSION["Login"]["admin"] = $customer[0];
                     if(isset($_SESSION["Login"]["admin"])){
                         header("Location: admin/");
                     }
-                }elseif($customer["role"] == 2){
-                    $_SESSION["Login"]["customer"] = $customer;
-                    if(isset($_SESSION["Login"]["admin"])){
+                }elseif($customer[0]["role"] == 2){
+                    $_SESSION["Login"]["customer"] = $customer[0];
+                    if(isset($_SESSION["Login"]["customer"])){
                         header("Location: Trang-Chu");
                     }
                 }
@@ -45,7 +44,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
     <link rel="stylesheet" href="<?php echo _WEB_ROOT_."/views/client/assets/css/login.css"?>">
     <script src="https://kit.fontawesome.com/d620f19a29.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />

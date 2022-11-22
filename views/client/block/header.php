@@ -44,8 +44,8 @@
                     if(isset($_SESSION["Login"]["customer"])){
                 ?>
                     <div class="drop">
-                        <a href="login">Tài khoản</a>
-                        <a href="register">Hóa đơn</a>
+                        <a href="account">Tài khoản</a>
+                        <a href="bills">Hóa đơn</a>
                         <a href="?act=logout">Thoát</a>
                     </div>
                 <?php
@@ -61,6 +61,6 @@
             </div>
         </div>
         <div class="banner">
-            <img src="<?php echo _WEB_ROOT_ . "/views/client/img/bn1.jpg" ?>" alt="" id="img">
+            <img src="<?php echo _WEB_ROOT_ . "/views/client/img/banners/bn1.jpg" ?>" alt="" id="img">
         </div>
     </header>

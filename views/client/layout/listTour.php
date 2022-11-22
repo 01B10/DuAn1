@@ -2,14 +2,16 @@
     $queryBuilder = new QueryBuilder();
     $listTour = $queryBuilder->query($queryBuilder->table("tour")->select("*")
     ->where("tour.province","=",$_GET["Province"])->join("inner","tour_detail","tour.Id = tour_detail.tour_id")->get());
+    $province = $queryBuilder->query($queryBuilder->table("province")->select("*")
+    ->where("province.Id","=",$_GET["Province"])->get())[0];
     // echo "<pre>";
-    // print_r($listTour);
+    // print_r($province);
     // echo "</pre>";
 ?>
 
     <div class="container">
         <div class="tour">
-            <h1>Tour</h1>
+            <h1>Tour <?php echo $province["name"]?></h1>
             <ul>
                 <?php 
                     if(!empty($listTour)){

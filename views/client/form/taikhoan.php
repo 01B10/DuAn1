@@ -28,20 +28,20 @@
                     <div class="infomation">
                         <div class="info">
                             <label for="">Họ và tên</label>
-                            <input type="text" value="á đù" readonly>
+                            <input type="text" value="">
                         </div>
 
                         <div class="info">
                             <label for="">Giới tính</label>
-                            <input type="text" value="" readonly>
+                            <input type="text" value="">
                         </div>
                         <div class="info">
                             <label for="">Email</label>
-                            <input type="text" value="" readonly>
+                            <input type="text" value="">
                         </div>
                         <div class="info">
                             <label for="">Số điện thoại</label>
-                            <input type="text" value="" readonly>
+                            <input type="text" value="">
                         </div>
                         <div class="info">
                             <label for="">Địa chỉ</label>

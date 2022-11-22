@@ -98,6 +98,12 @@
             window.location = "listTour";
         });
     }
+
+    if(searchParam.has("orderId")){
+        window.addEventListener("load",()=>{
+            window.location = "listOrder";
+        });
+    }
 </script>
 
 </html>

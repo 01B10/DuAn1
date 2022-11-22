@@ -7,7 +7,7 @@ boby {
   font-size: 14px;
 }
 .container {
-  margin: auto;
+  margin: 30px auto 0 auto;
   gap: 30px;
 }
 .gr-1 .tour-img {
@@ -18,11 +18,6 @@ boby {
   max-width: 1000px;
   position: relative;
   margin: auto;
-}
-
-/* Hide the images by default */
-.mySlides {
-  display: none;
 }
 
 .mySlides img {
@@ -142,6 +137,7 @@ boby {
 .list-extra-services li {
   list-style: none;
   margin-top: 15px;
+  vertical-align: baseline;
 }
 .list-extra-services {
   display: grid;
@@ -194,6 +190,7 @@ boby {
   padding: 10px 30px;
   margin-top: 19px;
   background-color: #fec32d;
+  font-weight: bold;
 }
 /* .khoihanh {
 
