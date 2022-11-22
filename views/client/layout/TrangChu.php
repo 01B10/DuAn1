@@ -1,3 +1,7 @@
+<?php 
+    $queryBuilder = new QueryBuilder();
+    $listProvince = $queryBuilder->query($queryBuilder->table("province")->select("*")->get());
+?>
 <!-- <iframe width="100%" height="285" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=vùng đất cố đô&amp;hl=es;z=14&amp;output=embed" allowfullscreen=""></iframe> -->
     <article>
         <form class="search">
@@ -23,89 +27,59 @@
                 <button>Inquire now</button>
             </div>
         </form>
-        <h2>Điểm đến phổ biến ở Việt Nam</h2>
-        <hr>
-        <div class="destination">
-            <a href="tour">
-                <div class="full-destination">
-                    <img src="<?php echo _WEB_ROOT_."/views/client/img/hn1.jpg"?>" alt="">
-                    <div class="location">
-                        <p>HA NOI</p>
+        <section class="nice-place">
+            <div class="container">
+                <h1 class="h1-style">Địa Điểm Nổi Bật</h1>
+                <div class="nice-place-content row">
+                    <?php 
+                            if(!empty($listProvince)){
+                                foreach($listProvince as $item){
+                    ?>
+                                    <div class="nice-place-item">
+                                        <div class="nice-place-img">
+                                            <a href="tour?Province=<?php echo $item["Id"]?>"><img src="<?php echo _WEB_ROOT_."/views/client/img/province/".$item["img"]?>" alt=""></a>
+                                        </div>
+                                        <div class="nice-place-text">
+                                            <h2><a href="tour?Province=<?php echo $item["Id"]?>"><?php echo $item["name"]?></h2>
+                                        </div>
+                                    </div>
+                    <?php
+                            }
+                        }
+                    ?>
+            </div>
+        </section>
+        <section class="tour">
+            <div class="container">
+                <h1 class="h1-style">Blog nổi bật</h1>
+                <div class="tour-content row">
+                    <div class="tour-content-item row">
+                        <div class="tour-content-item-img">
+                            <img src="<?php echo _WEB_ROOT_."/views/client/img/NT1.jpg"?>" alt="">
+                        </div>
+                        <div class="tour-content-item-text">
+                            <h2>Hà Nội</h2>
+                            <p>Lăng Chủ tịch Hồ Chí Minh, còn gọi là Lăng Hồ Chủ tịch, Lăng Bác, là nơi gìn giữ di hài Chủ
+                                tịch Hồ Chí Minh, Việt Nam.</p>
+                            <button class="btn">Khám phá</button>
+                        </div>
                     </div>
-                </div>
-            </a>
-            <div class="full-destination">
-                <img src="<?php echo _WEB_ROOT_."/views/client/img/hcm1.jpg"?>" alt="">
-                <div class="location">
-                    <p>HO CHI MINH</p>
-                </div>
-            </div>
-            <div class="full-destination">
-                <img src="<?php echo _WEB_ROOT_."/views/client/img/DN1.jpg"?>" alt="">
-                <div class="location">
-                    <p>DA NANG</p>
-                </div>
-            </div>
-            <div class="full-destination">
-                <img src="<?php echo _WEB_ROOT_."/views/client/img/NA1.jpg"?>" alt="">
-                <div class="location">
-                    <p>NGHE AN</p>
-                </div>
-            </div>
-            <div class="full-destination">
-                <img src="<?php echo _WEB_ROOT_."/views/client/img/NT1.jpg"?>" alt="">
-                <div class="location">
-                    <p>NHA TRANG</p>
-                </div>
-            </div>
-            <div class="full-destination">
-                <img src="<?php echo _WEB_ROOT_."/views/client/img/HU1.jpg"?>" alt="">
-                <div class="location">
-                    <p>HUE</p>
-                </div>
-            </div>
-            <div class="full-destination">
-                <img src="<?php echo _WEB_ROOT_."/views/client/img/QN1.jpg"?>" alt="">
-                <div class="location">
-                    <p>QUANG NINH</p>
-                </div>
-            </div>
-            <div class="full-destination">
-                <img src="<?php echo _WEB_ROOT_."/views/client/img/LC1.jpg"?>" alt="">
-                <div class="location">
-                    <p>LAO CAI</p>
-                </div>
-            </div>
-        </div>
-        <h2>Bài viết mới nhất</h2>
-        <hr>
-        <div class="newPosts">
-            <div class="full-newPosts">
-                <img src="<?php echo _WEB_ROOT_."/views/client/img/hn1.jpg"?>" alt="">
-            </div>
-            <div class="full-newPosts">
-                <img src="<?php echo _WEB_ROOT_."/views/client/img/hcm1.jpg"?>" alt="">
-            </div>
-            <div class="full-newPosts">
-                <img src="<?php echo _WEB_ROOT_."/views/client/img/DN1.jpg"?>" alt="">
-            </div>
-            <div class="full-newPosts">
-                <img src="<?php echo _WEB_ROOT_."/views/client/img/NA1.jpg"?>" alt="">
-            </div>
-            <div class="full-newPosts">
-                <img src="<?php echo _WEB_ROOT_."/views/client/img/NT1.jpg"?>" alt="">
-            </div>
-            <div class="full-newPosts">
-                <img src="<?php echo _WEB_ROOT_."/views/client/img/HU1.jpg"?>" alt="">
-            </div>
-            <div class="full-newPosts">
-                <img src="<?php echo _WEB_ROOT_."/views/client/img/QN1.jpg"?>" alt="">
-            </div>
-            <div class="full-newPosts">
-                <img src="<?php echo _WEB_ROOT_."/views/client/img/LC1.jpg"?>" alt="">
-            </div>
 
-        </div>
+                    <div class="tour-content-item row">
+                        <div class="tour-content-item-img">
+                            <img src="<?php echo _WEB_ROOT_."/views/client/img/HU1.jpg"?>" alt="">
+                        </div>
+                        <div class="tour-content-item-text">
+                            <h2>Hội An</h2>
+                            <p>Hội An – đô thị cổ hội tụ tinh hoa vẻ đẹp, văn hóa và lịch sử Việt Nam, luôn nằm trong danh
+                                sách top những điểm đến hấp dẫn trên bản đồ du lịch, Việt Nam.</p>
+                            <button class="btn">Khám phá</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
     </article>
     <footer>
         <hr>

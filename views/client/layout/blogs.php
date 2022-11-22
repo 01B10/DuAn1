@@ -44,7 +44,22 @@
         </div>
         <div class="blog">
             <div class="full-block">
+<<<<<<< HEAD
                 <img src="./DuAn1_Minh/views/img/hn1.jpg" alt="">
+=======
+                <img src="<?php echo _WEB_ROOT_."/views/client/img/hcm1.jpg"?>" alt="">
+                <div class="location">
+                    <a href="https://www.google.com/search?q=gg+d%E1%BB%8Bch&oq=&aqs=chrome.0.69i59i450l8.248638j0j7&sourceid=chrome&ie=UTF-8"> <h2>Du lịch Hà Nội đa dạng hóa sản phẩm thu hút du khách</h2></a>
+                <p>Du lịch Hà Nội - Kinh đô Thăng Long một thời, là
+                    vùng đất được nhiều Triều đại phong kiến chọn làm kinh đô, lập ấp đắp
+                    đê trị vì đất nước. Hà Nội ngày nay nổi tiếng với 36 phố phường cùng nhiều
+                    danh lam thắng cảnh và nhiều di tích lịch sử lâu đời trở thành điểm đến
+                    của nhiều tour du lịch trong nước được du khách lựa chọn.</p>
+                </div>
+                <i class="fa-regular fa-clock"></i>
+            </div>
+            <div class="full-block">
+                <img src="<?php echo _WEB_ROOT_."/views/client/img/hcm1.jpg"?>" alt="">
                 <div class="location">
                     <a href="https://www.google.com/search?q=gg+d%E1%BB%8Bch&oq=&aqs=chrome.0.69i59i450l8.248638j0j7&sourceid=chrome&ie=UTF-8"> <h2>Du lịch Hà Nội đa dạng hóa sản phẩm thu hút du khách</h2></a>
                 <p>Du lịch Hà Nội - Kinh đô Thăng Long một thời, là
@@ -56,7 +71,8 @@
                
             </div>
             <div class="full-block">
-                <img src="./DuAn1_Minh/views/img/hn1.jpg" alt="">
+                <img src="<?php echo _WEB_ROOT_."/views/client/img/hn1.jpg"?>" alt="">
+>>>>>>> 86bfe631bdd800b6c66d27f12a740a8e5bcb8d48
                 <div class="location">
                     <a href="https://www.google.com/search?q=gg+d%E1%BB%8Bch&oq=&aqs=chrome.0.69i59i450l8.248638j0j7&sourceid=chrome&ie=UTF-8"> <h2>Du lịch Hà Nội đa dạng hóa sản phẩm thu hút du khách</h2></a>
                 <p>Du lịch Hà Nội - Kinh đô Thăng Long một thời, là
@@ -67,6 +83,19 @@
                 </div>
                
             </div>
+            <div class="full-block">
+                <img src="<?php echo _WEB_ROOT_."/views/client/img/hn1.jpg"?>" alt="">
+                <div class="location">
+                    <a href="https://www.google.com/search?q=gg+d%E1%BB%8Bch&oq=&aqs=chrome.0.69i59i450l8.248638j0j7&sourceid=chrome&ie=UTF-8"> <h2>Du lịch Hà Nội đa dạng hóa sản phẩm thu hút du khách</h2></a>
+                <p>Du lịch Hà Nội - Kinh đô Thăng Long một thời, là
+                    vùng đất được nhiều Triều đại phong kiến chọn làm kinh đô, lập ấp đắp
+                    đê trị vì đất nước. Hà Nội ngày nay nổi tiếng với 36 phố phường cùng nhiều
+                    danh lam thắng cảnh và nhiều di tích lịch sử lâu đời trở thành điểm đến
+                    của nhiều tour du lịch trong nước được du khách lựa chọn.</p>
+                </div>
+               
+            </div>
+<<<<<<< HEAD
             <div class="Form2_full">
                 <label for="">Trẻ em*</label>
                 <input type="text"><br>
@@ -74,9 +103,22 @@
             <div class="Form2_full">
                 <label for="">Trẻ nhỏ*</label>
                 <input type="text"><br>
+=======
+            <div class="full-block">
+                <img src="<?php echo _WEB_ROOT_."/views/client/img/hn1.jpg"?>" alt="">
+                <div class="location">
+                    <a href="https://www.google.com/search?q=gg+d%E1%BB%8Bch&oq=&aqs=chrome.0.69i59i450l8.248638j0j7&sourceid=chrome&ie=UTF-8"> <h2>Du lịch Hà Nội đa dạng hóa sản phẩm thu hút du khách</h2></a>
+                <p>Du lịch Hà Nội - Kinh đô Thăng Long một thời, là
+                    vùng đất được nhiều Triều đại phong kiến chọn làm kinh đô, lập ấp đắp
+                    đê trị vì đất nước. Hà Nội ngày nay nổi tiếng với 36 phố phường cùng nhiều
+                    danh lam thắng cảnh và nhiều di tích lịch sử lâu đời trở thành điểm đến
+                    của nhiều tour du lịch trong nước được du khách lựa chọn.</p>
+                </div>
+               
+>>>>>>> 86bfe631bdd800b6c66d27f12a740a8e5bcb8d48
             </div>
             <div class="full-block">
-                <img src="./DuAn1_Minh/views/img/hn1.jpg" alt="">
+                <img src="<?php echo _WEB_ROOT_."/views/client/img/hn1.jpg"?>" alt="">
                 <div class="location">
                     <a href="https://www.google.com/search?q=gg+d%E1%BB%8Bch&oq=&aqs=chrome.0.69i59i450l8.248638j0j7&sourceid=chrome&ie=UTF-8"> <h2>Du lịch Hà Nội đa dạng hóa sản phẩm thu hút du khách</h2></a>
                 <p>Du lịch Hà Nội - Kinh đô Thăng Long một thời, là

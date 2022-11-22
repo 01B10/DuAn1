@@ -8,12 +8,12 @@
             <thead>
                 <tr>
                     <th>STT</th>
+                    <th>ID</th>
                     <th>Tên</th>
                     <th>Giới tính</th>
                     <th>Email</th>
                     <th>SDT</th>
                     <th>Vai trò</th>
-                    <th>Mật khẩu</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -26,6 +26,7 @@
                 ?>
                             <tr>
                                 <td><?php echo $i?></td>
+                                <td><?php echo $item["Id"]?></td>
                                 <td class="avatar">
                                     <img src="<?php echo _WEB_ROOT_."/views/client/img/".$item["img"]?>" alt="">
                                     <span><?php echo $item["name"]?></span>
@@ -52,7 +53,6 @@
                                             }
                                     ?>
                                 </td>
-                                <td><?php echo $item["password"]?></td>
                                 <td class="action">
                                     <i class="fa-solid fa-ellipsis-vertical"></i>
                                     <div class="hidden">

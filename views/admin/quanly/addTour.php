@@ -3,14 +3,15 @@
     $rule = [
         "img" => "img",
         "name" => "required|min:10|max:30",
+        "departure" => "required",
         "province" => "required",
-        "price" => "required|price",
+        "price" => "required|number",
         "start_time" => "required",
         "end_time" => "required",
         "journeys" => "required",
         "listservice_id" => "required",
         "list_transport_id" => "required",
-        "slot" => "required|slot",
+        "slot" => "required|number",
         "discount" => "required|discount",
     ];
 
@@ -19,22 +20,27 @@
         "name.min" => "name phải có ít nhất 10 kí tự",
         "name.max" => "name không vượt quá 30 kí tự",
         "img.img" => "file không hợp lệ",
+        "departure.required" => "Không được để trống",
         "province.required" => "Không được để trống",
         "price.required" => "không được để trống",
-        "price.price" => "price không hợp lệ",
+        "price.number" => "price không hợp lệ",
         "start_time.required" => "Không được để trống",
         "end_time.required" => "Không được để trống",
         "journeys.required" => "Không được để trống",
         "listservice_id.required" => "Không được để trống",
         "list_transport_id.required" => "Không được để trống",
         "slot.required" => "Không được để trống",
-        "slot.slot" => "slot không hợp lệ",
+        "slot.number" => "slot không hợp lệ",
         "discount.required" => "Không được để trống",
         "discount.discount" => "discount không hợp lệ",
     ];
     $listTransport = $queryBuilder->query($queryBuilder->table("list_transport")->select("*")->get());
     $listService = $queryBuilder->query($queryBuilder->table("list_service")->select("*")->get());
     $listProvince = $queryBuilder->query($queryBuilder->table("province")->select("*")->get());
+    // $tour12 = $queryBuilder->query($queryBuilder->table("tour")->select("*")->get());
+    // echo "<pre>";
+    // print_r($tour12);
+    // echo "</pre>";
     $errors = [];
     if(isset($_POST["addTour"])){
         $validate =  validate($rule,$message,$errors);
@@ -42,12 +48,14 @@
         if($validate){
             $service = $_POST["listservice_id"];
             $trasport = $_POST["list_transport_id"];
-            $contentSchedule = $_POST["content_schedule"];
-            $contentService = $_POST["content_service"];
+            $_POST["content_service"] = "\"".htmlentities($_POST["content_service"])."\"";
+            $_POST["content_schedule"] = "\"".htmlentities($_POST["content_schedule"])."\"";
+            // echo "<pre>";
+            // print_r($_POST["content_schedule"]);
+            // echo "</pre>";
             unset($_POST["listservice_id"]);
             unset($_POST["list_transport_id"]);
-            unset($_POST["content_schedule"]);
-            unset($_POST["content_service"]);
+
             $_POST["start_time"] = date("Y-m-d",strtotime($_POST["start_time"]));
             $_POST["end_time"] = date("Y-m-d",strtotime($_POST["end_time"]));
             $data = array_filter($_POST);
@@ -58,11 +66,12 @@
             $idTour = $queryBuilder->first($queryBuilder->table("tour")->select("Id")->orderBy("Id","DESC")->get());
             $queryBuilder->excute($queryBuilder->inserData("tour_detail",["tour_id"=>$idTour["Id"]]));
             $idTourDetail = $queryBuilder->first($queryBuilder->table("tour_detail")->select("Id")->orderBy("Id","DESC")->get());
-            $queryBuilder->excute($queryBuilder->inserData("schedule",["tour_detail_id"=>$idTourDetail["Id"],"content_schedule"=>$contentSchedule]));
-
+            // $queryBuilder->excute($queryBuilder->inserData("schedule",["tour_detail_id"=>$idTourDetail["Id"],"content_schedule"=>$contentSchedule]));
+            // echo "<pre>";
+            // print_r( $_POST["content_service"]);
+            // echo "</pre>";
             $data = [];
             $data["tour_detail_id"] = $idTourDetail["Id"];
-            $data["content_service"] = $contentService;
             foreach($service as $item){
                 $data["listservice_id"] = $item;
                 $queryBuilder->excute($queryBuilder->inserData("service",$data));
@@ -76,12 +85,6 @@
             }
             $_POST = "";
         }
-        // echo "<pre>";
-        // print_r($_POST["content_schedule"]);
-        // echo "</pre>";
-        // echo "<pre>";
-        // print_r($_POST);
-        // echo "</pre>";
     }
 ?>    
 
@@ -184,6 +187,11 @@
                                         <p class="err"><?php echo (!empty($errors) && array_key_exists("list_transport_id",$errors))?$errors["list_transport_id"]:false?></p>
                                     </label>
                                     <label for="">
+                                        <span>Điểm khởi hành:</span>
+                                        <input type="text" name="departure" value="<?php if(!empty($_POST["departure"])){echo $_POST["slot"];}?>">
+                                        <p class="err"><?php echo (!empty($errors) && array_key_exists("departure",$errors))?$errors["departure"]:false?></p>
+                                    </label>
+                                    <label for="">
                                         <span>Chỗ:</span>
                                         <input type="text" name="slot" value="<?php if(!empty($_POST["slot"])){echo $_POST["slot"];}?>">
                                         <p class="err"><?php echo (!empty($errors) && array_key_exists("slot",$errors))?$errors["slot"]:false?></p>
@@ -199,13 +207,13 @@
                         <div class="col-sm-12">
                             <div class="card-box">
                                 <h4 class="m-b-30 m-t-0 header-title"><b>Nội dung dịch vụ</b></h4>
-                                <textarea class="summernote" name="content_service"></textarea>
+                                <textarea class="summernote content_service" name="content_service"></textarea>
                             </div>
                         </div>
                         <div class="col-sm-12">
                             <div class="card-box">
                                 <h4 class="m-b-30 m-t-0 header-title"><b>Lịch trình</b></h4>
-                                <textarea class="summernote" name="content_schedule"></textarea>
+                                <textarea class="summernote content_schedule" name="content_schedule"></textarea>
                             </div>
                         </div>
 
@@ -230,9 +238,7 @@
         <script src="<?php echo _WEB_ROOT_."/views/admin/assets/js/jquery.min.js"?>"></script>
         <script src="<?php echo _WEB_ROOT_."/views/admin/assets/js/bootstrap.min.js"?>"></script>
         <script>
-
             jQuery(document).ready(function(){
-
                 $('.summernote').summernote({
                     height: 300,                 // set editor height
                     minHeight: null,             // set minimum height of editor
