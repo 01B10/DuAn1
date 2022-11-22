@@ -28,7 +28,7 @@
                     <div class="infomation">
                         <div class="info">
                             <label for="">Họ và tên</label>
-                            <input type="text" value="á đù" readonly>
+                            <input type="text" value="" readonly>
                         </div>
 
                         <div class="info">
@@ -48,10 +48,13 @@
                             <input type="text" value="" readonly>
                         </div>
                         <div class="info">
-                            <label for="">Chưa nghĩ ra</label>
+                            <label for="">Vai trò</label>
                             <input type="text" value="" readonly>
                         </div>
                     </div>
+                </div>
+                <div class="update">
+                    <a href=""><button>Chỉnh sửa thông tin</button></a>
                 </div>
             </div>
             <div class="change">
@@ -75,7 +78,7 @@
             </div>
         </form>
         <div class="history">
-            <h3>Lịch sử đơn đặt</h3>
+            <h3>Lịch sử đặt hàng</h3>
             <table cellpadding="10"  >
                 <thead>
                     <th>Id</th>
@@ -89,7 +92,7 @@
                 <tbody>
                     <tr>
                         <td>
-                            1
+                            
                             <!-- php code -->
                         </td>
                         <td>

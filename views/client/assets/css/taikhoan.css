@@ -116,6 +116,19 @@ body{
     grid-template-columns: 1fr 1fr;
     gap: 15px;
 }
+.update{
+    text-align: center;
+}
+.update a button{
+    width: 20%;
+    height: 40px;
+    background: rgb(155, 155, 231);
+    display: inline-block;
+    border: none;
+    color: #fff;
+    font-size: 17px;
+    border-radius: 5px;
+}
 .change-pass input{
     display: inline-block;
     width: 100%;
