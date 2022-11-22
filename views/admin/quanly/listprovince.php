@@ -8,6 +8,8 @@
             <thead>
                 <tr>
                     <th>STT</th>
+                    <th>ID</th>
+                    <th>Ảnh</th>
                     <th>Tỉnh/Thành</th>
                     <th>Action</th>
                 </tr>
@@ -21,6 +23,10 @@
                 ?>
                             <tr>
                                 <td><?php echo $i?></td>
+                                <td><?php echo $item["Id"]?></td>
+                                <td>
+                                    <img class="imgTour" src="<?php echo _WEB_ROOT_."/views/client/img/province/".$item["img"]?>" alt="">
+                                </td>
                                 <td><?php echo $item["name"]?></td>
                                 <td class="action">
                                     <i class="fa-solid fa-ellipsis-vertical"></i>

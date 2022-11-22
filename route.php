@@ -3,9 +3,12 @@
     $route["forgotpassword"] = "client\\form\\ForgotPass";
     $route["Login"] = "client\\form\\Login";
     $route["Register"] = "client\\form\\Register";
+    $route["account"] = "client\\form\\taikhoan";
+    $route["bills"] = "client\\form\\Bill_user";
     $route["tour"] = "client\\layout\\listTour";
     $route["tourDetail"] = "client\\layout\\tourDetail";
     $route["blogs"] = "client\\layout\\blogs";
+    $route["bookTour"] = "client\\layout\\bookTour";
 
     $route["admin/dashboard"] = "admin\\quanly\\dashboard";
     $route["admin/listUser"] = "admin\\quanly\\listuser";
@@ -26,4 +29,6 @@
     $route["admin/addTransport"] = "admin\\quanly\\addTransport";
     $route["chat"] = "client\\layout\\chat";
     $route["post"] = "admin\\quanly\\post";
+
+    $route["admin/logout"] = "admin\\quanly\\logout";
 ?>

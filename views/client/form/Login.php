@@ -1,21 +1,39 @@
 <?php 
+    $queryBuilder = new QueryBuilder();
     $rule = [
-        "email" => "required|email|min:13",
-        "password" => "required|min:5|max:10",
+        "email" => "required",
+        "password" => "required",
     ];
 
     $message = [
         "email.required" => "Không được để trống",
-        "email.min" => "email phải có ít nhất 4 kí tự",
-        "email.email" => "email không hợp lệ",
         "password.required" => "Không được để trống",
-        "password.min" => "password phải có ít nhất 4 kí tự",
-        "password.max" => "password không vượt quá 10 kí tự",
     ];
     $errors = [];
     if(isset($_POST["login"])){
         $validate =  validate($rule,$message,$errors);
         $errors = errors("",$errors);
+        if($validate){
+            $customer = $queryBuilder->query($queryBuilder->table("customer")->select("*")
+            ->where("customer.email","=",$_POST["email"])
+            ->where("customer.password","=",$_POST["password"])
+            ->orWhere("customer.phone","=",$_POST["email"])
+            ->where("customer.password","=",$_POST["password"])
+            ->get());
+            if(!empty($customer)){
+                if($customer[0]["role"] == 1){
+                    $_SESSION["Login"]["admin"] = $customer[0];
+                    if(isset($_SESSION["Login"]["admin"])){
+                        header("Location: admin/");
+                    }
+                }elseif($customer[0]["role"] == 2){
+                    $_SESSION["Login"]["customer"] = $customer[0];
+                    if(isset($_SESSION["Login"]["customer"])){
+                        header("Location: Trang-Chu");
+                    }
+                }
+            }
+        }
     }
 ?>
 
@@ -26,7 +44,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
     <link rel="stylesheet" href="<?php echo _WEB_ROOT_."/views/client/assets/css/login.css"?>">
     <script src="https://kit.fontawesome.com/d620f19a29.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
@@ -39,8 +57,9 @@
     <div class="container">
         <form action="" method="POST">
             <h2>Login form</h2>
+            <p class="err"><?php echo (isset($customer) && empty($customer))?"Tài khoản hoặc Mật khẩu không đúng":false?></p>
             <div class="input-field">
-                <input type="text" name="email">
+                <input type="text" name="email" value="<?php if(!empty($_POST["email"])){echo $_POST["email"];}?>">
                 <label for="">Email or Phone Number</label>
                 <p class="err"><?php echo (!empty($errors) && array_key_exists("email",$errors))?$errors["email"]:false?></p>
             </div>

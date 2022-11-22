@@ -1,4 +1,5 @@
 <?php 
+     $queryBuilder = new QueryBuilder();
     function getMethod(){
         return $_SERVER["REQUEST_METHOD"];
     }
@@ -27,6 +28,7 @@
     }
 
     function validate($rule,$message,&$error){
+        global $queryBuilder;
         $rules = $rule;
         $checkValidate = true;
         if(!empty($rules)){
@@ -81,10 +83,30 @@
                             }
                         }
 
-                        if($ruleName == "phone" || $ruleName == "price" || $ruleName == "slot" || $ruleName == "discount"){
+                        if($ruleName == "phone" || $ruleName == "discount" || $ruleName == "number"){
                             if((int) $dataFields[$fieldName] == 0){
                                 setErrors($error,$message,$fieldName,$ruleName);
                                 $checkValidate = false;
+                            }
+                        }
+
+                        if($ruleName == "unique"){
+                            $tableName = null;
+                            $fieldCheck = null;
+                            if(!empty($rulesArr[1])){
+                                $tableName = $rulesArr[1];
+                            }
+
+                            if(!empty($rulesArr[2])){
+                                $fieldCheck = $rulesArr[2];
+                            }
+                            
+                            if(!empty($tableName) && !empty($fieldCheck)){
+                                $check = $queryBuilder->query("SELECT count(*) FROM `$tableName` WHERE `$fieldCheck` = '$dataFields[$fieldCheck]'");
+                                if($check[0]["count(*)"] >= 1){
+                                    setErrors($error,$message,$fieldName,$ruleName);
+                                    $checkValidate = false;
+                                }
                             }
                         }
                     }else{

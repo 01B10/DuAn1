@@ -114,10 +114,10 @@
             </div>
 
             <div class="user-wrapper">
-                <img src="../img/tải xuống (1).png" width="40px" height="40px" alt="">
+                <img src="<?php echo _WEB_ROOT_."/views/client/img/customer/".$_SESSION["Login"]["admin"]["img"]?>" width="40px" height="40px" alt="">
                 <div>
-                    <h4>Join Doe</h4>
-                    <small>Super admin</small>
+                    <h4><?php echo $_SESSION["Login"]["admin"]["name"]?></h4>
+                    <small>Nhân viên</small>
                 </div>
             </div>
         </header>

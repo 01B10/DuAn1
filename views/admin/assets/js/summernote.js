@@ -926,7 +926,7 @@
     editingArea = renderer.create('<div class="note-editing-area"/>'),
     codable = renderer.create('<textarea class="note-codable"/>'),
     editable = renderer.create(
-      '<div class="note-editable panel-body" contentEditable="true"/>'
+      `<div class="note-editable panel-body" contentEditable="true"/>`
     ),
     statusbar = renderer.create(
       [
@@ -945,7 +945,9 @@
     ),
     buttonGroup = renderer.create('<div class="note-btn-group btn-group">'),
     button = renderer.create(
-      '<button type="button" class="note-btn btn btn-default btn-sm" tabindex="-1">',
+      `<button type="button" class="note-btn btn btn-default btn-sm" tabindex="-1">
+          <p>"alshdah"</p>
+      `,
       function (a, b) {
         b &&
           b.tooltip &&

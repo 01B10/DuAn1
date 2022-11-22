@@ -8,9 +8,10 @@
     if(isset($controller)){
         switch ($controller) {
             case $controller:
+                session_start();
                 $data["sub"] = $controller;
                 $data["exception"] = strtolower(trim($_SERVER["PATH_INFO"],"/"));
-                $data["arrexc"] = ["login","register","forgotpassword"];
+                $data["arrexc"] = ["login","register","forgotpassword","account","bills","booktour"];
                 $conditon = $_SERVER["PATH_INFO"];
                 $str = substr($conditon,strrpos($conditon,"/"),strlen($conditon));
                 $data["sub1"]["pathcss"] = $str;

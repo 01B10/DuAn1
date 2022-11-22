@@ -28,20 +28,24 @@
                     <div class="infomation">
                         <div class="info">
                             <label for="">Họ và tên</label>
+<<<<<<< HEAD
                             <input type="text" value="" readonly>
+=======
+                            <input type="text" value="">
+>>>>>>> 86bfe631bdd800b6c66d27f12a740a8e5bcb8d48
                         </div>
 
                         <div class="info">
                             <label for="">Giới tính</label>
-                            <input type="text" value="" readonly>
+                            <input type="text" value="">
                         </div>
                         <div class="info">
                             <label for="">Email</label>
-                            <input type="text" value="" readonly>
+                            <input type="text" value="">
                         </div>
                         <div class="info">
                             <label for="">Số điện thoại</label>
-                            <input type="text" value="" readonly>
+                            <input type="text" value="">
                         </div>
                         <div class="info">
                             <label for="">Địa chỉ</label>
