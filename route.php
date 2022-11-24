@@ -21,12 +21,14 @@
     $route["admin/listTransport"] = "admin\\quanly\\listtransport";
 
     $route["admin/addCustomer"] = "admin\\quanly\\addCustomer";
-    $route["admin/updateUser"] = "admin\\quanly\\updateUser";
     $route["admin/addService"] = "admin\\quanly\\addService";
     $route["admin/addTour"] = "admin\\quanly\\addTour";
     $route["admin/addBlog"] = "admin\\quanly\\addBlog";
     $route["admin/addProvince"] = "admin\\quanly\\addProvince";
     $route["admin/addTransport"] = "admin\\quanly\\addTransport";
+
+    $route["admin/updateUser"] = "admin\\quanly\\updateUser";
+    $route["admin/updateTour"] = "admin\\quanly\\updateTour";
     $route["chat"] = "client\\layout\\chat";
     $route["post"] = "admin\\quanly\\post";
 

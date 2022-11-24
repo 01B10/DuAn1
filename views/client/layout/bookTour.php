@@ -9,12 +9,14 @@
         "adults.required" => "Không được để trống",
         "children.required" => "Không được để trống",
     ];
+    
     $errors = [];
-     $customer = $queryBuilder->query($queryBuilder->table("customer")->select("*")
-     ->where("customer.Id","=",$_SESSION["Login"]["customer"]["Id"])->get())[0];
-     $tour = $queryBuilder->query($queryBuilder->table("tour")->select("*")
-     ->where("tour.Id","=",$_GET["tour_id"])->get())[0];
+    $customer = $queryBuilder->query($queryBuilder->table("customer")->select("*")
+    ->where("customer.Id","=",$_SESSION["Login"]["customer"]["Id"])->get())[0];
+    $tour = $queryBuilder->query($queryBuilder->table("tour")->select("*")
+    ->where("tour.Id","=",$_GET["tour_id"])->get())[0];
 
+    //  print_r($_SESSION);
 
      if(isset($_POST["submit"])){
         $validate =  validate($rule,$message,$errors);
@@ -30,24 +32,29 @@
             $data["cus_id"] = $_SESSION["Login"]["customer"]["Id"];
             $data["start_time"] = date("Y-m-d",strtotime($_SESSION["orderDate"]));
             $data["creat_time"] = date("Y-m-d");
-
-            $queryBuilder->excute($queryBuilder->inserData("ordertour",$data));
-
-            $orderID = $queryBuilder->first($queryBuilder->table("ordertour")->select("Id")->orderBy("Id","DESC")->get());
-
-            $data = [];
-            $data["adults"] = $adults;
-            $data["children"] = $children;
-            $data["pay"] = $pay;
-            $data["tour_id"] = $_GET["tour_id"];
-            $data["order_id"] = $orderID["Id"];
-
-            $queryBuilder->excute($queryBuilder->inserData("order_details",$data));
-            // echo "<pre>";
-            // print_r($data);
-            // echo "</pre>";
-        }
-     }
+            // echo $tour["slot"];
+            
+            if($tour["slot"] < $adults + $children){
+              echo "<script>alert('Hiện tại tour chỉ có: ".$tour["slot"]." chỗ')</script>";
+            }else{
+                    $currentSlot = $tour["slot"] - $adults - $children;
+                    $queryBuilder->excute($queryBuilder->inserData("ordertour",$data));
+                    
+                    $orderID = $queryBuilder->first($queryBuilder->table("ordertour")->select("Id")->orderBy("Id","DESC")->get());
+                    
+                    $data = [];
+                    $data["adults"] = $adults;
+                    $data["children"] = $children;
+                    $data["pay"] = $pay;
+                    $data["tour_id"] = $_GET["tour_id"];
+                    $data["order_id"] = $orderID["Id"];
+                    
+                    $insertOrder = $queryBuilder->excute($queryBuilder->inserData("order_details",$data));
+                    $queryBuilder->excute($queryBuilder->updateData("tour",["tour.slot"=>$currentSlot],"tour.Id = ".$_GET["tour_id"]));
+                    header("Location: bills");
+              }
+         }
+      }
 ?>
 
 <!DOCTYPE html>
@@ -64,7 +71,7 @@
     <!-- Responsive Contact Page with Dark Mode and Form Validation (vanilla JS).
 
 *Designed & built for desktop and tablets with viewport width >= 720px and in landscape orientation.  -->
-<a href="Trang-Chu">
+<a href="<?php echo "tourDetail?tourdetailId=".$_SESSION["tourdetailId"]?>">
         <i class="fa-solid fa-arrow-left"></i>
 </a>
 <div class="contact-container">
@@ -117,7 +124,6 @@
             <div class="btn-submit-tour">
               <button type="submit" id="submit" name="submit">Hoàn tất đặt Tour</button>
             </div>
-            <!--<a href="javascript:void(0)">--><!--</a>-->
         </form>
   
         <!-- <div id="error"></div> -->
@@ -125,8 +131,8 @@
     </div>
 </div>
   
-  <!-- Image credit: Oliver Sjöström https://www.pexels.com/photo/body-of-water-near-green-mountain-931018/  -->
-  <script>document.addEventListener('DOMContentLoaded', function () {
+  <script>
+  document.addEventListener('DOMContentLoaded', function () {
     var checkbox = document.querySelector('input[type="checkbox"]');
     var applyCoupon = document.querySelector('.apply-coupon');
     checkbox.addEventListener('change', function () {

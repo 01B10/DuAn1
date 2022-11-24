@@ -1,7 +1,6 @@
 <?php 
     $queryBuilder = new QueryBuilder();
     $rule = [
-        "img" => "img",
         "name" => "required|min:10|max:30",
         "departure" => "required",
         "province" => "required",
@@ -19,7 +18,6 @@
         "name.required" => "Không được để trống",
         "name.min" => "name phải có ít nhất 10 kí tự",
         "name.max" => "name không vượt quá 30 kí tự",
-        "img.img" => "file không hợp lệ",
         "departure.required" => "Không được để trống",
         "province.required" => "Không được để trống",
         "price.required" => "không được để trống",
@@ -35,15 +33,17 @@
         "discount.discount" => "discount không hợp lệ",
     ];
 
+    // $tour = $queryBuilder->query($queryBuilder->table()
+
     $listTransport = $queryBuilder->query($queryBuilder->table("list_transport")->select("*")->get());
     $listService = $queryBuilder->query($queryBuilder->table("list_service")->select("*")->get());
     $listProvince = $queryBuilder->query($queryBuilder->table("province")->select("*")->get());
-    // $tour12 = $queryBuilder->query($queryBuilder->table("tour")->select("*")->get());
-    // echo "<pre>";
-    // print_r($tour12);
-    // echo "</pre>";
+    
     $errors = [];
-    if(isset($_POST["addTour"])){
+    if(isset($_POST["updateTour"])){
+        echo "<pre>";
+        print_r($_POST["listservice_id"]);
+        echo "</pre>";
         $validate =  validate($rule,$message,$errors);
         $errors = errors("",$errors);
         if($validate){
@@ -84,7 +84,7 @@
         }
     }
 
-
+    
 ?>    
 
 <main>
@@ -102,7 +102,7 @@
 
                         <div class="row">
                         <div class="infor">
-                            <h2>Add Tour</h2>
+                            <h2>Update Tour</h2>
                             <div class="Tour">
                                 <div class="ImgTour">
                                     <input type="file" name="img">
@@ -160,7 +160,7 @@
                                                     foreach($listService as $item){
                                             ?>
                                                         <label for="<?php echo $item["Id"]?>">
-                                                            <input type="checkbox" name="listservice_id[]" id="<?php echo $item["Id"]?>" class="toggleService toggle" value="<?php echo $item["Id"]?>"><span><?php echo $item["name"]?></span>
+                                                            <input type="checkbox" name="listservice_id[]" id="<?php echo $item["Id"]?>" class="toggleService toggle" value="<?php echo $item["Id"]?>" checked><span><?php echo $item["name"]?></span>
                                                         </label>
                                             <?php
                                                     }
@@ -223,7 +223,7 @@
                             </div>
                         </div>
 
-                        <button type="submit" name="addTour" class="btn btn-success waves-effect waves-light">Add Tour</button>
+                        <button type="submit" name="updateTour" class="btn btn-success waves-effect waves-light">Update</button>
                     </form>
                 </div>
             </div>

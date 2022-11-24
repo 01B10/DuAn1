@@ -1,7 +1,7 @@
 <?php 
     $queryBuilder = new QueryBuilder();
     $rule = [
-        "name" => "required|min:10",
+        "name" => "required|min:5",
         "img" => "required|img",
     ];
 

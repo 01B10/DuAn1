@@ -23,6 +23,7 @@
     const searchParam = new URLSearchParams(window.location.search);
     var deleteTour = document.querySelector(".deleteTour");
 
+
     let index = 0;
     toggle.addEventListener("click",()=>{
         ++index;
@@ -83,7 +84,14 @@
 
     choosen.forEach((item)=>{
         item.addEventListener("click",()=>{
-            item.classList.toggle("choosen");
+            if(item.previousElementSibling.checked == true){
+                item.previousElementSibling.classList.toggle("toggle");
+                item.classList.remove("choosen");
+                // item.previousElementSibling.checked = false;
+            }else{
+                item.classList.toggle("choosen");
+            }
+            console.log(item.previousElementSibling);
         })
     });
 

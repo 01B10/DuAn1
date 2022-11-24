@@ -3,7 +3,7 @@
     $rule = [
         "name" => "required|min:10|max:30",
         "email" => "required|email|min:13|unique:customer:email",
-        "phone" => "required|min:10|max:11|phone|unique:customer:phone",
+        "phone" => "required|min:10|max:11|number|unique:customer:phone",
         "gender" => "required",
         "password" => "required|min:5|max:20",
         "repassword" => "required|match:password"
@@ -16,6 +16,7 @@
         "phone.required" => "Không được để trống",
         "phone.min" => "phone không hợp lệ",
         "phone.max" => "phone không hợp lệ",
+        "phone.number" => "phone không hợp lệ",
         "phone.unique" => "phone đã tồn tại",
         "gender.required" => "không được để trống",
         "email.required" => "Không được để trống",

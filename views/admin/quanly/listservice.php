@@ -24,8 +24,10 @@
                             <tr>
                                 <td><?php echo $i?></td>
                                 <td><?php echo $item["Id"]?></td>
-                                <td class="avatar">
-                                    <img src="<?php echo _WEB_ROOT_."/views/admin/icon/".$item["img"]?>" alt="">
+                                <td>
+                                    <div class="avatar">
+                                        <img src="<?php echo _WEB_ROOT_."/views/admin/icon/".$item["img"]?>" alt="">
+                                    </div>
                                 </td>
                                 <td><?php echo $item["name"]?></td>
                                 <td class="action">

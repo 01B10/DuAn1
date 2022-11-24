@@ -27,9 +27,11 @@
                             <tr>
                                 <td><?php echo $i?></td>
                                 <td><?php echo $item["Id"]?></td>
-                                <td class="avatar">
-                                    <img src="<?php echo _WEB_ROOT_."/views/client/img/".$item["img"]?>" alt="">
-                                    <span><?php echo $item["name"]?></span>
+                                <td>
+                                    <div class="avatar">
+                                        <img src="<?php echo _WEB_ROOT_."/views/client/img/customer/".$item["img"]?>" alt="">
+                                        <span><?php echo $item["name"]?></span>
+                                    </div>
                                 </td>
                                 <td>
                                     <?php 
