@@ -28,7 +28,7 @@
             try {
                 global $conn;
                 $conn->exec($sql);
-                // echo $sql;
+                // echo $sql."<br>";
            } catch (Exception $th) {
                 echo $th->getMessage();
            }
@@ -87,14 +87,6 @@
             };
         }
 
-        // public function update($data){
-        //     $whereUpdate = str_replace("WHERE","",$this->where);
-        //     $whereUpdate = trim($whereUpdate);
-        //     $tableName = $this->tableName;
-        //     $statusUpdate = $this->updateData($tableName,$data,$whereUpdate);
-        //     return $statusUpdate;
-        // }
-
         function updateData($table,$data,$condition=''){
             if(!empty($data)){
                 $updateStr = "";
@@ -107,10 +99,7 @@
                 }else{
                     $sql = "UPDATE $table SET $updateStr";
                 }
-                // $status = $this->query($sql);
-                // if(empty($status)){
-                //     return true;
-                // }
+               
                 return $sql;
             }
         }
