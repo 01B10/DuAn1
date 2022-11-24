@@ -16,6 +16,7 @@
                 <?php 
                     if(!empty($listTour)){
                         foreach($listTour as $item){
+                            $discount = $item["price"] - $item["price"] * $item["discount"]/100;
                             $listTransport = $queryBuilder->query($queryBuilder->table("transport")->select("*")
                             ->join("inner","list_transport","transport.list_transport_id = list_transport.Id")
                             ->where("transport.tour_detail_id","=",$item["Id"])->get());
@@ -26,7 +27,7 @@
                             <li>
                                 <div class="box-img">
                                     <a href="tourDetail?tourdetailId=<?php echo $item["Id"]?>">
-                                        <img src="<?php echo _WEB_ROOT_."/views/client/img/tours/".$item["img"]?>"><div class="note-special">Giá tốt nhất</div><button>Đặt Tour</button>
+                                        <img src="<?php echo _WEB_ROOT_."/views/client/img/tours/".$item["img"]?>"><div class="note-special">Giá tốt nhất</div>
                                     </a>
                                 </div>
                                 <div class="box-content">
@@ -62,15 +63,15 @@
                                             <div class="box-tour-note-extra"> </div>
                                         </div>
                                         <div class="box-price-promotion-tour">
-                                            Giá 1 khách:  <span><?php echo $item["price"]?><sup>đ</sup></span><del><?php echo $item["price"]?><sup>đ</sup></del>
+                                            Giá 1 khách:  <span><?php echo $discount?><sup>đ</sup></span><del><?php echo $item["price"]?><sup>đ</sup></del>
                                             <div class="box-percent-tour">
                                                 <div class="arrow-left">
                                                     <div class="box-percent-tour-sale">-<?php echo $item["discount"]?>%</div>
                                                 </div>
                                             </div>
                                             Chỗ: <?php echo $item["slot"]?>
-                                            <a class="btn btn-success btn-xs btn-readmore" href="">
-                                                Đặt Tour <span class="glyphicon glyphicon-chevron-right"></span>
+                                            <a class="btn btn-success btn-xs btn-readmore" href="tourDetail?tourdetailId=<?php echo $item["Id"]?>">
+                                                Chi tiết tour <span class="glyphicon glyphicon-chevron-right"></span>
                                             </a>
                                         </div>
                                     </div>
@@ -84,6 +85,34 @@
                 ?>
 
             </ul>
+        </div>
+        <div class="blogs">
+            <h2>Blogs</h2>
+            <ul>
+                <li>
+                    <a href="">
+                        <img src="<?php echo _WEB_ROOT_."/views/client/img/blogs/default-image.jpg"?>" alt="">
+                    </a>
+                    <a href="">
+                        <p class="titleBlog">Tour Đà Nẵng khuyến mãi</p>
+                    </a>
+                    <p>
+                        <i class="fa-solid fa-calendar-plus"></i>
+                        <span>24/11/2022</span>
+                    </p>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="<?php echo _WEB_ROOT_."/views/client/img/blogs/default-image.jpg"?>" alt="">
+                    </a>
+                    <a href="">
+                        <p class="titleBlog">Tour du lịch Đà Nẵng 2 ngày 2 đêm | Hội An – Bà Nà Hills – Núi Thần Tài</p>
+                    </a>
+                    <p>
+                        <i class="fa-solid fa-calendar-plus"></i>
+                        <span>24/11/2022</span>
+                    </p>
+                </li>
+            </ul>
+        </div>
     </div>
-</div>
-<!--  -->

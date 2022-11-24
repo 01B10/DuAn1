@@ -148,7 +148,7 @@ input:checked + .slider:before {
 }
 
 .fa-arrow-left {
-  font-size: 30px;
+  font-size: 40px;
   margin-left: 20px;
 }
 
@@ -246,6 +246,7 @@ button {
 .btn-submit-tour {
   margin-top: 50px;
   text-align: center;
+  cursor: pointer;
 }
 
 input:hover,

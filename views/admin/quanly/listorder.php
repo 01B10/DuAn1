@@ -6,12 +6,18 @@
     ->join("inner","tour","order_details.tour_id = tour.Id")->get());
     $status = $queryBuilder->query($queryBuilder->table("status")->select("*")->get());
     $customer = $queryBuilder->query($queryBuilder->table("customer")->select("*")->get());
-    // echo "</pre>";
-    // print_r($order);
-    // echo "<pre>";
-    if(isset($_GET["orderId"]) && !empty($_GET["orderId"])){
-        // $data[""]
+    
+    if(isset($_GET["orderId"]) && isset($_GET["statusId"])){
         $updateStatus = $queryBuilder->excute($queryBuilder->updateData("ordertour",["status_id"=>$_GET["statusId"]],"ordertour.Id = ".$_GET["orderId"]));
+        if($_GET["statusId"] == 4 || $_GET["statusId"] == 5){
+            $orderDetails = $queryBuilder->query($queryBuilder->table("order_details")->select("*")
+            ->where("order_details.order_id","=",$_GET["orderId"])->get())[0];
+            $returnSlot = $orderDetails["adults"] + $orderDetails["children"];
+            $tour = $queryBuilder->query($queryBuilder->table("tour")->select("slot")->where("tour.Id","=",$orderDetails["tour_id"])->get())[0];
+            $queryBuilder->excute($queryBuilder->updateData("tour",[
+                "slot"=> $tour["slot"] + $returnSlot
+            ],"tour.Id = ".$orderDetails["tour_id"]));
+        }
     }
 ?>
 

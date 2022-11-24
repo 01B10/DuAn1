@@ -1,3 +1,9 @@
+<?php 
+    if(isset($_GET["act"]) && $_GET["act"] == "logout"){
+        unset($_SESSION["Login"]["admin"]);
+        header("Location: "._WEB_ROOT_);
+    }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -116,8 +122,17 @@
             <div class="user-wrapper">
                 <img src="<?php echo _WEB_ROOT_."/views/client/img/customer/".$_SESSION["Login"]["admin"]["img"]?>" width="40px" height="40px" alt="">
                 <div>
-                    <h4><?php echo $_SESSION["Login"]["admin"]["name"]?></h4>
-                    <small>Nhân viên</small>
+                    <h4><?php 
+                            if(isset($_SESSION["Login"]["admin"])){
+                                echo $_SESSION["Login"]["admin"]["name"];
+                            }
+                    ?></h4>
+                    <small style="font-weight: bold;">Nhân viên</small>
+                    <span style="float:right">
+                        <a href="?act=logout">
+                            <i class="fa-solid fa-right-from-bracket" style="font-size: 2rem;"></i>
+                        </a>
+                    </span>
                 </div>
             </div>
         </header>

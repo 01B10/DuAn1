@@ -1,11 +1,16 @@
 <?php 
-     $queryBuilder = new QueryBuilder();
-     $order = $queryBuilder->query($queryBuilder->table("customer")->select("*")
-    ->join("inner","ordertour","customer.Id = ordertour.cus_id")
-    ->join("inner","order_details","ordertour.Id = order_details.order_id")
-    ->join("inner","tour","order_details.tour_id = tour.Id")
-    ->where("customer.Id","=",$_SESSION["Login"]["customer"]["Id"])->get());
-    $status = $queryBuilder->query($queryBuilder->table("status")->select("*")->get());
+     if(isset($_SESSION["Login"]["customer"])){
+        $queryBuilder = new QueryBuilder();
+         $order = $queryBuilder->query($queryBuilder->table("customer")->select("*")
+        ->join("inner","ordertour","customer.Id = ordertour.cus_id")
+        ->join("inner","order_details","ordertour.Id = order_details.order_id")
+        ->join("inner","tour","order_details.tour_id = tour.Id")
+        ->where("customer.Id","=",$_SESSION["Login"]["customer"]["Id"])->orderBy("tour.Id","DESC")
+        ->get());
+        $status = $queryBuilder->query($queryBuilder->table("status")->select("*")->get());
+     }else{
+        header("Location: Trang-Chu");
+     }
 ?>
 
 <!DOCTYPE html>
@@ -16,8 +21,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hóa đơn</title>
     <link rel="stylesheet" href="<?php echo _WEB_ROOT_."/views/client/assets/css/Bill_user.css"?>">
+    <script src="https://kit.fontawesome.com/d620f19a29.js" crossorigin="anonymous"></script>
 </head>
 <body>
+    <a href="Trang-Chu">
+            <i class="fa-solid fa-arrow-left"></i>
+    </a>
     <main>
         <h2>Hóa đơn</h2>
         <table cellpadding="10" >

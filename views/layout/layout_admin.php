@@ -4,6 +4,6 @@
         render($sub);
         render("admin/block/footer");
     }else{
-        header("Location: Trang-Chu");
+        header("Location: "._WEB_ROOT_);
     }
 ?>

@@ -95,7 +95,7 @@
 
 <script>
     const passField = document.querySelector(".pass");
-    const showBtn = document.querySelector("span i");
+    const showBtn = document.querySelector(".show-btn i");
     showBtn.onclick = (() => {
         if (passField.type == "password") {
             passField.type = "text";
