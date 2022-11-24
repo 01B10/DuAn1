@@ -49,16 +49,9 @@
         </form>
     </main>
 </div>
-<!-- <script>
-    let content = '';
-    for (const tinh of provinces) {
-        content += `<option value="${tinh.name}">${tinh.name}</option>`;
-    }
-    document.querySelector('#province').innerHTML = content;
-</script>
 <script>
     const passField = document.querySelector(".pass");
-    const showBtn = document.querySelector("span i");
+    const showBtn = document.querySelector(".show-btn i");
     showBtn.onclick = (() => {
         if (passField.type == "password") {
             passField.type = "text";
@@ -68,4 +61,4 @@
             showBtn.classList.remove("hide-btn");
         }
     });
-</script> -->
+</script>

@@ -170,10 +170,12 @@ hr {
   flex-wrap: wrap;
   justify-content: space-between;
 }
-.container {
+
+.containerPlace {
   max-width: 1024px;
   margin: auto;
 }
+
 .about-content-right button {
   height: 30px;
   width: 100px;
@@ -263,7 +265,7 @@ hr {
 }
 
 /* -----------Tout----------- */
-.tour {
+.tourBlog {
   padding: 100px 0;
 }
 .tour-content button {

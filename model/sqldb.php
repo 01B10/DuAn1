@@ -74,7 +74,8 @@
                 $valueField = "";
                 foreach($data as $key => $value){
                     $field .= $key.",";
-                    if($key != "content_schedule" && $key != "content_service"){
+                    if($key != "content_schedule" && 
+                    $key != "content_service" && $key != "content_blog"){
                         $valueField .= "'".$value."',";
                     }else{
                         $valueField .= $value.",";

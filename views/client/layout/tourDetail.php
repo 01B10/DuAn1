@@ -4,11 +4,15 @@
     ->join("inner","tour_detail","tour.Id = tour_detail.tour_id")
     ->where("tour_detail.Id","=",$_GET["tourdetailId"])
     ->get());
-    // print_r($tourDetail);
+
     if(isset($_POST["orderTour"])){
-        $_SESSION["orderDate"] = $_POST["orderDate"];
-        header("Location: bookTour?tour_id=".$tourDetail[0]["tour_id"]);
-        // header()
+        if(isset($_SESSION["Login"]["customer"])){
+            $_SESSION["orderDate"] = $_POST["orderDate"];
+            $_SESSION["tourdetailId"] = $_GET["tourdetailId"];
+            header("Location: bookTour?tour_id=".$tourDetail[0]["tour_id"]);
+        }else{
+            header("Location: login");
+        }
     }
 ?>
 
@@ -127,25 +131,13 @@
                                             <td>
                                                 <label>Khởi hành</label><br>
                                                 <input required="required" name="id" type="hidden">
-                                                <input id="myID" name="orderDate" class="form-control" placeholder="dd/mm/yyyy" value="">
+                                                <input id="myID" name="orderDate" class="form-control" placeholder="dd/mm/yyyy" value="
+                                                    <?php 
+                                                        echo date("d/m/y",time());
+                                                    ?>
+                                                ">
                                             </td>
-                                            <!-- <td>
-                                                <label class="slc-tour-people-title" style="margin-left: -20px;">Số khách</label><br>
-                                                <select data-price="2390000" name="number_people" class="form-control slc-tour-people">
-                                                    <option value="1">01</option>
-                                                    <option value="2">02</option>
-                                                    <option value="3">03</option>
-                                                    <option value="4">04</option>
-                                                    <option value="5">05</option>
-                                                    <option value="6">06</option>
-                                                    <option value="7">07</option>
-                                                    <option value="8">08</option>
-                                                    <option value="9">09</option>
-                                                    <option value="10">10</option>
-                                                </select>
-                                            </td> -->
                                             <td>
-                                                <!-- <a class="btn-submit-set-tour" href="bookTour">Đặt Tour</a> -->
                                                 <button class="btn-submit-set-tour" name="orderTour" href="bookTour">Đặt Tour</button>
                                             </td>
                                         </tr>

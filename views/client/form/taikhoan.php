@@ -1,3 +1,11 @@
+<?php 
+    if(isset($_SESSION["Login"]["customer"])){
+
+    }else{
+        header("Location: Trang-Chu");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

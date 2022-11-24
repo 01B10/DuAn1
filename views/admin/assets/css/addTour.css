@@ -11,6 +11,7 @@
   display: flex;
   justify-content: space-between;
   gap: 20px;
+  /* height: 250px; */
 }
 
 .ImgTour img {
@@ -58,14 +59,19 @@
   color: #fff;
   border-radius: 5px;
   font-weight: bold;
+  user-select: none;
 }
 
 .option label span:hover {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-.toggle {
+.toggleService {
   display: none;
+}
+
+.toggle:checked + span {
+  background-color: palevioletred !important;
 }
 
 .choosen {

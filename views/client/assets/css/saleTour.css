@@ -4,11 +4,10 @@
   box-sizing: border-box;
 }
 .container {
-  max-width: 940px;
-  display: grid;
-  margin-left: auto;
-  margin-right: auto;
-  gap: 70px;
+  /* max-width: 940px; */
+  display: flex;
+  margin: auto;
+  max-width: 1024px;
 }
 body {
   font-size: 14px;
@@ -28,6 +27,17 @@ body {
   gap: 25px;
   margin: 20px 0px;
 }
+
+.blogs ul li {
+  list-style: none;
+  margin-bottom: 20px;
+  max-width: 200px;
+}
+
+.blogs ul li a img {
+  width: 200px;
+}
+
 .box-img {
   max-width: 215px;
 }
@@ -320,6 +330,10 @@ table {
   color: #bcbfc4;
 }
 
+.tour {
+  padding-top: 0px;
+}
+
 .tour h1 {
   margin: 0px;
   padding: 0px;
@@ -340,4 +354,8 @@ table {
 
 .iconService {
   width: 40px;
+}
+
+.titleBlog {
+  font-weight: bold;
 }

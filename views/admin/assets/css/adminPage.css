@@ -27,18 +27,13 @@
 }
 
 .sidebar-brand {
-  /* min-width: 2rem; */
   height: 90px;
-  padding-left: 1rem 0rem 1rem 2rem;
-  color: #fff;
+  padding: 1rem 0rem 1rem 0rem;
   text-align: center;
 }
 
-.sidebar-brand span {
-  margin-top: 25px;
-  margin-left: 25px;
-  display: inline-block;
-  padding-right: 1rem;
+.sidebar-brand h2 {
+  color: lightcoral;
 }
 
 .sidebar-menu {
@@ -76,13 +71,17 @@
   width: 70px;
 }
 
+.nav-toggle + .sidebar .sidebar-brand h2 {
+  font-size: 1.3vw;
+  display: block;
+}
+
 .nav-toggle + .sidebar li a span:last-child {
   display: none;
 }
 
 .nav-toggle + .sidebar .sidebar-brand,
 .nav-toggle + .sidebar li {
-  padding-left: 1rem;
   text-align: center;
 }
 
@@ -247,15 +246,16 @@ main {
   width: 100px;
 }
 
-.avatar img {
-  width: 3rem;
-}
-
 .avatar {
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 100%;
   gap: 5px;
+}
+
+.avatar img {
+  width: 3rem;
 }
 
 .action {
@@ -334,12 +334,6 @@ main {
   .sidebar:hover li a span:last-child {
     display: none;
   }
-
-  /* .sidebar:hover .sidebar-brand,
-  .sidebar:hover li {
-    padding-left: 2rem;
-    text-align: right;
-  } */
 
   .nav-toggle + .sidebar li a {
     padding-left: 0rem;
@@ -472,5 +466,10 @@ main {
   }
   .search-wrapper {
     display: none;
+  }
+
+  .main-content {
+    width: 100%;
+    margin-left: 0rem;
   }
 }

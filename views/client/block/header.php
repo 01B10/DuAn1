@@ -1,7 +1,6 @@
 <?php 
     if(isset($_GET["act"]) && $_GET["act"] == "logout"){
-        session_unset();
-        session_destroy();
+        unset($_SESSION["Login"]["customer"]);
         header("Location: Trang-Chu");
     }
 ?>
@@ -28,7 +27,7 @@
     <header>
         <div class="full_header">
             <div class="logo">
-                <img src="<?php echo _WEB_ROOT_ . "/views/client/img/logo.jpg" ?>" alt="">
+                <img src="<?php echo _WEB_ROOT_ . "/views/client/img/logo/logo.jpg" ?>" alt="">
             </div>
             <div class="menu">
                 <ul>

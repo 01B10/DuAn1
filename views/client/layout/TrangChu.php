@@ -1,8 +1,10 @@
 <?php 
     $queryBuilder = new QueryBuilder();
     $listProvince = $queryBuilder->query($queryBuilder->table("province")->select("*")->get());
+    // echo "<pre>";
+    // print_r($listProvince);
+    // echo "</pre>";
 ?>
-<!-- <iframe width="100%" height="285" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=vùng đất cố đô&amp;hl=es;z=14&amp;output=embed" allowfullscreen=""></iframe> -->
     <article>
         <form class="search">
             <div class="full-search">
@@ -28,7 +30,7 @@
             </div>
         </form>
         <section class="nice-place">
-            <div class="container">
+            <div class="containerPlace">
                 <h1 class="h1-style">Địa Điểm Nổi Bật</h1>
                 <div class="nice-place-content row">
                     <?php 
@@ -40,17 +42,18 @@
                                             <a href="tour?Province=<?php echo $item["Id"]?>"><img src="<?php echo _WEB_ROOT_."/views/client/img/province/".$item["img"]?>" alt=""></a>
                                         </div>
                                         <div class="nice-place-text">
-                                            <h2><a href="tour?Province=<?php echo $item["Id"]?>"><?php echo $item["name"]?></h2>
+                                            <h2><a href="tour?Province=<?php echo $item["Id"]?>"><?php echo $item["name"]?></a></h2>
                                         </div>
                                     </div>
                     <?php
                             }
                         }
                     ?>
+                </div>
             </div>
         </section>
-        <section class="tour">
-            <div class="container">
+        <section class="tourBlog">
+            <div class="containerPlace">
                 <h1 class="h1-style">Blog nổi bật</h1>
                 <div class="tour-content row">
                     <div class="tour-content-item row">
