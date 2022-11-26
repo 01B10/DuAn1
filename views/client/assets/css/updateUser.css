@@ -1,0 +1,163 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --clr:rgb(248, 248, 248);
+    --bodyclr:#c4d4ff;
+}
+
+main {
+    /* display: flex; */
+    /* justify-content: center;
+    align-items: center; */
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+form {
+    margin: 50px 0;
+    /* display: flex; */
+    gap: 32px;
+}
+body{
+    background: var(--bodyclr);
+}
+.user-img img {
+    width: 100%;
+    max-width: 100px;
+    display: inline-block;
+    /* margin-left: 50px; */
+}
+.account,.change,.history {
+    /* position: absolute; */
+    justify-content: center;
+    align-items: center;
+    border: none;
+    padding: 10px;
+    box-shadow: 0 0 10px silver;
+    border-radius: 5px;
+    background: #fff;
+}
+.user-img{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 10px;
+}
+.change-img button{
+    padding: 8px;
+    background: rgb(155, 155, 231);
+    color: #fff;
+    border:none;
+    border-radius: 5px;
+}
+
+.change-pass input:focus,.user .infomation .info input:focus{
+    border: 1px solid #1DA1F2;
+    box-shadow: 0 0 5px #1DA1F2;
+}
+
+.gender .gioitinh {
+    font-weight: 600;
+}
+.change-img input{
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.account h3,.change h3,.history h3{
+    background: rgb(155, 155, 231);
+    max-width: 200px;
+    padding: 7px;
+    color: #fff;
+    margin-left: -10px;
+}
+
+.user-img {
+    text-align: center;
+    margin: 30px;
+}
+/* .change-img{
+    margin: 30px 0;
+} */
+.user,.change-img label,.change-pass label {
+    /* display: inline-block;
+    cursor: default; */
+    font-size: 1em;
+    text-transform: uppercase;
+    letter-spacing: inherit;
+}
+.user label{
+    display: inline-block;
+   
+}
+
+.gender .gender-choose {
+    text-align: left;
+    border: 1px solid silver;
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    border-radius: 5px;
+    display: flex;
+}
+
+.gender-choose{
+    display: inline-block;
+}
+.gender input {
+    margin-right: 5px;
+}
+.gender input:nth-child(1){
+    margin-left: 50px;
+}
+.gender-choose label{
+    margin-right: 40px;
+}
+
+.choose_gender{
+    border: 1px solid silver;
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+}
+.user .infomation .info input{
+    width: 100%;
+    height: 40px;
+    border: 1px solid silver;
+    border-radius: 5px;
+    font-size: 20px;
+    padding: 10px 15px;
+    outline: none;
+}
+.info label,.change-img label,.change-pass label,.gioitinh{
+    margin-bottom: 10px; 
+    font-weight: 600;
+    margin-left: 10px;
+}
+.info,.gender{
+    margin-bottom: 25px;
+   
+}
+
+.infomation{
+    /* display: grid;
+    grid-template-columns: 1fr 1fr; */
+    gap: 15px;
+}
+.update{
+    text-align: center;
+    margin-bottom: 20px;
+}
+.update a button{
+    width: 40%;
+    height: 40px;
+    background: rgb(155, 155, 231);
+    display: inline-block;
+    border: none;
+    color: #fff;
+    font-size: 17px;
+    border-radius: 5px;
+}
