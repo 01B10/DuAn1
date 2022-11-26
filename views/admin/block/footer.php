@@ -101,9 +101,13 @@
         });
     }
 
-    if(searchParam.get("act") == "delete"){
+    if(searchParam.get("act") == "deleteTour"){
         window.addEventListener("load",()=>{
             window.location = "listTour";
+        });
+    }else if(searchParam.get("act") == "deleteBlog"){
+        window.addEventListener("load",()=>{
+            window.location = "listBlog";
         });
     }
 

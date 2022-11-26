@@ -5,7 +5,7 @@
     ->join("inner","tour_detail","tour.Id = tour_detail.tour_id")
     ->get());
     
-    if(isset($_GET["act"]) && $_GET["act"] == "delete"){
+    if(isset($_GET["act"]) && $_GET["act"] == "deleteTour"){
         $idTour = $queryBuilder->query($queryBuilder->table("tour_detail")->select("tour_id")
         ->where("tour_detail.Id","=",$_GET["Id"])->get())[0];
         $idOrder = $queryBuilder->query($queryBuilder->table("order_details")->select("order_id")
@@ -14,7 +14,7 @@
         $queryBuilder->excute($queryBuilder->delete("transport","transport.tour_detail_id = ".$_GET['Id']));
         $queryBuilder->excute($queryBuilder->delete("tour_detail","tour_detail.Id = ".$_GET['Id']));
         $queryBuilder->excute($queryBuilder->delete("order_details","order_details.tour_id = ".$idTour["tour_id"]));
-        $queryBuilder->excute($queryBuilder->delete("ordertour","ordertour.Id = ".$idOrder["order_id"]));
+        if(!empty($idOrder)){$queryBuilder->excute($queryBuilder->delete("ordertour","ordertour.Id = ".$idOrder["order_id"]));}
         $queryBuilder->excute($queryBuilder->delete("tour","tour.Id = ".$idTour["tour_id"]));
     }
 ?>
@@ -85,7 +85,7 @@
                                 <td class="action">
                                     <i class="fa-solid fa-ellipsis-vertical"></i>
                                     <div class="hidden">
-                                        <a class="deleteTour" href="listTour?act=delete&Id=<?php echo $item["Id"]?>">Delete</a>
+                                        <a class="deleteTour" href="?act=deleteTour&Id=<?php echo $item["Id"]?>">Delete</a>
                                         <a href="updateTour?Id=<?php echo $item["Id"]?>">Update</a>
                                     </div>
                                 </td>

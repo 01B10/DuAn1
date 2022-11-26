@@ -70,8 +70,8 @@
         if($validate){
             $service = $_POST["listservice_id"];
             $trasport = $_POST["list_transport_id"];
-            $_POST["content_service"] = htmlentities($_POST["content_service"]);
-            $_POST["content_schedule"] = htmlentities($_POST["content_schedule"]);
+            $_POST["content_service"] = "\"".htmlentities($_POST["content_service"])."\"";
+            $_POST["content_schedule"] = "\"".htmlentities($_POST["content_schedule"])."\"";
             
             unset($_POST["listservice_id"]);
             unset($_POST["list_transport_id"]);

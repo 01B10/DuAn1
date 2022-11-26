@@ -5,6 +5,8 @@
     ->where("tour_detail.Id","=",$_GET["tourdetailId"])
     ->get());
 
+    $startTime_search = isset($_SESSION["startTime_search"])?$_SESSION["startTime_search"]:"";
+
     if(isset($_POST["orderTour"])){
         if(isset($_SESSION["Login"]["customer"])){
             $_SESSION["orderDate"] = $_POST["orderDate"];
@@ -30,6 +32,7 @@
                     $startTime = strtotime($item["start_time"]);
                     $endTime = strtotime($item["end_time"]);
                     $day = date("d",$endTime - $startTime) - 1;
+                    $discount = $item["price"] - $item["price"] * $item["discount"]/100;
         ?>
                     <div class="gr-1">
                         <h1 class="title-tour">
@@ -105,12 +108,10 @@
                                     <i class="pull-right fa fa-chevron-down"></i>
                                 </div>
                                 <div class="panel-tour-product-service">
-                                    <!-- dịch vụ -->
                                     <?php 
                                         echo html_entity_decode($item["content_service"]);
                                     ?>
                                 </div>
-
                             </div>
 
                         </div>
@@ -121,11 +122,10 @@
                                         <tr>
                                             <td>
                                                 <span class="price-tour">
-                                                    <div class="title-price-old horizontal"><del>3,464,000 VND</del></div>
+                                                    <div class="title-price-old horizontal"><del><?php echo $item["price"]?>VND</del></div>
                                                     <div class="title-price-new">
-                                                        2,390,000 <span class="title-price-new-slot">VND/người</span> 
+                                                        <?php echo $discount?>VND<span class="title-price-new-slot">VND/người</span> 
                                                     </div>
-                        
                                                 </span>
                                             </td>
                                             <td>
@@ -133,7 +133,11 @@
                                                 <input required="required" name="id" type="hidden">
                                                 <input id="myID" name="orderDate" class="form-control" placeholder="dd/mm/yyyy" value="
                                                     <?php 
-                                                        echo date("d/m/y",time());
+                                                        if(isset($startTime_search)){
+                                                            echo date_format(date_create($startTime_search),"d-m-y");
+                                                        }else{
+                                                            echo date("d/m/y",time());
+                                                        }
                                                     ?>
                                                 ">
                                             </td>

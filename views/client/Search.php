@@ -1,22 +1,30 @@
-<?php 
+<?php
     $queryBuilder = new QueryBuilder();
-    $listTour = $queryBuilder->query($queryBuilder->table("tour")->select("*")
-    ->where("tour.province","=",$_GET["Province"])->join("inner","tour_detail","tour.Id = tour_detail.tour_id")->get());
+    $start_time = date_format(date_create($_GET["start_time"]),"Y-m-d");
+    $end_time = date_format(date_create($_GET["end_time"]),"Y-m-d");
 
-    $blogs = $queryBuilder->query($queryBuilder->table("blog")->select("*")->where("blog.province_id","=",$_GET["Province"])
+    $Tour = empty($_GET["province"])?$queryBuilder->query($queryBuilder->table("tour")->select("*")
+    ->join("inner","tour_detail","tour.Id = tour_detail.tour_id")
+    ->where("tour.start_time","<=",$start_time)
+    ->where("tour.end_time",">=",$end_time)
+    ->get()):$queryBuilder->query($queryBuilder->table("tour")->select("*")
+    ->where("tour.province","=",$_GET["province"])->join("inner","tour_detail","tour.Id = tour_detail.tour_id")
+    ->where("tour.start_time","<=",$start_time)
+    ->where("tour.end_time",">=",$end_time)
     ->get());
 
-    $province = $queryBuilder->query($queryBuilder->table("province")->select("*")
-    ->where("province.Id","=",$_GET["Province"])->get())[0];
+    $_SESSION["startTime_search"] = $_GET["start_time"];
+
+    
 ?>
 
-    <div class="container">
+<div class="container">
         <div class="tour">
-            <h1>Tour <?php echo $province["name"]?></h1>
+            <h1>Tour</h1>
             <ul>
                 <?php 
-                    if(!empty($listTour)){
-                        foreach($listTour as $item){
+                    if(!empty($Tour)){
+                        foreach($Tour as $item){
                             $discount = $item["price"] - $item["price"] * $item["discount"]/100;
                             $listTransport = $queryBuilder->query($queryBuilder->table("transport")->select("*")
                             ->join("inner","list_transport","transport.list_transport_id = list_transport.Id")
@@ -64,7 +72,7 @@
                                             <div class="box-tour-note-extra"> </div>
                                         </div>
                                         <div class="box-price-promotion-tour">
-                                            Giá 1 khách:  <span><?php echo number_format($discount)?><sup>đ</sup></span><del><?php echo number_format($item["price"])?><sup>đ</sup></del>
+                                            Giá 1 khách:  <span><?php echo $discount?><sup>đ</sup></span><del><?php echo $item["price"]?><sup>đ</sup></del>
                                             <div class="box-percent-tour">
                                                 <div class="arrow-left">
                                                     <div class="box-percent-tour-sale">-<?php echo $item["discount"]?>%</div>
@@ -88,32 +96,32 @@
             </ul>
         </div>
         <div class="blogs">
-            <?php 
-                if(!empty($blogs)){
-            ?>
-                <h2>Blogs</h2>
-                <ul>
-                    <?php 
-                        foreach($blogs as $item){
-                    ?>
-                            <li>
-                                <a href="">
-                                    <img src="<?php echo _WEB_ROOT_."/views/client/img/blogs/".$item["img"]?>" alt="">
-                                </a>
-                                <a href="">
-                                    <p class="titleBlog"><?php echo $item["title"]?></p>
-                                </a>
-                                <p>
-                                    <i class="fa-solid fa-calendar-plus"></i>
-                                    <span><?php echo date_format(date_create($item["creat_time"]),"d-m-Y")?></span>
-                                </p>
-                            </li>
-                    <?php
-                        }
-                    ?>
-                </ul>
-            <?php
-                }
-            ?>
+            <h2>Blogs</h2>
+            <ul>
+                <li>
+                    <a href="">
+                        <img src="<?php echo _WEB_ROOT_."/views/client/img/blogs/default-image.jpg"?>" alt="">
+                    </a>
+                    <a href="">
+                        <p class="titleBlog">Tour Đà Nẵng khuyến mãi</p>
+                    </a>
+                    <p>
+                        <i class="fa-solid fa-calendar-plus"></i>
+                        <span>24/11/2022</span>
+                    </p>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="<?php echo _WEB_ROOT_."/views/client/img/blogs/default-image.jpg"?>" alt="">
+                    </a>
+                    <a href="">
+                        <p class="titleBlog">Tour du lịch Đà Nẵng 2 ngày 2 đêm | Hội An – Bà Nà Hills – Núi Thần Tài</p>
+                    </a>
+                    <p>
+                        <i class="fa-solid fa-calendar-plus"></i>
+                        <span>24/11/2022</span>
+                    </p>
+                </li>
+            </ul>
         </div>
     </div>
