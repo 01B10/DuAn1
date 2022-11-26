@@ -1,6 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLOG</title>
+    <link rel="stylesheet" href="style2.css">
+    <script src="https://kit.fontawesome.com/d620f19a29.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+</head>
+
+<body>
+    <header>
+        <div class="full_header">
+            <div class="logo">
+                <img src="./DuAn1_Minh/views/img/logo.jpg" alt="">
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="">Trang chủ</a></li>
+                    <li><a href="">Giới thiệu</a></li>
+                    <li><a href="">Tour</a></li>
+                    <li><a href="">Tin tức</a></li>
+                    <li><a href="">Liên hệ</a></li>
+
+                </ul>
+            </div>
+            <div class="icon-1">
+                <a href=""><i class="fa-solid fa-user"></i>USER</a>
+            </div>
+        </div>
+        
+    </header>
     <article>
         <div class="Title">
-            <h1>Tin tức</h1>
+            <!-- <h1>Tin tức</h1> -->
             <p>Tin tức Du lịch 2022 cung cấp các thông tin
                 Du lịch Việt Nam, Thông tin Du lịch Thế Giới, các Sự kiện
                 Du lịch diễn ra trong ngày. Thông qua các bài
@@ -9,6 +44,9 @@
         </div>
         <div class="blog">
             <div class="full-block">
+<<<<<<< HEAD
+                <img src="./DuAn1_Minh/views/img/hn1.jpg" alt="">
+=======
                 <img src="<?php echo _WEB_ROOT_."/views/client/img/hcm1.jpg"?>" alt="">
                 <div class="location">
                     <a href="https://www.google.com/search?q=gg+d%E1%BB%8Bch&oq=&aqs=chrome.0.69i59i450l8.248638j0j7&sourceid=chrome&ie=UTF-8"> <h2>Du lịch Hà Nội đa dạng hóa sản phẩm thu hút du khách</h2></a>
@@ -34,6 +72,7 @@
             </div>
             <div class="full-block">
                 <img src="<?php echo _WEB_ROOT_."/views/client/img/hn1.jpg"?>" alt="">
+>>>>>>> 86bfe631bdd800b6c66d27f12a740a8e5bcb8d48
                 <div class="location">
                     <a href="https://www.google.com/search?q=gg+d%E1%BB%8Bch&oq=&aqs=chrome.0.69i59i450l8.248638j0j7&sourceid=chrome&ie=UTF-8"> <h2>Du lịch Hà Nội đa dạng hóa sản phẩm thu hút du khách</h2></a>
                 <p>Du lịch Hà Nội - Kinh đô Thăng Long một thời, là
@@ -56,6 +95,15 @@
                 </div>
                
             </div>
+<<<<<<< HEAD
+            <div class="Form2_full">
+                <label for="">Trẻ em*</label>
+                <input type="text"><br>
+            </div>
+            <div class="Form2_full">
+                <label for="">Trẻ nhỏ*</label>
+                <input type="text"><br>
+=======
             <div class="full-block">
                 <img src="<?php echo _WEB_ROOT_."/views/client/img/hn1.jpg"?>" alt="">
                 <div class="location">
@@ -67,6 +115,7 @@
                     của nhiều tour du lịch trong nước được du khách lựa chọn.</p>
                 </div>
                
+>>>>>>> 86bfe631bdd800b6c66d27f12a740a8e5bcb8d48
             </div>
             <div class="full-block">
                 <img src="<?php echo _WEB_ROOT_."/views/client/img/hn1.jpg"?>" alt="">
@@ -80,9 +129,15 @@
                 </div>
                
             </div>
-            
+            <div class="Form2_full">
+                <label for="">Tổng*</label>
+                <input type="text"><br>
+            </div>
+         
         </div>
-
+      
+        
+ 
     </article>
     <footer>
         <hr>
@@ -110,3 +165,4 @@
             </div>
         </div>
     </footer>
+</body>
