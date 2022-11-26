@@ -9,6 +9,7 @@
                 global $conn;
                 $data = $conn->query($sql);
                 return $data->fetchAll(PDO::FETCH_ASSOC);
+                // echo $sql."<br>";
            } catch (Exception $th) {
                 echo $th->getMessage();
            }
@@ -28,7 +29,7 @@
             try {
                 global $conn;
                 $conn->exec($sql);
-                // echo $sql;
+                // echo $sql."<br>";
            } catch (Exception $th) {
                 echo $th->getMessage();
            }
@@ -74,6 +75,7 @@
                 $valueField = "";
                 foreach($data as $key => $value){
                     $field .= $key.",";
+                    // $valueField .= "'".$value."',";
                     if($key != "content_schedule" && 
                     $key != "content_service" && $key != "content_blog"){
                         $valueField .= "'".$value."',";
@@ -87,19 +89,16 @@
             };
         }
 
-        // public function update($data){
-        //     $whereUpdate = str_replace("WHERE","",$this->where);
-        //     $whereUpdate = trim($whereUpdate);
-        //     $tableName = $this->tableName;
-        //     $statusUpdate = $this->updateData($tableName,$data,$whereUpdate);
-        //     return $statusUpdate;
-        // }
-
         function updateData($table,$data,$condition=''){
             if(!empty($data)){
                 $updateStr = "";
                 foreach($data as $key=>$value){
-                    $updateStr.="$key='$value',";
+                    if($key != "content_schedule" && 
+                    $key != "content_service" && $key != "content_blog"){
+                        $updateStr .= "$key='$value',";
+                    }else{
+                        $updateStr .= "$key=$value,";
+                    }
                 }
                 $updateStr = rtrim($updateStr,',');
                 if(!empty($condition)){
@@ -107,10 +106,7 @@
                 }else{
                     $sql = "UPDATE $table SET $updateStr";
                 }
-                // $status = $this->query($sql);
-                // if(empty($status)){
-                //     return true;
-                // }
+               
                 return $sql;
             }
         }

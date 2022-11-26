@@ -1,5 +1,6 @@
 <?php
     $route["Trang-Chu"] = "client\\layout\\TrangChu";
+    $route["Search"] = "client\\Search";
     $route["forgotpassword"] = "client\\form\\ForgotPass";
     $route["Login"] = "client\\form\\Login";
     $route["Register"] = "client\\form\\Register";
@@ -33,4 +34,5 @@
     $route["post"] = "admin\\quanly\\post";
 
     $route["admin/logout"] = "admin\\quanly\\logout";
+
 ?>

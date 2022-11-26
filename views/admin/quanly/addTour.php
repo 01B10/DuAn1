@@ -46,6 +46,7 @@
     if(isset($_POST["addTour"])){
         $validate =  validate($rule,$message,$errors);
         $errors = errors("",$errors);
+    //    print_r($_POST);
         if($validate){
             $service = $_POST["listservice_id"];
             $trasport = $_POST["list_transport_id"];
@@ -79,8 +80,8 @@
                 $data["list_transport_id"] = $item;
                 $queryBuilder->excute($queryBuilder->inserData("transport",$data));
             }
-            $_POST = "";
-            $_data = "";
+            
+            // echo "<script>alert('Đã thêm tour thành công!')</script>";
         }
     }
 
@@ -124,7 +125,8 @@
                                                 if(!empty($listProvince)){
                                                     foreach($listProvince as $item){
                                             ?>
-                                                        <option value="<?php echo $item["Id"]?>"><?php echo $item["name"]?></option>
+                                                        <option value="<?php echo $item["Id"]?>"
+                                                            <?php echo (!empty($_POST["province"]) && $item["Id"] == $_POST["province"])?"selected":false ?>><?php echo $item["name"]?></option>
                                             <?php
                                                     }
                                                 }
@@ -139,7 +141,7 @@
                                     </label>
                                     <label for="">
                                         <span>Thời gian khởi hành:</span>
-                                        <input id="myID" name="start_time" placeholder="dd-mm-yyyy" value="<?php if(!empty($_POST["start_time"])){echo $_POST["start_time"];}?>">
+                                        <input id="myID" name="start_time" placeholder="dd-mm-yyyy" value="<?php if(!empty($_POST["start_time"])){echo date_format(date_create($_POST["start_time"]),"d-m-y");}?>">
                                         <p class="err"><?php echo (!empty($errors) && array_key_exists("start_time",$errors))?$errors["start_time"]:false?></p>
                                     </label>
                                     <label for="">
@@ -149,7 +151,7 @@
                                     </label>
                                     <label for="">
                                         <span>Thời gian kết thúc:</span>
-                                        <input id="myID" name="end_time" placeholder="dd-mm-yyyy" value="<?php if(!empty($_POST["end_time"])){echo $_POST["end_time"];}?>">
+                                        <input id="myID" name="end_time" placeholder="dd-mm-yyyy" value="<?php if(!empty($_POST["end_time"])){echo date_format(date_create($_POST["end_time"]),"d-m-y");}?>">
                                         <p class="err"><?php echo (!empty($errors) && array_key_exists("end_time",$errors))?$errors["end_time"]:false?></p>
                                     </label>
                                     <label for="" class="listservice">
@@ -160,7 +162,8 @@
                                                     foreach($listService as $item){
                                             ?>
                                                         <label for="<?php echo $item["Id"]?>">
-                                                            <input type="checkbox" name="listservice_id[]" id="<?php echo $item["Id"]?>" class="toggleService toggle" value="<?php echo $item["Id"]?>"><span><?php echo $item["name"]?></span>
+                                                            <input type="checkbox" name="listservice_id[]" id="<?php echo $item["Id"]?>" class="toggleService toggle" value="<?php echo $item["Id"]?>"
+                                                            <?php echo (!empty($_POST["listservice_id"]) && in_array($item["Id"],$_POST["listservice_id"]))?"checked":false ?>><span><?php echo $item["name"]?></span>
                                                         </label>
                                             <?php
                                                     }
@@ -177,7 +180,8 @@
                                                     foreach($listTransport as $item){
                                             ?>
                                                         <label for="<?php echo $item["Id"]?>">
-                                                            <input type="checkbox" name="list_transport_id[]" id="<?php echo $item["Id"]?>" class="toggleService toggle" value="<?php echo $item["Id"]?>"><span><?php echo $item["name"]?></span>
+                                                            <input type="checkbox" name="list_transport_id[]" id="<?php echo $item["Id"]?>" class="toggleService toggle" value="<?php echo $item["Id"]?>"
+                                                            <?php if(!empty($_POST["list_transport_id"]) && in_array($item["Id"],$_POST["list_transport_id"])){echo "checked";}?>><span><?php echo $item["name"]?></span>
                                                         </label>
                                             <?php
                                                     }
@@ -244,6 +248,10 @@
                     maxHeight: null,             // set maximum height of editor
                     focus: false                 // set focus to editable area after initializing summernote
                 });
+                var contentService = document.querySelector(".content_service + .note-editor .note-editable");
+                var contentSchedule = document.querySelector(".content_schedule + .note-editor .note-editable");
+                contentService.innerHTML = `<?php if(!empty($_POST["content_service"])){echo html_entity_decode($_POST["content_service"]);}?>`;
+                contentSchedule.innerHTML = `<?php if(!empty($_POST["content_schedule"])){echo html_entity_decode($_POST["content_schedule"]);}?>`;
             });
         </script>
 

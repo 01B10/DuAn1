@@ -1,41 +1,65 @@
+<?php 
+    $queryBuilder = new QueryBuilder();
+    $blogs = $queryBuilder->query($queryBuilder->table("blog")->select("*")->get());
+    
+    if(isset($_GET["act"]) && $_GET["act"] == "deleteBlog"){
+        $queryBuilder->excute($queryBuilder->delete("blog","blog.Id = ".$_GET['Id']));
+    }
+?>
+
 <main>
         <table class="listuser">
             <thead>
                 <tr>
                     <th>STT</th>
+                    <th>ID</th>
                     <th>Tiêu đề</th>
                     <th>Hình ảnh</th>
+                    <th>Nội dung</th>
                     <th>Ngày đăng</th>
                     <th>Trạng thái</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Du lich mien bac</td>
-                    <td>
-                        <p>NVD</p>
-                        <p>123456</p>
-                        <p>Thon</p>
-                    </td>
-                    <td>
-                        <p>jkdakjhdk</p>
-                        <p>jkdakjhdk</p>
-                        <p>jkdakjhdk</p>
-                        <p>asdakdh</p>
-                    </td>
-                    <td>
-                        <p>123</p>
-                    </td>
-                    <td class="action">
-                        <i class="fa-solid fa-ellipsis-vertical"></i>
-                        <div class="hidden">
-                            <a href="">Delete</a>
-                            <a href="">Update</a>
-                        </div>
-                    </td>
-                </tr>
+                <?php 
+                    if(!empty($blogs)){
+                        $i = 0;
+                        foreach($blogs as $item){
+                            $i++;
+                ?>
+                            <tr>
+                                <td><?php echo $i?></td>
+                                <td><?php echo $item["Id"]?></td>
+                                <td><?php echo $item["title"]?></td>
+                                <td>
+                                    <img class="imgTour" src="<?php echo _WEB_ROOT_."/views/client/img/blogs/".$item["img"]?>" alt="">
+                                </td>
+                                <td>
+                                    <p class="content"><?php echo $item["content_blog"]?></p>
+                                </td>
+                                <td><?php echo $item["creat_time"]?></td>
+                                <td>
+                                    <?php
+                                        if($item["status"] == 1){
+                                            echo "<button type='button' class='statusOrder'>"."Nổi bật"."</button>";
+                                        }else{
+                                            echo "<button type='button' class='statusOrder'>"."Bình thường"."</button>";
+                                        }
+                                    ?>
+                                </td>
+                                <td class="action">
+                                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                                    <div class="hidden">
+                                        <a href="?act=deleteBlog&Id=<?php echo $item["Id"]?>">Delete</a>
+                                        <a href="">Update</a>
+                                    </div>
+                                </td>
+                            </tr>
+                <?php
+                        }
+                    }
+                ?>
             </tbody>
         </table>
     </main>

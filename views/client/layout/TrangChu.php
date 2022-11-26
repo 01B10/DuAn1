@@ -1,32 +1,47 @@
 <?php 
     $queryBuilder = new QueryBuilder();
     $listProvince = $queryBuilder->query($queryBuilder->table("province")->select("*")->get());
-    // echo "<pre>";
-    // print_r($listProvince);
-    // echo "</pre>";
+    unset($_SESSION["startTime_search"]);
+    $x = 0;
+    if(isset($_POST["search"])){
+        if(!empty($_POST["start_time"]) && !empty($_POST["end_time"])){
+            header("Location: Search?province=".$_POST["province"].
+            "&start_time=".$_POST["start_time"]."&end_time=".$_POST["end_time"]);
+        }
+    }
+    
 ?>
     <article>
-        <form class="search">
+        <form action="" class="search" method="POST">
             <div class="full-search">
                 <h3>Search destination*</h3>
-                <input type="text" placeholder="Enter destination">
+                <select name="province">
+                    <option value="0">Tất cả</option>
+                    <?php 
+                        foreach($listProvince as $item){
+                    ?>
+                            <option value="<?php echo $item["Id"]?>"><?php echo $item["name"]?></option>
+                    <?php
+                        }
+                    ?>
+                </select>
             </div>
             <div class="full-search">
                 <h3>Checkin date**</h3>
                 <div class="search-item">
                     <i class="fa-solid fa-calendar-days"></i>
-                    <input id="myID" placeholder="dd/mm/yyyy">
+                    <input name="start_time" id="myID" placeholder="dd/mm/yyyy">
                 </div>
             </div>
             <div class="full-search">
                 <h3>Checkout date*</h3>
                 <div class="search-item">
                     <i class="fa-solid fa-calendar-days"></i>
-                    <input id="myID" placeholder="dd/mm/yyyy">
+                    <input name="end_time" id="myID" placeholder="dd/mm/yyyy">
                 </div>
             </div>
             <div class="full-search">
-                <button>Inquire now</button>
+                <button name="search">Inquire now</button>
             </div>
         </form>
         <section class="nice-place">

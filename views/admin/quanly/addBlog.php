@@ -30,7 +30,6 @@
             $_POST = "";
         }
     }
-    print_r($_POST);
 ?> 
 
 <main>
