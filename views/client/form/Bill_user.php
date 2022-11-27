@@ -25,7 +25,7 @@
 </head>
 <body>
     <a href="Trang-Chu">
-            <i class="fa-solid fa-arrow-left"></i>
+        <i class="fa-solid fa-arrow-left"></i>
     </a>
     <main>
         <h2>Hóa đơn</h2>
@@ -120,7 +120,7 @@
                                 <td>
                                     <span>
                                         <?php 
-                                            echo $item["total"];
+                                            echo number_format($item["total"]);
                                         ?>đ
                                     </span>
                                     <!-- php code -->

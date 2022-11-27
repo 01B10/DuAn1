@@ -25,9 +25,25 @@
             $data = array_filter($_POST);
             $data["img"] = $_FILES["img"]["name"];
             $data["creat_time"] = date("Y-m-d");
+            $file = $_FILES["files"];
             move_uploaded_file($_FILES["img"]["tmp_name"],_DIR_ROOT."/views/client/img/blogs/".$data["img"]);
+            move_uploaded_file($file["tmp_name"],_DIR_ROOT."/views/client/img/blogs/".$file["name"]);
+            $src = explode("src=",$data["content_blog"]);
+            if(count($src) > 1){
+                $link = substr($src[1],0,strripos($src[1],"style"));
+                $subsrc = explode(" ",$src[1]);
+                $subsrc[0] = '"'._WEB_ROOT_."/views/admin/img/".$file["name"].'"';
+                $src[1] = " src=";
+                foreach($subsrc as $item){
+                    $src[1].= " ".$item." ";
+                }
+                $content = "'".$src[0].$src[1]."'";
+                $data["content_blog"] = $content;
+            }
+
             $queryBuilder->excute($queryBuilder->inserData("blog",$data));
             $_POST = "";
+            print_r($_FILES);
         }
     }
 ?> 

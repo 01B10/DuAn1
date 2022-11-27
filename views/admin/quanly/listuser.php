@@ -1,7 +1,18 @@
-    <?php 
-        $queryBuilder = new QueryBuilder();
-        $listCustomer = $queryBuilder->query($queryBuilder->table("customer")->select("*")->get());
-    ?>
+<?php 
+    $queryBuilder = new QueryBuilder();
+    $listCustomer = $queryBuilder->query($queryBuilder->table("customer")->select("*")->get());
+
+    if(isset($_GET["act"]) && $_GET["act"] == "deleteUser"){
+        $idOrder = $queryBuilder->query($queryBuilder->table("orderTour")->select("Id")
+        ->where("orderTour.cus_id","=",$_GET["Id"])->get())[0];
+        $queryBuilder->excute($queryBuilder->delete("comment","comment.cus_id = ".$_GET['Id']));
+        if(!empty($idOrder)){
+            $queryBuilder->excute($queryBuilder->delete("order_details","order_details.order_id = ".$idOrder["Id"]));
+        }
+        $queryBuilder->excute($queryBuilder->delete("orderTour","orderTour.cus_id = ".$_GET['Id']));
+        $queryBuilder->excute($queryBuilder->delete("customer","customer.Id = ".$_GET['Id']));
+    }
+?>
     
     <main>
         <table class="listuser">
@@ -48,7 +59,7 @@
                                 <td><?php echo $item["phone"]?></td>
                                 <td>
                                     <?php 
-                                            if($item["gender"] == 1){
+                                            if($item["role"] == 1){
                                                 echo "Nhân viên";
                                             }else{
                                                 echo "Khách hàng";
@@ -58,8 +69,8 @@
                                 <td class="action">
                                     <i class="fa-solid fa-ellipsis-vertical"></i>
                                     <div class="hidden">
-                                        <a href="">Delete</a>
-                                        <a href="updateUser">Update</a>
+                                        <a href="<?php echo "?act=deleteUser&Id=".$item["Id"]?>">Delete</a>
+                                        <a href="<?php echo "updateUser?Id=".$item["Id"]?>">Update</a>
                                     </div>
                                 </td>
                             </tr>

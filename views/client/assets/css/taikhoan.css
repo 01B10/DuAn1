@@ -1,187 +1,240 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
 }
-:root{
-    --clr:rgb(248, 248, 248);
-    --bodyclr:#E4E9F7;
+:root {
+  --clr: rgb(248, 248, 248);
+  --bodyclr: #e4e9f7;
+}
+
+.fa-arrow-left {
+  font-size: 40px;
+  margin-left: 20px;
 }
 
 main {
-    /* display: flex; */
-    /* justify-content: center;
-    align-items: center; */
-    max-width: 1200px;
-    margin: 0 auto;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-form {
-    margin-top: 50px;
-    display: flex;
-    gap: 32px;
+.form {
+  margin-top: 50px;
+  display: flex;
+  gap: 32px;
 }
-body{
-    background: var(--bodyclr);
+
+body {
+  background: var(--bodyclr);
 }
+
+.user-img {
+  display: inline-block;
+  margin: 20px 0;
+}
+
 .user-img img {
-    width: 100%;
-    max-width: 100px;
-    display: inline-block;
-    margin-left: 50px;
+  max-width: 100px;
+  display: inline-block;
+  margin-left: 50px;
+  cursor: pointer;
 }
-.account,.change,.history {
-    /* position: absolute; */
-    justify-content: center;
-    align-items: center;
-    border: none;
-    padding: 10px;
-    box-shadow: 0 0 10px silver;
-    border-radius: 5px;
-    background: #fff;
+.account,
+.change,
+.history {
+  justify-content: center;
+  align-items: center;
+  border: none;
+  padding: 10px;
+  box-shadow: 0 0 10px silver;
+  border-radius: 5px;
+  background: #fff;
 }
-.user-img{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+
+.btnUpdate {
+  padding: 10px;
+  background: rgb(155, 155, 231);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+  font-weight: bold;
 }
-.change-img button{
-    padding: 8px;
-    background: rgb(155, 155, 231);
-    color: #fff;
-    border:none;
-    border-radius: 5px;
+
+.btnUpdate:hover {
+  background-color: lightblue;
 }
 /* .change-img label{
     margin-bottom: 100px;
 } */
 
-.change-pass input:focus,.user .infomation input:focus{
-    border: 1px solid #1DA1F2;
-    box-shadow: 0 0 5px #1DA1F2;
+.change-pass input:focus,
+.user .infomation input:focus {
+  border: 1px solid #1da1f2;
+  box-shadow: 0 0 5px #1da1f2;
 }
-.change-img input{
-    display: inline-block;
-    width: 100%;
-    margin-bottom: 10px;
+.change-img input {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 10px;
 }
-.account h3,.change h3,.history h3{
-    background: rgb(155, 155, 231);
-    max-width: 200px;
-    padding: 7px;
-    color: #fff;
-    margin-left: -10px;
+.account h3,
+.change h3,
+.history h3 {
+  background: rgb(155, 155, 231);
+  max-width: 200px;
+  padding: 7px;
+  color: #fff;
+  margin-left: -10px;
 }
 
-.user-img {
-    text-align: center;
-    margin: 30px;
-}
-/* .change-img{
-    margin: 30px 0;
-} */
-.user,.change-img label,.change-pass label {
-    /* display: inline-block;
+.user,
+.change-img label,
+.change-pass label {
+  /* display: inline-block;
     cursor: default; */
-    font-size: 1em;
-    text-transform: uppercase;
-    letter-spacing: inherit;
+  font-size: 1em;
+  text-transform: uppercase;
+  letter-spacing: inherit;
 }
-.user label{
-    display: inline-block;
-   
+.user label {
+  display: inline-block;
 }
-.user .infomation input{
-    width: 100%;
-    height: 40px;
-    background: #eceef1 ;
-    border: 1px solid silver;
-    border-radius: 5px;
-    font-size: 20px;
-    padding: 10px 15px;
-    outline: none;
-}
-.info label,.change-img label,.change-pass label{
-    margin-bottom: 10px; 
-    font-weight: 600;
-    margin-left: 10px;
-}
-.info{
-    margin-bottom: 25px;
-   
+.user .infomation .info > input {
+  width: 100%;
+  height: 40px;
+  background: #eceef1;
+  border: 1px solid silver;
+  border-radius: 5px;
+  font-size: 20px;
+  padding: 10px 15px;
+  outline: none;
 }
 
-.infomation{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
+.gender {
+  background: #eceef1;
+  border: 1px solid silver;
+  border-radius: 5px;
+  /* padding: 10px 15px; */
+  line-height: 40px;
+  height: 40px;
+  outline: none;
 }
-.change-pass input{
-    display: inline-block;
-    width: 100%;
-    margin-bottom: 10px;
-    width: 100%;
-    height: 40px;
-    /* background: #eceef1 ; */
-    border: 1px solid silver;
-    border-radius: 5px;
-    /* font-size: 20px; */
-    padding: 10px 15px;
-    outline: none;
+
+.gender label {
+  font-size: 1rem;
 }
-.h3-change{
-    margin-bottom: 10px;
+
+.gender label input {
+  margin-right: 5px;
 }
-.new-pass input{
-    margin-top: 10px;
-    margin-bottom: 20px;
+
+.info label,
+.change-img label,
+.change-pass label {
+  margin-bottom: 10px;
+  font-weight: 600;
+  margin-left: 10px;
 }
-.change-pass button{
-    background: rgb(155, 155, 231);
-    width: 100%;
-    border: none;
-    height: 40px;
-    color: #fff;
-    font-size: 17px;
-    border-radius: 5px;
+.info {
+  margin-bottom: 25px;
 }
-.change-pass button i{
-    margin-right: 5px;
+
+.infomation {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
 }
-.history{
-    margin: 30px 0 50px 0;
-    overflow-y: scroll;
-    /* box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5); */
-    
+.change-pass input {
+  display: inline-block;
+  width: 100%;
+  width: 100%;
+  height: 40px;
+  border: 1px solid silver;
+  border-radius: 5px;
+  padding: 10px 15px;
+  outline: none;
 }
-.history table{
-    margin: 20px 0 50px 0;
-    width: 100%;
+.h3-change {
+  margin-bottom: 10px;
 }
-thead,th,tr,td{
-    border: 1px solid silver;
-    
-    /* text-align: left; */
+
+.new-pass {
+  position: relative;
+  margin-bottom: 25px;
 }
-table{
-    border-collapse: collapse;
-    
+
+.new-pass span {
+  position: absolute;
+  right: 15px;
+  top: 60%;
+  transform: translateY(-60%);
+  font-size: 15px;
+  color: #8e44ad;
+  cursor: pointer;
 }
-td{
-    height: 30px;
-    /* border: 1px solid silver; */
-    text-align: center;
+
+.new-pass span i.hide-btn::before {
+  content: "\f070";
 }
-th{
-    background: #00bcd4;
-    color: #fff;
-    height: 50px;
+
+.change-pass button {
+  background: rgb(155, 155, 231);
+  width: 100%;
+  border: none;
+  height: 40px;
+  color: #fff;
+  font-size: 17px;
+  border-radius: 5px;
+  cursor: pointer;
 }
-tr th:nth-child(1){
-    width: 60px;
-    background: #03707d;
+.change-pass button i {
+  margin-right: 5px;
 }
-.history::-webkit-scrollbar{
-    width: 0 !important;
-    display: none;
+.history {
+  margin: 30px 0 50px 0;
+  overflow-y: scroll;
+  /* box-shadow: 0 10px 10px rgba(0, 0, 0, 0.5); */
+}
+.history table {
+  margin: 20px 0 50px 0;
+  width: 100%;
+}
+thead,
+th,
+tr,
+td {
+  border: 1px solid silver;
+
+  /* text-align: left; */
+}
+table {
+  border-collapse: collapse;
+}
+td {
+  height: 30px;
+  text-align: center;
+}
+th {
+  background: #00bcd4;
+  color: #fff;
+  height: 50px;
+}
+tr th:nth-child(1) {
+  width: 60px;
+  background: #03707d;
+}
+.history::-webkit-scrollbar {
+  width: 0 !important;
+  display: none;
+}
+
+.err {
+  color: red;
+  font-weight: bold;
+  font-size: 0.8rem;
+  text-align: center;
 }

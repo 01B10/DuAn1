@@ -56,37 +56,33 @@
     </a>
     <div class="container">
         <form action="" method="POST">
-            <h2>Login form</h2>
+            <h2>Đăng nhập</h2>
             <p class="err"><?php echo (isset($customer) && empty($customer))?"Tài khoản hoặc Mật khẩu không đúng":false?></p>
             <div class="input-field">
                 <input type="text" name="email" value="<?php if(!empty($_POST["email"])){echo $_POST["email"];}?>">
-                <label for="">Email or Phone Number</label>
+                <label for="">Email hoặc số điện thoại</label>
                 <p class="err"><?php echo (!empty($errors) && array_key_exists("email",$errors))?$errors["email"]:false?></p>
             </div>
             <div class="input-field">
                 <input type="password" name="password" class="pass">
-                <label for="">Password</label>
+                <label for="">Mật khẩu</label>
                 <span class="show-btn"><i class="fas fa-eye"></i></span>
                 <p class="err"><?php echo (!empty($errors) && array_key_exists("password",$errors))?$errors["password"]:false?></p>
             </div>
             <div class="forgot">
-                <a href="forgotpassword">Forgot password?</a>
+                <a href="forgotpassword">Quên mật khẩu?</a>
             </div>
             <div class="button">
                 <button name="login" style="--clr:#1e9bff">
-                    Login
+                    Đăng nhập
                 </button>
             </div>
             <div class="register">
-                <p>Not a member? <a href="Register">Register</a></p>
+                <p>Không phải thành viên? <a href="Register">Đăng ký</a></p>
             </div>
         </form>
     </div>
 </body>
-
-</html>
-<!-- <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script> -->
 <script>
     const passField = document.querySelector(".pass");
     const showBtn = document.querySelector("span i");
@@ -100,3 +96,6 @@
         }
     });
 </script>
+</html>
+<!-- <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script> -->

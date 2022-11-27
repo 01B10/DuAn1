@@ -1,4 +1,5 @@
 <?php 
+    date_default_timezone_set('Asia/Ho_Chi_Minh');
     $queryBuilder = new QueryBuilder();
     $tourDetail = $queryBuilder->query($queryBuilder->table("tour")->select("*")
     ->join("inner","tour_detail","tour.Id = tour_detail.tour_id")
@@ -16,6 +17,13 @@
             header("Location: login");
         }
     }
+
+    if(isset($_POST["sendbtn"])){
+        if(!isset($_SESSION["Login"]["customer"])){
+            header("Location: login");
+        }
+    }
+
 ?>
 
 
@@ -122,9 +130,9 @@
                                         <tr>
                                             <td>
                                                 <span class="price-tour">
-                                                    <div class="title-price-old horizontal"><del><?php echo $item["price"]?>VND</del></div>
+                                                    <div class="title-price-old horizontal"><del><?php echo number_format($item["price"])?>VND</del></div>
                                                     <div class="title-price-new">
-                                                        <?php echo $discount?>VND<span class="title-price-new-slot">VND/người</span> 
+                                                        <?php echo number_format($discount)?>VND<span class="title-price-new-slot">VND/người</span> 
                                                     </div>
                                                 </span>
                                             </td>
@@ -149,6 +157,16 @@
                                 </table>
                             </form>
                         </div>
+                        <div class="formComment">
+                            <form action="" class="typearea" method="POST">
+                                <input type="text" name="cus_id" class="incoming_id" value="<?php if(isset($_SESSION["Login"]["customer"]["Id"])){echo $_SESSION["Login"]["customer"]["Id"];}?>" id="" hidden>
+                                <input type="text" name="tour_id" class="incoming_id" value="<?php echo $tourDetail[0]["tour_id"]; ?>" id="" hidden>
+                                <input type="text" name="WeebRoot" class="incoming_id" value="<?php echo _WEB_ROOT_;?>" id="" hidden>
+                                <textarea name="content" class="inputfield" rows="10" placeholder="Viết bình luận...."></textarea>
+                                <input class="sendbtn" name="sendbtn" type="<?php echo isset($_SESSION["Login"]["customer"]["Id"])?"button":"submit"?>" value="send">
+                            </form>
+                            <div class="chat-box"></div>
+                        </div>
                     </div>
         <?php
                 }
@@ -160,16 +178,50 @@
     let slideIndex = 0;
     var tourTitle = document.querySelectorAll('.panel-tour-product-title');
     var tour = document.querySelectorAll('.panel-tour-product');
+    var form = document.querySelector(".typearea");
+    var sendbtn = document.querySelector(".sendbtn");
+    var inputfield = document.querySelector(".inputfield");
+    var chatBox = document.querySelector(".chat-box");
     for(let i = 0; i < tourTitle.length; i++){
         tourTitle[i].onclick = function(){
-        var tourHeight = tour[i].clientHeight;
-        var isClosed = tourTitle[i].clientHeight === tourHeight;
-        if(isClosed){
-            tour[i].style.height = 'auto';
-        } else {
-            tour[i].style.height = null;
+            var tourHeight = tour[i].clientHeight;
+            var isClosed = tourTitle[i].clientHeight === tourHeight;
+            if(isClosed){
+                tour[i].style.height = 'auto';
+            } else {
+                tour[i].style.height = null;
+            }
         }
     }
+
+
+    if(sendbtn != null){
+        sendbtn.addEventListener("click",()=>{
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST","model/insertchat.php",true);
+        xhr.onload = ()=>{
+            if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200){
+                inputfield.value = "";
+            }
+        }
+        let formData = new FormData(form);
+        xhr.send(formData);
+        });
     }
+    
+    setInterval(() => {
+    	let xhr = new XMLHttpRequest();
+    	xhr.open("POST", "model/getchat.php", true);
+    	xhr.onload = () => {
+    		if((xhr.readyState === XMLHttpRequest.DONE) && (xhr.status === 200)){
+                    if(chatBox != null){
+                        chatBox.innerHTML = xhr.response;
+                    }
+    		}
+    	}
+    	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    	xhr.send('infor='+<?php echo $tourDetail[0]["tour_id"]?>+"|"
+        +'<?php echo _WEB_ROOT_?>');
+    }, 800)
     
 </script>

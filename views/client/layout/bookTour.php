@@ -16,8 +16,6 @@
     $tour = $queryBuilder->query($queryBuilder->table("tour")->select("*")
     ->where("tour.Id","=",$_GET["tour_id"])->get())[0];
 
-    //  print_r($_SESSION);
-
      if(isset($_POST["submit"])){
         $validate =  validate($rule,$message,$errors);
         if($validate){
@@ -32,7 +30,6 @@
             $data["cus_id"] = $_SESSION["Login"]["customer"]["Id"];
             $data["start_time"] = date("Y-m-d",strtotime($_SESSION["orderDate"]));
             $data["creat_time"] = date("Y-m-d");
-            // echo $tour["slot"];
             
             if($tour["slot"] < $adults + $children){
               echo "<script>alert('Hiện tại tour chỉ có: ".$tour["slot"]." chỗ')</script>";

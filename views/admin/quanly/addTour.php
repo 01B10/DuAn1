@@ -38,15 +38,12 @@
     $listTransport = $queryBuilder->query($queryBuilder->table("list_transport")->select("*")->get());
     $listService = $queryBuilder->query($queryBuilder->table("list_service")->select("*")->get());
     $listProvince = $queryBuilder->query($queryBuilder->table("province")->select("*")->get());
-    // $tour12 = $queryBuilder->query($queryBuilder->table("tour")->select("*")->get());
-    // echo "<pre>";
-    // print_r($tour12);
-    // echo "</pre>";
+    
     $errors = [];
     if(isset($_POST["addTour"])){
         $validate =  validate($rule,$message,$errors);
         $errors = errors("",$errors);
-    //    print_r($_POST);
+
         if($validate){
             $service = $_POST["listservice_id"];
             $trasport = $_POST["list_transport_id"];
@@ -61,6 +58,7 @@
             $data = array_filter($_POST);
             $data["img"] = $_FILES["img"]["name"];
             move_uploaded_file($_FILES["img"]["tmp_name"],_DIR_ROOT."/views/client/img/tours/".$data["img"]);
+
             $queryBuilder->excute($queryBuilder->inserData("tour",$data));
 
             $idTour = $queryBuilder->first($queryBuilder->table("tour")->select("Id")->orderBy("Id","DESC")->get());

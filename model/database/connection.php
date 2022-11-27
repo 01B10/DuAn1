@@ -1,5 +1,5 @@
 <?php 
-    include_once $path."\database\config.php";
+    include_once "config.php";
     try {
         $dsn = "mysql:host=".$config["root"].";dbname=".$config["db"].";charset=utf8";
         $conn = new PDO($dsn,$config["user"],$config["pass"]);

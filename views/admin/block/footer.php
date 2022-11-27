@@ -23,7 +23,6 @@
     const searchParam = new URLSearchParams(window.location.search);
     var deleteTour = document.querySelector(".deleteTour");
 
-
     let index = 0;
     toggle.addEventListener("click",()=>{
         ++index;
@@ -97,7 +96,7 @@
 
     if(img != null){
         img.addEventListener("click",()=>{
-        file.click();
+            file.click();
         });
     }
 
@@ -108,6 +107,10 @@
     }else if(searchParam.get("act") == "deleteBlog"){
         window.addEventListener("load",()=>{
             window.location = "listBlog";
+        });
+    }else if(searchParam.get("act") == "deleteUser"){
+        window.addEventListener("load",()=>{
+            window.location = "listUser";
         });
     }
 

@@ -1,6 +1,6 @@
 <?php
     $route["Trang-Chu"] = "client\\layout\\TrangChu";
-    $route["Search"] = "client\\Search";
+    $route["Search"] = "client\\layout\\Search";
     $route["forgotpassword"] = "client\\form\\ForgotPass";
     $route["Login"] = "client\\form\\Login";
     $route["Register"] = "client\\form\\Register";
@@ -21,7 +21,7 @@
     $route["admin/listProvince"] = "admin\\quanly\\listprovince";
     $route["admin/listTransport"] = "admin\\quanly\\listtransport";
 
-    $route["admin/addCustomer"] = "admin\\quanly\\addCustomer";
+    $route["admin/addUser"] = "admin\\quanly\\addUser";
     $route["admin/addService"] = "admin\\quanly\\addService";
     $route["admin/addTour"] = "admin\\quanly\\addTour";
     $route["admin/addBlog"] = "admin\\quanly\\addBlog";

@@ -1,5 +1,5 @@
 <?php 
-    include_once $path."\database\connection.php";
+    include "connection.php";
     class QueryBuilder{
         public $tableName = "", $field="",$where="",$operator="",$join="",
         $orderBy="",$groupBy="";
@@ -8,8 +8,8 @@
            try {
                 global $conn;
                 $data = $conn->query($sql);
-                return $data->fetchAll(PDO::FETCH_ASSOC);
                 // echo $sql."<br>";
+                return $data->fetchAll(PDO::FETCH_ASSOC);
            } catch (Exception $th) {
                 echo $th->getMessage();
            }

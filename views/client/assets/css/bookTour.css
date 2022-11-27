@@ -23,35 +23,6 @@ boby {
 .mySlides img {
   height: 360px;
 }
-/* Next & previous buttons */
-.prev,
-.next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  margin-top: -22px;
-  padding: 16px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-}
-
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover,
-.next:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-}
-
 /* Caption text */
 .text {
   color: #f2f2f2;
@@ -70,18 +41,6 @@ boby {
   padding: 8px 12px;
   position: absolute;
   top: 0;
-}
-
-/* The dots/bullets/indicators */
-.dot {
-  cursor: pointer;
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.5s ease;
 }
 
 .active,
@@ -193,9 +152,7 @@ boby {
   font-weight: bold;
   cursor: pointer;
 }
-/* .khoihanh {
 
-} */
 .form-booking {
   padding: 0px 20px;
 }
@@ -217,28 +174,13 @@ boby {
   font-size: 16px;
   color: #fec32d;
 }
-.title-price-new-2 {
-  font-size: 35px;
-  color: #fec32d;
-  font-weight: bold;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  margin-top: 10px;
-}
+
 .form-control-2 {
   padding: 10px 0px;
   display: block;
   right: 0px;
 }
-.khoihanh {
-  margin-right: 20px;
-}
-.slc-tour-people-2 {
-  width: calc(100% + 0.3px);
-}
-.row-khoihanh {
-  margin-bottom: 230px;
-}
+
 .btn-submit-set-tour-2 {
   margin-left: 2px;
   padding: 15px 30px;
@@ -274,9 +216,7 @@ boby {
   border-color: inherit;
   background-color: #0066d9;
 }
-.banggia tr:nth-child(odd) {
-  background-color: #f9f9f9;
-}
+
 .panel-tour-product-service table thead tr {
   display: table-row;
   vertical-align: inherit;
@@ -289,43 +229,76 @@ boby {
 .panel-tour-product-title {
   height: 48px;
 }
-.banggia th:first-child {
-  border-top-left-radius: 5px;
-}
-.banggia th {
-  border-top: none;
-  border-bottom: none;
-  color: white;
-  text-align: center;
-  font-size: 16px;
-  font-weight: normal;
-  vertical-align: middle;
-  padding: 6px 0px;
-  background: #0066d9;
-}
-b,
-strong {
-  font-weight: 700;
-}
-.banggia th:last-child {
-  border-top-right-radius: 5px;
-}
-p {
+
+/* p {
   margin: 0 0 10px;
-}
+} */
+
 tbody {
   display: table-row-group;
   vertical-align: middle;
   border-color: inherit;
 }
-.banggia tbody tr {
-  text-align: center;
-  border-left: 1px solid #ccc;
-  border-right: 1px solid #ccc;
+
+.formComment form .inputfield {
+  outline: none;
+  width: 100%;
+  padding: 5px;
+  background-color: #b5b5b5;
 }
-.banggia tr:nth-child(odd) {
-  background-color: #f9f9f9;
+
+.formComment form .inputfield::placeholder {
+  color: whitesmoke;
+  font-weight: bold;
 }
-.banggia tr td {
-  border: 1px solid #b5b5b5;
+
+.formComment form input {
+  outline: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: lightgreen;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  transition: 0.5s ease;
+}
+
+.formComment form input:hover {
+  background-color: lawngreen;
+  color: #fff;
+}
+
+.chat-box {
+  /* background-color: lightskyblue; */
+  margin-top: 20px;
+  border-radius: 5px;
+  padding: 10px;
+  overflow-y: scroll;
+  height: 250px;
+  border: 2px solid black;
+}
+
+.chat-box::-webkit-scrollbar {
+  width: 0px;
+}
+
+.comment {
+  display: flex;
+  align-items: stretch;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.avarta img {
+  width: 40px;
+}
+
+.contentComment .name {
+  font-weight: bold;
+}
+
+.contentComment .content {
+  background-color: lightblue;
+  padding: 5px;
+  border-radius: 10px;
 }

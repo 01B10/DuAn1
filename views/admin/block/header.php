@@ -46,7 +46,7 @@
                         <span>Customers</span></a>
                     <div class="dropdown">
                         <a href="listUser">List</a>
-                        <a href="addCustomer">Add</a>
+                        <a href="addUser">Add</a>
                     </div>
                 </li>
                 <li class="list">

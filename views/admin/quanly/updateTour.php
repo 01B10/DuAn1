@@ -79,11 +79,11 @@
             $_POST["start_time"] = date("Y-m-d",strtotime($_POST["start_time"]));
             $_POST["end_time"] = date("Y-m-d",strtotime($_POST["end_time"]));
             $data = array_filter($_POST);
-            if(empty($_FILES["img"]["name"])){
+            $data["img"] = $_FILES["img"]["name"];
+            if(empty($data["img"])){
                 $data["img"] = $tour["img"];
-            }else{
-                $data["img"] = $_FILES["img"]["name"];
             }
+            
             move_uploaded_file($_FILES["img"]["tmp_name"],_DIR_ROOT."/views/client/img/tours/".$data["img"]);
 
             $queryBuilder->excute($queryBuilder->updateData("tour",$data,"tour.Id = ".$tour["tour_id"]));

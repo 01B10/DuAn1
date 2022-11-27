@@ -109,6 +109,30 @@
                                 }
                             }
                         }
+
+                        if(isset($_SESSION["Login"]["customer"]) || isset($_SESSION["Login"]["admin"])){
+                            $Id = (isset($_GET["Id"]))?$_GET["Id"]:$_SESSION["Login"]["customer"]["Id"];
+                            if($ruleName == "change"){
+                                $tableName = null;
+                                $fieldCheck = null;
+                                if(!empty($rulesArr[1])){
+                                    $tableName = $rulesArr[1];
+                                }
+    
+                                if(!empty($rulesArr[2])){
+                                    $fieldCheck = $rulesArr[2];
+                                }
+                                
+                                if(!empty($tableName) && !empty($fieldCheck)){
+                                    $check = $queryBuilder->query("SELECT count(*) FROM `$tableName` WHERE `$fieldCheck` = '$dataFields[$fieldCheck]'
+                                    AND `Id` != ".$Id);
+                                    if($check[0]["count(*)"] >= 1){
+                                        setErrors($error,$message,$fieldName,$ruleName);
+                                        $checkValidate = false;
+                                    }
+                                }
+                            }
+                        }
                     }else{
                         if($ruleName == "img"){
                             if(!empty($_FILES[$fieldName])){
