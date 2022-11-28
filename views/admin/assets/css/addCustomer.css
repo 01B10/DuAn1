@@ -158,8 +158,12 @@ input:valid ~ label {
 }
 
 .file::-webkit-file-upload-button {
-  /* position: absolute; */
   background-color: #1da1f2;
   cursor: pointer;
   transform: translateY(50%);
+}
+
+.file + img {
+  cursor: pointer;
+  width: 110px;
 }

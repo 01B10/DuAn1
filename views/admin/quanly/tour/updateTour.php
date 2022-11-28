@@ -70,9 +70,12 @@
         if($validate){
             $service = $_POST["listservice_id"];
             $trasport = $_POST["list_transport_id"];
-            $_POST["content_service"] = "\"".htmlentities($_POST["content_service"])."\"";
-            $_POST["content_schedule"] = "\"".htmlentities($_POST["content_schedule"])."\"";
-            
+
+            $_POST["content_service"] = (!empty($_POST["content_service"]))?"\"".htmlentities($_POST["content_service"])."\""
+            :"\"".htmlentities($tour["content_service"])."\"";
+            $_POST["content_schedule"] = (!empty($_POST["content_schedule"]))?"\"".htmlentities($_POST["content_schedule"])."\""
+            :"\"".htmlentities($tour["content_schedule"])."\"";
+
             unset($_POST["listservice_id"]);
             unset($_POST["list_transport_id"]);
 
@@ -114,7 +117,7 @@
         <div class="col-md-10 col-md-offset-1">
             <div class="p-6">
                 <div class="">
-                    <form class="addtour" name="addpost" method="post" enctype="multipart/form-data">
+                    <form action="<?php echo "updateTour?Id=".$_GET["Id"]?>" class="addtour" name="addpost" method="POST" enctype="multipart/form-data">
                         
                         <div class="form-group m-b-20"></div>
 
@@ -135,8 +138,7 @@
                                 <div class="infortour">
                                     <label for="">
                                         <span>Tên tour</span>
-                                        <input type="text" name="name" value="<?php if(!empty($_POST["name"])){echo $_POST["name"];}
-                                        elseif(!empty($tour["name"])){echo $tour["name"];}?>">
+                                        <input type="text" name="name" value="<?php echo (!empty($_POST["name"]))?$_POST["name"]:$tour["name"]?>">
                                         <p class="err"><?php echo (!empty($errors) && array_key_exists("name",$errors))?$errors["name"]:false?></p>
                                     </label>
                                     <label for="">
@@ -158,24 +160,22 @@
                                     </label>
                                     <label for="">
                                         <span>Giá:</span>
-                                        <input type="text" name="price" value="<?php if(!empty($_POST["price"])){echo $_POST["price"];}
-                                        elseif(!empty($tour["price"])){echo $tour["price"];}?>">
+                                        <input type="text" name="price" value="<?php echo (!empty($_POST["price"]))?$_POST["price"]:$tour["price"]?>">
                                         <p class="err"><?php echo (!empty($errors) && array_key_exists("price",$errors))?$errors["price"]:false?></p>
                                     </label>
                                     <label for="">
                                         <span>Thời gian khởi hành:</span>
-                                        <input id="myID" name="start_time" placeholder="dd-mm-yyyy" value="<?php if(!empty($tour["start_time"])){echo date_format(date_create($tour["start_time"]),"d-m-y");}?>">
+                                        <input id="myID" name="start_time" placeholder="dd-mm-yyyy" value="<?php echo (!empty($_POST["start_time"]))?$_POST["start_time"]:date_format(date_create($tour["start_time"]),"d-m-y");?>">
                                         <p class="err"><?php echo (!empty($errors) && array_key_exists("start_time",$errors))?$errors["start_time"]:false?></p>
                                     </label>
                                     <label for="">
                                         <span>Hành trình:</span>
-                                        <input type="text" name="journeys" value="<?php if(!empty($_POST["journeys"])){echo $_POST["journeys"];}
-                                        elseif(!empty($tour["journeys"])){echo $tour["journeys"];}?>">
+                                        <input type="text" name="journeys" value="<?php echo (!empty($_POST["journeys"]))?$_POST["journeys"]:$tour["journeys"]?>">
                                         <p class="err"><?php echo (!empty($errors) && array_key_exists("journeys",$errors))?$errors["journeys"]:false?></p>
                                     </label>
                                     <label for="">
                                         <span>Thời gian kết thúc:</span>
-                                        <input id="myID" name="end_time" placeholder="dd-mm-yyyy" value="<?php if(!empty($tour["end_time"])){echo date_format(date_create($tour["end_time"]),"d-m-y");}?>">
+                                        <input id="myID" name="end_time" placeholder="dd-mm-yyyy" value="<?php echo (!empty($_POST["end_time"]))?$_POST["end_time"]:date_format(date_create($tour["end_time"]),"d-m-y");?>">
                                         <p class="err"><?php echo (!empty($errors) && array_key_exists("end_time",$errors))?$errors["end_time"]:false?></p>
                                     </label>
                                     <label for="" class="listservice">
@@ -217,20 +217,17 @@
                                     </label>
                                     <label for="">
                                         <span>Điểm khởi hành:</span>
-                                        <input type="text" name="departure" value="<?php if(!empty($_POST["departure"])){echo $_POST["departure"];}
-                                        elseif(!empty($tour["departure"])){echo $tour["departure"];}?>">
+                                        <input type="text" name="departure" value="<?php echo (!empty($_POST["departure"]))?$_POST["departure"]:$tour["departure"]?>">
                                         <p class="err"><?php echo (!empty($errors) && array_key_exists("departure",$errors))?$errors["departure"]:false?></p>
                                     </label>
                                     <label for="">
                                         <span>Chỗ:</span>
-                                        <input type="text" name="slot" value="<?php if(!empty($_POST["slot"])){echo $_POST["slot"];}
-                                        elseif(!empty($tour["slot"])){echo $tour["slot"];}?>">
+                                        <input type="text" name="slot" value="<?php echo (!empty($_POST["slot"]))?$_POST["slot"]:$tour["slot"]?>">
                                         <p class="err"><?php echo (!empty($errors) && array_key_exists("slot",$errors))?$errors["slot"]:false?></p>
                                     </label>
                                     <label for="">
                                         <span>Giảm giá:</span>
-                                        <input type="text" name="discount" value="<?php if(!empty($_POST["discount"])){echo $_POST["discount"];}
-                                        elseif(!empty($tour["discount"])){echo $tour["discount"];}?>">
+                                        <input type="text" name="discount" value="<?php echo (!empty($_POST["discount"]))?$_POST["discount"]:$tour["discount"]?>">
                                         <p class="err"><?php echo (!empty($errors) && array_key_exists("discount",$errors))?$errors["discount"]:false?></p>
                                     </label>
                                 </div>

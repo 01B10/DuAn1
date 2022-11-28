@@ -12,24 +12,29 @@
     $route["bookTour"] = "client\\layout\\bookTour";
 
     $route["admin/dashboard"] = "admin\\quanly\\dashboard";
-    $route["admin/listUser"] = "admin\\quanly\\listuser";
-    $route["admin/listService"] = "admin\\quanly\\listService";
-    $route["admin/listBlog"] = "admin\\quanly\\listBlog";
-    $route["admin/listComment"] = "admin\\quanly\\listcomment";
-    $route["admin/listOrder"] = "admin\\quanly\\listOrder";
-    $route["admin/listTour"] = "admin\\quanly\\listtour";
-    $route["admin/listProvince"] = "admin\\quanly\\listprovince";
-    $route["admin/listTransport"] = "admin\\quanly\\listtransport";
+    $route["admin/listUser"] = "admin\\quanly\\user\\listuser";
+    $route["admin/listService"] = "admin\\quanly\\service\\listService";
+    $route["admin/listBlog"] = "admin\\quanly\\blog\\listBlog";
+    $route["admin/listComment"] = "admin\\quanly\\comment\\listcomment";
+    $route["admin/listOrder"] = "admin\\quanly\\order\\listOrder";
+    $route["admin/listTour"] = "admin\\quanly\\tour\\listtour";
+    $route["admin/listProvince"] = "admin\\quanly\\province\\listprovince";
+    $route["admin/listTransport"] = "admin\\quanly\\transport\\listtransport";
 
-    $route["admin/addUser"] = "admin\\quanly\\addUser";
-    $route["admin/addService"] = "admin\\quanly\\addService";
-    $route["admin/addTour"] = "admin\\quanly\\addTour";
-    $route["admin/addBlog"] = "admin\\quanly\\addBlog";
-    $route["admin/addProvince"] = "admin\\quanly\\addProvince";
-    $route["admin/addTransport"] = "admin\\quanly\\addTransport";
+    $route["admin/addUser"] = "admin\\quanly\\user\\addUser";
+    $route["admin/addService"] = "admin\\quanly\\service\\addService";
+    $route["admin/addTour"] = "admin\\quanly\\tour\\addTour";
+    $route["admin/addBlog"] = "admin\\quanly\\blog\\addBlog";
+    $route["admin/addProvince"] = "admin\\quanly\\province\\addProvince";
+    $route["admin/addTransport"] = "admin\\quanly\\transport\\addTransport";
 
-    $route["admin/updateUser"] = "admin\\quanly\\updateUser";
-    $route["admin/updateTour"] = "admin\\quanly\\updateTour";
+    $route["admin/updateUser"] = "admin\\quanly\\user\\updateUser";
+    $route["admin/updateTour"] = "admin\\quanly\\tour\\updateTour";
+    $route["admin/updateBlog"] = "admin\\quanly\\blog\\updateBlog";
+    $route["admin/updateService"] = "admin\\quanly\\service\\updateService";
+    $route["admin/updateProvince"] = "admin\\quanly\\province\\updateProvince";
+    $route["admin/updateTransport"] = "admin\\quanly\\transport\\updateTransport";
+
     $route["chat"] = "client\\layout\\chat";
     $route["post"] = "admin\\quanly\\post";
 

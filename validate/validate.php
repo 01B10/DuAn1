@@ -1,5 +1,5 @@
 <?php 
-     $queryBuilder = new QueryBuilder();
+    $queryBuilder = new QueryBuilder();
     function getMethod(){
         return $_SERVER["REQUEST_METHOD"];
     }
@@ -38,6 +38,7 @@
                     setErrors($error,$message,$fieldName,"required");
                     $checkValidate = false;
                 }
+                
                 $ruleItemArr = explode("|",$ruleItem);
                 foreach($ruleItemArr as $rule){
                     $ruleName = null;
@@ -111,7 +112,7 @@
                         }
 
                         if(isset($_SESSION["Login"]["customer"]) || isset($_SESSION["Login"]["admin"])){
-                            $Id = (isset($_GET["Id"]))?$_GET["Id"]:$_SESSION["Login"]["customer"]["Id"];
+                            $Id = (isset($_GET["Id"]))?$_GET["Id"]:(isset($_SESSION["Login"]["customer"]["Id"])?$_SESSION["Login"]["customer"]["Id"]:false);
                             if($ruleName == "change"){
                                 $tableName = null;
                                 $fieldCheck = null;

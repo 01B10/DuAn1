@@ -1,6 +1,11 @@
 <?php 
     $queryBuilder = new QueryBuilder();
     $listService = $queryBuilder->query($queryBuilder->table("list_service")->select("*")->get());
+
+    if(isset($_GET["act"]) && $_GET["act"] == "deleteService"){
+        $queryBuilder->excute($queryBuilder->delete("service","service.listservice_id = ".$_GET['Id']));
+        $queryBuilder->excute($queryBuilder->delete("list_service","list_service.Id = ".$_GET['Id']));
+    }
 ?>
 
 <main>
@@ -33,8 +38,8 @@
                                 <td class="action">
                                     <i class="fa-solid fa-ellipsis-vertical"></i>
                                     <div class="hidden">
-                                        <a href="">Delete</a>
-                                        <a href="">Update</a>
+                                        <a href="<?php echo "?act=deleteService&Id=".$item["Id"]?>">Delete</a>
+                                        <a href="updateService?Id=<?php echo $item["Id"]?>">Update</a>
                                     </div>
                                 </td>
                             </tr>

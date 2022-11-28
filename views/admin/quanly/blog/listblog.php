@@ -52,7 +52,7 @@
                                     <i class="fa-solid fa-ellipsis-vertical"></i>
                                     <div class="hidden">
                                         <a href="?act=deleteBlog&Id=<?php echo $item["Id"]?>">Delete</a>
-                                        <a href="">Update</a>
+                                        <a href="updateBlog?Id=<?php echo $item["Id"]?>">Update</a>
                                     </div>
                                 </td>
                             </tr>

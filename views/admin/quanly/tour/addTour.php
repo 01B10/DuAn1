@@ -78,8 +78,6 @@
                 $data["list_transport_id"] = $item;
                 $queryBuilder->excute($queryBuilder->inserData("transport",$data));
             }
-            
-            // echo "<script>alert('Đã thêm tour thành công!')</script>";
         }
     }
 
@@ -91,7 +89,7 @@
         <div class="col-md-10 col-md-offset-1">
             <div class="p-6">
                 <div class="">
-                    <form class="addtour" name="addpost" method="post" enctype="multipart/form-data">
+                    <form class="addtour" name="addpost" method="POST" enctype="multipart/form-data">
                         
                         <div class="form-group m-b-20"></div>
 
