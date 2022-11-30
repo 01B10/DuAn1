@@ -5,7 +5,7 @@
         ->join("inner","ordertour","customer.Id = ordertour.cus_id")
         ->join("inner","order_details","ordertour.Id = order_details.order_id")
         ->join("inner","tour","order_details.tour_id = tour.Id")
-        ->where("customer.Id","=",$_SESSION["Login"]["customer"]["Id"])->orderBy("tour.Id","DESC")
+        ->where("customer.Id","=",$_SESSION["Login"]["customer"]["Id"])->orderBy("order_id","DESC")
         ->get());
         $status = $queryBuilder->query($queryBuilder->table("status")->select("*")->get());
      }else{
@@ -25,7 +25,7 @@
 </head>
 <body>
     <a href="Trang-Chu">
-            <i class="fa-solid fa-arrow-left"></i>
+        <i class="fa-solid fa-arrow-left"></i>
     </a>
     <main>
         <h2>Hóa đơn</h2>
@@ -35,7 +35,7 @@
                 <th>ID</th>
                 <th>Tên tour</th>
                 <th>Tên khách hàng</th>
-                <th>Thời gian đặt</th>
+                <th>Thời gian tạo</th>
                 <th>Số người lớn</th>
                 <th>Số trẻ em</th>
                 <th>Ngày khởi hành</th>
@@ -50,9 +50,19 @@
                         $i = 0;
                         foreach($order as $item){
                             $i++;
-                            $startTime = strtotime($item["start_time"]);
-                            $endTime = strtotime($item["end_time"]);
-                            $day = date("d",$endTime - $startTime) - 1;
+                            $day = $item["number_of_day"] - 1;
+                            $coupon = $queryBuilder->query($queryBuilder->table("discount_code")->select("Id,type,coupon_value")
+                            ->where("discount_code.Id","=",$item["discount_id"])->get());
+
+                            if(!empty($coupon)){
+                                $discountTour = ($coupon[0]["type"] == 2)?($item["total"] - $item["total"] * $coupon[0]["coupon_value"]/100):$item["total"] - $coupon[0]["coupon_value"];
+                                echo $discountTour."<br>";
+                            }
+
+
+                            // echo "<pre>";
+                            // print_r($discount);
+                            // echo "</pre>";
                 ?>
                             <tr>
                                 <td>
@@ -68,7 +78,7 @@
                                 <td>
                                     <span>
                                         <?php 
-                                            echo "{$item["name"]} $day ngày $day đêm | {$item["journeys"]}";
+                                            echo "{$item["name"]} {$item["number_of_day"]} ngày $day đêm | {$item["journeys"]}";
                                         ?>
                                     </span>
                                     <!-- php code -->
@@ -83,7 +93,7 @@
                                 </td>
                                 <td>
                                     <?php 
-                                        echo $item["creat_time"];
+                                        echo date_format(date_create($item["creat_time"]),"d-m-Y");
                                     ?>
                                     <!-- php code -->
                                 </td>
@@ -105,7 +115,7 @@
                                 </td>
                                 <td>
                                     <?php 
-                                        echo $item["start_time"];
+                                        echo date_format(date_create($item["start_time_order"]),"d-m-Y");
                                     ?>
                                     <!-- php code -->
                                 </td>
@@ -118,11 +128,16 @@
                                     <!-- php code -->
                                 </td>
                                 <td>
-                                    <span>
                                         <?php 
-                                            echo $item["total"];
-                                        ?>đ
-                                    </span>
+                                            if(!empty($coupon)){
+                                                $discountTour = ($coupon[0]["type"] == 2)?($item["total"] - $item["total"] * $coupon[0]["coupon_value"]/100):$item["total"] - $coupon[0]["coupon_value"];
+                                                echo "<p><del>".number_format($item["total"])."VND</del></p>";
+                                                echo "<p>".number_format($discountTour)."VND</p>";
+                                                
+                                            }else{
+                                                echo number_format($item["total"])."VND";
+                                            }
+                                        ?>
                                     <!-- php code -->
                                 </td>
                                 <td>

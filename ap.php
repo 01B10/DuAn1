@@ -10,8 +10,8 @@
     $folder = str_replace($dcm,"",$dirRoot);
     $web_root = $web_root.$folder;
     define("_WEB_ROOT_",$web_root);
-    include_once $path."\\route.php";
-    include_once $path."\model\sqldb.php";
+    include_once "./route.php";
+    include_once "./model/database/sqldb.php";
     $boolean = false;
     if(!empty($_SERVER["PATH_INFO"])){
         $controller = $_SERVER["PATH_INFO"];

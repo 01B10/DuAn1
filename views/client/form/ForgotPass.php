@@ -1,17 +1,23 @@
 <?php 
+    $queryBuilder = new QueryBuilder();
     $rule = [
-        "email" => "required|email|min:13",
+        "email" => "required",
     ];
 
     $message = [
         "email.required" => "Không được để trống",
-        "email.min" => "email phải có ít nhất 4 kí tự",
-        "email.email" => "email không hợp lệ",
     ];
     $errors = [];
     if(isset($_POST["sendpass"])){
         $validate =  validate($rule,$message,$errors);
         $errors = errors("",$errors);
+        if($validate){
+            $password = $queryBuilder->query($queryBuilder->table("customer")->select("password")
+            ->where("customer.email","=",$_POST["email"])->orWhere("customer.phone","=",$_POST["email"])->get());
+            if(!empty($password[0])){
+                echo "<script>alert('Mật khẩu của bạn là: ".$password[0]["password"]."')</script>";
+            }
+        }
     }
 ?>
 
@@ -34,19 +40,19 @@
     </a>
     <div class="container">
         <form action="" method="POST">
-            <h2>Forgot Password</h2>
+            <h2>Quên mật khẩu</h2>
             <div class="input-field">
-                <input type="email" name="email">
-                <label for="">Email or Phone Number</label>
+                <input type="text" name="email">
+                <label for="">Email hoặc Số điện thoại</label>
                 <p class="err"><?php echo (!empty($errors) && array_key_exists("email",$errors))?$errors["email"]:false?></p>
             </div>
             <div class="button">
                 <button name="sendpass" style="--clr:#1e9bff">
-                    <span class="sendPass">Send Password</span>
+                    <span class="sendPass">Gửi mật khẩu</span>
                 </button>
             </div>
             <div class="register">
-                <p>Not a member? <a href="register">Register</a></p>
+                <p>Không phải thành viên? <a href="register">Đăng ký</a></p>
             </div>
         </form>
     </div>

@@ -1,4 +1,5 @@
 <?php 
+    date_default_timezone_set('Asia/Ho_Chi_Minh');
     $queryBuilder = new QueryBuilder();
     $tourDetail = $queryBuilder->query($queryBuilder->table("tour")->select("*")
     ->join("inner","tour_detail","tour.Id = tour_detail.tour_id")
@@ -16,6 +17,13 @@
             header("Location: login");
         }
     }
+
+    if(isset($_POST["sendbtn"])){
+        if(!isset($_SESSION["Login"]["customer"])){
+            header("Location: login");
+        }
+    }
+
 ?>
 
 
@@ -29,14 +37,12 @@
                     $listService = $queryBuilder->query($queryBuilder->table("service")->select("*")
                     ->join("inner","list_service","service.listservice_id = list_service.Id")
                     ->where("service.tour_detail_id","=",$item["Id"])->get());
-                    $startTime = strtotime($item["start_time"]);
-                    $endTime = strtotime($item["end_time"]);
-                    $day = date("d",$endTime - $startTime) - 1;
+                    $day = $item["number_of_day"] - 1;
                     $discount = $item["price"] - $item["price"] * $item["discount"]/100;
         ?>
                     <div class="gr-1">
                         <h1 class="title-tour">
-                            <?php echo "{$item["name"]} $day ngày $day đêm | {$item["journeys"]}" ?>
+                            <?php echo "{$item["name"]} {$item["number_of_day"]} ngày $day đêm | {$item["journeys"]}" ?>
                         </h1>
                         <iframe width="100%" height="285" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=<?php echo $item["journeys"]?>&amp;hl=es;z=14&amp;output=embed" allowfullscreen=""></iframe>
                         <!-- SlideShow -->
@@ -53,7 +59,7 @@
                             <tbody>
                                 <tr>
                                    <td><i class="fa-solid fa-location-dot"></i>Địa ĐIểm: <?php echo $item["departure"]?></td>
-                                   <td><i class="fa-regular fa-clock"></i>Time: <?php echo "$day ngày $day đêm"?></td>
+                                   <td><i class="fa-regular fa-clock"></i>Time: <?php echo "{$item["number_of_day"]} ngày $day đêm"?></td>
                                    <td>Phương Tiện: 
                                         <?php 
                                             foreach($listTransport as $transport){
@@ -122,9 +128,9 @@
                                         <tr>
                                             <td>
                                                 <span class="price-tour">
-                                                    <div class="title-price-old horizontal"><del><?php echo $item["price"]?>VND</del></div>
+                                                    <div class="title-price-old horizontal"><del><?php echo number_format($item["price"])?>VND</del></div>
                                                     <div class="title-price-new">
-                                                        <?php echo $discount?>VND<span class="title-price-new-slot">VND/người</span> 
+                                                        <?php echo number_format($discount)?>VND<span class="title-price-new-slot">VND/người</span> 
                                                     </div>
                                                 </span>
                                             </td>
@@ -149,6 +155,16 @@
                                 </table>
                             </form>
                         </div>
+                        <div class="formComment">
+                            <form action="" class="typearea" method="POST">
+                                <input type="text" name="cus_id" class="incoming_id" value="<?php if(isset($_SESSION["Login"]["customer"]["Id"])){echo $_SESSION["Login"]["customer"]["Id"];}?>" id="" hidden>
+                                <input type="text" name="tour_id" class="incoming_id" value="<?php echo $tourDetail[0]["tour_id"]; ?>" id="" hidden>
+                                <input type="text" name="WeebRoot" class="incoming_id" value="<?php echo _WEB_ROOT_;?>" id="" hidden>
+                                <textarea name="content" class="inputfield" rows="10" placeholder="Viết bình luận...."></textarea>
+                                <input class="sendbtn" name="sendbtn" type="<?php echo isset($_SESSION["Login"]["customer"]["Id"])?"button":"submit"?>" value="send">
+                            </form>
+                            <div class="chat-box"></div>
+                        </div>
                     </div>
         <?php
                 }
@@ -160,16 +176,50 @@
     let slideIndex = 0;
     var tourTitle = document.querySelectorAll('.panel-tour-product-title');
     var tour = document.querySelectorAll('.panel-tour-product');
+    var form = document.querySelector(".typearea");
+    var sendbtn = document.querySelector(".sendbtn");
+    var inputfield = document.querySelector(".inputfield");
+    var chatBox = document.querySelector(".chat-box");
     for(let i = 0; i < tourTitle.length; i++){
         tourTitle[i].onclick = function(){
-        var tourHeight = tour[i].clientHeight;
-        var isClosed = tourTitle[i].clientHeight === tourHeight;
-        if(isClosed){
-            tour[i].style.height = 'auto';
-        } else {
-            tour[i].style.height = null;
+            var tourHeight = tour[i].clientHeight;
+            var isClosed = tourTitle[i].clientHeight === tourHeight;
+            if(isClosed){
+                tour[i].style.height = 'auto';
+            } else {
+                tour[i].style.height = null;
+            }
         }
     }
+
+
+    if(sendbtn != null){
+        sendbtn.addEventListener("click",()=>{
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST","model/insertchat.php",true);
+        xhr.onload = ()=>{
+            if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200){
+                inputfield.value = "";
+            }
+        }
+        let formData = new FormData(form);
+        xhr.send(formData);
+        });
     }
+    
+    setInterval(() => {
+    	let xhr = new XMLHttpRequest();
+    	xhr.open("POST", "model/getchat.php", true);
+    	xhr.onload = () => {
+    		if((xhr.readyState === XMLHttpRequest.DONE) && (xhr.status === 200)){
+                    if(chatBox != null){
+                        chatBox.innerHTML = xhr.response;
+                    }
+    		}
+    	}
+    	xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    	xhr.send('infor='+<?php echo $tourDetail[0]["tour_id"]?>+"|"
+        +'<?php echo _WEB_ROOT_?>');
+    }, 800)
     
 </script>

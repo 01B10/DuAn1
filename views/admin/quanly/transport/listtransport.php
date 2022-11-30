@@ -1,6 +1,11 @@
 <?php 
     $queryBuilder = new QueryBuilder();
     $listTransport = $queryBuilder->query($queryBuilder->table("list_transport")->select("*")->get());
+
+    if(isset($_GET["act"]) && $_GET["act"] == "deleteTransport"){
+        $queryBuilder->excute($queryBuilder->delete("transport","transport.list_transport_id = ".$_GET['Id']));
+        $queryBuilder->excute($queryBuilder->delete("list_transport","list_transport.Id = ".$_GET['Id']));
+    }
 ?>
 
 <main>
@@ -29,8 +34,8 @@
                                 <td class="action">
                                     <i class="fa-solid fa-ellipsis-vertical"></i>
                                     <div class="hidden">
-                                        <a href="">Delete</a>
-                                        <a href="">Update</a>
+                                        <a href="?act=deleteTransport&Id=<?php echo $item["Id"]?>">Delete</a>
+                                        <a href="updateTransport?Id=<?php echo $item["Id"]?>">Update</a>
                                     </div>
                                 </td>
                             </tr>

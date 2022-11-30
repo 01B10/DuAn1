@@ -1,5 +1,5 @@
 <?php 
-     $queryBuilder = new QueryBuilder();
+    $queryBuilder = new QueryBuilder();
     function getMethod(){
         return $_SERVER["REQUEST_METHOD"];
     }
@@ -38,6 +38,7 @@
                     setErrors($error,$message,$fieldName,"required");
                     $checkValidate = false;
                 }
+                
                 $ruleItemArr = explode("|",$ruleItem);
                 foreach($ruleItemArr as $rule){
                     $ruleName = null;
@@ -106,6 +107,30 @@
                                 if($check[0]["count(*)"] >= 1){
                                     setErrors($error,$message,$fieldName,$ruleName);
                                     $checkValidate = false;
+                                }
+                            }
+                        }
+
+                        if(isset($_SESSION["Login"]["customer"]) || isset($_SESSION["Login"]["admin"])){
+                            $Id = (isset($_GET["Id"]))?$_GET["Id"]:(isset($_SESSION["Login"]["customer"]["Id"])?$_SESSION["Login"]["customer"]["Id"]:false);
+                            if($ruleName == "change"){
+                                $tableName = null;
+                                $fieldCheck = null;
+                                if(!empty($rulesArr[1])){
+                                    $tableName = $rulesArr[1];
+                                }
+    
+                                if(!empty($rulesArr[2])){
+                                    $fieldCheck = $rulesArr[2];
+                                }
+                                
+                                if(!empty($tableName) && !empty($fieldCheck)){
+                                    $check = $queryBuilder->query("SELECT count(*) FROM `$tableName` WHERE `$fieldCheck` = '$dataFields[$fieldCheck]'
+                                    AND `Id` != ".$Id);
+                                    if($check[0]["count(*)"] >= 1){
+                                        setErrors($error,$message,$fieldName,$ruleName);
+                                        $checkValidate = false;
+                                    }
                                 }
                             }
                         }

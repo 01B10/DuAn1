@@ -78,6 +78,19 @@ form .button {
   color: gray;
 }
 
+.name .fa-solid {
+  cursor: pointer;
+  font-size: 2rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+}
+
+.name .fa-arrows-rotate {
+  display: none;
+}
+
 input:focus ~ label,
 input:valid ~ label {
   transform: translateY(-33px);
@@ -158,8 +171,12 @@ input:valid ~ label {
 }
 
 .file::-webkit-file-upload-button {
-  /* position: absolute; */
   background-color: #1da1f2;
   cursor: pointer;
   transform: translateY(50%);
+}
+
+.file + img {
+  cursor: pointer;
+  width: 110px;
 }

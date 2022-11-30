@@ -204,6 +204,11 @@ main {
   color: black;
 }
 
+.discount {
+  color: red;
+  font-weight: bold;
+}
+
 .statusOrder {
   cursor: pointer;
   border: 1px solid transparent;

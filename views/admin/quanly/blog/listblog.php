@@ -1,7 +1,8 @@
 <?php 
     $queryBuilder = new QueryBuilder();
     $blogs = $queryBuilder->query($queryBuilder->table("blog")->select("*")->get());
-    
+    $province = $queryBuilder->query($queryBuilder->table("province")->select("*")->get());
+
     if(isset($_GET["act"]) && $_GET["act"] == "deleteBlog"){
         $queryBuilder->excute($queryBuilder->delete("blog","blog.Id = ".$_GET['Id']));
     }
@@ -13,6 +14,7 @@
                 <tr>
                     <th>STT</th>
                     <th>ID</th>
+                    <th>Tỉnh/Thành</th>
                     <th>Tiêu đề</th>
                     <th>Hình ảnh</th>
                     <th>Nội dung</th>
@@ -31,6 +33,16 @@
                             <tr>
                                 <td><?php echo $i?></td>
                                 <td><?php echo $item["Id"]?></td>
+                                <td>
+                                    <?php 
+                                        foreach($province as $provinceItem){
+                                            if($provinceItem["Id"] == $item["province_id"]){
+                                                echo $provinceItem["name"];
+                                                break;
+                                            }
+                                        }
+                                    ?>
+                                </td>
                                 <td><?php echo $item["title"]?></td>
                                 <td>
                                     <img class="imgTour" src="<?php echo _WEB_ROOT_."/views/client/img/blogs/".$item["img"]?>" alt="">
@@ -52,7 +64,7 @@
                                     <i class="fa-solid fa-ellipsis-vertical"></i>
                                     <div class="hidden">
                                         <a href="?act=deleteBlog&Id=<?php echo $item["Id"]?>">Delete</a>
-                                        <a href="">Update</a>
+                                        <a href="updateBlog?Id=<?php echo $item["Id"]?>">Update</a>
                                     </div>
                                 </td>
                             </tr>

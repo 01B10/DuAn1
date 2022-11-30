@@ -1,7 +1,7 @@
 <?php 
-    date_default_timezone_set('Asia/Ho_Chi_Minh');
     $queryBuilder = new QueryBuilder();
     $rule = [
+        "img" => "img",
         "name" => "required|min:10|max:30",
         "departure" => "required",
         "province" => "required",
@@ -10,6 +10,7 @@
         "end_time" => "required",
         "journeys" => "required",
         "listservice_id" => "required",
+        "number_of_day" => "required",
         "list_transport_id" => "required",
         "slot" => "required|number",
         "discount" => "required|discount",
@@ -19,6 +20,7 @@
         "name.required" => "Không được để trống",
         "name.min" => "name phải có ít nhất 10 kí tự",
         "name.max" => "name không vượt quá 30 kí tự",
+        "img.img" => "file không hợp lệ",
         "departure.required" => "Không được để trống",
         "province.required" => "Không được để trống",
         "price.required" => "không được để trống",
@@ -27,6 +29,7 @@
         "end_time.required" => "Không được để trống",
         "journeys.required" => "Không được để trống",
         "listservice_id.required" => "Không được để trống",
+        "number_of_day.required" => "Không được để trống",
         "list_transport_id.required" => "Không được để trống",
         "slot.required" => "Không được để trống",
         "slot.number" => "slot không hợp lệ",
@@ -34,39 +37,15 @@
         "discount.discount" => "discount không hợp lệ",
     ];
 
-    $tour = $queryBuilder->query($queryBuilder->table("province")->select("*")
-    ->join("right","tour","province.Id = tour.province")
-    ->join("inner","tour_detail","tour.Id = tour_detail.tour_id")
-    ->where("tour_detail.Id","=",$_GET["Id"])
-    ->get())[0];
-
-    $transportItem = $queryBuilder->query($queryBuilder->table("transport")->select("list_transport_id")
-    ->where("transport.tour_detail_id","=",$_GET["Id"])->get());
-
-    $serviceItem = $queryBuilder->query($queryBuilder->table("service")->select("listservice_id")
-    ->where("service.tour_detail_id","=",$_GET["Id"])->get());
-
-
-    $transportId = [];
-
-    foreach($transportItem as $item){
-        array_push($transportId,$item["list_transport_id"]);
-    }
-
-    $serviceId = [];
-    foreach($serviceItem as $item){
-        array_push($serviceId,$item["listservice_id"]);
-    }
-    
-
     $listTransport = $queryBuilder->query($queryBuilder->table("list_transport")->select("*")->get());
     $listService = $queryBuilder->query($queryBuilder->table("list_service")->select("*")->get());
     $listProvince = $queryBuilder->query($queryBuilder->table("province")->select("*")->get());
     
     $errors = [];
-    if(isset($_POST["updateTour"])){
+    if(isset($_POST["addTour"])){
         $validate =  validate($rule,$message,$errors);
         $errors = errors("",$errors);
+
         if($validate){
             $service = $_POST["listservice_id"];
             $trasport = $_POST["list_transport_id"];
@@ -79,26 +58,24 @@
             $_POST["start_time"] = date("Y-m-d",strtotime($_POST["start_time"]));
             $_POST["end_time"] = date("Y-m-d",strtotime($_POST["end_time"]));
             $data = array_filter($_POST);
-            if(empty($_FILES["img"]["name"])){
-                $data["img"] = $tour["img"];
-            }else{
-                $data["img"] = $_FILES["img"]["name"];
-            }
+            $data["img"] = $_FILES["img"]["name"];
             move_uploaded_file($_FILES["img"]["tmp_name"],_DIR_ROOT."/views/client/img/tours/".$data["img"]);
 
-            $queryBuilder->excute($queryBuilder->updateData("tour",$data,"tour.Id = ".$tour["tour_id"]));
+            $queryBuilder->excute($queryBuilder->inserData("tour",$data));
+
+            $idTour = $queryBuilder->first($queryBuilder->table("tour")->select("Id")->orderBy("Id","DESC")->get());
+            $queryBuilder->excute($queryBuilder->inserData("tour_detail",["tour_id"=>$idTour["Id"]]));
+            $idTourDetail = $queryBuilder->first($queryBuilder->table("tour_detail")->select("Id")->orderBy("Id","DESC")->get());
             
             $data = [];
-            $data["tour_detail_id"] = $tour["Id"];
-            $queryBuilder->excute($queryBuilder->delete("service","service.tour_detail_id = ".$tour["Id"]));
+            $data["tour_detail_id"] = $idTourDetail["Id"];
             foreach($service as $item){
                 $data["listservice_id"] = $item;
                 $queryBuilder->excute($queryBuilder->inserData("service",$data));
             }
 
             $data = [];
-            $data["tour_detail_id"] = $tour["Id"];
-            $queryBuilder->excute($queryBuilder->delete("transport","transport.tour_detail_id = ".$tour["Id"]));
+            $data["tour_detail_id"] = $idTourDetail["Id"];
             foreach($trasport as $item){
                 $data["list_transport_id"] = $item;
                 $queryBuilder->excute($queryBuilder->inserData("transport",$data));
@@ -106,7 +83,7 @@
         }
     }
 
-    
+
 ?>    
 
 <main>
@@ -114,7 +91,7 @@
         <div class="col-md-10 col-md-offset-1">
             <div class="p-6">
                 <div class="">
-                    <form class="addtour" name="addpost" method="post" enctype="multipart/form-data">
+                    <form class="addtour" name="addpost" method="POST" enctype="multipart/form-data">
                         
                         <div class="form-group m-b-20"></div>
 
@@ -124,19 +101,18 @@
 
                         <div class="row">
                         <div class="infor">
-                            <h2>Update Tour</h2>
+                            <h2>Add Tour</h2>
                             <div class="Tour">
                                 <div class="ImgTour">
                                     <input type="file" name="img">
-                                    <img src="<?php echo _WEB_ROOT_."/views/client/img/tours/".$tour["img"]?>" alt="">
+                                    <img src="<?php echo _WEB_ROOT_."/views/client/img/default-image.jpg"?>" alt="">
                                     <h4>Ảnh</h4>
                                     <p class="err"><?php echo (!empty($errors) && array_key_exists("img",$errors))?$errors["img"]:false?></p>
                                 </div>
                                 <div class="infortour">
                                     <label for="">
                                         <span>Tên tour</span>
-                                        <input type="text" name="name" value="<?php if(!empty($_POST["name"])){echo $_POST["name"];}
-                                        elseif(!empty($tour["name"])){echo $tour["name"];}?>">
+                                        <input type="text" name="name" value="<?php if(!empty($_POST["name"])){echo $_POST["name"];}?>">
                                         <p class="err"><?php echo (!empty($errors) && array_key_exists("name",$errors))?$errors["name"]:false?></p>
                                     </label>
                                     <label for="">
@@ -147,8 +123,8 @@
                                                 if(!empty($listProvince)){
                                                     foreach($listProvince as $item){
                                             ?>
-                                                        <option value="<?php echo $item["Id"]?>" 
-                                                            <?php echo ($item["Id"] == $tour["province"])?"selected":false ?>><?php echo $item["name"]?></option>
+                                                        <option value="<?php echo $item["Id"]?>"
+                                                            <?php echo (!empty($_POST["province"]) && $item["Id"] == $_POST["province"])?"selected":false ?>><?php echo $item["name"]?></option>
                                             <?php
                                                     }
                                                 }
@@ -158,24 +134,22 @@
                                     </label>
                                     <label for="">
                                         <span>Giá:</span>
-                                        <input type="text" name="price" value="<?php if(!empty($_POST["price"])){echo $_POST["price"];}
-                                        elseif(!empty($tour["price"])){echo $tour["price"];}?>">
+                                        <input type="text" name="price" value="<?php if(!empty($_POST["price"])){echo $_POST["price"];}?>">
                                         <p class="err"><?php echo (!empty($errors) && array_key_exists("price",$errors))?$errors["price"]:false?></p>
                                     </label>
                                     <label for="">
                                         <span>Thời gian khởi hành:</span>
-                                        <input id="myID" name="start_time" placeholder="dd-mm-yyyy" value="<?php if(!empty($tour["start_time"])){echo date_format(date_create($tour["start_time"]),"d-m-y");}?>">
+                                        <input id="myID" name="start_time" placeholder="dd-mm-yyyy">
                                         <p class="err"><?php echo (!empty($errors) && array_key_exists("start_time",$errors))?$errors["start_time"]:false?></p>
                                     </label>
                                     <label for="">
                                         <span>Hành trình:</span>
-                                        <input type="text" name="journeys" value="<?php if(!empty($_POST["journeys"])){echo $_POST["journeys"];}
-                                        elseif(!empty($tour["journeys"])){echo $tour["journeys"];}?>">
+                                        <input type="text" name="journeys">
                                         <p class="err"><?php echo (!empty($errors) && array_key_exists("journeys",$errors))?$errors["journeys"]:false?></p>
                                     </label>
                                     <label for="">
                                         <span>Thời gian kết thúc:</span>
-                                        <input id="myID" name="end_time" placeholder="dd-mm-yyyy" value="<?php if(!empty($tour["end_time"])){echo date_format(date_create($tour["end_time"]),"d-m-y");}?>">
+                                        <input id="myID1" name="end_time" placeholder="dd-mm-yyyy">
                                         <p class="err"><?php echo (!empty($errors) && array_key_exists("end_time",$errors))?$errors["end_time"]:false?></p>
                                     </label>
                                     <label for="" class="listservice">
@@ -186,8 +160,8 @@
                                                     foreach($listService as $item){
                                             ?>
                                                         <label for="<?php echo $item["Id"]?>">
-                                                            <input type="checkbox" name="listservice_id[]" id="<?php echo $item["Id"]?>" class="toggleService toggle" 
-                                                            value="<?php echo $item["Id"]?>" <?php if(in_array($item["Id"],$serviceId)){echo "checked";}?>><span><?php echo $item["name"]?></span>
+                                                            <input type="checkbox" name="listservice_id[]" id="<?php echo $item["Id"]?>" class="toggleService toggle" value="<?php echo $item["Id"]?>"
+                                                            <?php echo (!empty($_POST["listservice_id"]) && in_array($item["Id"],$_POST["listservice_id"]))?"checked":false ?>><span><?php echo $item["name"]?></span>
                                                         </label>
                                             <?php
                                                     }
@@ -195,6 +169,11 @@
                                             ?>
                                         </div>
                                         <p class="err"><?php echo (!empty($errors) && array_key_exists("listservice_id",$errors))?$errors["listservice_id"]:false?></p>
+                                    </label>
+                                    <label for="">
+                                        <span>Số ngày diễn ra:</span>
+                                        <input type="number" name="number_of_day" value="<?php if(!empty($_POST["number_of_day"])){echo $_POST["number_of_day"];}?>" autocomplete="off">
+                                        <p class="err"><?php echo (!empty($errors) && array_key_exists("number_of_day",$errors))?$errors["number_of_day"]:false?></p>
                                     </label>
                                     <label for="" class="listservice">
                                         <span>Phương tiện:</span>
@@ -205,8 +184,7 @@
                                             ?>
                                                         <label for="<?php echo $item["Id"]?>">
                                                             <input type="checkbox" name="list_transport_id[]" id="<?php echo $item["Id"]?>" class="toggleService toggle" value="<?php echo $item["Id"]?>"
-                                                            <?php if(in_array($item["Id"],$transportId)){echo "checked";}?>
-                                                            ><span><?php echo $item["name"]?></span>
+                                                            <?php if(!empty($_POST["list_transport_id"]) && in_array($item["Id"],$_POST["list_transport_id"])){echo "checked";}?>><span><?php echo $item["name"]?></span>
                                                         </label>
                                             <?php
                                                     }
@@ -217,20 +195,17 @@
                                     </label>
                                     <label for="">
                                         <span>Điểm khởi hành:</span>
-                                        <input type="text" name="departure" value="<?php if(!empty($_POST["departure"])){echo $_POST["departure"];}
-                                        elseif(!empty($tour["departure"])){echo $tour["departure"];}?>">
+                                        <input type="text" name="departure" value="<?php if(!empty($_POST["departure"])){echo $_POST["slot"];}?>">
                                         <p class="err"><?php echo (!empty($errors) && array_key_exists("departure",$errors))?$errors["departure"]:false?></p>
                                     </label>
                                     <label for="">
                                         <span>Chỗ:</span>
-                                        <input type="text" name="slot" value="<?php if(!empty($_POST["slot"])){echo $_POST["slot"];}
-                                        elseif(!empty($tour["slot"])){echo $tour["slot"];}?>">
+                                        <input type="text" name="slot" value="<?php if(!empty($_POST["slot"])){echo $_POST["slot"];}?>">
                                         <p class="err"><?php echo (!empty($errors) && array_key_exists("slot",$errors))?$errors["slot"]:false?></p>
                                     </label>
                                     <label for="">
                                         <span>Giảm giá:</span>
-                                        <input type="text" name="discount" value="<?php if(!empty($_POST["discount"])){echo $_POST["discount"];}
-                                        elseif(!empty($tour["discount"])){echo $tour["discount"];}?>">
+                                        <input type="text" name="discount" value="<?php if(!empty($_POST["discount"])){echo $_POST["discount"];}?>">
                                         <p class="err"><?php echo (!empty($errors) && array_key_exists("discount",$errors))?$errors["discount"]:false?></p>
                                     </label>
                                 </div>
@@ -255,7 +230,7 @@
                             </div>
                         </div>
 
-                        <button type="submit" name="updateTour" class="btn btn-success waves-effect waves-light">Update</button>
+                        <button type="submit" name="addTour" class="btn btn-success waves-effect waves-light">Add Tour</button>
                     </form>
                 </div>
             </div>
@@ -264,6 +239,23 @@
 
         <script>
             var resizefunc = [];
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+        <script>
+            flatpickr("#myID",{
+                enableTime: true,
+                dateFormat: "d-m-Y",
+                minDate: "today",
+                defaultDate: "<?php echo (!empty($_POST["start_time"]))?date_format(date_create($_POST["start_time"]),"d-m-Y"):false;?>"
+            });
+    
+            flatpickr("#myID1",{
+                enableTime: true,
+                dateFormat: "d-m-Y",
+                minDate: "today",
+                defaultDate: "<?php echo (!empty($_POST["end_time"]))?date_format(date_create($_POST["end_time"]),"d-m-Y"):false;?>"
+            });
         </script>
 
         <script src="<?php echo _WEB_ROOT_."/views/admin/assets/js/jquery.min.js"?>"></script>
@@ -278,10 +270,9 @@
                 });
                 var contentService = document.querySelector(".content_service + .note-editor .note-editable");
                 var contentSchedule = document.querySelector(".content_schedule + .note-editor .note-editable");
-                contentService.innerHTML = `<?php echo html_entity_decode($tour["content_service"])?>`;
-                contentSchedule.innerHTML = `<?php echo html_entity_decode($tour["content_schedule"])?>`;
+                contentService.innerHTML = `<?php if(!empty($_POST["content_service"])){echo html_entity_decode($_POST["content_service"]);}?>`;
+                contentSchedule.innerHTML = `<?php if(!empty($_POST["content_schedule"])){echo html_entity_decode($_POST["content_schedule"]);}?>`;
             });
-
         </script>
 
         <script src="<?php echo _WEB_ROOT_."/views/admin/assets/js/summernote.js"?>"></script>

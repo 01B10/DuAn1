@@ -21,13 +21,36 @@
         $validate =  validate($rule,$message,$errors);
         $errors = errors("",$errors);
         if($validate){
+            // $content_blog = htmlentities($_POST["content_blog"]);
             $_POST["content_blog"] = "\"".htmlentities($_POST["content_blog"])."\"";
             $data = array_filter($_POST);
             $data["img"] = $_FILES["img"]["name"];
             $data["creat_time"] = date("Y-m-d");
+            $file = $_FILES["files"];
             move_uploaded_file($_FILES["img"]["tmp_name"],_DIR_ROOT."/views/client/img/blogs/".$data["img"]);
+            if(!empty($file["name"][0])){
+                $src = explode("src=",trim($_POST["content_blog"],"\""));
+                $content = "";
+                for($i = 0; $i < count($_FILES["files"]["name"]); $i++){
+                    move_uploaded_file($file["tmp_name"][$i],_DIR_ROOT."/views/client/img/blogs/".$file["name"][$i]);
+                    $src[$i+1] = trim($src[$i+1],"<img ");
+                    $subsrc = explode(" ",$src[$i+1]);
+                    $subsrc[0] = '"'._WEB_ROOT_."/views/client/img/blogs/".$file["name"][$i].'"';
+                    $src[$i+1] = " src=";
+                    foreach($subsrc as $item){
+                        $src[$i+1].= " ".$item." ";
+                    }
+                    if(strlen($src[0] == 8)){
+                        $src[$i+1] = substr($src[$i+1],0,-5);
+                        $content .= $src[0].$src[$i+1];
+                    }else{
+                        $content .= $src[0].$src[$i+1];
+                        $src[0] = "";
+                    }
+                }
+                $data["content_blog"] = "'".$content."'";
+            }
             $queryBuilder->excute($queryBuilder->inserData("blog",$data));
-            $_POST = "";
         }
     }
 ?> 
@@ -37,7 +60,7 @@
         <div class="col-md-10 col-md-offset-1">
             <div class="p-6">
                 <div class="">
-                    <form class="addtour" name="addpost" method="POST" enctype="multipart/form-data">
+                    <form action="" class="addtour" name="addpost" method="POST" enctype="multipart/form-data">
                         
                         <div class="form-group m-b-20"></div>
 
@@ -50,7 +73,7 @@
                             <h2>Add Blog</h2>
                             <div class="Tour">
                                 <div class="ImgTour">
-                                    <input type="file" name="img">
+                                    <input type="file" name="img" multiple>
                                     <img src="<?php echo _WEB_ROOT_."/views/client/img/default-image.jpg"?>" alt="">
                                     <h4>Ảnh đại diện</h4>
                                     <p class="err"><?php echo (!empty($errors) && array_key_exists("img",$errors))?$errors["img"]:false?></p>
@@ -58,7 +81,7 @@
                                 <div class="infortour">
                                     <label for="">
                                         <span>Tiêu đề</span>
-                                        <input type="text" name="title">
+                                        <input type="text" name="title" value="<?php echo (!empty($_POST["title"]))?$_POST["title"]:false?>">
                                         <p class="err"><?php echo (!empty($errors) && array_key_exists("title",$errors))?$errors["title"]:false?></p>
                                     </label>
                                     <label for="">
@@ -69,7 +92,7 @@
                                                 if(!empty($listProvince)){
                                                     foreach($listProvince as $item){
                                             ?>
-                                                        <option value="<?php echo $item["Id"]?>"><?php echo $item["name"]?></option>
+                                                        <option value="<?php echo $item["Id"]?>" <?php echo (!empty($_POST["province_id"]) && $_POST["province_id"] == $item["Id"])?"selected":false?>><?php echo $item["name"]?></option>
                                             <?php
                                                     }
                                                 }
@@ -81,8 +104,8 @@
                                         <span>Trạng thái</span>
                                         <select name="status" id="">
                                             <option value="" selected disabled>--Chọn trạng thái---</option>
-                                            <option value="1">Nổi bật</option>
-                                            <option value="2">Bình thường</option>
+                                            <option value="1" <?php echo (!empty($_POST["status"]) && $_POST["status"] == 1)?"selected":false?>>Nổi bật</option>
+                                            <option value="2" <?php echo (!empty($_POST["status"]) && $_POST["status"] == 2)?"selected":false?>>Bình thường</option>
                                         </select>
                                         <p class="err"><?php echo (!empty($errors) && array_key_exists("status",$errors))?$errors["status"]:false?></p>
                                     </label>
@@ -102,8 +125,7 @@
                             </div>
                         </div>
 
-                        <button type="submit" name="addBlog" class="btn btn-success waves-effect waves-light">Save and Post</button>
-                        <button type="button" class="btn btn-danger waves-effect waves-light">Discard</button>
+                        <button type="submit" name="addBlog" class="btn btn-success waves-effect waves-light">Add Blog</button>
                     </form>
                 </div>
             </div>
@@ -126,6 +148,9 @@
                     maxHeight: null,             // set maximum height of editor
                     focus: false                 // set focus to editable area after initializing summernote
                 });
+
+                // var contentBlog = document.querySelector(".content_blog + .note-editor .note-editable");
+                // contentBlog.innerHTML = `daldjal`;
             });
         </script>
 

@@ -1,13 +1,6 @@
 
 </body>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<script>
-    flatpickr("#myID", {});
-    flatpickr("#myID",{
-        enableTime: true,
-        dateFormat: "d-m-Y"
-    });
-</script>
+
 <script>
     var slider = document.querySelectorAll(".list > a");
     var drop = document.querySelectorAll(".drop");
@@ -20,9 +13,9 @@
     var choosen = document.querySelectorAll(".toggle + span");
     var img = document.querySelector(".ImgTour img");
     var file = document.querySelector(".ImgTour input");
+    var ipFile = document.querySelector(".file");
+    var icon = document.querySelector(".file + img");
     const searchParam = new URLSearchParams(window.location.search);
-    var deleteTour = document.querySelector(".deleteTour");
-
 
     let index = 0;
     toggle.addEventListener("click",()=>{
@@ -87,7 +80,6 @@
             if(item.previousElementSibling.checked == true){
                 item.previousElementSibling.classList.toggle("toggle");
                 item.classList.remove("choosen");
-                // item.previousElementSibling.checked = false;
             }else{
                 item.classList.toggle("choosen");
             }
@@ -97,7 +89,13 @@
 
     if(img != null){
         img.addEventListener("click",()=>{
-        file.click();
+            file.click();
+        });
+    }
+
+    if(icon != null){
+        icon.addEventListener("click",()=>{
+            ipFile.click();
         });
     }
 
@@ -108,6 +106,22 @@
     }else if(searchParam.get("act") == "deleteBlog"){
         window.addEventListener("load",()=>{
             window.location = "listBlog";
+        });
+    }else if(searchParam.get("act") == "deleteUser"){
+        window.addEventListener("load",()=>{
+            window.location = "listUser";
+        });
+    }else if(searchParam.get("act") == "deleteService"){
+        window.addEventListener("load",()=>{
+            window.location = "listService";
+        });
+    }else if(searchParam.get("act") == "deleteTransport"){
+        window.addEventListener("load",()=>{
+            window.location = "listTransport";
+        });
+    }else if(searchParam.get("act") == "deleteProvince"){
+        window.addEventListener("load",()=>{
+            window.location = "listProvince";
         });
     }
 

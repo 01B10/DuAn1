@@ -3,7 +3,7 @@
     $order = $queryBuilder->query($queryBuilder->table("customer")->select("*")
     ->join("inner","ordertour","customer.Id = ordertour.cus_id")
     ->join("inner","order_details","ordertour.Id = order_details.order_id")
-    ->join("inner","tour","order_details.tour_id = tour.Id")->get());
+    ->join("inner","tour","order_details.tour_id = tour.Id")->orderBy("order_id","DESC")->get());
     $status = $queryBuilder->query($queryBuilder->table("status")->select("*")->get());
     $customer = $queryBuilder->query($queryBuilder->table("customer")->select("*")->get());
     
@@ -44,6 +44,8 @@
                             $startTime = strtotime($item["start_time"]);
                             $endTime = strtotime($item["end_time"]);
                             $day = date("d",$endTime - $startTime) - 1;
+                            $coupon = $queryBuilder->query($queryBuilder->table("discount_code")->select("Id,type,coupon_value")
+                            ->where("discount_code.Id","=",$item["discount_id"])->get());
                 ?>
                             <tr>
                                 <td><?php echo $i?></td>
@@ -55,7 +57,6 @@
                                 <td>
                                     <p><span class="highlight">Tên: </span>
                                         <?php 
-                                            // echo $item["name"];
                                             foreach($customer as $cus){
                                                 if ($cus["Id"] == $item["cus_id"]) {
                                                     echo $cus["name"];
@@ -67,10 +68,16 @@
                                     <p><span class="highlight">Phone: </span><?php echo $item["phone"]?></p>
                                 </td>
                                 <td>
-                                    <p><span class="highlight">Ngày đi dự kiến: </span><?php echo $item["start_time"]?></p>
+                                    <p><span class="highlight">Ngày đi dự kiến: </span><?php echo date_format(date_create($item["start_time_order"]),"d-m-Y")?></p>
                                     <p><span class="highlight">Số người lớn: </span><?php echo $item["adults"]?></p>
                                     <p><span class="highlight">Số trẻ em: </span><?php echo $item["children"]?></p>
-                                    <p><span class="highlight">Tổng tiền: </span><?php echo $item["total"]?>vnd</p>
+                                    <p><span class="highlight">Tổng tiền: </span><?php echo number_format($item["total"])?>VND</p>
+                                    <?php 
+                                        if(!empty($coupon)){
+                                            $discountTour = ($coupon[0]["type"] == 2)?($item["total"] - $item["total"] * $coupon[0]["coupon_value"]/100):$item["total"] - $coupon[0]["coupon_value"];
+                                            echo "<p><span class='highlight discount'>Giảm giá: </span>".number_format($discountTour)."VND</p>";
+                                        }
+                                    ?>
                                 </td>
                                 <td>
                                     <?php 

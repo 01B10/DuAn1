@@ -7,28 +7,31 @@
         $data["content"] = htmlentities($_POST["content"]);
         $file = $_FILES["files"];
         echo "<pre>";
-        print_r($_FILES);
+        print_r($_FILES["files"]);
         echo "</pre>";
         if(empty($file["name"])){
             $data["content"] = "'".htmlentities($_POST["content"])."'";
         }else{
-            move_uploaded_file($file["tmp_name"],_DIR_ROOT."\\views\\admin\\img\\".$file["name"]);
             $src = explode("src=",$data["content"]);
-            if(count($src) > 1){
-                $link = substr($src[1],0,strripos($src[1],"style"));
-                $subsrc = explode(" ",$src[1]);
-                $subsrc[0] = '"'._WEB_ROOT_."/views/admin/img/".$file["name"].'"';
-                $src[1] = " src=";
+            $content = "";
+            for($i = 0; $i < count($_FILES["files"]["name"]); $i++){
+                $src[$i+1] = trim($src[$i+1],"<img ");
+                $subsrc = explode(" ",$src[$i+1]);
+                $subsrc[0] = '"'._WEB_ROOT_."/views/admin/img/".$file["name"][$i].'"';
+                $src[$i+1] = " src=";
                 foreach($subsrc as $item){
-                    $src[1].= " ".$item." ";
+                    $src[$i+1].= " ".$item." ";
                 }
-                $content = "'".$src[0].$src[1]."'";
-                $data["content"] = $content;
+                if(strlen($src[0] == 8)){
+                    $src[$i+1] = substr($src[$i+1],0,-5);
+                    $content .= $src[0].$src[$i+1];
+                }else{
+                    $content .= $src[0].$src[$i+1];
+                    $src[0] = "";
+                }
             }
+            $data["content"] = "'".$content."'";
         }
-        print_r($data);
-        // $queryBuilder->excute($queryBuilder->inserData("service",$data));
-        // inserData("service",$data);
     }
 ?>
 
