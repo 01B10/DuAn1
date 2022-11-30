@@ -4,6 +4,7 @@
     ->where("tour.province","=",$_GET["Province"])->join("inner","tour_detail","tour.Id = tour_detail.tour_id")->get());
 
     $blogs = $queryBuilder->query($queryBuilder->table("blog")->select("*")->where("blog.province_id","=",$_GET["Province"])
+    ->where("blog.status","=",2)
     ->get());
 
     $province = $queryBuilder->query($queryBuilder->table("province")->select("*")
@@ -21,9 +22,7 @@
                             $listTransport = $queryBuilder->query($queryBuilder->table("transport")->select("*")
                             ->join("inner","list_transport","transport.list_transport_id = list_transport.Id")
                             ->where("transport.tour_detail_id","=",$item["Id"])->get());
-                            $startTime = strtotime($item["start_time"]);
-                            $endTime = strtotime($item["end_time"]);
-                            $day = date("d",$endTime - $startTime) - 1;
+                            $day = $item["number_of_day"] - 1;
                 ?>
                             <li>
                                 <div class="box-img">
@@ -36,7 +35,7 @@
                                         <div class="box-title-content">
                                             <h3 class="title-h3">
                                                 <a href="tourDetail?tourdetailId=<?php echo $item["Id"]?>">
-                                                    <?php echo "{$item["name"]} $day ngày $day đêm | {$item["journeys"]}" ?>
+                                                    <?php echo "{$item["name"]} {$item["number_of_day"]} ngày $day đêm | {$item["journeys"]}" ?>
                                                 </a>
                                             </h3>
                                         </div>
@@ -45,7 +44,7 @@
                                                 <tbody>
                                                     <tr class="timre-tour">
                                                         <td> Mã: <?php echo $item["tour_id"] ?></td>
-                                                        <td> <i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo "$day ngày $day đêm | {$item["journeys"]}" ?> </td>
+                                                        <td> <i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo "{$item["number_of_day"]} ngày $day đêm | {$item["journeys"]}" ?> </td>
                                                         <td> 
                                                             <?php 
                                                                 foreach($listTransport as $transport){

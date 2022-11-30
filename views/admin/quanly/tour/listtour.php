@@ -24,6 +24,7 @@
             <thead>
                 <tr>
                     <th>STT</th>
+                    <th>ID</th>
                     <th>Tên tour</th>
                     <th>Hình ảnh</th>
                     <th>Thông tin</th>
@@ -45,19 +46,25 @@
                             $listTransport = $queryBuilder->query($queryBuilder->table("transport")->select("*")
                             ->join("inner","list_transport","transport.list_transport_id = list_transport.Id")
                             ->where("transport.tour_detail_id","=",$item["Id"])->get());
-                            $province = $queryBuilder->query($queryBuilder->table("province")->select("name")->where("province.id","=",$item["province"])->get())[0];
+                            $province = $queryBuilder->query($queryBuilder->table("province")->select("name")->where("province.id","=",$item["province"])
+                            ->get())[0];
+                            $discount = $item["price"] - $item["price"] * $item["discount"]/100;
                 ?>
                             <tr>
                                 <td><?php echo $i?></td>
-                                <td><?php echo $item["name"]?></td>
+                                <td><?php echo $item["tour_id"]?></td>
+                                <td><span class="highlight"><?php echo $item["name"]?></span></td>
                                 <td><img class="imgTour" src="<?php echo _WEB_ROOT_."/views/client/img/tours/".$item["img"]?>" alt=""></td>
                                 <td>
-                                    <p>Điểm khởi hành: <?php echo $province["name"]?></p>
-                                    <p>Hành trình: <?php echo $item["journeys"]?></p>
-                                    <p>Giảm giá: <?php echo $item["discount"]?></p>
-                                    <p>Ngày bắt đầu: <?php echo $item["start_time"]?></p>
-                                    <p>Ngày kết thúc: <?php echo $item["end_time"]?></p>
-                                    <p>Chỗ: <?php echo $item["slot"]?></p>
+                                    <p><span class="highlight">Điểm khởi hành: </span><?php echo $province["name"]?></p>
+                                    <p><span class="highlight">Hành trình: </span><?php echo $item["journeys"]?></p>
+                                    <p><span class="highlight">Giảm giá: </span><?php echo $item["discount"]?>%</p>
+                                    <p><span class="highlight">Giá: </span><?php echo number_format($item["price"])?>VND 
+                                    -> <span class="discount"><?php echo number_format($discount)?>VD</span></p>
+                                    <p><span class="highlight">Ngày bắt đầu: </span><?php echo date_format(date_create($item["start_time"]),"d-m-Y")?></p>
+                                    <p><span class="highlight">Ngày kết thúc: </span><?php echo date_format(date_create($item["end_time"]),"d-m-Y")?></p>
+                                    <p><span class="highlight">Số ngày diễn ra: </span><?php echo $item["number_of_day"]?></p>
+                                    <p><span class="highlight">Chỗ: </span><?php echo $item["slot"]?></p>
                                 </td>
                                 <td>
                                     <?php 

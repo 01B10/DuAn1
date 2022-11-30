@@ -37,14 +37,12 @@
                     $listService = $queryBuilder->query($queryBuilder->table("service")->select("*")
                     ->join("inner","list_service","service.listservice_id = list_service.Id")
                     ->where("service.tour_detail_id","=",$item["Id"])->get());
-                    $startTime = strtotime($item["start_time"]);
-                    $endTime = strtotime($item["end_time"]);
-                    $day = date("d",$endTime - $startTime) - 1;
+                    $day = $item["number_of_day"] - 1;
                     $discount = $item["price"] - $item["price"] * $item["discount"]/100;
         ?>
                     <div class="gr-1">
                         <h1 class="title-tour">
-                            <?php echo "{$item["name"]} $day ngày $day đêm | {$item["journeys"]}" ?>
+                            <?php echo "{$item["name"]} {$item["number_of_day"]} ngày $day đêm | {$item["journeys"]}" ?>
                         </h1>
                         <iframe width="100%" height="285" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=<?php echo $item["journeys"]?>&amp;hl=es;z=14&amp;output=embed" allowfullscreen=""></iframe>
                         <!-- SlideShow -->
@@ -61,7 +59,7 @@
                             <tbody>
                                 <tr>
                                    <td><i class="fa-solid fa-location-dot"></i>Địa ĐIểm: <?php echo $item["departure"]?></td>
-                                   <td><i class="fa-regular fa-clock"></i>Time: <?php echo "$day ngày $day đêm"?></td>
+                                   <td><i class="fa-regular fa-clock"></i>Time: <?php echo "{$item["number_of_day"]} ngày $day đêm"?></td>
                                    <td>Phương Tiện: 
                                         <?php 
                                             foreach($listTransport as $transport){

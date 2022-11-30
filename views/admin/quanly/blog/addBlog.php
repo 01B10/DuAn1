@@ -21,31 +21,36 @@
         $validate =  validate($rule,$message,$errors);
         $errors = errors("",$errors);
         if($validate){
-            $content_blog = $_POST["content_blog"];
+            // $content_blog = htmlentities($_POST["content_blog"]);
             $_POST["content_blog"] = "\"".htmlentities($_POST["content_blog"])."\"";
             $data = array_filter($_POST);
             $data["img"] = $_FILES["img"]["name"];
             $data["creat_time"] = date("Y-m-d");
             $file = $_FILES["files"];
             move_uploaded_file($_FILES["img"]["tmp_name"],_DIR_ROOT."/views/client/img/blogs/".$data["img"]);
-            move_uploaded_file($file["tmp_name"],_DIR_ROOT."/views/client/img/blogs/".$file["name"]);
-            if(!empty($file)){
-                $src = explode("src=",$content_blog);
-                if(count($src) > 1){
-                    $link = substr($src[1],0,strripos($src[1],"style"));
-                    $subsrc = explode(" ",$src[1]);
-                    $subsrc[0] = '"'._WEB_ROOT_."/views/client/img/blogs/".$file["name"].'"';
-                    $src[1] = " src=";
+            if(!empty($file["name"][0])){
+                $src = explode("src=",trim($_POST["content_blog"],"\""));
+                $content = "";
+                for($i = 0; $i < count($_FILES["files"]["name"]); $i++){
+                    move_uploaded_file($file["tmp_name"][$i],_DIR_ROOT."/views/client/img/blogs/".$file["name"][$i]);
+                    $src[$i+1] = trim($src[$i+1],"<img ");
+                    $subsrc = explode(" ",$src[$i+1]);
+                    $subsrc[0] = '"'._WEB_ROOT_."/views/client/img/blogs/".$file["name"][$i].'"';
+                    $src[$i+1] = " src=";
                     foreach($subsrc as $item){
-                        $src[1].= " ".$item." ";
+                        $src[$i+1].= " ".$item." ";
                     }
-                    $content = "'".$src[0].$src[1]."'";
-                    $data["content_blog"] = htmlentities($content);
+                    if(strlen($src[0] == 8)){
+                        $src[$i+1] = substr($src[$i+1],0,-5);
+                        $content .= $src[0].$src[$i+1];
+                    }else{
+                        $content .= $src[0].$src[$i+1];
+                        $src[0] = "";
+                    }
                 }
+                $data["content_blog"] = "'".$content."'";
             }
-
             $queryBuilder->excute($queryBuilder->inserData("blog",$data));
-            // $_POST = "";
         }
     }
 ?> 

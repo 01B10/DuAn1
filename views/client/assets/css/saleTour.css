@@ -28,6 +28,10 @@ body {
   margin: 20px 0px;
 }
 
+.blogs h2 {
+  text-align: center;
+}
+
 .blogs ul li {
   list-style: none;
   margin-bottom: 20px;

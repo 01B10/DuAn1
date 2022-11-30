@@ -81,11 +81,19 @@
                     </div>
                 </li>
                 <li class="list">
+                    <a href="#" class="drop" title="Tours"><span class="fa-solid fa-tags"></span>
+                        <span>Coupon</span></a>
+                    <div class="dropdown">
+                        <a href="listCoupon">List</a>
+                        <a href="addCoupon">Add</a>
+                    </div>
+                </li>
+                <li class="list">
                     <a href="#" class="drop" title="Tours"><span class="fa-solid fa-truck-plane"></span>
                         <span>Transport</span></a>
                     <div class="dropdown">
                         <a href="listTransport">List</a>
-                        <a href="addTransport">Add</a>
+                        <a href="updateCoupon">Add</a>
                     </div>
                 </li>
                 <li class="list">

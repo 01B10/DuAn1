@@ -78,6 +78,19 @@ form .button {
   color: gray;
 }
 
+.name .fa-solid {
+  cursor: pointer;
+  font-size: 2rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+}
+
+.name .fa-arrows-rotate {
+  display: none;
+}
+
 input:focus ~ label,
 input:valid ~ label {
   transform: translateY(-33px);

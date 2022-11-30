@@ -2,7 +2,7 @@
     include "connection.php";
     class QueryBuilder{
         public $tableName = "", $field="",$where="",$operator="",$join="",
-        $orderBy="",$groupBy="";
+        $orderBy="",$groupBy="",$limit="";
 
         function query($sql){
            try {
@@ -62,6 +62,11 @@
                 $this->operator = " AND";
             }
             $this->where .= "$this->operator $field $compare '$value'";
+            return $this;
+        }
+
+        function limit($start,$end){
+            $this->limit = "LIMIT $start,$end";
             return $this;
         }
 
@@ -127,7 +132,8 @@
         }
 
         function get(){
-            $sql = "SELECT $this->field FROM $this->tableName $this->join $this->where $this->groupBy $this->orderBy";
+            $sql = "SELECT $this->field FROM $this->tableName $this->join $this->where $this->groupBy 
+            $this->orderBy $this->limit";
             $this->resetQuery();
             return $sql;
         }

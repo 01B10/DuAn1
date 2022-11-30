@@ -10,6 +10,7 @@
         "end_time" => "required",
         "journeys" => "required",
         "listservice_id" => "required",
+        "number_of_day" => "required",
         "list_transport_id" => "required",
         "slot" => "required|number",
         "discount" => "required|discount",
@@ -27,6 +28,7 @@
         "end_time.required" => "Không được để trống",
         "journeys.required" => "Không được để trống",
         "listservice_id.required" => "Không được để trống",
+        "number_of_day.required" => "Không được để trống",
         "list_transport_id.required" => "Không được để trống",
         "slot.required" => "Không được để trống",
         "slot.number" => "slot không hợp lệ",
@@ -39,6 +41,8 @@
     ->join("inner","tour_detail","tour.Id = tour_detail.tour_id")
     ->where("tour_detail.Id","=",$_GET["Id"])
     ->get())[0];
+
+    echo date_format(date_create($tour["end_time"]),"d-m-Y")."<br>";
 
     $transportItem = $queryBuilder->query($queryBuilder->table("transport")->select("list_transport_id")
     ->where("transport.tour_detail_id","=",$_GET["Id"])->get());
@@ -72,15 +76,16 @@
             $trasport = $_POST["list_transport_id"];
 
             $_POST["content_service"] = (!empty($_POST["content_service"]))?"\"".htmlentities($_POST["content_service"])."\""
-            :"\"".htmlentities($tour["content_service"])."\"";
+            :"\"".$tour["content_service"]."\"";
             $_POST["content_schedule"] = (!empty($_POST["content_schedule"]))?"\"".htmlentities($_POST["content_schedule"])."\""
-            :"\"".htmlentities($tour["content_schedule"])."\"";
+            :"\"".$tour["content_schedule"]."\"";
 
             unset($_POST["listservice_id"]);
             unset($_POST["list_transport_id"]);
 
-            $_POST["start_time"] = date("Y-m-d",strtotime($_POST["start_time"]));
-            $_POST["end_time"] = date("Y-m-d",strtotime($_POST["end_time"]));
+            $_POST["start_time"] = date_format(date_create($_POST["start_time"]),"Y-m-d");
+            $_POST["end_time"] = date_format(date_create($_POST["end_time"]),"Y-m-d");
+            
             $data = array_filter($_POST);
             $data["img"] = $_FILES["img"]["name"];
             if(empty($data["img"])){
@@ -165,7 +170,7 @@
                                     </label>
                                     <label for="">
                                         <span>Thời gian khởi hành:</span>
-                                        <input id="myID" name="start_time" placeholder="dd-mm-yyyy" value="<?php echo (!empty($_POST["start_time"]))?$_POST["start_time"]:date_format(date_create($tour["start_time"]),"d-m-y");?>">
+                                        <input id="myID" name="start_time" placeholder="dd-mm-yyyy">
                                         <p class="err"><?php echo (!empty($errors) && array_key_exists("start_time",$errors))?$errors["start_time"]:false?></p>
                                     </label>
                                     <label for="">
@@ -175,7 +180,7 @@
                                     </label>
                                     <label for="">
                                         <span>Thời gian kết thúc:</span>
-                                        <input id="myID" name="end_time" placeholder="dd-mm-yyyy" value="<?php echo (!empty($_POST["end_time"]))?$_POST["end_time"]:date_format(date_create($tour["end_time"]),"d-m-y");?>">
+                                        <input id="myID1" name="end_time" placeholder="dd-mm-yyyy">
                                         <p class="err"><?php echo (!empty($errors) && array_key_exists("end_time",$errors))?$errors["end_time"]:false?></p>
                                     </label>
                                     <label for="" class="listservice">
@@ -195,6 +200,11 @@
                                             ?>
                                         </div>
                                         <p class="err"><?php echo (!empty($errors) && array_key_exists("listservice_id",$errors))?$errors["listservice_id"]:false?></p>
+                                    </label>
+                                    <label for="">
+                                        <span>Số ngày diễn ra:</span>
+                                        <input type="number" name="number_of_day" value="<?php echo (!empty($_POST["number_of_day"]))?$_POST["number_of_day"]:$tour["number_of_day"]?>" autocomplete="off">
+                                        <p class="err"><?php echo (!empty($errors) && array_key_exists("number_of_day",$errors))?$errors["number_of_day"]:false?></p>
                                     </label>
                                     <label for="" class="listservice">
                                         <span>Phương tiện:</span>
@@ -261,6 +271,23 @@
 
         <script>
             var resizefunc = [];
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+        <script>
+            flatpickr("#myID",{
+                enableTime: true,
+                dateFormat: "d-m-Y",
+                minDate: "today",
+                defaultDate: "<?php echo (!empty($_POST["start_time"]))?date_format(date_create($_POST["start_time"]),"d-m-Y"):date_format(date_create($tour["start_time"]),"d-m-Y");?>"
+            });
+
+            flatpickr("#myID1", {});
+            flatpickr("#myID1",{
+                enableTime: true,
+                dateFormat: "d-m-Y",
+                minDate: "today",
+                defaultDate: "<?php echo (!empty($_POST["end_time"]))?date_format(date_create($_POST["end_time"]),"d-m-Y"):date_format(date_create($tour["end_time"]),"d-m-Y");?>"
+            });
         </script>
 
         <script src="<?php echo _WEB_ROOT_."/views/admin/assets/js/jquery.min.js"?>"></script>

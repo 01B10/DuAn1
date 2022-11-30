@@ -28,8 +28,13 @@
             $data = array_filter($_POST);
             $data["total"] = ($adults * $tour["price"]) + ( $children * 0.8 * $tour["price"]);
             $data["cus_id"] = $_SESSION["Login"]["customer"]["Id"];
-            $data["start_time"] = date("Y-m-d",strtotime($_SESSION["orderDate"]));
+            $data["start_time_order"] = date("Y-m-d",strtotime($_SESSION["orderDate"]));
             $data["creat_time"] = date("Y-m-d");
+
+            if(!empty($_POST["discount_id"])){
+              $data["discount_id"] = $queryBuilder->query($queryBuilder->table("discount_code")->select("Id")
+              ->where("discount_code.code","=",$_POST["discount_id"])->get())[0]["Id"];
+            }
             
             if($tour["slot"] < $adults + $children){
               echo "<script>alert('Hiện tại tour chỉ có: ".$tour["slot"]." chỗ')</script>";
@@ -116,32 +121,56 @@
               <input type="checkbox">
               <span class="slider round"></span>
             </label> 
-            <div class="apply-coupon"></div>
+            <div class="apply-coupon">
+              <!-- <input name="coupon" value="" id="txt_voucher_tour" type="text" class="form-control row-coupon" autocomplete="off" required placeholder="Vui lòng nhập mã giảm giá...">
+              <span class="btn-submit-voucher voucher-tour ">Áp dụng mã</span> -->
+            </div>
 
             <div class="btn-submit-tour">
               <button type="submit" id="submit" name="submit">Hoàn tất đặt Tour</button>
             </div>
         </form>
   
-        <!-- <div id="error"></div> -->
-        <!-- <div id="success-msg"></div> -->
     </div>
 </div>
   
   <script>
-  document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', function () {
     var checkbox = document.querySelector('input[type="checkbox"]');
     var applyCoupon = document.querySelector('.apply-coupon');
+    var btnnSubmit = document.querySelector("#submit");
     checkbox.addEventListener('change', function () {
+      btnnSubmit.setAttribute("disabled","");
       if (checkbox.checked) {
-        applyCoupon.innerHTML = `<input name="txt_voucher_tour" value="" id="txt_voucher_tour" type="text" class="form-control row-coupon" autocomplete="off" required placeholder="Vui lòng nhập mã giảm giá...">
-                                <span class="btn-submit-voucher voucher-tour ">Áp dụng mã</span>`;
-        
+        applyCoupon.innerHTML = `<input name="discount_id" id="txt_voucher_tour" type="text" class="form-control row-coupon" autocomplete="off" required placeholder="Vui lòng nhập mã giảm giá...">
+        <span class="btn-submit-voucher voucher-tour ">Áp dụng mã</span>
+        <p class="err"></p>`;
+        var btnCoupon = document.querySelector(".btn-submit-voucher");
+        var coupon = document.querySelector(".row-coupon");
+        var err = document.querySelector(".err");
+        let boolean = 0;
+        btnCoupon.addEventListener("click",()=>{
+          let xhr = new XMLHttpRequest();
+          xhr.open("POST","model/checkcoupon.php",true);
+          xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+          xhr.onload = ()=>{
+              if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200){
+                    boolean = xhr.response;
+                }
+                if(boolean == 0){
+                  err.innerHTML = "Áp dụng mã giảm giá thành công!";
+                  btnnSubmit.removeAttribute("disabled");
+                }else{
+                  err.innerHTML = "Mã giảm giá không đúng hoặc hết hạn!";
+                }
+          }
+          xhr.send("code="+coupon.value);
+          })
       } else {
         applyCoupon.innerHTML = '';
-        
       }
     });
-  });</script>
+  });
+  </script>
 </body>
 </html>

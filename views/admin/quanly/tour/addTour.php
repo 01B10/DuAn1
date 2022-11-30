@@ -10,6 +10,7 @@
         "end_time" => "required",
         "journeys" => "required",
         "listservice_id" => "required",
+        "number_of_day" => "required",
         "list_transport_id" => "required",
         "slot" => "required|number",
         "discount" => "required|discount",
@@ -28,6 +29,7 @@
         "end_time.required" => "Không được để trống",
         "journeys.required" => "Không được để trống",
         "listservice_id.required" => "Không được để trống",
+        "number_of_day.required" => "Không được để trống",
         "list_transport_id.required" => "Không được để trống",
         "slot.required" => "Không được để trống",
         "slot.number" => "slot không hợp lệ",
@@ -137,17 +139,17 @@
                                     </label>
                                     <label for="">
                                         <span>Thời gian khởi hành:</span>
-                                        <input id="myID" name="start_time" placeholder="dd-mm-yyyy" value="<?php if(!empty($_POST["start_time"])){echo date_format(date_create($_POST["start_time"]),"d-m-y");}?>">
+                                        <input id="myID" name="start_time" placeholder="dd-mm-yyyy">
                                         <p class="err"><?php echo (!empty($errors) && array_key_exists("start_time",$errors))?$errors["start_time"]:false?></p>
                                     </label>
                                     <label for="">
                                         <span>Hành trình:</span>
-                                        <input type="text" name="journeys" value="<?php if(!empty($_POST["journeys"])){echo $_POST["journeys"];}?>">
+                                        <input type="text" name="journeys">
                                         <p class="err"><?php echo (!empty($errors) && array_key_exists("journeys",$errors))?$errors["journeys"]:false?></p>
                                     </label>
                                     <label for="">
                                         <span>Thời gian kết thúc:</span>
-                                        <input id="myID" name="end_time" placeholder="dd-mm-yyyy" value="<?php if(!empty($_POST["end_time"])){echo date_format(date_create($_POST["end_time"]),"d-m-y");}?>">
+                                        <input id="myID1" name="end_time" placeholder="dd-mm-yyyy">
                                         <p class="err"><?php echo (!empty($errors) && array_key_exists("end_time",$errors))?$errors["end_time"]:false?></p>
                                     </label>
                                     <label for="" class="listservice">
@@ -167,6 +169,11 @@
                                             ?>
                                         </div>
                                         <p class="err"><?php echo (!empty($errors) && array_key_exists("listservice_id",$errors))?$errors["listservice_id"]:false?></p>
+                                    </label>
+                                    <label for="">
+                                        <span>Số ngày diễn ra:</span>
+                                        <input type="number" name="number_of_day" value="<?php if(!empty($_POST["number_of_day"])){echo $_POST["number_of_day"];}?>" autocomplete="off">
+                                        <p class="err"><?php echo (!empty($errors) && array_key_exists("number_of_day",$errors))?$errors["number_of_day"]:false?></p>
                                     </label>
                                     <label for="" class="listservice">
                                         <span>Phương tiện:</span>
@@ -232,6 +239,23 @@
 
         <script>
             var resizefunc = [];
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+        <script>
+            flatpickr("#myID",{
+                enableTime: true,
+                dateFormat: "d-m-Y",
+                minDate: "today",
+                defaultDate: "<?php echo (!empty($_POST["start_time"]))?date_format(date_create($_POST["start_time"]),"d-m-Y"):false;?>"
+            });
+    
+            flatpickr("#myID1",{
+                enableTime: true,
+                dateFormat: "d-m-Y",
+                minDate: "today",
+                defaultDate: "<?php echo (!empty($_POST["end_time"]))?date_format(date_create($_POST["end_time"]),"d-m-Y"):false;?>"
+            });
         </script>
 
         <script src="<?php echo _WEB_ROOT_."/views/admin/assets/js/jquery.min.js"?>"></script>
