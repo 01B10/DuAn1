@@ -38,6 +38,8 @@
     $route["admin/updateTransport"] = "admin\\quanly\\transport\\updateTransport";
     $route["admin/updateCoupon"] = "admin\\quanly\\coupon\\updateCoupon";
 
+    $route["admin/commentDetail"] = "admin\\quanly\\comment\\commentDetail";
+
     $route["chat"] = "client\\layout\\chat";
     $route["post"] = "admin\\quanly\\post";
 

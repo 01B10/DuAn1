@@ -38,7 +38,7 @@
             <h2>Add Coupon</h2>
             <div class="grid">
                 <div class="name">
-                    <input type="text" class="code" name="code">
+                    <input type="text" class="code" name="code" value="<?php echo (!empty($_POST["code"]))?$_POST["code"]:false?>">
                     <label for="">Mã coupon</label>
                     <span><i class="fa-solid fa-plus"></i></span>
                     <span><i class="fa-solid fa-arrows-rotate" onclick="getCodeCoupon()"></i></span>
@@ -47,28 +47,27 @@
                 <div class="role">
                     <select id="role" name="type">
                         <option value="" selected disabled>--Loại--</option>
-                        <option value="1">Theo giá</option>
-                        <option value="2">Theo phần trăm</option>
+                        <option value="1" <?php echo (!empty($_POST["type"])&&$_POST["type"] == 1)?"selected":false?>>Theo giá</option>
+                        <option value="2" <?php echo (!empty($_POST["type"])&&$_POST["type"] == 2)?"selected":false?>>Theo phần trăm</option>
                     </select>
                     <p class="err"><?php echo (!empty($errors) && array_key_exists("type",$errors))?$errors["type"]:false?></p>
                 </div>
                 <div class="phone">
-                    <input type="number" name="amount">
+                    <input type="number" name="amount" value="<?php echo (!empty($_POST["amount"]))?$_POST["amount"]:false?>">
                     <label for="">Số lượng</label>
                     <p class="err"><?php echo (!empty($errors) && array_key_exists("amount",$errors))?$errors["amount"]:false?></p>
                 </div>
                 <div class="Email">
-                    <input type="text" name="coupon_value">
+                    <input type="text" name="coupon_value" value="<?php echo (!empty($_POST["coupon_value"]))?$_POST["coupon_value"]:false?>">
                     <label for="">Giá trị</label>
                     <p class="err"><?php echo (!empty($errors) && array_key_exists("coupon_value",$errors))?$errors["coupon_value"]:false?></p>
                 </div>
                 <div class="Email">
                 <input id="myID" name="end_time" placeholder="Ngày hết hạn">
-                    <!-- <label for="">Ngày hết hạn</label> -->
                     <p class="err"><?php echo (!empty($errors) && array_key_exists("end_time",$errors))?$errors["end_time"]:false?></p>
                 </div>
                 <div class="password">
-                    <input type="text" class="pass" name="description">
+                    <input type="text" class="pass" name="description" value="<?php echo (!empty($_POST["description"]))?$_POST["description"]:false?>">
                     <label for="">Miêu tả</label>
                     <p class="err"><?php echo (!empty($errors) && array_key_exists("description",$errors))?$errors["description"]:false?></p>
                 </div>

@@ -21,7 +21,6 @@
         $validate =  validate($rule,$message,$errors);
         $errors = errors("",$errors);
         if($validate){
-            // $content_blog = htmlentities($_POST["content_blog"]);
             $_POST["content_blog"] = "\"".htmlentities($_POST["content_blog"])."\"";
             $data = array_filter($_POST);
             $data["img"] = $_FILES["img"]["name"];

@@ -123,6 +123,10 @@
         window.addEventListener("load",()=>{
             window.location = "listProvince";
         });
+    }else if(searchParam.get("act") == "deleteComment"){
+        window.addEventListener("load",()=>{
+            window.location = "listcomment";
+        });
     }
 
     if(searchParam.has("orderId")){
