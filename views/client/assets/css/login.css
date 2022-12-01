@@ -11,7 +11,7 @@ body {
   height: 100vh;
   justify-content: center;
   align-items: center;
-  background: -webkit-linear-gradient(left, #00dbde, #fc00ff);
+  background: #E4E9F7;
   text-align: center;
   background-size: cover;
   background-position: center;
@@ -25,11 +25,14 @@ body {
   left: 20px;
 }
 
+
 .container {
   position: relative;
   width: 450px;
   background: #fff;
   padding: 60px 40px;
+  box-shadow: 0 0 10px silver;
+  border-radius: 5px;
 }
 
 h2 {
@@ -84,8 +87,8 @@ input:focus {
   box-shadow: 0 0 10px #1da1f2;
 }
 
-input:focus ~ label,
-input:valid ~ label {
+input:focus~label,
+input:valid~label {
   transform: translateY(-33px);
   background: #fff;
   font-size: 16px;
@@ -135,6 +138,7 @@ input:valid ~ label {
   text-align: left;
   margin-top: -20px;
 }
+
 .input-field span {
   position: absolute;
   right: 15px;
@@ -145,7 +149,8 @@ input:valid ~ label {
   cursor: pointer;
   display: none;
 }
-.input-field input:valid ~ span {
+
+.input-field input:valid~span {
   display: block;
 }
 

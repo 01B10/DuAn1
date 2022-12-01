@@ -82,6 +82,7 @@
             </div>
         </form>
     </div>
+  
 </body>
 <script>
     const passField = document.querySelector(".pass");
