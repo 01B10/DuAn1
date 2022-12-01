@@ -44,8 +44,7 @@
                                 <td class="action">
                                     <i class="fa-solid fa-ellipsis-vertical"></i>
                                     <div class="hidden">
-                                        <a href="">Delete</a>
-                                        <a href="">Detail</a>
+                                        <a href="updateCoupon?Id=<?php echo $item["Id"]?>">update</a>
                                     </div>
                                 </td>
                             </tr>

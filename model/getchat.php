@@ -18,7 +18,7 @@
                             <p class="name">'.$item["name"].'</p>
                             <p class="content">'.$item["content"].'</p>
                         </div>
-                        <small>'.$item["time"].'</small>
+                        <small>'.date_format(date_create($item["time"]),"h:i:s d-m-Y").'</small>
                     </div>
                 </div>';
     }
