@@ -87,7 +87,6 @@
             <div class="account">
                 <h3>Thông tin tài khoản</h3>
                 <div class="user">
-<<<<<<< HEAD
                     <div class="user-img">
                         <img src="../img/Default_pfp.svg.png" alt="">
                         <div class="change-img">
@@ -99,12 +98,8 @@
                     <div class="infomation">
                         <div class="info">
                             <label for="">Họ và tên</label>
-<<<<<<< HEAD
                             <input type="text" value="" readonly>
-=======
                             <input type="text" value="">
->>>>>>> 86bfe631bdd800b6c66d27f12a740a8e5bcb8d48
-=======
                     <form action="" method="POST" enctype="multipart/form-data">
                         <div class="user-img">
                             <img class="img" src="<?php echo _WEB_ROOT_."/views/client/img/customer/".$customer["img"]?>" alt="">
@@ -113,7 +108,6 @@
                                 <input type="file" name="img" class="fileImg" style="display: none;">
                             </div>
                             <p class="err"><?php echo (!empty($errors) && array_key_exists("img",$errors))?$errors["img"]:false?></p>
->>>>>>> f7b3a313cbcaefe4bbec01e6624aead127406f1b
                         </div>
                         <div class="infomation">
                             <div class="info">
@@ -148,7 +142,6 @@
                                 <p class="err"><?php echo (!empty($errors) && array_key_exists("phone",$errors))?$errors["phone"]:false?></p>
                             </div>
                         </div>
-<<<<<<< HEAD
                         <div class="info">
                             <label for="">Email</label>
                             <input type="text" value="">
@@ -166,10 +159,8 @@
                             <input type="text" value="" readonly>
                         </div>
                     </div>
-=======
                         <button class="btnUpdate" name="update">Cập nhật</button>
                     </form>
->>>>>>> f7b3a313cbcaefe4bbec01e6624aead127406f1b
                 </div>
                 <div class="update">
                     <a href=""><button>Chỉnh sửa thông tin</button></a>
