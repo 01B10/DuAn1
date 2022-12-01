@@ -26,7 +26,7 @@
   background: var(--main-color);
 }
 
-.card-single:last-child h1,
+.card-single:last-child h3,
 .card-single:last-child div:last-child span,
 .card-single:last-child div:first-child span {
   color: #fff;

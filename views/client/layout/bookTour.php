@@ -26,14 +26,17 @@
             unset($_POST["children"]);
             unset($_POST["pay"]);
             $data = array_filter($_POST);
-            $data["total"] = ($adults * $tour["price"]) + ( $children * 0.8 * $tour["price"]);
+            $discount = $tour["price"] - $tour["price"] * $tour["discount"]/100;
+            $data["total"] = ($adults * $discount) + ( $children * 0.8 * $discount);
             $data["cus_id"] = $_SESSION["Login"]["customer"]["Id"];
             $data["start_time_order"] = date("Y-m-d",strtotime($_SESSION["orderDate"]));
             $data["creat_time"] = date("Y-m-d");
 
             if(!empty($_POST["discount_id"])){
-              $data["discount_id"] = $queryBuilder->query($queryBuilder->table("discount_code")->select("Id")
-              ->where("discount_code.code","=",$_POST["discount_id"])->get())[0]["Id"];
+              $coupon = $queryBuilder->query($queryBuilder->table("discount_code")->select("Id,amount")
+              ->where("discount_code.code","=",$_POST["discount_id"])->get())[0];
+              $data["discount_id"] = $coupon["Id"];
+              $amount = $coupon["amount"];
             }
             
             if($tour["slot"] < $adults + $children){
@@ -41,6 +44,10 @@
             }else{
                     $currentSlot = $tour["slot"] - $adults - $children;
                     $queryBuilder->excute($queryBuilder->inserData("ordertour",$data));
+
+                    if(isset($amount)){
+                      $queryBuilder->excute($queryBuilder->updateData("discount_code",["amount"=>$amount-1],"discount_code.Id = ".$coupon["Id"]));
+                    }
                     
                     $orderID = $queryBuilder->first($queryBuilder->table("ordertour")->select("Id")->orderBy("Id","DESC")->get());
                     
@@ -54,7 +61,7 @@
                     $insertOrder = $queryBuilder->excute($queryBuilder->inserData("order_details",$data));
                     $queryBuilder->excute($queryBuilder->updateData("tour",["tour.slot"=>$currentSlot],"tour.Id = ".$_GET["tour_id"]));
                     header("Location: bills");
-              }
+            }
          }
       }
 ?>

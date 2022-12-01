@@ -12,6 +12,7 @@
         ->where("order_details.tour_id","=",$idTour["tour_id"])->get())[0];
         $queryBuilder->excute($queryBuilder->delete("service","service.tour_detail_id = ".$_GET['Id']));
         $queryBuilder->excute($queryBuilder->delete("transport","transport.tour_detail_id = ".$_GET['Id']));
+        $queryBuilder->excute($queryBuilder->delete("comment","comment.tour_id = ".$idTour["tour_id"]));
         $queryBuilder->excute($queryBuilder->delete("tour_detail","tour_detail.Id = ".$_GET['Id']));
         $queryBuilder->excute($queryBuilder->delete("order_details","order_details.tour_id = ".$idTour["tour_id"]));
         if(!empty($idOrder)){$queryBuilder->excute($queryBuilder->delete("ordertour","ordertour.Id = ".$idOrder["order_id"]));}

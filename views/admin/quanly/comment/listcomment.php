@@ -4,8 +4,6 @@
     ->join("inner","tour","comment.tour_id = tour.Id")
     ->groupBy("tour.Id")
     ->get());
-
-    print_r($list);
 ?>
 
 <main>
@@ -32,12 +30,7 @@
                                 <td><?php echo $item["name"]?></td>
                                 <td><?php echo $item["SL"]?></td>
                                 <td class="action">
-                                    <a href="commentDetail?Id=<?php echo $item["Id"]?>">Detail</a>
-                                    <!-- <i class="fa-solid fa-ellipsis-vertical"></i>
-                                    <div class="hidden">
-                                        <a href="">Delete</a>
-                                        <a href="">Detail</a>
-                                    </div> -->
+                                    <a href="commentDetail?Id=<?php echo $item["Id"]?>" class="dif">Detail</a>
                                 </td>
                             </tr>
                     <?php

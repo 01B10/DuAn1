@@ -41,9 +41,7 @@
                         $i = 0;
                         foreach($order as $item){
                             $i++;
-                            $startTime = strtotime($item["start_time"]);
-                            $endTime = strtotime($item["end_time"]);
-                            $day = date("d",$endTime - $startTime) - 1;
+                            $day = $item["number_of_day"] - 1;
                             $coupon = $queryBuilder->query($queryBuilder->table("discount_code")->select("Id,type,coupon_value")
                             ->where("discount_code.Id","=",$item["discount_id"])->get());
                 ?>
@@ -52,7 +50,7 @@
                                 <td><?php echo $item["order_id"]?></td>
                                 <td>
                                         <?php 
-                                            echo "{$item["name"]} $day ngày $day đêm | {$item["journeys"]}";
+                                            echo "{$item["name"]} {$item["number_of_day"]} ngày $day đêm | {$item["journeys"]}";
                                         ?></td>
                                 <td>
                                     <p><span class="highlight">Tên: </span>

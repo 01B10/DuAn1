@@ -56,13 +56,7 @@
 
                             if(!empty($coupon)){
                                 $discountTour = ($coupon[0]["type"] == 2)?($item["total"] - $item["total"] * $coupon[0]["coupon_value"]/100):$item["total"] - $coupon[0]["coupon_value"];
-                                echo $discountTour."<br>";
                             }
-
-
-                            // echo "<pre>";
-                            // print_r($discount);
-                            // echo "</pre>";
                 ?>
                             <tr>
                                 <td>

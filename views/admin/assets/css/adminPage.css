@@ -304,6 +304,14 @@ main {
   visibility: hidden;
 }
 
+.action .dif {
+  display: inline-block;
+  background-color: lightgreen;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
 .content {
   overflow: hidden;
   white-space: nowrap;
