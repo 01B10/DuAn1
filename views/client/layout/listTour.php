@@ -35,7 +35,13 @@
                                         <div class="box-title-content">
                                             <h3 class="title-h3">
                                                 <a href="tourDetail?tourdetailId=<?php echo $item["Id"]?>">
-                                                    <?php echo "{$item["name"]} {$item["number_of_day"]} ngày $day đêm | {$item["journeys"]}" ?>
+                                                    <?php 
+                                                        if($day > 0){
+                                                            echo "{$item["name"]} {$item["number_of_day"]} ngày $day đêm | {$item["journeys"]}";
+                                                        }else{
+                                                            echo "{$item["name"]} {$item["number_of_day"]} ngày | {$item["journeys"]}";
+                                                        }
+                                                    ?>
                                                 </a>
                                             </h3>
                                         </div>
@@ -88,7 +94,7 @@
         </div>
         <div class="blogs">
             <?php 
-                if(!empty($blogs)){
+                if(!empty($blogs) && !empty($listTour)){
             ?>
                 <h2>Blogs</h2>
                 <ul>
@@ -96,10 +102,10 @@
                         foreach($blogs as $item){
                     ?>
                             <li>
-                                <a href="">
+                                <a href="blogdetails?Id=<?php echo $item["Id"]?>">
                                     <img src="<?php echo _WEB_ROOT_."/views/client/img/blogs/".$item["img"]?>" alt="">
                                 </a>
-                                <a href="">
+                                <a href="blogdetails?Id=<?php echo $item["Id"]?>">
                                     <p class="titleBlog"><?php echo $item["title"]?></p>
                                 </a>
                                 <p>

@@ -4,7 +4,6 @@
   box-sizing: border-box;
 }
 .container {
-  /* max-width: 940px; */
   display: flex;
   margin: auto;
   max-width: 1024px;

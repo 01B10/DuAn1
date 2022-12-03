@@ -1,6 +1,7 @@
 <?php 
     $queryBuilder = new QueryBuilder();
     $listProvince = $queryBuilder->query($queryBuilder->table("province")->select("*")->get());
+    $blogs = $queryBuilder->query($queryBuilder->table("blog")->select("*")->where("blog.status","=",1)->get());
     unset($_SESSION["startTime_search"]);
     $x = 0;
     if(isset($_POST["search"])){
@@ -71,30 +72,25 @@
             <div class="containerPlace">
                 <h1 class="h1-style">Blog nổi bật</h1>
                 <div class="tour-content row">
-                    <div class="tour-content-item row">
-                        <div class="tour-content-item-img">
-                            <img src="<?php echo _WEB_ROOT_."/views/client/img/NT1.jpg"?>" alt="">
-                        </div>
-                        <div class="tour-content-item-text">
-                            <h2>Hà Nội</h2>
-                            <p>Lăng Chủ tịch Hồ Chí Minh, còn gọi là Lăng Hồ Chủ tịch, Lăng Bác, là nơi gìn giữ di hài Chủ
-                                tịch Hồ Chí Minh, Việt Nam.</p>
-                            <button class="btn">Khám phá</button>
-                        </div>
-                    </div>
-
-                    <div class="tour-content-item row">
-                        <div class="tour-content-item-img">
-                            <img src="<?php echo _WEB_ROOT_."/views/client/img/HU1.jpg"?>" alt="">
-                        </div>
-                        <div class="tour-content-item-text">
-                            <h2>Hội An</h2>
-                            <p>Hội An – đô thị cổ hội tụ tinh hoa vẻ đẹp, văn hóa và lịch sử Việt Nam, luôn nằm trong danh
-                                sách top những điểm đến hấp dẫn trên bản đồ du lịch, Việt Nam.</p>
-                            <button class="btn">Khám phá</button>
-                        </div>
-                    </div>
-
+                    <?php 
+                        if(!empty($blogs)){
+                            foreach($blogs as $item){
+                    ?>
+                            <div class="tour-content-item row">
+                                <div class="tour-content-item-img">
+                                    <a href="blogdetails?Id=<?php echo $item["Id"]?>"><img src="<?php echo _WEB_ROOT_."/views/client/img/blogs/".$item["img"]?>" alt=""></a>
+                                </div>
+                                <div class="tour-content-item-text">
+                                    <h2><a href="blogdetails?Id=<?php echo $item["Id"]?>"><?php echo $item["title"]?></a></h2>
+                                    <div class="content">
+                                        <?php echo html_entity_decode($item["content_blog"])?>
+                                    </div>
+                                </div>
+                            </div>
+                    <?php
+                            }
+                        }
+                    ?>
                 </div>
             </div>
         </section>

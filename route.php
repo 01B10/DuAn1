@@ -9,6 +9,7 @@
     $route["tour"] = "client\\layout\\listTour";
     $route["tourDetail"] = "client\\layout\\tourDetail";
     $route["blogs"] = "client\\layout\\blogs";
+    $route["blogdetails"] = "client\\layout\\blogdetails";
     $route["bookTour"] = "client\\layout\\bookTour";
 
     $route["admin/dashboard"] = "admin\\quanly\\dashboard";

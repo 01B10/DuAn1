@@ -2,7 +2,7 @@
     $queryBuilder = new QueryBuilder();
     $rule = [
         "img" => "img",
-        "name" => "required|min:10|max:30",
+        "name" => "required|min:10|max:50",
         "departure" => "required",
         "province" => "required",
         "price" => "required|number",

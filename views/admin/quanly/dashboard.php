@@ -14,6 +14,27 @@
     ->join("left","discount_code","ordertour.discount_id = discount_code.Id")
     ->get());
 
+    $charTour = $queryBuilder->query($queryBuilder->table("order_details")->select("order_details.tour_id,
+    count(order_details.order_id) as SLan,tour.province,province.name")
+    ->join("inner","tour","order_details.tour_id = tour.Id")
+    ->join("inner","province","tour.province = province.Id")
+    ->groupBy("tour.province")
+    ->get()
+    );
+
+    $province = $queryBuilder->query($queryBuilder->table("province")->select("name")
+    ->get());
+
+    $arrProvince = "";
+    $arrBook = "";
+    foreach($charTour as $item){
+        $arrProvince .= "'{$item["name"]}',";
+        $arrBook .= "'{$item["SLan"]}',";
+    }
+    $arrProvince = "[".rtrim($arrProvince,",")."]";
+    $arrBook = "[".rtrim($arrBook,",")."]";
+
+
     $total = 0;
 
     foreach($income as $item){
@@ -24,7 +45,7 @@
         }
     }
 ?>
-<main>
+        <main>
             <div class="cards">
                 <div class="card-single">
                     <div>
@@ -64,5 +85,37 @@
                 </div>
             </div>
         </main>
+        <div>
+            <canvas id="myChart"></canvas>
+        </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.0.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const ctx = document.getElementById('myChart');
+        new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: <?php echo $arrProvince?>,
+            datasets: [{
+              label: 'Số lần đặt',
+              data: <?php echo $arrBook?>,
+              backgroundColor: [
+                'rgba(85,85,85,1)'
+              ],
+              borderColor: [
+                'rgba(41,155,99)'
+              ],
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+    </script>
 </body>

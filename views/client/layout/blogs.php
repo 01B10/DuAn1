@@ -14,11 +14,11 @@
                     foreach($blogs as $item){
             ?>
                         <div class="full-block">
-                            <a href="">
+                            <a href="blogdetails?Id=<?php echo $item["Id"]?>">
                                 <img src="<?php echo _WEB_ROOT_."/views/client/img/blogs/".$item["img"]?>" alt="">
                             </a>
                             <div class="location">
-                                <a href=""><h2><?php echo $item["title"]?></h2></a>
+                                <a href="blogdetails?Id=<?php echo $item["Id"]?>"><h2><?php echo $item["title"]?></h2></a>
                             </div>
                             <div>
                                 <i class="fa-solid fa-calendar-plus"></i>

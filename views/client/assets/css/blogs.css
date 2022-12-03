@@ -57,3 +57,8 @@ footer hr {
 .footer1 h4 {
   color: #1da1f2;
 }
+
+.containerBlog {
+  margin: 20px auto;
+  max-width: 600px;
+}

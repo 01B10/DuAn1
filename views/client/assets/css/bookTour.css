@@ -10,6 +10,11 @@ boby {
   margin: 30px auto 30px auto;
   gap: 30px;
 }
+
+.gr-1 {
+  width: 100%;
+}
+
 .gr-1 .tour-img {
   width: 100%;
 }
