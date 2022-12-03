@@ -87,6 +87,19 @@
             <div class="account">
                 <h3>Thông tin tài khoản</h3>
                 <div class="user">
+                    <div class="user-img">
+                        <img src="../img/Default_pfp.svg.png" alt="">
+                        <div class="change-img">
+                            <label for="">Thay đổi ảnh đại diện</label><br>
+                            <input type="file" name="" id="">
+                          <a href=""><button>Cập nhật</button></a>  
+                        </div>
+                    </div>
+                    <div class="infomation">
+                        <div class="info">
+                            <label for="">Họ và tên</label>
+                            <input type="text" value="" readonly>
+                            <input type="text" value="">
                     <form action="" method="POST" enctype="multipart/form-data">
                         <div class="user-img">
                             <img class="img" src="<?php echo _WEB_ROOT_."/views/client/img/customer/".$customer["img"]?>" alt="">
@@ -129,8 +142,28 @@
                                 <p class="err"><?php echo (!empty($errors) && array_key_exists("phone",$errors))?$errors["phone"]:false?></p>
                             </div>
                         </div>
+                        <div class="info">
+                            <label for="">Email</label>
+                            <input type="text" value="">
+                        </div>
+                        <div class="info">
+                            <label for="">Số điện thoại</label>
+                            <input type="text" value="">
+                        </div>
+                        <div class="info">
+                            <label for="">Địa chỉ</label>
+                            <input type="text" value="" readonly>
+                        </div>
+                        <div class="info">
+                            <label for="">Vai trò</label>
+                            <input type="text" value="" readonly>
+                        </div>
+                    </div>
                         <button class="btnUpdate" name="update">Cập nhật</button>
                     </form>
+                </div>
+                <div class="update">
+                    <a href=""><button>Chỉnh sửa thông tin</button></a>
                 </div>
             </div>
             <form action="" method="POST">
@@ -160,7 +193,7 @@
             </form>
         </div>
         <div class="history">
-            <h3>Lịch sử đơn đặt</h3>
+            <h3>Lịch sử đặt hàng</h3>
             <table cellpadding="10"  >
                 <thead>
                     <th>Id</th>
@@ -174,7 +207,7 @@
                 <tbody>
                     <tr>
                         <td>
-                            1
+                            
                             <!-- php code -->
                         </td>
                         <td>

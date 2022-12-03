@@ -55,7 +55,6 @@
     <script src="https://kit.fontawesome.com/d620f19a29.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 </head>
-
 <body>
     <a href="Trang-Chu">
         <i class="fa-solid fa-arrow-left"></i>
@@ -65,6 +64,18 @@
         <form action="" method="POST">
             <h2>Đăng ký</h2>
             <div class="input-field">
+<<<<<<< HEAD
+                <input type="text" required>
+                <label for="">Enter your name</label>
+            </div>
+            <div class="input-field">
+                <input type="email" required>
+                <label for="">Enter your email</label>
+            </div>
+            <div class="input-field">
+                <input type="text" required>
+                <label for="">Phone number</label>
+=======
                 <input type="text" name="name" value="<?php if(!empty($_POST["name"])){echo $_POST["name"];}?>">
                 <label for="">Họ và Tên</label>
                 <p class="err"><?php echo (!empty($errors) && array_key_exists("name",$errors))?$errors["name"]:false?></p>
@@ -78,6 +89,7 @@
                 <input type="text" name="phone" value="<?php if(!empty($_POST["phone"])){echo $_POST["phone"];}?>">
                 <label for="">Số điện thoại</label>
                 <p class="err"><?php echo (!empty($errors) && array_key_exists("phone",$errors))?$errors["phone"]:false?></p>
+>>>>>>> f7b3a313cbcaefe4bbec01e6624aead127406f1b
             </div>
             <div class="gender">
                 <label class="pick" for="">Giới tính</label>
@@ -87,20 +99,42 @@
                 <p class="err difference"><?php echo (!empty($errors) && array_key_exists("gender",$errors))?$errors["gender"]:false?></p>
             </div>
             <div class="input-field">
+<<<<<<< HEAD
+                <input type="password" required>
+                <label for="">Password</label>
+=======
                 <input type="password" name="password">
                 <label for="">Mật khẩu</label>
+>>>>>>> f7b3a313cbcaefe4bbec01e6624aead127406f1b
                 <span class="show-btn"><i class="fas fa-eye"></i></span>
                 <p class="err"><?php echo (!empty($errors) && array_key_exists("password",$errors))?$errors["password"]:false?></p>
             </div>
             <div class="input-field">
+<<<<<<< HEAD
+                <input type="password" required>
+                <label for="">Confirm password</label>
+=======
                 <input type="password" name="repassword">
                 <label for="">Nhập lại mật khẩu</label>
+>>>>>>> f7b3a313cbcaefe4bbec01e6624aead127406f1b
                 <span class="show-btn"><i class="fas fa-eye"></i></span>
-                <p class="err"><?php echo (!empty($errors) && array_key_exists("repassword",$errors))?$errors["repassword"]:false?></p>
+            </div>
+            <div class="capcha">
+                <label for="capcha-input">Enter capcha</label>
+                <div class="preview"></div>
+                <div class="capcha-form">
+                    <input type="text"  id="capcha-form" placeholder="Enter capcha">
+                    <button class="capcha-refresh"><i class="fas fa-sync"></i></button>
+                </div>
             </div>
             <div class="button">
+<<<<<<< HEAD
+                <button style="--clr:#1e9bff">
+                    <a href=""><span>Register Now</span></a>
+=======
                 <button name="register" style="--clr:#1e9bff">
                     <span>Đăng ký</span>
+>>>>>>> f7b3a313cbcaefe4bbec01e6624aead127406f1b
                 </button>
             </div>
             <div class="signin">
@@ -121,7 +155,41 @@
             showBtn.classList.remove("hide-btn");
         }
     });
+<<<<<<< HEAD
+
+    (function(){
+        const form=["cursive","sans-serif","serif","mốnpace"];
+        let capchaValue="";
+        function generateCapcha(){
+            let value=btoa(Math.random()*1000000000);
+            value=value.substr(0,5+Math.random()*5);
+            capchaValue=value;
+        }
+        function setCapcha(){
+            capchaValue.split(""),Map((char)=>
+            {
+                const rotate=-20 + Math.trunc(Math.random()*30);
+                const font =Math.trunc(Math.random()*font.length);
+                return `<span style="transform:rotate(${rotate}deg);
+                font-family:${fonts[font]}">
+                ${char}</span>`;
+            }).join("");
+            document.querySelector(".preview").innerHTML=html;
+        }
+        function initCapcha(){
+            document.querySelector(".capcha-refresh").addEventListener("click",function(){
+                generateCapcha();
+                setCapcha();
+            });
+            generateCapcha();
+            setCapcha();
+        }
+        initCapcha();
+    })();
+</script>
+=======
 </script>
 </html>
 <!-- <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script> -->
+>>>>>>> f7b3a313cbcaefe4bbec01e6624aead127406f1b
