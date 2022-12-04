@@ -7,6 +7,8 @@
     ->where("blog.status","=",2)
     ->get());
 
+    $_SESSION["relatedTour"] = $_GET["Province"];
+
     $province = $queryBuilder->query($queryBuilder->table("province")->select("*")
     ->where("province.Id","=",$_GET["Province"])->get())[0];
 ?>

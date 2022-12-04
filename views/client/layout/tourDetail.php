@@ -1,9 +1,16 @@
 <?php 
     date_default_timezone_set('Asia/Ho_Chi_Minh');
     $queryBuilder = new QueryBuilder();
+
     $tourDetail = $queryBuilder->query($queryBuilder->table("tour")->select("*")
     ->join("inner","tour_detail","tour.Id = tour_detail.tour_id")
     ->where("tour_detail.Id","=",$_GET["tourdetailId"])
+    ->get());
+
+    $relatedTour = $queryBuilder->query($queryBuilder->table("tour")->select("*")
+    ->join("inner","tour_detail","tour.Id = tour_detail.tour_id")
+    ->where("tour.province","=",$_SESSION["relatedTour"])
+    ->where("tour_detail.Id","!=",$_GET["tourdetailId"])
     ->get());
 
     $startTime_search = isset($_SESSION["startTime_search"])?$_SESSION["startTime_search"]:"";
@@ -29,7 +36,7 @@
 
     <div class="container">
         <?php 
-            if(!empty($tourDetail)){
+            if(!empty($tourDetail) && !empty($relatedTour)){
                 foreach($tourDetail as $item){
                     $listTransport = $queryBuilder->query($queryBuilder->table("transport")->select("*")
                     ->join("inner","list_transport","transport.list_transport_id = list_transport.Id")
@@ -164,6 +171,44 @@
                                 <input class="sendbtn" name="sendbtn" type="<?php echo isset($_SESSION["Login"]["customer"]["Id"])?"button":"submit"?>" value="send">
                             </form>
                             <div class="chat-box"></div>
+                        </div>
+                        <h4>Các tour liên quan</h4>
+                        <div class="pay-tour">
+                            <?php 
+                                foreach($relatedTour as $item){
+                                    $listTransport = $queryBuilder->query($queryBuilder->table("transport")->select("*")
+                                    ->join("inner","list_transport","transport.list_transport_id = list_transport.Id")
+                                    ->where("transport.tour_detail_id","=",$item["Id"])->get());
+                                    $day = $item["number_of_day"] - 1;
+                                    $discount = $item["price"] - $item["price"] * $item["discount"]/100;
+                            ?>
+                                    <div class="pay-tour__item">
+                                        <a href="tourDetail?tourdetailId=<?php echo $item["Id"]?>">
+                                            <img src="<?php echo _WEB_ROOT_."/views/client/img/tours/".$item["img"]?>" alt="">
+                                        </a>
+                                        <a href="tourDetail?tourdetailId=<?php echo $item["Id"]?>" class="pay-tour__title">
+                                            <h3><?php echo "{$item["name"]} {$item["number_of_day"]} ngày $day đêm | {$item["journeys"]}"?></h3>
+                                        </a>
+                                        <p class="pay-tour__time">
+                                            <span><i class="fa-regular fa-clock"></i> <?php echo "{$item["number_of_day"]} ngày $day đêm"?></span>
+                                            <span>
+                                            <?php 
+                                                foreach($listTransport as $transport){
+                                            ?>
+                                                <img class="icon" src="<?php echo _WEB_ROOT_."/views/admin/icon/".$transport["img"]?>" alt="">
+                                            <?php
+                                                }
+                                            ?>
+                                            </span>
+                                        </p>
+                                        <p><i class="fa-solid fa-location-dot"></i> <?php echo $item["departure"]?></p>
+                                        <p>Còn: <?php echo $item["slot"]?> chỗ</p>
+                                        <p class="pay-tour__price"><span><?php echo number_format($discount)?></span><span>-<?php echo $item["discount"]?>%</span></p>
+                                        <p class="pay-tour__price"><del><?php echo number_format($item["price"])?></del></p>
+                                    </div>
+                            <?php
+                                }
+                            ?>
                         </div>
                     </div>
         <?php

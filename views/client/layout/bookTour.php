@@ -145,10 +145,10 @@
     document.addEventListener('DOMContentLoaded', function () {
     var checkbox = document.querySelector('input[type="checkbox"]');
     var applyCoupon = document.querySelector('.apply-coupon');
-    var btnnSubmit = document.querySelector("#submit");
+    var btnSubmit = document.querySelector("#submit");
     checkbox.addEventListener('change', function () {
-      btnnSubmit.setAttribute("disabled","");
       if (checkbox.checked) {
+        btnSubmit.setAttribute("disabled","");
         applyCoupon.innerHTML = `<input name="discount_id" id="txt_voucher_tour" type="text" class="form-control row-coupon" autocomplete="off" required placeholder="Vui lòng nhập mã giảm giá...">
         <span class="btn-submit-voucher voucher-tour ">Áp dụng mã</span>
         <p class="err"></p>`;
@@ -166,7 +166,7 @@
                 }
                 if(boolean == 0){
                   err.innerHTML = "Áp dụng mã giảm giá thành công!";
-                  btnnSubmit.removeAttribute("disabled");
+                  btnSubmit.removeAttribute("disabled");
                 }else{
                   err.innerHTML = "Mã giảm giá không đúng hoặc hết hạn!";
                 }
@@ -175,6 +175,7 @@
           })
       } else {
         applyCoupon.innerHTML = '';
+        btnSubmit.removeAttribute("disabled");
       }
     });
   });

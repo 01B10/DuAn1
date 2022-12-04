@@ -45,7 +45,7 @@
         }
     }
 ?>
-        <main>
+        <main class="inforCom">
             <div class="cards">
                 <div class="card-single">
                     <div>
@@ -85,36 +85,42 @@
                 </div>
             </div>
         </main>
-        <div>
-            <canvas id="myChart"></canvas>
+        <div class="chart">
+            <div class="chartBlock">
+                <canvas id="myChart"></canvas>
+            </div>
+            <div class="chartBlock">
+            </div>
         </div>
+        <!-- <div>
+            <canvas id="myChart"></canvas>
+        </div> -->
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.0.1/dist/chart.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         const ctx = document.getElementById('myChart');
         new Chart(ctx, {
-          type: 'line',
+          type: 'polarArea',
           data: {
             labels: <?php echo $arrProvince?>,
             datasets: [{
               label: 'Số lần đặt',
               data: <?php echo $arrBook?>,
               backgroundColor: [
-                'rgba(85,85,85,1)'
+                'rgba(255,99,132,1)',
+                'rgba(54,162,235,1)',
+                'rgba(255,206,86,1)',
+                'rgba(255,140,54,1)',
+                'rgba(113,0,185,1)',
+                'rgba(41,99,54,1)',
               ],
-              borderColor: [
-                'rgba(41,155,99)'
-              ],
-              borderWidth: 1
+              borderWidth: 1,
+              borderJoinStyle: 'round'
             }]
           },
           options: {
-            scales: {
-              y: {
-                beginAtZero: true
-              }
-            }
+            responsive: true,
           }
         });
     </script>

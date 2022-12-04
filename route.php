@@ -11,6 +11,7 @@
     $route["blogs"] = "client\\layout\\blogs";
     $route["blogdetails"] = "client\\layout\\blogdetails";
     $route["bookTour"] = "client\\layout\\bookTour";
+    $route["lienhe"] = "client\\layout\\lienhe";
 
     $route["admin/dashboard"] = "admin\\quanly\\dashboard";
     $route["admin/listUser"] = "admin\\quanly\\user\\listuser";

@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="<?php echo _WEB_ROOT_ . "/views/client/assets/css/saleTour.css" ?>">
     <link rel="stylesheet" href="<?php echo _WEB_ROOT_ . "/views/client/assets/css/blogs.css" ?>">
     <link rel="stylesheet" href="<?php echo _WEB_ROOT_."/views/client/assets/css/bookTour.css"?>">
+    <link rel="stylesheet" href="<?php echo _WEB_ROOT_."/views/client/assets/css/lienhe.css"?>">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
     <script src="https://kit.fontawesome.com/d620f19a29.js" crossorigin="anonymous"></script>
@@ -33,15 +34,18 @@
                 <ul>
                     <li><a href="Trang-Chu">Trang chủ</a></li>
                     <li><a href="">Giới thiệu</a></li>
-                    <li><a href="">Liên hệ</a></li>
+                    <li><a href="lienhe">Liên hệ</a></li>
                     <li><a href="blogs">Blog</a></li>
                 </ul>
             </div>
             <div class="icon-1">
-                <i class="fa-solid fa-user"></i>
                 <?php 
                     if(isset($_SESSION["Login"]["customer"])){
                 ?>
+                    <div class="avarta">
+                        <span><?php echo $_SESSION["Login"]["customer"]["name"]?></span>
+                        <img class="avarta" src="<?php echo _WEB_ROOT_."/views/client/img/customer/".$_SESSION["Login"]["customer"]["img"]?>" alt="">
+                    </div>
                     <div class="drop">
                         <a href="account">Tài khoản</a>
                         <a href="bills">Hóa đơn</a>
@@ -50,6 +54,7 @@
                 <?php
                     }else{
                 ?>
+                    <i class="fa-solid fa-user"></i>
                     <div class="drop">
                         <a href="login">Login</a>
                         <a href="register">register</a>

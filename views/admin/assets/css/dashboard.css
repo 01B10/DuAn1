@@ -1,3 +1,7 @@
+.inforCom {
+  margin-bottom: 50px;
+}
+
 .cards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -146,4 +150,18 @@
   display: inline-block;
   margin-left: 0.5rem;
   color: var(--main-color);
+}
+
+.chart {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+  height: 400px;
+  /* background-color: lightgray; */
+}
+
+.chartBlock {
+  position: relative;
+  /* background-color: #222; */
 }

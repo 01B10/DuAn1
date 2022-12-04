@@ -362,3 +362,76 @@ table {
 .titleBlog {
   font-weight: bold;
 }
+
+.formComment + h4 {
+  margin: 30px 0 10px 0;
+  font-size: 1.5rem;
+}
+
+.pay-tour {
+  display: flex;
+  gap: 20px;
+  padding: 10px;
+  overflow-x: scroll;
+}
+
+.pay-tour::-webkit-scrollbar {
+  height: 10px;
+}
+
+.pay-tour::-webkit-scrollbar-thumb {
+  background-color: #000;
+  border-radius: 5px;
+}
+
+.pay-tour__item {
+  position: relative;
+  width: 300px;
+  min-width: 300px;
+  border: 1px solid lightgray;
+  padding: 5px;
+  box-shadow: 1px 1px 4px 1px;
+}
+
+.pay-tour .pay-tour__item a {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.pay-tour .pay-tour__item a img {
+  width: 100%;
+}
+
+.pay-tour__time {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pay-tour__title h3 {
+  color: #000;
+}
+
+.pay-tour__price {
+  text-align: center;
+}
+
+.pay-tour__price:nth-of-type(4) {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: red;
+}
+
+.pay-tour__price:nth-of-type(4) span:last-child {
+  background-color: red;
+  border-radius: 5px;
+  color: #fff;
+  padding: 0 5px;
+}
+
+.pay-tour__price:nth-of-type(5) {
+  font-weight: bold;
+}
