@@ -44,6 +44,7 @@
             $total += $discountTour;
         }
     }
+
 ?>
         <main class="inforCom">
             <div class="cards">

@@ -10,7 +10,7 @@
         });
     </script>
     <script>
-        var avarta = document.querySelector(".avarta img");
+        var avarta = document.querySelector(".avarta");
         var drop = document.querySelector(".avarta + .drop");
         var block = document.querySelector(".icon-1");
         let indext = 1;

@@ -1,4 +1,5 @@
 <?php 
+    echo "jldadj";
     $queryBuilder = new QueryBuilder();
     $blogs = $queryBuilder->query($queryBuilder->table("blog")->select("*")->get());
     $province = $queryBuilder->query($queryBuilder->table("province")->select("*")->get());

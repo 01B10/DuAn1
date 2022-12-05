@@ -31,7 +31,7 @@
 
 <main>
         <form action="" method="POST" class="box" enctype="multipart/form-data">
-            <h2>Add Province</h2>
+            <h2>Update Province</h2>
             <div>
                 <div class="name">
                     <input type="text" name="name" value="<?php echo (!empty($_POST["name"]))?$_POST["name"]:$province["name"]?>">

@@ -73,7 +73,7 @@
 
                         <div class="row">
                         <div class="infor">
-                            <h2>Add Blog</h2>
+                            <h2>Update Blog</h2>
                             <div class="Tour">
                                 <div class="ImgTour">
                                     <input type="file" name="img" multiple>

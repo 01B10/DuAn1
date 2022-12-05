@@ -54,7 +54,7 @@
                 <?php
                     }else{
                 ?>
-                    <i class="fa-solid fa-user"></i>
+                    <i class="fa-solid fa-user avarta"></i>
                     <div class="drop">
                         <a href="login">Login</a>
                         <a href="register">register</a>

@@ -86,12 +86,12 @@ body {
   align-items: center;
   gap: 5px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .avarta img {
   width: 40px;
   border-radius: 50%;
-  cursor: pointer;
 }
 
 .banner img {

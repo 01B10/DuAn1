@@ -42,7 +42,7 @@
 
     <main>
         <form action="" class="addcustomer" method="POST">
-            <h2>Add Customer</h2>
+            <h2>Update Customer</h2>
             <div class="grid">
                 <div class="name">
                     <input type="text" name="name" value="<?php echo $user["name"]?>">

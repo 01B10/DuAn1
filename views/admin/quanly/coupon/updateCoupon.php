@@ -39,7 +39,7 @@
 
     <main>
         <form action="" class="addcustomer" method="POST">
-            <h2>Add Coupon</h2>
+            <h2>Update Coupon</h2>
             <div class="grid">
                 <div class="name">
                     <input type="text" class="code" name="code" value="<?php echo (!empty($_POST["code"]))?$_POST["code"]:$coupon["code"]?>">

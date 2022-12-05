@@ -32,7 +32,7 @@
 
 <main>
         <form action="" method="POST" class="box" enctype="multipart/form-data">
-            <h2>Add Service</h2>
+            <h2>Update Service</h2>
             <div>
                 <div class="name">
                     <input type="text" name="name" value="<?php echo (!empty($_POST["name"]))?$_POST["name"]:$service["name"]?>">
