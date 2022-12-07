@@ -13,10 +13,10 @@
                     <th>Mã giảm giá</th>
                     <th>Giá trị</th>
                     <th>Số lượng</th>
-                    <th>Ngày tạo</th>
+                    <th>Ngày bắt đầu</th>
                     <th>Ngày kết thúc</th>
                     <th>Loại</th>
-                    <th>Miêu tả</th>
+                    <th>Ghi chú</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -33,7 +33,7 @@
                                 <td><?php echo $item["code"]?></td>
                                 <td><?php echo ($item["type"] == 1)?number_format($item["coupon_value"])."VND":$item["coupon_value"]."%"?></td>
                                 <td><?php echo $item["amount"]?></td>
-                                <td><?php echo date_format(date_create($item["creat_time"]),"d-m-Y");?></td>
+                                <td><?php echo date_format(date_create($item["start_time"]),"d-m-Y");?></td>
                                 <td><?php echo date_format(date_create($item["end_time"]),"d-m-Y");?></td>
                                 <td>
                                     <?php

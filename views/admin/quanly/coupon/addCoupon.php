@@ -5,6 +5,7 @@
         "amount" => "required",
         "coupon_value" => "required|discount",
         "type" => "required",
+        "start_time" => "required",
         "end_time" => "required",
         "description" => "required",
     ];
@@ -17,6 +18,7 @@
         "coupon_value.required" => "Không được để trống",
         "coupon_value.discount" => "Giá trị không hợp lệ",
         "type.required" => "không được để trống",
+        "start_time.required" => "không được để trống",
         "end_time.required" => "không được để trống",
         "description.required" => "Không được để trống",
     ];
@@ -27,6 +29,7 @@
         if($validate){
             $data = array_filter($_POST);
             $data["creat_time"] = date("Y-m-d");
+            $data["start_time"] = date_format(date_create($_POST["start_time"]),"Y-m-d");
             $data["end_time"] = date_format(date_create($_POST["end_time"]),"Y-m-d");
             $queryBuilder->excute($queryBuilder->inserData("discount_code",$data));
         }
@@ -63,12 +66,16 @@
                     <p class="err"><?php echo (!empty($errors) && array_key_exists("coupon_value",$errors))?$errors["coupon_value"]:false?></p>
                 </div>
                 <div class="Email">
-                <input id="myID" name="end_time" placeholder="Ngày hết hạn">
+                    <input id="myID" name="start_time" placeholder="Ngày sử dụng">
+                    <p class="err"><?php echo (!empty($errors) && array_key_exists("start_time",$errors))?$errors["start_time"]:false?></p>
+                </div>
+                <div class="Email">
+                    <input id="myID" name="end_time" placeholder="Ngày hết hạn">
                     <p class="err"><?php echo (!empty($errors) && array_key_exists("end_time",$errors))?$errors["end_time"]:false?></p>
                 </div>
                 <div class="password">
                     <input type="text" class="pass" name="description" value="<?php echo (!empty($_POST["description"]))?$_POST["description"]:false?>">
-                    <label for="">Miêu tả</label>
+                    <label for="">Ghi chú</label>
                     <p class="err"><?php echo (!empty($errors) && array_key_exists("description",$errors))?$errors["description"]:false?></p>
                 </div>
             </div>

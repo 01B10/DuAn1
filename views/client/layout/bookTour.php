@@ -15,7 +15,7 @@
     ->where("customer.Id","=",$_SESSION["Login"]["customer"]["Id"])->get())[0];
     $tour = $queryBuilder->query($queryBuilder->table("tour")->select("*")
     ->where("tour.Id","=",$_GET["tour_id"])->get())[0];
-
+    $discount = $tour["price"] - $tour["price"] * $tour["discount"]/100;
      if(isset($_POST["submit"])){
         $validate =  validate($rule,$message,$errors);
         if($validate){
@@ -26,7 +26,6 @@
             unset($_POST["children"]);
             unset($_POST["pay"]);
             $data = array_filter($_POST);
-            $discount = $tour["price"] - $tour["price"] * $tour["discount"]/100;
             $data["total"] = ($adults * $discount) + ( $children * 0.8 * $discount);
             $data["cus_id"] = $_SESSION["Login"]["customer"]["Id"];
             $data["start_time_order"] = date("Y-m-d",strtotime($_SESSION["orderDate"]));
@@ -151,10 +150,16 @@
         btnSubmit.setAttribute("disabled","");
         applyCoupon.innerHTML = `<input name="discount_id" id="txt_voucher_tour" type="text" class="form-control row-coupon" autocomplete="off" required placeholder="Vui lòng nhập mã giảm giá...">
         <span class="btn-submit-voucher voucher-tour ">Áp dụng mã</span>
-        <p class="err"></p>`;
+        <p class="err"></p>
+        <p style="text-align: center;font-weight:bold;"><del class="priceTour"></del></p>
+        <p class="applyDiscount" style="text-align: center;font-weight:bold;"></p>`;
         var btnCoupon = document.querySelector(".btn-submit-voucher");
         var coupon = document.querySelector(".row-coupon");
         var err = document.querySelector(".err");
+        var priceTour = document.querySelector(".priceTour");
+        var applyDiscount = document.querySelector(".applyDiscount");
+        var numberElder =  document.querySelector("#number-elder");
+        var numberChild =  document.querySelector("#number-child");
         let boolean = 0;
         btnCoupon.addEventListener("click",()=>{
           let xhr = new XMLHttpRequest();
@@ -164,11 +169,23 @@
               if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200){
                     boolean = xhr.response;
                 }
-                if(boolean == 0){
-                  err.innerHTML = "Áp dụng mã giảm giá thành công!";
-                  btnSubmit.removeAttribute("disabled");
-                }else{
+                // console.log(numberElder.value);
+                if(boolean == 1){
                   err.innerHTML = "Mã giảm giá không đúng hoặc hết hạn!";
+                }else{
+                  var arrValue = boolean.split("|");
+                  var discount = <?php echo $discount?>;
+                  let priceCoupon = 0;
+                  discount = (numberElder.value * discount) + (numberChild.value * 0.8 * discount);
+                  if(arrValue[1] == 1){
+                    priceCoupon = discount - arrValue[0];
+                  }else{
+                    priceCoupon = discount - discount*arrValue[0]/100;
+                  }
+                  err.innerHTML = `Áp dụng mã giảm giá thành công!`;
+                  priceTour.innerHTML = new Intl.NumberFormat().format(discount)+"VND";
+                  applyDiscount.innerHTML = new Intl.NumberFormat().format(priceCoupon)+"VND";
+                  btnSubmit.removeAttribute("disabled");
                 }
           }
           xhr.send("code="+coupon.value);

@@ -102,11 +102,13 @@
                                 <td class="action">
                                     <i class="fa-solid fa-ellipsis-vertical"></i>
                                     <div class="hidden">
-                                        <?php 
+                                        <?Php 
                                             foreach($status as $itemStatus){
+                                                if($itemStatus["Id"] != 1){
                                         ?>
-                                                <a href="<?php echo "?orderId=".$item["order_id"]."&statusId=".$itemStatus["Id"]?>"><?php echo $itemStatus["name"]?></a>
+                                                    <a href="<?php echo "?orderId=".$item["order_id"]."&statusId=".$itemStatus["Id"]?>"><?php echo $itemStatus["name"]?></a>
                                         <?php
+                                                }
                                             }
                                         ?>
                                     </div>

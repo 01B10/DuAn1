@@ -1,7 +1,9 @@
 <?php 
     $queryBuilder = new QueryBuilder();
     $listTour = $queryBuilder->query($queryBuilder->table("tour")->select("*")
-    ->where("tour.province","=",$_GET["Province"])->join("inner","tour_detail","tour.Id = tour_detail.tour_id")->get());
+    ->join("inner","tour_detail","tour.Id = tour_detail.tour_id")
+    ->where("tour.province","=",$_GET["Province"])->where("tour.status_tour","=",1)
+    ->get());
 
     $blogs = $queryBuilder->query($queryBuilder->table("blog")->select("*")->where("blog.province_id","=",$_GET["Province"])
     ->where("blog.status","=",2)

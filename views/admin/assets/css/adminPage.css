@@ -251,6 +251,22 @@ main {
   width: 100px;
 }
 
+.status_tour {
+  font-weight: bold;
+  color: #fff;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.status_tour_1 {
+  background-color: limegreen;
+}
+
+.status_tour_2 {
+  background-color: #cc2626;
+}
+
 .avatar {
   display: flex;
   align-items: center;

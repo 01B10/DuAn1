@@ -4,19 +4,11 @@
     ->join("right","tour","province.Id = tour.province")
     ->join("inner","tour_detail","tour.Id = tour_detail.tour_id")
     ->get());
-    
-    if(isset($_GET["act"]) && $_GET["act"] == "deleteTour"){
+
+    if(isset($_GET["tour_id"]) && isset($_GET["status_id"])){
         $idTour = $queryBuilder->query($queryBuilder->table("tour_detail")->select("tour_id")
-        ->where("tour_detail.Id","=",$_GET["Id"])->get())[0];
-        $idOrder = $queryBuilder->query($queryBuilder->table("order_details")->select("order_id")
-        ->where("order_details.tour_id","=",$idTour["tour_id"])->get())[0];
-        $queryBuilder->excute($queryBuilder->delete("service","service.tour_detail_id = ".$_GET['Id']));
-        $queryBuilder->excute($queryBuilder->delete("transport","transport.tour_detail_id = ".$_GET['Id']));
-        $queryBuilder->excute($queryBuilder->delete("comment","comment.tour_id = ".$idTour["tour_id"]));
-        $queryBuilder->excute($queryBuilder->delete("tour_detail","tour_detail.Id = ".$_GET['Id']));
-        $queryBuilder->excute($queryBuilder->delete("order_details","order_details.tour_id = ".$idTour["tour_id"]));
-        if(!empty($idOrder)){$queryBuilder->excute($queryBuilder->delete("ordertour","ordertour.Id = ".$idOrder["order_id"]));}
-        $queryBuilder->excute($queryBuilder->delete("tour","tour.Id = ".$idTour["tour_id"]));
+        ->where("tour_detail.Id","=",$_GET["tour_id"])->get())[0];
+        $queryBuilder->excute($queryBuilder->updateData("tour",["status_tour"=>$_GET["status_id"]],"tour.Id = ".$idTour["tour_id"]));
     }
 ?>
 
@@ -32,6 +24,7 @@
                     <th>Dịch vụ</th>
                     <th>Phương tiện</th>
                     <th>Lịch trình</th>
+                    <th>Trạng thái</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -86,14 +79,31 @@
                                         }
                                     ?>
                                 </td>
+
                                 <td>
                                     <p class="content"><?php echo $item["content_schedule"]?></p>
+                                </td>
+
+                                <td>
+                                    <?php 
+                                        if($item["status_tour"] == 1){
+                                            echo "<button class='status_tour status_tour_1'>Đang hoạt động</button>";
+                                        }else{
+                                            echo "<button class='status_tour status_tour_2'>Đã ngừng</button>";
+                                        }
+                                    ?>
                                 </td>
                                 
                                 <td class="action">
                                     <i class="fa-solid fa-ellipsis-vertical"></i>
                                     <div class="hidden">
-                                        <a class="deleteTour" href="?act=deleteTour&Id=<?php echo $item["Id"]?>">Delete</a>
+                                        <?php
+                                            if($item["status_tour"] == 1){
+                                                echo "<a class='deleteTour' href='?"."tour_id=".$item["Id"]."&status_id=2"."'>Tạm Ngừng</a>";
+                                            }else{
+                                                echo "<a class='deleteTour' href='?"."tour_id=".$item["Id"]."&status_id=1"."'>Hoạt Động</a>";
+                                            }
+                                        ?>
                                         <a href="updateTour?Id=<?php echo $item["Id"]?>">Update</a>
                                     </div>
                                 </td>

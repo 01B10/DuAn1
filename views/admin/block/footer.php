@@ -133,6 +133,10 @@
         window.addEventListener("load",()=>{
             window.location = "listOrder";
         });
+    }else if(searchParam.has("tour_id")){
+        window.addEventListener("load",()=>{
+            window.location = "listTour";
+        });
     }
 </script>
 

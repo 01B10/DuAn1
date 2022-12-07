@@ -1,14 +1,15 @@
 <?php 
     include_once "./database/sqldb.php";
     $queryBuilder = new QueryBuilder();
-    // echo $_POST["code"];
+    $checkDate = date("Y-m-d",time());
     $checkCoupon = $queryBuilder->query($queryBuilder->table("discount_code")->select("*")
-    ->where("discount_code.code","=",$_POST["code"])->get());
+    ->where("discount_code.code","=",$_POST["code"])
+    ->where("discount_code.end_time",">=",$checkDate)
+    ->get());
     
     if(!empty($checkCoupon)){
-       $re =  0;
+        echo $checkCoupon[0]["coupon_value"]."|".$checkCoupon[0]["type"];
     }else{
-        $re =  1;
+        echo 1;
     }
-    echo $re;
 ?>
