@@ -23,7 +23,6 @@
 
     $coupon = $queryBuilder->query($queryBuilder->table("discount_code")->select("*")
     ->where("discount_code.Id","=",$_GET["Id"])->get())[0];
-    print_r($coupon);
     $errors = [];
     if(isset($_POST["addCoupon"])){
         $validate =  validate($rule,$message,$errors);
@@ -31,6 +30,7 @@
         if($validate){
             $data = array_filter($_POST);
             $data["creat_time"] = date("Y-m-d");
+            $data["start_time"] = date_format(date_create($_POST["start_time"]),"Y-m-d");
             $data["end_time"] = date_format(date_create($_POST["end_time"]),"Y-m-d");
             $queryBuilder->excute($queryBuilder->updateData("discount_code",$data,"discount_code.Id = ".$_GET["Id"]));
         }
@@ -67,8 +67,11 @@
                     <p class="err"><?php echo (!empty($errors) && array_key_exists("coupon_value",$errors))?$errors["coupon_value"]:false?></p>
                 </div>
                 <div class="Email">
-                <input id="myID" name="end_time" placeholder="Ngày hết hạn">
-                    <!-- <label for="">Ngày hết hạn</label> -->
+                    <input id="myID" name="start_time" placeholder="Ngày sử dụng">
+                    <p class="err"><?php echo (!empty($errors) && array_key_exists("end_time",$errors))?$errors["end_time"]:false?></p>
+                </div>
+                <div class="Email">
+                    <input id="myID1" name="end_time" placeholder="Ngày hết hạn">
                     <p class="err"><?php echo (!empty($errors) && array_key_exists("end_time",$errors))?$errors["end_time"]:false?></p>
                 </div>
                 <div class="password">
@@ -88,6 +91,13 @@
 
 <script>
     flatpickr("#myID",{
+        enableTime: false,
+        dateFormat: "d-m-Y",
+        minDate: "today",
+        defaultDate: "<?php echo (!empty($_POST["end_time"]))?date_format(date_create($_POST["start_time"]),"d-m-Y"):date_format(date_create($coupon["start_time"]),"d-m-Y");?>"
+    });
+
+    flatpickr("#myID1",{
         enableTime: false,
         dateFormat: "d-m-Y",
         minDate: "today",

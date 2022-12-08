@@ -169,7 +169,6 @@
               if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200){
                     boolean = xhr.response;
                 }
-                // console.log(numberElder.value);
                 if(boolean == 1){
                   err.innerHTML = "Mã giảm giá không đúng hoặc hết hạn!";
                 }else{
