@@ -87,7 +87,7 @@
     </div>
     <div class="right-col">
       
-        <h2 class="title-book-tour">Thông tin liên hệ</h2>      
+        <h2 class="title-book-tour">Thông tin đặt <?php echo $tour["name"]?></h2> 
         <form id="contact-form" method="POST">
             <!-- Fullname -->
             <label for="name">Full name</label>
@@ -145,11 +145,13 @@
     var checkbox = document.querySelector('input[type="checkbox"]');
     var applyCoupon = document.querySelector('.apply-coupon');
     var btnSubmit = document.querySelector("#submit");
+    var numberElder =  document.querySelector("#number-elder");
+    var numberChild =  document.querySelector("#number-child");
     checkbox.addEventListener('change', function () {
       if (checkbox.checked) {
         btnSubmit.setAttribute("disabled","");
         applyCoupon.innerHTML = `<input name="discount_id" id="txt_voucher_tour" type="text" class="form-control row-coupon" autocomplete="off" required placeholder="Vui lòng nhập mã giảm giá...">
-        <span class="btn-submit-voucher voucher-tour ">Áp dụng mã</span>
+        <span class="btn-submit-voucher voucher-tour">Áp dụng mã</span>
         <p class="err"></p>
         <p style="text-align: center;font-weight:bold;"><del class="priceTour"></del></p>
         <p class="applyDiscount" style="text-align: center;font-weight:bold;"></p>`;
@@ -158,14 +160,14 @@
         var err = document.querySelector(".err");
         var priceTour = document.querySelector(".priceTour");
         var applyDiscount = document.querySelector(".applyDiscount");
-        var numberElder =  document.querySelector("#number-elder");
-        var numberChild =  document.querySelector("#number-child");
+        let discount = <?php echo $discount?>;
         let boolean = 0;
-        btnCoupon.addEventListener("click",()=>{
+        let priceCoupon = 0;
+        btnCoupon.addEventListener("click",(e)=>{
           let xhr = new XMLHttpRequest();
           xhr.open("POST","model/checkcoupon.php",true);
           xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-          xhr.onload = ()=>{
+          xhr.onloadend = ()=>{
               if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200){
                     boolean = xhr.response;
                 }
@@ -173,8 +175,6 @@
                   err.innerHTML = "Mã giảm giá không đúng hoặc hết hạn!";
                 }else{
                   var arrValue = boolean.split("|");
-                  var discount = <?php echo $discount?>;
-                  let priceCoupon = 0;
                   discount = (numberElder.value * discount) + (numberChild.value * 0.8 * discount);
                   if(arrValue[1] == 1){
                     priceCoupon = discount - arrValue[0];
@@ -182,13 +182,14 @@
                     priceCoupon = discount - discount*arrValue[0]/100;
                   }
                   err.innerHTML = `Áp dụng mã giảm giá thành công!`;
-                  priceTour.innerHTML = new Intl.NumberFormat().format(discount)+"VND";
-                  applyDiscount.innerHTML = new Intl.NumberFormat().format(priceCoupon)+"VND";
+                  priceTour.innerHTML = "Giá cũ: " + new Intl.NumberFormat().format(discount)+"VND";
+                  applyDiscount.innerHTML = "Giá mới: " + new Intl.NumberFormat().format(priceCoupon)+"VND";
                   btnSubmit.removeAttribute("disabled");
                 }
-          }
+              }
+            discount = <?php echo $discount?>;
           xhr.send("code="+coupon.value);
-          })
+        })
       } else {
         applyCoupon.innerHTML = '';
         btnSubmit.removeAttribute("disabled");

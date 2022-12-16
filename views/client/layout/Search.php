@@ -9,11 +9,11 @@
     $Tour = empty($_GET["province"])?$queryBuilder->query($queryBuilder->table("tour")->select("*")
     ->join("inner","tour_detail","tour.Id = tour_detail.tour_id")
     ->where("tour.start_time","<=",$start_time)
-    ->where("tour.number_of_day",">=",$day["yday"])
+    ->where("tour.number_of_day","=",$day["yday"])
     ->get()):$queryBuilder->query($queryBuilder->table("tour")->select("*")
     ->where("tour.province","=",$_GET["province"])->join("inner","tour_detail","tour.Id = tour_detail.tour_id")
     ->where("tour.start_time","<=",$start_time)
-    ->where("tour.number_of_day",">=",$day["yday"])
+    ->where("tour.number_of_day","=",$day["yday"])
     ->get());
 
     $blogs = empty($_GET["province"])?$queryBuilder->query($queryBuilder->table("blog")->select("*")
@@ -79,7 +79,7 @@
                                             <div class="box-tour-note-extra"> </div>
                                         </div>
                                         <div class="box-price-promotion-tour">
-                                            Giá 1 khách:  <span><?php echo $discount?><sup>đ</sup></span><del><?php echo $item["price"]?><sup>đ</sup></del>
+                                            Giá 1 khách:  <span><?php echo number_format($discount)?><sup>đ</sup></span><del><?php echo number_format($item["price"])?><sup>đ</sup></del>
                                             <div class="box-percent-tour">
                                                 <div class="arrow-left">
                                                     <div class="box-percent-tour-sale">-<?php echo $item["discount"]?>%</div>

@@ -28,7 +28,7 @@
     <header>
         <div class="full_header">
             <div class="logo">
-                <img src="<?php echo _WEB_ROOT_ . "/views/client/img/logo/logo.jpg" ?>" alt="">
+                <img src="<?php echo _WEB_ROOT_ . "/views/client/img/logo/TravelinVN-logo.png" ?>" alt="">
             </div>
             <div class="menu">
                 <ul>

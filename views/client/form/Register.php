@@ -86,13 +86,13 @@
                 <p class="err difference"><?php echo (!empty($errors) && array_key_exists("gender",$errors))?$errors["gender"]:false?></p>
             </div>
             <div class="input-field">
-                <input type="password" name="password">
+                <input type="password" class="pass" name="password">
                 <label for="">Mật khẩu</label>
                 <span class="show-btn"><i class="fas fa-eye"></i></span>
                 <p class="err"><?php echo (!empty($errors) && array_key_exists("password",$errors))?$errors["password"]:false?></p>
             </div>
             <div class="input-field">
-                <input type="password" name="repassword">
+                <input type="password" class="pass" name="repassword">
                 <label for="">Nhập lại mật khẩu</label>
                 <span class="show-btn"><i class="fas fa-eye"></i></span>
                 <p class="err"><?php echo (!empty($errors) && array_key_exists("repassword",$errors))?$errors["repassword"]:false?></p>
@@ -109,16 +109,18 @@
     </div>
 </body>
 <script>
-    const passField = document.querySelector("input");
-    const showBtn = document.querySelector("span i");
-    showBtn.onclick = (() => {
-        if (passField.type == "password") {
-            passField.type = "text";
-            showBtn.classList.add("hide-btn");
-        } else {
-            passField.type = "password";
-            showBtn.classList.remove("hide-btn");
-        }
+    const passField = document.querySelectorAll(".pass");
+    const showBtn = document.querySelectorAll(".fa-eye");
+    showBtn.forEach((e,index)=>{
+        e.addEventListener("click",()=>{
+            if (passField[index].type == "password") {
+            passField[index].type = "text";
+            showBtn[index].classList.add("hide-btn");
+            } else {
+                passField[index].type = "password";
+                showBtn[index].classList.remove("hide-btn");
+            }
+        });
     });
 </script>
 </html>

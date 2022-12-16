@@ -59,6 +59,7 @@
             $_POST["end_time"] = date("Y-m-d",strtotime($_POST["end_time"]));
             $data = array_filter($_POST);
             $data["img"] = $_FILES["img"]["name"];
+            $data["status_tour"] = 1;
             move_uploaded_file($_FILES["img"]["tmp_name"],_DIR_ROOT."/views/client/img/tours/".$data["img"]);
 
             $queryBuilder->excute($queryBuilder->inserData("tour",$data));
